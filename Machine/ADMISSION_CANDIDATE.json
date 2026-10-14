@@ -1,0 +1,12 @@
+{
+  "candidate_root": "/private/tmp/machine-admission-candidate-xutnev4k",
+  "source_root": "/Users/boandersson/Desktop/Machine",
+  "scope": "one local-operator-admitted session and exact single-use scratch init; no generic execution adapter",
+  "state": "preparation",
+  "status": "adopted_and_live_acceptance_passed",
+  "result": "ADMISSION_TEST/RESULT.json",
+  "report": "ADMISSION_TEST/REPORT.md",
+  "permit_id": "dfe1d3bf-c00f-4534-bb9f-c46e695d3289",
+  "permit_state": "succeeded_consumed",
+  "machine_commit": "dd89d38c8d07e82b7b330f0213cfa1f70fa3eb02"
+}

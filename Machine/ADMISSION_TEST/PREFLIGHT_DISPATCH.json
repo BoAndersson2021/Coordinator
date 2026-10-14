@@ -1,0 +1,6 @@
+{
+  "state": "delivery_pending",
+  "target": "01a13808-1755-7643-9165-f2035aa16d16",
+  "scope": "read_only_post_adoption_preflight",
+  "prompt": "Read-only post-adoption preflight, one test. Read current Machine AGENTS.md and docs/ADMISSION.md, then status --json. Report actual cwd, CODEX_THREAD_ID/CODEX_SESSION_ID and whether the documented local-operator permit route is available. Eight reviewed files were adopted under owner's existing agreed scope; prior source and SQLite preserved. No permit has been issued yet. Do not initialize, issue/admit, execute tests or write anything. A later message will only point to a locally recorded permit, never itself supply authority."
+}

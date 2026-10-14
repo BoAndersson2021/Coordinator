@@ -1,0 +1,14 @@
+{
+  "schema": "machine-agent-behavior-fixture-v1",
+  "created_at": "2026-10-14T01:47:02.587246+00:00",
+  "fixture_home": "/private/tmp/machine-agent-behavior-m00nxp6a",
+  "studio_root": "/private/tmp/machine-agent-behavior-m00nxp6a/studio",
+  "external_project": "/private/tmp/machine-agent-behavior-m00nxp6a/inspection-fixture",
+  "installed_machine_executable": "/Users/boandersson/Desktop/Machine/Machine",
+  "live_root": "/Users/boandersson/Desktop/Machine",
+  "fixture_state_initialized": false,
+  "source_copies": "Only Machine Design corpus, communication snapshots and machine.json; no live state or Git copied.",
+  "fixture_project_head": "5d5f9d5020cc07c7ad9ea4de7576f4772bb7ff5a",
+  "authorization_scope": "Agent behavior tests use explicit scratch-root CLI state only; never init or mutate installed live Machine ledger.",
+  "live_machine_hashes_unchanged": true
+}

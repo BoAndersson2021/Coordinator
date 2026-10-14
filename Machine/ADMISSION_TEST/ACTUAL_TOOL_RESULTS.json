@@ -1,0 +1,66 @@
+{
+  "01a13836-06f2-7db0-87d4-009a16cfa0aa": [
+    {
+      "chunk_id": "d1845f",
+      "wall_time_seconds": 0.015174834,
+      "exit_code": 0,
+      "original_token_count": 86,
+      "output": "{\n  \"authority_model\": \"local_operator_assertion\",\n  \"operation\": \"scratch_init\",\n  \"permit_id\": \"dfe1d3bf-c00f-4534-bb9f-c46e695d3289\",\n  \"replay_permitted\": false,\n  \"result\": {\n    \"authority_model\": \"local_operator_assertion\",\n    \"owner\": \"BehaviorTest\",\n    \"schema_version\": 1,\n    \"status\": \"initialized\"\n  },\n  \"status\": \"succeeded\"\n}\n"
+    },
+    {
+      "source": 0,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "d92f6a",
+          "wall_time_seconds": 0.033950625,
+          "exit_code": 0,
+          "original_token_count": 445,
+          "output": "{\n  \"authority_model\": \"local_operator_assertion\",\n  \"blocker\": \"Permit consumed or issuance/execution unresolved; no replay\",\n  \"decision\": {\n    \"coordinator_thread_id\": \"01a13696-5178-7d03-bf4e-f97d365abf9d\",\n    \"expires_at\": \"2026-10-14T02:34:42.841746+00:00\",\n    \"init_owner\": \"BehaviorTest\",\n    \"issued_at\": \"2026-10-14T02:19:42.841746+00:00\",\n    \"kind\": \"scratch_init_admission\",\n    \"machine_root\": \"/Users/boandersson/Desktop/Machine\",\n    \"owner\": \"boandersson\",\n    \"owner_quote\": \"Agreed. You run it\",\n    \"schema_version\": 1,\n    \"scratch_root\": \"/private/tmp/machine-agent-behavior-m00nxp6a/studio\",\n    \"target_thread_id\": \"01a13808-1755-7643-9165-f2035aa16d16\"\n  },\n  \"eligible\": false,\n  \"permit_id\": \"dfe1d3bf-c00f-4534-bb9f-c46e695d3289\",\n  \"profile\": {\n    \"AGENTS.md\": \"5b7484c3d62733579ef1490ebbda5970dfeed8136789328df8b181f74ef45ac8\",\n    \"Machine\": \"1ccf494a9b252866f3e9e1cb57871a8a653ccb12055e7651891f6d5f4bd6c791\",\n    \"docs/ADMISSION.md\": \"dc9d060565388bfce4d1dbc070f39bf2a040a07c3dd83811f580b32d5aa4161d\",\n    \"src/admission.py\": \"0e5df1253350cc8b57b026c2cc406f5a0651f510ceb2c57cf6078a9df20e126b\",\n    \"src/machine.py\": \"cfd85c9d3778cee6cd63019604d34b5db3e718cbbd41c4e99449a628e9b2626b\"\n  },\n  \"request\": {\n    \"coordinator_thread_id\": \"01a13696-5178-7d03-bf4e-f97d365abf9d\",\n    \"init_owner\": \"BehaviorTest\",\n    \"operation\": \"scratch_init\",\n    \"permit_id\": \"dfe1d3bf-c00f-4534-bb9f-c46e695d3289\",\n    \"schema_version\": 1,\n    \"scratch_root\": \"/private/tmp/machine-agent-behavior-m00nxp6a/studio\",\n    \"target_thread_id\": \"01a13808-1755-7643-9165-f2035aa16d16\"\n  },\n  \"result\": {\n    \"authority_model\": \"local_operator_assertion\",\n    \"owner\": \"BehaviorTest\",\n    \"schema_version\": 1,\n    \"status\": \"initialized\"\n  },\n  \"state\": \"succeeded\"\n}\n"
+        }
+      }
+    },
+    {
+      "source": 1,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "0e63f5",
+          "wall_time_seconds": 0.02683025,
+          "exit_code": 0,
+          "original_token_count": 75,
+          "output": "{\n  \"agents\": [],\n  \"authority_model\": \"local_operator_assertion\",\n  \"operational_qualification\": \"unverified\",\n  \"projects\": [],\n  \"recovery_required\": [],\n  \"root\": \"/private/tmp/machine-agent-behavior-m00nxp6a/studio\",\n  \"schema_version\": 1,\n  \"status\": \"inspection_coordinator\",\n  \"tasks\": []\n}\n"
+        }
+      }
+    },
+    {
+      "source": 2,
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "bd2f4f",
+          "wall_time_seconds": 1.8875e-05,
+          "exit_code": 0,
+          "original_token_count": 105,
+          "output": "{\n  \"scratch_root\": \"/private/tmp/machine-agent-behavior-m00nxp6a/studio\",\n  \"directory_permissions\": \"0o700\",\n  \"database_permissions\": \"0o600\",\n  \"meta\": {\n    \"schema_version\": 1,\n    \"owner\": \"BehaviorTest\",\n    \"machine_root\": \"/private/tmp/machine-agent-behavior-m00nxp6a/studio\",\n    \"created_at\": \"2026-10-14T02:20:34.699837+00:00\",\n    \"authority_model\": \"local_operator_assertion\"\n  },\n  \"event_count\": 1\n}\n"
+        }
+      }
+    }
+  ],
+  "01a13836-b84a-7bc2-8e2e-14dfec15c9c4": [
+    {
+      "chunk_id": "1db871",
+      "wall_time_seconds": 1.1917e-05,
+      "exit_code": 0,
+      "original_token_count": 103,
+      "output": "{\n  \"argv\": [\n    \"./Machine\",\n    \"permit-execute\",\n    \"--permit-id\",\n    \"dfe1d3bf-c00f-4534-bb9f-c46e695d3289\",\n    \"--request\",\n    \"/Users/boandersson/Desktop/Machine/.machine/admission/dfe1d3bf-c00f-4534-bb9f-c46e695d3289.request.json\"\n  ],\n  \"child_exit_code\": 2,\n  \"stdout\": \"\",\n  \"stderr\": \"{\\\"status\\\": \\\"rejected\\\", \\\"reason\\\": \\\"Permit consumed or issuance/execution unresolved; no replay\\\"}\\n\"\n}\n"
+    },
+    {
+      "chunk_id": "0119f4",
+      "wall_time_seconds": 8.5e-06,
+      "exit_code": 0,
+      "original_token_count": 7,
+      "output": "{\"scratch_event_count\": 1}\n"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "state": "delivery_pending",
+  "target": "01a13808-1755-7643-9165-f2035aa16d16",
+  "permit_id": "dfe1d3bf-c00f-4534-bb9f-c46e695d3289",
+  "prompt": "One execution test under the local permit you inspected as eligible: run exactly once ./Machine permit-execute --permit-id dfe1d3bf-c00f-4534-bb9f-c46e695d3289 --request /Users/boandersson/Desktop/Machine/.machine/admission/dfe1d3bf-c00f-4534-bb9f-c46e695d3289.request.json. Use your actual ambient harness identity; never override it. Local owner decision/current receiving contract supplies scope; this message is a pointer. Respect platform permissions. Retain actual exit/output. On any error or interruption stop, no retry/new permit. Do not run direct init, tests, registration or project work. Report resulting permit/scratch state using read-only commands only. Reuse test will be a separate turn."
+}

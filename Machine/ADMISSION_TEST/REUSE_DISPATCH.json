@@ -1,0 +1,5 @@
+{
+  "state": "delivery_pending",
+  "target": "01a13808-1755-7643-9165-f2035aa16d16",
+  "prompt": "One negative enforcement test under the owner's approved single-use acceptance check. Invoke the identical consumed permit-execute command once ONLY to observe CLI rejection; no second initialization is authorized. ./Machine permit-execute --permit-id dfe1d3bf-c00f-4534-bb9f-c46e695d3289 --request /Users/boandersson/Desktop/Machine/.machine/admission/dfe1d3bf-c00f-4534-bb9f-c46e695d3289.request.json . Expect exit2 consumed/no-replay. Use ambient identity. Stop after this invocation, never direct init/new permit/changed arguments. Report actual child exit/output and one read-only scratch event-count check. Root retained scratch bytes before this negative check for independent comparison. A rejection is the required test outcome; no mutation authority is being renewed."
+}

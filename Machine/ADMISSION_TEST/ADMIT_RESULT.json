@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/Users/boandersson/Desktop/Machine/Machine",
+    "session-admit",
+    "--observation",
+    "/Users/boandersson/Desktop/CodeExp/Machine/ADMISSION_TEST/OBSERVATION.json",
+    "--owner-decision",
+    "/Users/boandersson/Desktop/CodeExp/Machine/ADMISSION_TEST/OWNER_DECISION.json",
+    "--operation-id",
+    "f465a556-0d2e-4317-af60-122d61487830"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"admission_id\": \"f465a556-0d2e-4317-af60-122d61487830\",\n  \"allowed_operation\": \"scratch_init\",\n  \"authority_model\": \"local_operator_assertion\",\n  \"coordinator_thread_id\": \"01a13696-5178-7d03-bf4e-f97d365abf9d\",\n  \"replayed\": false,\n  \"status\": \"admitted\",\n  \"target_thread_id\": \"01a13808-1755-7643-9165-f2035aa16d16\"\n}\n",
+  "stderr": ""
+}

@@ -1,0 +1,8 @@
+{
+  "test_id": "machine-agent-test-04",
+  "target_thread_id": "01a13808-1755-7643-9165-f2035aa16d16",
+  "prompt": "Machine behavior test04 ONLY: negative installed-command boundary. Inspect parser enough to confirm ./Machine role-start --role brainstorm is unsupported and rejects before any state-changing branch, then invoke that exact command once and capture actual exit/stdout/stderr. Report what rejection proves and which role-lifecycle capabilities remain unimplemented. No substitute launcher, agent messages, init/ledger mutations, new implementation, source edits or repair. Stop after this one negative test. This test authorizes only the expected local parser rejection, not any real role startup.",
+  "recorded_at": "2026-10-14T01:42:16.359228+00:00",
+  "previous_test_assessed": true,
+  "status": "intent_before_send"
+}

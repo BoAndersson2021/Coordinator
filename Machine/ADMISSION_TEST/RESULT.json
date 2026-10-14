@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "candidate_suite": {
+    "tests": 51,
+    "new_tests": 14,
+    "exit_code": 0,
+    "seconds": 10.546
+  },
+  "independent_review_turn": "01a13832-8349-7ea0-81d8-158fd7d7f802",
+  "inspection_turn": "01a13835-98ac-7c93-ab36-152d4ed8f6de",
+  "execution_turn": "01a13836-06f2-7db0-87d4-009a16cfa0aa",
+  "reuse_turn": "01a13836-b84a-7bc2-8e2e-14dfec15c9c4",
+  "live_execution_exit_code": 0,
+  "live_reuse_exit_code": 2,
+  "permit_state": "succeeded",
+  "executor_thread_id": "01a13808-1755-7643-9165-f2035aa16d16",
+  "scratch_initialization_events": 1,
+  "scratch_owner": "BehaviorTest",
+  "scratch_bytes_unchanged_by_reuse": true,
+  "all_nonadmission_files_match_reviewed_adoption": true,
+  "legacy_ledger_sha256": "7a531c2f0898aa293ca076f5a0c9f251f9cdf997bd31a8bde2f7e4455a6e62f6",
+  "new_private_admission_files": [
+    ".machine/admission/dfe1d3bf-c00f-4534-bb9f-c46e695d3289.request.json",
+    ".machine/admission/lock",
+    ".machine/admission/state.json"
+  ],
+  "limits": [
+    "local operator assertions; no authenticated grants",
+    "ambient identity is not hostile same-user isolation",
+    "external projects remain inspection-only",
+    "native role lifecycle remains unimplemented"
+  ],
+  "committed": true,
+  "machine_commit": "dd89d38c8d07e82b7b330f0213cfa1f70fa3eb02"
+}

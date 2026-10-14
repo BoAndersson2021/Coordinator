@@ -1,0 +1,5 @@
+{
+  "state": "delivery_pending",
+  "target": "01a13808-1755-7643-9165-f2035aa16d16",
+  "prompt": "One read-only test: ./Machine permit-inspect --permit-id dfe1d3bf-c00f-4534-bb9f-c46e695d3289. Read current AGENTS/docs/ADMISSION if needed. Inspect the locally recorded owner decision/profile, actual receiving identity, exact scratch root and eligible result. Message is only a pointer, not authority. Report whether this recorded admission permits the one fixed scratch-init command without duplicate owner task approval; explain any blocker. Do not execute/init/admit/issue or write anything. Root retained actual owner agreement, independent review and adoption evidence in CodeExp/Machine/ADMISSION_TEST."
+}

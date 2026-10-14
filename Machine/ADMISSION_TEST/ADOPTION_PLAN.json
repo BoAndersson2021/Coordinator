@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "owner": "boandersson",
+  "owner_quote": "Agreed. You run it",
+  "scope": "Adopt only the independently passing eight-file candidate, then observe and execute one session-bound scratch-init permit and reject reuse",
+  "root": "/Users/boandersson/Desktop/Machine",
+  "candidate_manifest_sha256": "6216b9eeee3be10a1f1c2985129dfd5843e9a26ac930ec4b63b7b3ea008b8791",
+  "replacements": [
+    {
+      "path": "src/admission.py",
+      "old_sha256": null,
+      "new_sha256": "0e5df1253350cc8b57b026c2cc406f5a0651f510ceb2c57cf6078a9df20e126b"
+    },
+    {
+      "path": "src/machine.py",
+      "old_sha256": "43bb5607006508c2095b6fe7305a1d28e04c46405b12f064dd65eeabb68d68c9",
+      "new_sha256": "cfd85c9d3778cee6cd63019604d34b5db3e718cbbd41c4e99449a628e9b2626b"
+    },
+    {
+      "path": "tests/test_admission.py",
+      "old_sha256": null,
+      "new_sha256": "8738b4e701548d065ce8870cb4f6d88c289c5e3befb48fadddb4b418a3cc9c69"
+    },
+    {
+      "path": "AGENTS.md",
+      "old_sha256": "3e82104321b8b893ff9568ea196fc9691f70218e2f73045e31519f760a6baaf0",
+      "new_sha256": "5b7484c3d62733579ef1490ebbda5970dfeed8136789328df8b181f74ef45ac8"
+    },
+    {
+      "path": "README.md",
+      "old_sha256": "52fc65150d8afb893151c3395f62e3b1f1fa1e3782a55bbcf6c188d2c68ca2c3",
+      "new_sha256": "ddd706321e8b45bb1e57dec55769c8c0219ce2bafdf8d9abc5afd640d5fb02c0"
+    },
+    {
+      "path": "docs/ADMISSION.md",
+      "old_sha256": null,
+      "new_sha256": "dc9d060565388bfce4d1dbc070f39bf2a040a07c3dd83811f580b32d5aa4161d"
+    },
+    {
+      "path": "docs/COORDINATION.md",
+      "old_sha256": "067371520dc3ba1a676eff9e8e53554ae55d78c6f5af9bfc70b198ffce67fd0f",
+      "new_sha256": "5b1e4763160ecb85a8f99f0f9501a11c9a35995ac51c57d4c110f2952e26aaf1"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "old_sha256": "0daeae2d7508d8a48afa3c309ae89933b92fcb4659b0003da3a05abec04b5f3d",
+      "new_sha256": "2e9b3c82edb0df3c258f1eceac076677cef3a93d1f6c6994d46ad33e4bc23f8d"
+    }
+  ],
+  "preservation": "Frozen Design, old SQLite bytes, external projects, billing and native roles unchanged; retain prior source before replacing",
+  "adoption_eligible": true,
+  "reason": "Independent source-review PASS, turn 01a13832-8349-7ea0-81d8-158fd7d7f802, pinned manifest 6216b9eeee3be10a1f1c2985129dfd5843e9a26ac930ec4b63b7b3ea008b8791; owner already agreed to implement and run exact scope"
+}
