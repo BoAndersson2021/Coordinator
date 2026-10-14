@@ -1,0 +1,49 @@
+{
+  "schema": "separate-owned-process-diagnostic-decision-proposal-v1",
+  "proposal_only": true,
+  "owner_authorization": null,
+  "requested_decision": "Authorize only the one frozen own-process witness observation described in DIAGNOSTIC_BRIEF.json, using the existing repair init/probe route as a genuinely separate diagnostic scope. Preserve both consumed parent checks and seals; award no old gate, source, handoff or native pass.",
+  "brief_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/own-witness-diagnostic/DIAGNOSTIC_BRIEF.json",
+  "brief_sha256": "b5588a107c220f8fd8565b0e9c7ba84a66ff9deb1ae6bdaf58725141b99acd43",
+  "driver_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/own-witness-diagnostic/observe_owned_witness.py",
+  "driver_sha256": "df32206a6e08f62f1605be6b6deb071d7a1bd840c3f0d565effd9dfae9b5541e",
+  "probe_count": 1,
+  "probe_kind": "diagnostic",
+  "probe_timeout_seconds": 10,
+  "underlying_ps_timeout_seconds": 0.5,
+  "runner_initial_window_seconds": 900,
+  "scope_consumed_after_one_probe": true,
+  "candidate_check_count": 0,
+  "original_rerun_count": 0,
+  "native_loading": false,
+  "role_messages_or_restart": false,
+  "active_pointer_or_source_changes": false,
+  "scene_changes": false,
+  "new_privilege_or_billing": false,
+  "host_census": false,
+  "automatic_extension_or_parent_reset": false,
+  "consumed_parents": [
+    {
+      "run": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/bounded-enabler-verification",
+      "manifest_sha256": "f441516a603c2dedaf0d1b1e41ab81612c17a4c99a0161fc6df6d27ecacd1be6",
+      "brief_sha256": "09a4a836792d583d4bf7228e1e3b120eabd07c67716ea1a03d8964285f51b7db",
+      "consumed_probe_ids": [
+        "frozen-v27-enabler-check"
+      ],
+      "failure_seal": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/VERIFICATION_SEAL.json"
+    },
+    {
+      "run": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/bounded-fixture-continuation",
+      "manifest_sha256": "adb6ce354298ede1a66a4287ed5cb3a16715d7a72cc8ab1e0e852c91fd47c779",
+      "brief_sha256": "7b5416c3b12929b88e6a49b9a3e9be10362b38fd53d42ded758e5575be3e120a",
+      "consumed_probe_ids": [
+        "fixture-normalized-v27-enabler-check"
+      ],
+      "failure_seal": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/FIXTURE_CONTINUATION_SEAL.json"
+    }
+  ],
+  "new_exact_check_admission_key": "cb7649bdb1c8fc25eaa84956091aa6c1e11091019b745f89d718c0e7ca7bfe4a",
+  "same_check_admission_exists": false,
+  "existing_route_supported": true,
+  "execution_performed": false
+}

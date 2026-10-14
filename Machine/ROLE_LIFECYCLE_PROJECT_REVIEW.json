@@ -1,0 +1,36 @@
+{
+  "schema": "project-builder-review-machine-role-lifecycle-design-v1",
+  "recorded_at": "2026-10-14T01:22:58.460373+00:00",
+  "reviewed_machine_path": "/Users/boandersson/Desktop/CodeExp/Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md",
+  "reviewed_machine_sha256": "d5f0c755e3f8c12e727e0460640bb394390177ece7f95e5e49e23bf5885e6f58",
+  "sealed_project_design_sha256": "f7aaa51c36340c82b5036fdb3cc94dced269bd317c2522aedb85e14d49933d93",
+  "method": "text/source contract comparison only after project design sealing; no root edit or execution",
+  "result": "aligned_design_with_two_focused_clarifications",
+  "focused_corrections": [
+    {
+      "id": "CMS-LC-TTY",
+      "location": "Typed interface / Ownership and enrollment / Replacement protocol",
+      "finding": "The envelope/profile and custody list preserve attended execution but do not explicitly freeze the terminal device, controlling session, stdio descriptors and foreground group across managed restart. Initial unmanaged same-TTY inheritance is not supported by inspected primitives.",
+      "suggested_change": "Include an exact inherited TTY/session/descriptor binding in the launch profile and native custody/return receipts. Require same TTY for managed replacements. Mark unmanaged same-TTY transfer a separate missing integration; initial new managed TTY would require an explicit owner-approved binding change, not implied by automation design."
+    },
+    {
+      "id": "CMS-LC-REAP",
+      "location": "Replacement protocol retired row",
+      "finding": "The proposed entry owns the direct Codex child; MCP adapter processes may be its grandchildren. wait/reap authority is held by the true parent/provider, not obtained from a PID/start or disappearance observation.",
+      "suggested_change": "Require actual direct-child wait/reap receipt from its owning supervisor and supported adapter exit/drain/reap evidence from their actual owners. Do not claim every adapter was reaped by the project supervisor unless native custody supports that. Unknown child/read/scene custody blocks new launch."
+    }
+  ],
+  "already_correct": [
+    "Machine CMS/project controller/native harness/model separation",
+    "no current lifecycle API/activation claim",
+    "real turn-admission fence required; observed idle insufficient",
+    "managed fixture scope distinct from unmanaged enrollment",
+    "native Terminal refusal/no UI/input/model-self-exit bypass",
+    "local trust/nonce not cryptographic authentication",
+    "qualified compose/readiness/preservation gates and no duplicate refresh",
+    "journal before effect, no exactly-once claim, unknown/replay/deadline/return boundaries",
+    "current135/sourcePASS retained with changed-code own release review"
+  ],
+  "implementation_or_tests_or_native_effects": false,
+  "machine_file_edited": false
+}

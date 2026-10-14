@@ -1,0 +1,42 @@
+{
+  "actual_final_message": "**REJECT \u2014 v28 source-only re-review.** The original v27 REJECT remains preserved.\n\nReviewer: Modeling, thread `01a136bd-8ea9-7df3-9e62-720e8d5162e7`, assignment `castle-source-review-002-v28-modeling`.\n\nExact reviewed identity:\n\n```text\nCandidate: /private/tmp/castle-builder-008-candidate\nRelease: castle-staged-review-corrections-v28\nVersion: operations-review-28\nManifest SHA-256:\n83a37d275533daeef5981622fe19a07c1477cffe4092712e7df90e4a182c4097\nFull 67-file adapter digest:\neb3f60b8dabeedafd20f65be9135c8760985e0acd62a3fa89318b71a092e8ef3\n```\n\n**Blocking finding: the retained receipt-refresh route still performs an unguarded native query.**\n\n[role_receipt_refresh.py:127](/private/tmp/castle-builder-008-candidate/scripts/role_receipt_refresh.py:127) checks idle state, then calls `startup.live_scene()` at line 131 without creating a `durable_read_guard`. This is reachable through `create()` at line 173 and through `load()`/`bound()`. The staged launcher explicitly permits receipt refresh at [launch_blender_bridge.py:627](/private/tmp/castle-builder-008-candidate/scripts/launch_blender_bridge.py:627), and its refresh path calls `create()` at line 542.\n\nThe installed [v25 scene-access route:240](/Users/boandersson/Desktop/Blender_Project/scripts/modeling_operations.py:240) reserves directly without consulting the kernel handoff/barrier locks. With no canonical read guard during the refresh query, that old route can still admit an edit. A refresh transport failure or controller death also leaves no durable guard retaining the query\u2019s unknown outcome. This is a source-derived failure path; I did not execute it.\n\nThe four original findings were reviewed:\n\n| Original finding | v28 assessment |\n|---|---|\n| Legacy proof downgrade | Corrected: [route_contract.py:198](/private/tmp/castle-builder-008-candidate/scripts/route_contract.py:198) requires v2 for recipe-v2 releases while retaining legacy compatibility. |\n| Outer-success/nested-error acceptance | Corrected for both roles\u2019 path/object results at [line 369](/private/tmp/castle-builder-008-candidate/scripts/route_contract.py:369). |\n| Legacy edit exclusion | Corrected for successor legacy admission and guarded qualification reads; incomplete in the receipt-refresh path identified above. |\n| Borrower custody after controller unwind/death | Corrected in the guarded path: independent borrower barrier, durable reservation and cancellation draining retain custody. Exceptions leave `outcome_unknown`. This protection does not cover the unguarded refresh query. |\n\nIntegrity and evidence checks passed:\n\n- All **19 source pins** match; the **67-file digest** matches, and all 67 source files match the tested clone.\n- The private manifest matches its proposed bytes, sidecar and retained publication record.\n- Both original rejection hashes and consumed-parent hashes match.\n- All **961 admitted input hashes** and all **10 sealed run-artifact hashes** match.\n- Sealed result SHA-256: `aede93f9f82991591e58d0cd93f2b612b76e9127f8e4ea1984b72a448800511d`.\n- Raw retained output confirms **126 tests passing**, zero failures/errors. Supervised elapsed time is **10.860920 seconds**.\n\nI separately inspected the corrected fixture, hash `732c5e33de0be03c3f3b88f9be2c99715263b5f4e62e03e643e1cc6b7b0faab4`. Its change supplies the role/thread envelope to three fixtures. Its old-v25 checks use copied, unmodified v25 source against fixture stores. The refresh tests mock `live_scene()` and `scene_idle()`, so their pass does not close the blocking path.\n\nNo candidate/test execution or imports, Blender/MCP calls, edits, loading, restart, installation, ACTIVE or scene changes were performed. **No native qualification, loaded-source readiness, promotion or scene acceptance is claimed.**",
+  "actual_pass_result_sha256": "aede93f9f82991591e58d0cd93f2b612b76e9127f8e4ea1984b72a448800511d",
+  "adapter_identity": {
+    "source_digest": "eb3f60b8dabeedafd20f65be9135c8760985e0acd62a3fa89318b71a092e8ef3",
+    "version": "operations-review-28"
+  },
+  "assignment_id": "castle-source-review-002-v28-modeling",
+  "captured_at": "2026-10-14T00:19:33.447958+00:00",
+  "completed_turn": {
+    "id": "01a137c1-9083-7f90-a397-c91ef20286e6",
+    "status": "completed"
+  },
+  "kind": "completed_role_source_review",
+  "manifest_sha256": "83a37d275533daeef5981622fe19a07c1477cffe4092712e7df90e4a182c4097",
+  "mcp_calls_observed": 0,
+  "native_qualification_awarded": false,
+  "role": "modeling",
+  "source_pins": {
+    "scripts/Launch Blender Brainstorm.command": "46e6c682c39df0a1252117afe2286fcf4e437e4cd4b1e709090ee1c04b4ef696",
+    "scripts/Launch Blender Modeling.command": "e912060f3f062a843615ea2445c401cb8cc9cda8fea1059b0b14de8951dd11ab",
+    "scripts/blender_modeling_mcp.py": "648e16565f1030c146d92fc4237144bbb9942ab4f4edf28fae8fb6ad2d065103",
+    "scripts/blender_readonly_mcp.py": "2937c2f24871d9b45de43a80640ac40007a39daced8ca58b636371dbbb820b07",
+    "scripts/blender_scene_startup.py": "b132ca0cf7be7d1c30f00734d479725849128ecad7337d1f7e72b18b6ac69c6b",
+    "scripts/codex_local.py": "f1dd82b90071591d2eff089f722bb3ce53e39b26f40c3ab64461f38636641842",
+    "scripts/launch_blender_bridge.py": "45dbb269923cbbd5ea432fde223c4c97a0b162b4b3f94682b3607d917b9bbb47",
+    "scripts/launcher_runtime.py": "b967bf653fb46e89cc9656202172af394d6dec1f74c65aa7451c4f189cf74a84",
+    "scripts/modeling_dispatch.py": "9f6ee3f9c02b7d3f781c53c824aac02e0318839c5be14eee3e030b147b9448a8",
+    "scripts/project_context.py": "6562fa8a11eb9e55201b66d600fd7ac935238ca39264f9e2bdf5c0801b70e374",
+    "scripts/qualification_admission.py": "30365d0b12b8734a27a5f12b4ea10069451e084c192f50d08591cb338fad7c33",
+    "scripts/recovery_dispatch.py": "5f4c27c6052af500adbce929d84baf76a1e70c2822314c80e6c28c8830f6f6b1",
+    "scripts/repair_runner.py": "50a081bf40721d97d804127fa673adf41515e2fd3ff295f873187881aa0159d0",
+    "scripts/role_receipt_refresh.py": "177e1780a143474fead6ca49263f33b48504d22cc9cdf587d257fe8dc245fddc",
+    "scripts/route_contract.py": "219e50ac6548a6c321d1ba53fae3a28e3dc6e5e908de127d0834662a280dbd2b",
+    "scripts/session_onboarding.py": "d722e6a1ade2e2db9b7871db05c40e0129dc716ad2813b48a059f72703fe1df7",
+    "scripts/trial_runner.py": "0f017c60a755da8ca1d3b06854f0bf28a366e8e233687f6b5fc43990d8d75797",
+    "scripts/trial_runner_entry.py": "1a87d56733d6ef198bb7db0a06447054e2f9c90a4d11e626bbd06f1765666216",
+    "start.sh": "1af3e8a0cad22a210676868a874164568cdcf6a1c5b3736b7f4fe9bfa49e8952"
+  },
+  "status": "reject",
+  "thread_id": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+}

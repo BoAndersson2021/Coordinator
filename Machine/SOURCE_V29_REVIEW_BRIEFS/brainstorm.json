@@ -1,0 +1,84 @@
+{
+  "actual_verification_result_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/nested-fixture-correction-20261014/one-case-admission-preparation/ADMISSION/RESULT.json",
+  "actual_verification_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80",
+  "adapter_identity": {
+    "source_digest": "4786992be78b9e6bdb3d7283695c9d62fa1b02db1a85470a7358b8329938b446",
+    "version": "operations-review-29"
+  },
+  "assignment_id": "castle-source-review-003-v29-brainstorm",
+  "candidate_source": "/private/tmp/castle-builder-012-refresh-guard-candidate",
+  "carried_authority_state": "approved_unused_eligible_after_independently_reviewed135_pass",
+  "carried_conditional_authority": {
+    "new_role_scope_requested": false,
+    "owner_quote": "Approved",
+    "path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/static-correction-v3/one-case-admission-preparation/OWNER_DECISION.json",
+    "sha256": "b089e3b01d5ec4ee772fecf43d2de16e64b1c737b71ec534268bb8043e83728d"
+  },
+  "dispatch_authorized_now": true,
+  "fixture_corrected_candidate": "/private/tmp/castle-builder-014-nested-fixture-corrected",
+  "fixture_corrected_test_path": "/private/tmp/castle-builder-014-nested-fixture-corrected/tests/test_refresh_query_custody.py",
+  "fixture_corrected_test_sha256": "4e5d036f882c2e3743a12a739286b95915b78b064a6014cbe9421f213f8b6960",
+  "gate": {
+    "actual_check_result_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/nested-fixture-correction-20261014/one-case-admission-preparation/ADMISSION/RESULT.json",
+    "independent_release_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/nested-fixture-correction-20261014/one-case-admission-preparation/REVIEW_RELEASE.json",
+    "owner_decision_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/nested-fixture-correction-20261014/one-case-admission-preparation/OWNER_DECISION.json",
+    "require_exact_manifest_private_publication_and_unchanged_source": true,
+    "require_sealed_135_test_pass_and_independent_result_review": true
+  },
+  "independent_acceptance_path": "/Users/boandersson/Desktop/CodeExp/Machine/CASTLE_V29_FIXTURE_VERIFICATION_ACCEPTANCE.json",
+  "independent_acceptance_sha256": "021ab642cf72dbe431535927f05d4a3b280b6c5aabb6b204c743f92ac0afed43",
+  "manifest_sha256": "e6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32",
+  "native_role_scene_effects_authorized": false,
+  "owner_authorization": "Approved",
+  "published_manifest_path": "/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.json",
+  "retained_v27_reject": {
+    "actual_completed_turn_id": "01a1378d-5b0a-7d80-9709-baf45ad26f56",
+    "adapter_identity": {
+      "source_digest": "1efd8f7366f738a5141ccc9ac3984b308b5b2b95faf1393fab39853e4114e5e2",
+      "version": "operations-review-27"
+    },
+    "path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/source-reviews-20261013/brainstorm.json",
+    "sha256": "56214a852523abe0000cd7c097b715841f41e0e251d89933666cc8157351b340",
+    "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb"
+  },
+  "retained_v28_reject": {
+    "actual_completed_turn_id": "01a137c1-8a87-70b0-b775-1ee24ecde50b",
+    "adapter_identity": {
+      "source_digest": "eb3f60b8dabeedafd20f65be9135c8760985e0acd62a3fa89318b71a092e8ef3",
+      "version": "operations-review-28"
+    },
+    "path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/source-reviews-v28/brainstorm.json",
+    "sha256": "c1f6e35659ff61a1f0488e0890966a10565413079c24e66d442f2d21515de985",
+    "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb"
+  },
+  "review_focus": [
+    "actual refresh validate/create/load/bound query exclusion against installed v25",
+    "old-edit-first/after-idle race, controller death and transport error unknown custody",
+    "exact owner/binding/start/source guard reuse and validated idle exemption",
+    "full original proofs, preservation, target/billing/source contracts and historical failed/pass test scopes"
+  ],
+  "role": "brainstorm",
+  "schema": "castle-v29-refresh-source-re-review-proposal-v1",
+  "source_pins": {
+    "scripts/Launch Blender Brainstorm.command": "46e6c682c39df0a1252117afe2286fcf4e437e4cd4b1e709090ee1c04b4ef696",
+    "scripts/Launch Blender Modeling.command": "e912060f3f062a843615ea2445c401cb8cc9cda8fea1059b0b14de8951dd11ab",
+    "scripts/blender_modeling_mcp.py": "648e16565f1030c146d92fc4237144bbb9942ab4f4edf28fae8fb6ad2d065103",
+    "scripts/blender_readonly_mcp.py": "2937c2f24871d9b45de43a80640ac40007a39daced8ca58b636371dbbb820b07",
+    "scripts/blender_scene_startup.py": "b132ca0cf7be7d1c30f00734d479725849128ecad7337d1f7e72b18b6ac69c6b",
+    "scripts/codex_local.py": "f1dd82b90071591d2eff089f722bb3ce53e39b26f40c3ab64461f38636641842",
+    "scripts/launch_blender_bridge.py": "45dbb269923cbbd5ea432fde223c4c97a0b162b4b3f94682b3607d917b9bbb47",
+    "scripts/launcher_runtime.py": "b967bf653fb46e89cc9656202172af394d6dec1f74c65aa7451c4f189cf74a84",
+    "scripts/modeling_dispatch.py": "9f6ee3f9c02b7d3f781c53c824aac02e0318839c5be14eee3e030b147b9448a8",
+    "scripts/project_context.py": "6562fa8a11eb9e55201b66d600fd7ac935238ca39264f9e2bdf5c0801b70e374",
+    "scripts/qualification_admission.py": "30365d0b12b8734a27a5f12b4ea10069451e084c192f50d08591cb338fad7c33",
+    "scripts/recovery_dispatch.py": "5f4c27c6052af500adbce929d84baf76a1e70c2822314c80e6c28c8830f6f6b1",
+    "scripts/repair_runner.py": "50a081bf40721d97d804127fa673adf41515e2fd3ff295f873187881aa0159d0",
+    "scripts/role_receipt_refresh.py": "3fa8c2dd67be9f679d85d971096a732872139c18cd284da089645c38f6e19fc3",
+    "scripts/route_contract.py": "219e50ac6548a6c321d1ba53fae3a28e3dc6e5e908de127d0834662a280dbd2b",
+    "scripts/session_onboarding.py": "d722e6a1ade2e2db9b7871db05c40e0129dc716ad2813b48a059f72703fe1df7",
+    "scripts/trial_runner.py": "0f017c60a755da8ca1d3b06854f0bf28a366e8e233687f6b5fc43990d8d75797",
+    "scripts/trial_runner_entry.py": "1a87d56733d6ef198bb7db0a06447054e2f9c90a4d11e626bbd06f1765666216",
+    "start.sh": "1af3e8a0cad22a210676868a874164568cdcf6a1c5b3736b7f4fe9bfa49e8952"
+  },
+  "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb"
+}

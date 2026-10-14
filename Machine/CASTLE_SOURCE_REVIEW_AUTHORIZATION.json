@@ -1,0 +1,52 @@
+{
+  "active_pointer_changes": false,
+  "adapter_identity": {
+    "source_digest": "1efd8f7366f738a5141ccc9ac3984b308b5b2b95faf1393fab39853e4114e5e2",
+    "version": "operations-review-27"
+  },
+  "assignment_id": "castle-source-review-001",
+  "candidate_home": "/private/tmp/castle-builder-004-fixture-corrected",
+  "candidate_manifest_path": "/private/tmp/castle-builder-004-fixture-corrected/Routes/releases/castle-staged-qualification-enablers-v27/MANIFEST.json",
+  "candidate_manifest_sha256": "5b2024fc386d547cc1d2fc6d00612d87a5b341e03528c7cc5d4bf68c5b107b9f",
+  "candidate_release_id": "castle-staged-qualification-enablers-v27",
+  "canonical_project": "/Users/boandersson/Desktop/Blender_Project",
+  "corrected_patch_sha256": "53c6ab51a46a6555a8c23c88324c2ed1277f83a87cae1be06ad9aa33d41d2097",
+  "following_conditional_scope_authorized": false,
+  "isolated_verification_result": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/host-verification-exception-20261013/ACTUAL_EXECUTION_RESULT.json",
+  "isolated_verification_result_sha256": "d1d78c02c5c0ee7c870a6fe5b4d3ec1865cc037a1741accb4836525e34227d33",
+  "native_loading": false,
+  "owner_authorization": "Yes approved",
+  "proposal_sha256": "f5bc99d751486ca2ae1b0dfa9527413b21b31279382d7af2bf2cb21d290500f9",
+  "recorded_at": "2026-10-13T23:14:27.180293+00:00",
+  "role_messages_authorized": 2,
+  "role_restart": false,
+  "roles": {
+    "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+    "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+  },
+  "scene_changes": false,
+  "schema": "castle-two-original-role-source-reviews-authorization-v1",
+  "scope": "Two independent read-only source reviews by the exact registered original Brainstorm and Modeling threads; no candidate loading or restart, no further test execution or scene effects",
+  "source_installation": false,
+  "source_pins": {
+    "scripts/Launch Blender Brainstorm.command": "46e6c682c39df0a1252117afe2286fcf4e437e4cd4b1e709090ee1c04b4ef696",
+    "scripts/Launch Blender Modeling.command": "e912060f3f062a843615ea2445c401cb8cc9cda8fea1059b0b14de8951dd11ab",
+    "scripts/blender_modeling_mcp.py": "d8f9560e9aa5e45cb848331f8afa0618e98d25c6175efc04da7f839b583588c7",
+    "scripts/blender_readonly_mcp.py": "bee20c812c2f8c1350e085f9a5dfb11bca7c5bedc20453e5ff691c043ce87fd8",
+    "scripts/blender_scene_startup.py": "ea4bcd972ebf28037df674e88b7646b397ba4d4f4611478b52948756a79f8420",
+    "scripts/codex_local.py": "f1dd82b90071591d2eff089f722bb3ce53e39b26f40c3ab64461f38636641842",
+    "scripts/launch_blender_bridge.py": "45dbb269923cbbd5ea432fde223c4c97a0b162b4b3f94682b3607d917b9bbb47",
+    "scripts/launcher_runtime.py": "b967bf653fb46e89cc9656202172af394d6dec1f74c65aa7451c4f189cf74a84",
+    "scripts/modeling_dispatch.py": "9f6ee3f9c02b7d3f781c53c824aac02e0318839c5be14eee3e030b147b9448a8",
+    "scripts/project_context.py": "6562fa8a11eb9e55201b66d600fd7ac935238ca39264f9e2bdf5c0801b70e374",
+    "scripts/qualification_admission.py": "7a54f9cc20266b2321804c3ec7edc6dc4ca3cea44810c4eb8dbddedcac750942",
+    "scripts/recovery_dispatch.py": "5f4c27c6052af500adbce929d84baf76a1e70c2822314c80e6c28c8830f6f6b1",
+    "scripts/repair_runner.py": "50a081bf40721d97d804127fa673adf41515e2fd3ff295f873187881aa0159d0",
+    "scripts/role_receipt_refresh.py": "8ecd09284d2c2dde593267ad4f48a71df1558ab965b960c887fa7e9fe0cd406e",
+    "scripts/route_contract.py": "eb7ba0109dc66c926877739ee0f7aab5be48e177ce6bf8051c54a406fdef0082",
+    "scripts/session_onboarding.py": "d722e6a1ade2e2db9b7871db05c40e0129dc716ad2813b48a059f72703fe1df7",
+    "scripts/trial_runner.py": "0f017c60a755da8ca1d3b06854f0bf28a366e8e233687f6b5fc43990d8d75797",
+    "scripts/trial_runner_entry.py": "1a87d56733d6ef198bb7db0a06447054e2f9c90a4d11e626bbd06f1765666216",
+    "start.sh": "1af3e8a0cad22a210676868a874164568cdcf6a1c5b3736b7f4fe9bfa49e8952"
+  }
+}

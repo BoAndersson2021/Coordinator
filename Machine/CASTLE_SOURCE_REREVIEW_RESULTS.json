@@ -1,0 +1,41 @@
+{
+  "accepted126_test_result_retained": true,
+  "all_completed": true,
+  "basis": "Static source trace and retained actual completed role review messages; no counterexample/native reproduction executed",
+  "castle_pieces_produced": 0,
+  "four_original_findings_corrected_on_guarded_paths": true,
+  "independent_confirmed_finding": "role_receipt_refresh.validate checks idle then performs bridge_pid/live_scene without canonical durable read reservation; create/load/bound and staged launcher receipt refresh reach it. Unchanged v25 scene_access directly reserves and ignores new kernel barriers, so an edit can enter during the unreserved refresh query. Post-query idle detects but does not maintain exclusion or unknown custody.",
+  "native_loading_authorized": false,
+  "native_loading_eligible": false,
+  "new_blocking_findings_count": 1,
+  "next_action": "Existing system builder prepares isolated refresh-read guard correction and exact new verification/re-review proposal under ordinary repair/preparation authority; no execution released.",
+  "recorded_at": "2026-10-14T00:21:22.860250+00:00",
+  "reports": {
+    "brainstorm": {
+      "completed_turn": {
+        "id": "01a137c1-8a87-70b0-b775-1ee24ecde50b",
+        "status": "completed"
+      },
+      "local_report_path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_REREVIEWS/brainstorm.json",
+      "report_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/source-rereviews-v28-20261013/brainstorm.json",
+      "report_sha256": "c1f6e35659ff61a1f0488e0890966a10565413079c24e66d442f2d21515de985",
+      "role": "brainstorm",
+      "status": "reject",
+      "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb"
+    },
+    "modeling": {
+      "completed_turn": {
+        "id": "01a137c1-9083-7f90-a397-c91ef20286e6",
+        "status": "completed"
+      },
+      "local_report_path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_REREVIEWS/modeling.json",
+      "report_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/source-rereviews-v28-20261013/modeling.json",
+      "report_sha256": "eb85cab89d86281f080e5ebcc21f41b193f87545e13306099d8da1a49c686c9c",
+      "role": "modeling",
+      "status": "reject",
+      "thread_id": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+    }
+  },
+  "schema": "castle-v28-source-rereview-results-v1",
+  "source_reviews_passed": false
+}

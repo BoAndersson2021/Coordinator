@@ -1,0 +1,33 @@
+{
+  "active_changed": false,
+  "adapter_digest_unchanged": "4786992be78b9e6bdb3d7283695c9d62fa1b02db1a85470a7358b8329938b446",
+  "before_path": "/Users/boandersson/Desktop/CodeExp/Machine/PUBLICATION_FORMAT_CORRECTION/MANIFEST.sha256.before",
+  "before_sha256": "b50e4c894abd8b0140981826d255b905b5138a6a330f93a42cd2ca271fd6f739",
+  "corrected_at": "2026-10-14T01:07:18.244939+00:00",
+  "corrected_path": "/Users/boandersson/Desktop/CodeExp/Machine/PUBLICATION_FORMAT_CORRECTION/MANIFEST.sha256.corrected",
+  "corrected_sha256": "4cf680b053960f5d9814171552a6eda7d2cd3d40f5037e920041f5c5ab74f9ba",
+  "fresh_review_turns_dispatched": 0,
+  "manifest_bytes_unchanged": true,
+  "manifest_path": "/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.json",
+  "manifest_sha256": "e6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32",
+  "native_loading_performed": false,
+  "owning_layer": "Machine coordinator private staging publisher; no Blender source defect",
+  "prior_v29_review_reports": {
+    "brainstorm": {
+      "path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEWS/brainstorm.json",
+      "sha256": "536426451fd244276532a78e63e8ab7b4f844e96ef51b09b39a99ece8f7c6217"
+    },
+    "modeling": {
+      "path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEWS/modeling.json",
+      "sha256": "cd0e408c7e16e842ee8c80d5b54cffba319e6f74144fdd72b10e5fbe8ca1c39f"
+    }
+  },
+  "privacy_note": "Private means local staging/ignored experiment metadata, not an owner-only filesystem permission claim.",
+  "retained135_pass_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80",
+  "root_error": "Coordinator used digest plus filename, but pinned route_contract.read_release compares trimmed entire sidecar with bare digest. Correction made to coordinator-owned private publication metadata under existing repair authority.",
+  "schema": "castle-v29-publication-format-correction-v1",
+  "sidecar_path": "/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.sha256",
+  "source_pins_unchanged": 19,
+  "two_completed_reviews_rejected_publication": true,
+  "verification_method": "stdlib file/hash literal comparison against read_release source; no candidate imports or extra test run"
+}

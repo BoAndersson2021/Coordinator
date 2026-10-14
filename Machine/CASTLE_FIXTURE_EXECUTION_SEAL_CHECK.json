@@ -1,0 +1,8 @@
+{
+  "actual_check_pass_retained": true,
+  "checked_at": "2026-10-14T00:16:06.830469+00:00",
+  "checked_sealed_artifacts": 22,
+  "execution_seal_sha256": "258394c47126cceb8495dfaae2e38bfad2bdb815cc25126103c30715d98fd9bf",
+  "mismatches": [],
+  "schema": "castle-fixture-execution-final-seal-check-v1"
+}

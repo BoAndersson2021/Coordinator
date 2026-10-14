@@ -1,0 +1,62 @@
+{
+  "adapter_sha256": "d03831fc24af3a18a4ac3118b15e9c98c5f582425b62a70b9a001bb8d988f528",
+  "argv": [
+    "/Users/boandersson/Desktop/Blender_Project/.venv/bin/python",
+    "-B",
+    "/private/tmp/castle-builder-012-refresh-guard-candidate/run_enabler_checks.py"
+  ],
+  "candidate_adapter_identity": {
+    "source_digest": "4786992be78b9e6bdb3d7283695c9d62fa1b02db1a85470a7358b8329938b446",
+    "version": "operations-review-29"
+  },
+  "candidate_pin_sha256": "bf4da1d52b6635075269746b707231be0579806b099321ebccd0a099cc4b9de7",
+  "contract_sha256": "82867bef4ad806fe137d80b0d301dcd7d9c8fc1956f3862d82ce0d3253c99f4c",
+  "coordinator_thread_id": "01a13696-5178-7d03-bf4e-f97d365abf9d",
+  "decision_sha256": "b089e3b01d5ec4ee772fecf43d2de16e64b1c737b71ec534268bb8043e83728d",
+  "execution_context": "same_uid_501_outside_tool_sandbox",
+  "expected_test_count": 135,
+  "maximum_seconds": 55,
+  "original_check": {
+    "candidate_patch_sha256": "db87551907b05f75b34cfb20cb72fea1013be27e32193905552c627cfa944ab1",
+    "criteria": "Integrated positive/negative isolated checks; strict predecessor/candidate identity, guarded canonical runtime/read-only admission, real handoff exclusion, typed Untitled and exact original two-role proof. No native-loading or deployment claim.",
+    "file": "",
+    "host_check": "isolated_staged_loading_and_complete_two_role_proof_enablers",
+    "new_proof_scope": "Bounded isolated implementation and verification of staged candidate qualification admission/canonical project binding, predecessor source recipe compatibility, typed Untitled identity and complete two-role onboarding promotion proof.",
+    "port": 9876,
+    "production_original_check": {
+      "blender_pid": 39342,
+      "criteria": "Fresh fixed role-bound receipts; exact same target and source; named reads once in sequence; strict canonical readiness. Native original rerun remains withheld during candidate-only preparation.",
+      "file": "",
+      "host_check": "existing_selected_target_role_receipt_refresh",
+      "port": 9876,
+      "role_tools": [
+        {
+          "arguments": {},
+          "tool": "get_project_capabilities"
+        },
+        {
+          "arguments": {},
+          "tool": "get_blendfile_summary_path_info"
+        },
+        {
+          "arguments": {},
+          "tool": "get_objects_summary"
+        }
+      ],
+      "roles": {
+        "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+        "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+      },
+      "selection_id": "0662132b4b324100b27690708bdb9868"
+    },
+    "roles": {
+      "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+      "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+    },
+    "selection_id": "0662132b4b324100b27690708bdb9868"
+  },
+  "release_single_approved_execution": true,
+  "review_statement": "Independent coordinator reviewed the frozen v29 refresh-query custody correction, full selected process/start/source scope for qualified guard reuse, real-store/unmodified-v25 validate/create/load/bound/death/error/reuse regressions and fixture setup, scoped admission diff and exact command/UID/deadline/test-count, eight consumed parents with retained actual passes/failures/v27-v28 rejected role reports, inherited owned-child supervision and durable consume/result/error protocol. All1451 contract pins,110 verification inputs,19 source pins,67 full-digest files and128 final handoff artifacts match. Release exactly the owner-approved one maximum55-second135-test check under ordinary UID501 outside restricted tool context. No runtime pass is inferred; actual sealed result must be independently reviewed before private v29 manifest publication and two matching original-role source-only re-reviews. No native loading, stable installation, ACTIVE or scene authority.",
+  "schema": "castle-v28-one-case-independent-release-v1",
+  "static_review_passed": true
+}

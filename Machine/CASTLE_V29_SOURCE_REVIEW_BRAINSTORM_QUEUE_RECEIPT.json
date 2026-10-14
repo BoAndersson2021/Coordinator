@@ -1,0 +1,10 @@
+{
+  "role": "brainstorm",
+  "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+  "queued_at": "2026-10-14T01:04:39.618402+00:00",
+  "elapsed_seconds": 0.36466445799999997,
+  "exit_code": 0,
+  "stdout": "Queued message 01a137f0-a2aa-7941-a83c-109576736088 for thread 01a136be-732f-7350-b9f5-13d1dddc5ddb.\n",
+  "stderr": "",
+  "delivery_only": true
+}

@@ -1,0 +1,41 @@
+{
+  "automatic_extension": false,
+  "budget_seconds": 55,
+  "candidate_patch_sha256": "b0b016d797c3844eb2ff22f151fc9072c412a20a7ede287875937d0fa19dd55e",
+  "decision_kind": "bounded_continuation",
+  "dispatch_status": "delivery_pending",
+  "new_privilege": false,
+  "ordinary_account_only": true,
+  "original_check": {
+    "blender_pid": 39342,
+    "criteria": "Fresh fixed role-bound receipts; exact same target and source; named reads once in sequence; strict canonical readiness. Native original rerun remains withheld during candidate-only preparation.",
+    "file": "",
+    "host_check": "existing_selected_target_role_receipt_refresh",
+    "port": 9876,
+    "role_tools": [
+      {
+        "arguments": {},
+        "tool": "get_project_capabilities"
+      },
+      {
+        "arguments": {},
+        "tool": "get_blendfile_summary_path_info"
+      },
+      {
+        "arguments": {},
+        "tool": "get_objects_summary"
+      }
+    ],
+    "roles": {
+      "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+      "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+    },
+    "selection_id": "0662132b4b324100b27690708bdb9868"
+  },
+  "owner_authorization": "Approved - dispatch it",
+  "parent_manifest_sha256": "046635134a34fa1eeae746fa2483e0bf7dc66efb0ce9fe95e7125e80cc7e65b1",
+  "parent_run": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/builder-refresh-20261013/bounded-candidate",
+  "recorded_at": "2026-10-13T20:44:12Z",
+  "scene_changes": false,
+  "scope": "One isolated verification probe for corrected v26 candidate and its six additional guards; no source activation, role turns, native checks or deployment."
+}

@@ -1,0 +1,30 @@
+{
+  "actual_pass_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80",
+  "assignment_id": "castle-source-review-003-v29",
+  "authority_carried_from": "b089e3b01d5ec4ee772fecf43d2de16e64b1c737b71ec534268bb8043e83728d",
+  "briefs": {
+    "brainstorm": {
+      "path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEW_BRIEFS/brainstorm.json",
+      "sha256": "769113591f7387b41ce7637b65abe44378bd5f263efb560eb6103f0a0a120a30"
+    },
+    "modeling": {
+      "path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEW_BRIEFS/modeling.json",
+      "sha256": "f7afd7291ebad15db62db0a10fbe7fb13720cec0aa0f9adf15192dc19bdaa6c4"
+    }
+  },
+  "effects": "Exactly two source-only reviews; no native loading or scene effects",
+  "messages": {
+    "brainstorm": "castle-source-review-003-v29: Approved independent SOURCE-ONLY re-review on original brainstorm thread. Read /Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEW_BRIEFS/brainstorm.json. Verify exact19pins/full67-file v29 digest/private manifest and actual135-pass sealed result (17.550048s); inspect corrected fixture separately. Review refresh validate/create/load/bound exclusion against actual unchangedv25, controller death/transport error unknown custody, exact owner/binding/start/source reuse and idle exemptions, all earlier findings and original proof limits. Preserve prior REJECTs. NO candidate/test imports/execution, Blender/MCP calls, source/file edits, loading/restart/install/ACTIVE, scene/save/baseline changes, extra dispatch or castle task. Return independent PASS or REJECT with exact manifest/version/digest, concrete file/line findings and coverage limits. Coordinator captures actual completed turn; do not repair findings.",
+    "modeling": "castle-source-review-003-v29: Approved independent SOURCE-ONLY re-review on original modeling thread. Read /Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEW_BRIEFS/modeling.json. Verify exact19pins/full67-file v29 digest/private manifest and actual135-pass sealed result (17.550048s); inspect corrected fixture separately. Review refresh validate/create/load/bound exclusion against actual unchangedv25, controller death/transport error unknown custody, exact owner/binding/start/source reuse and idle exemptions, all earlier findings and original proof limits. Preserve prior REJECTs. NO candidate/test imports/execution, Blender/MCP calls, source/file edits, loading/restart/install/ACTIVE, scene/save/baseline changes, extra dispatch or castle task. Return independent PASS or REJECT with exact manifest/version/digest, concrete file/line findings and coverage limits. Coordinator captures actual completed turn; do not repair findings."
+  },
+  "private_manifest_sha256": "e6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32",
+  "recorded_at": "2026-10-14T01:04:33.314498+00:00",
+  "roles": {
+    "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+    "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+  },
+  "route": "native codex queue to exact original registered UUIDs",
+  "schema": "castle-v29-source-review-dispatch-intent-v1",
+  "status": "intent_retained_before_queue",
+  "unlocking_verification_decision": "4e55f27e328825d28f5cb7dfe8352316fd8edaba34c675125b063c320456ed80"
+}

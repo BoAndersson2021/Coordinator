@@ -1,0 +1,11 @@
+{
+  "delivery_only": true,
+  "elapsed_seconds": 0.21642850000000002,
+  "exit_code": 0,
+  "finished_at": "2026-10-13T23:16:12.751195+00:00",
+  "role": "modeling",
+  "started_at": "2026-10-13T23:16:12.534777+00:00",
+  "stderr": "",
+  "stdout": "Queued message 01a1378d-5947-7333-8e17-924895ac85f9 for thread 01a136bd-8ea9-7df3-9e62-720e8d5162e7.\n",
+  "thread_id": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+}

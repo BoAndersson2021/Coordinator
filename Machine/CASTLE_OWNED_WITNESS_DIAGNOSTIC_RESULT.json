@@ -1,0 +1,84 @@
+{
+  "actual_observation": {
+    "candidate_checks_executed": 0,
+    "classification": "PermissionError",
+    "diagnostic_completed": true,
+    "exact_existing_ps_calls": 1,
+    "limits": "Observation/classification only. Exit 0 means capture completed, even if the real witness is unverified.",
+    "native_calls": 0,
+    "observed": {
+      "argv": [
+        "/bin/ps",
+        "-p",
+        "15914",
+        "-o",
+        "lstart="
+      ],
+      "detail": "[Errno 1] Operation not permitted: '/bin/ps'",
+      "environment_profile": "fixture-cleared plus LC_ALL=C",
+      "owned_pid": 15914,
+      "status": "PermissionError",
+      "timeout_seconds": 0.5
+    },
+    "old_gate_pass_awarded": false,
+    "pid_scope": "newly_owned_diagnostic_process_only",
+    "real_process_start_return": null,
+    "replacement_witness_supplied": false,
+    "role_turns": 0,
+    "scene_effects": 0,
+    "schema": "own-process-witness-diagnostic-result-v1",
+    "source_path": "/private/tmp/castle-builder-005-witness-observation/scripts/process_identity.py",
+    "source_sha256": "8e49b30b909bdc27463772f8910b66ff99425fa29a7391e76e170bc8feafc80c",
+    "witness_verified": false
+  },
+  "all_consumed_parent_seals_preserved": true,
+  "automatic_extension": false,
+  "coordinator_custody": {
+    "builder_thread_id": "01a136db-6975-7d71-832f-f02c06cdff44",
+    "builder_turn_id": "01a1375a-228e-7073-86e9-441df64917e2",
+    "frozen_inputs_checked": 13,
+    "mismatches": [],
+    "qualification_accepted": false,
+    "seal_sha256": "17a72184dd9a17a2b04b6e643d0998d24e859af8ae4a0ab86f6b2e415919b018",
+    "sealed_artifacts_checked": 12
+  },
+  "earlier73_test_seal_preserved": true,
+  "handoff": "castle-builder-006",
+  "inferred": "Matching helper/context makes this a concrete explanation for the earlier unverified-owner failure pattern; earlier runs did not retain the underlying exception.",
+  "live_witnesses_unchanged": 19,
+  "manifest_sha256": "73206f8042252768366ea4680b30108e3a44a5e37679c54a197a7218a420b73d",
+  "new_probes_permitted": false,
+  "not_proven": [
+    "which operating-system or tool policy imposed the restriction",
+    "behavior in original attended role/Terminal context",
+    "real handoff qualification",
+    "source/production/native/visual acceptance"
+  ],
+  "old_gate_pass_awarded": false,
+  "owner_decision_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/own-witness-diagnostic/OWNER_AUTHORIZATION.json",
+  "pending_probe_ids": [],
+  "pinned_inputs_unchanged": 13,
+  "probe_receipt": {
+    "elapsed_seconds": 0.044403207997675054,
+    "existing_operations_cancelled": false,
+    "existing_processes_signalled": 0,
+    "exit_code": 0,
+    "guard_error": null,
+    "id": "observe-one-owned-process-start",
+    "kind": "diagnostic",
+    "output_bytes": 980,
+    "owned_child_reaped": true,
+    "owned_child_signal": 0,
+    "owned_pid": 15914,
+    "passed": true
+  },
+  "probe_receipt_events": [
+    "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/own-witness-diagnostic/admission/events/000002-b9c30df31435b2c5ac9fd8db738f9749d6ff3b01b39d06b3e0cabc50b12512a4.json"
+  ],
+  "proven": "Existing own-PID /bin/ps invocation raised PermissionError Errno1 Operation not permitted in this bounded cleared-environment diagnostic context. Real helper returned None.",
+  "recorded_at": "2026-10-13T22:22:22.592690+00:00",
+  "run": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/own-witness-diagnostic/admission",
+  "schema": "owned-witness-diagnostic-sealed-result-v1",
+  "source_or_active_changes": false,
+  "status": "observation_completed_witness_unverified"
+}

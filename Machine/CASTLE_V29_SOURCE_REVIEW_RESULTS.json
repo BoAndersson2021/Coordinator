@@ -1,0 +1,30 @@
+{
+  "all_actual_completed": true,
+  "both_source_review_passes": false,
+  "captured_at": "2026-10-14T01:08:06.100449+00:00",
+  "castle_pieces_produced": 0,
+  "corrected_publication_record": "/Users/boandersson/Desktop/CodeExp/Machine/CASTLE_V29_PUBLICATION_FORMAT_CORRECTION.json",
+  "independent_diagnosis": "Both reports identify coordinator-owned staging sidecar format: full digest plus filename differs from bare digest expected by route_contract.read_release. Independently source-confirmed and corrected metadata only; original bytes retained. Actual REJECTs remain unchanged.",
+  "native_qualification_eligible": false,
+  "publication_blockers_new": 1,
+  "roles": {
+    "brainstorm": {
+      "actual_completed_turn_id": "01a137f0-b0fb-7593-a335-db42ca0f29fa",
+      "mcp_tool_calls": 0,
+      "report_path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEWS/brainstorm.json",
+      "report_sha256": "536426451fd244276532a78e63e8ab7b4f844e96ef51b09b39a99ece8f7c6217",
+      "status": "reject",
+      "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb"
+    },
+    "modeling": {
+      "actual_completed_turn_id": "01a137f0-b6f8-7de3-977e-a7478bd8ac75",
+      "mcp_tool_calls": 0,
+      "report_path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEWS/modeling.json",
+      "report_sha256": "cd0e408c7e16e842ee8c80d5b54cffba319e6f74144fdd72b10e5fbe8ca1c39f",
+      "status": "reject",
+      "thread_id": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+    }
+  },
+  "schema": "machine-v29-completed-source-review-results-v1",
+  "source_blockers_new": 0
+}

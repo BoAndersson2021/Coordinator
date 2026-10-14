@@ -1,0 +1,70 @@
+{
+  "automatic_extension": false,
+  "budget_seconds": 55,
+  "builder_thread_id": "01a136db-6975-7d71-832f-f02c06cdff44",
+  "corrected_combined_patch_sha256": "53c6ab51a46a6555a8c23c88324c2ed1277f83a87cae1be06ad9aa33d41d2097",
+  "corrected_copy": "/private/tmp/castle-builder-004-fixture-corrected",
+  "correction_scope": "One fixture root .resolve() normalization; all production source bytes, strict guard and original check unchanged.",
+  "criteria_unchanged": true,
+  "decision_kind": "bounded_continuation",
+  "dispatch_status": "authorized_for_dispatch",
+  "execution_not_authorized_by_this_proposal": false,
+  "handoff": "castle-builder-005",
+  "new_privilege": false,
+  "normal_parent_expiry_utc": "2026-10-13T21:59:40.487201+00:00",
+  "ordinary_account_only": true,
+  "original_check": {
+    "candidate_patch_sha256": "db87551907b05f75b34cfb20cb72fea1013be27e32193905552c627cfa944ab1",
+    "criteria": "Integrated positive/negative isolated checks; strict predecessor/candidate identity, guarded canonical runtime/read-only admission, real handoff exclusion, typed Untitled and exact original two-role proof. No native-loading or deployment claim.",
+    "file": "",
+    "host_check": "isolated_staged_loading_and_complete_two_role_proof_enablers",
+    "new_proof_scope": "Bounded isolated implementation and verification of staged candidate qualification admission/canonical project binding, predecessor source recipe compatibility, typed Untitled identity and complete two-role onboarding promotion proof.",
+    "port": 9876,
+    "production_original_check": {
+      "blender_pid": 39342,
+      "criteria": "Fresh fixed role-bound receipts; exact same target and source; named reads once in sequence; strict canonical readiness. Native original rerun remains withheld during candidate-only preparation.",
+      "file": "",
+      "host_check": "existing_selected_target_role_receipt_refresh",
+      "port": 9876,
+      "role_tools": [
+        {
+          "arguments": {},
+          "tool": "get_project_capabilities"
+        },
+        {
+          "arguments": {},
+          "tool": "get_blendfile_summary_path_info"
+        },
+        {
+          "arguments": {},
+          "tool": "get_objects_summary"
+        }
+      ],
+      "roles": {
+        "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+        "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+      },
+      "selection_id": "0662132b4b324100b27690708bdb9868"
+    },
+    "roles": {
+      "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+      "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+    },
+    "selection_id": "0662132b4b324100b27690708bdb9868"
+  },
+  "owner_authorization": "Approved to dispatch",
+  "parent_budget_expired": true,
+  "parent_expiry_checked_at": "2026-10-13T21:59:55Z",
+  "parent_manifest_sha256": "f441516a603c2dedaf0d1b1e41ab81612c17a4c99a0161fc6df6d27ecacd1be6",
+  "parent_pending_ids": [],
+  "parent_run": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/bounded-enabler-verification",
+  "parent_unsubmitted_probe_ids": [],
+  "probe_kind": "candidate_check",
+  "proposal_only": false,
+  "proposal_sha256": "ca1d51d4abd73293e0c497741130e7696a04db453b9a50f33a2b0d3434837b11",
+  "proposed_probe_id": "fixture-normalized-v27-enabler-check",
+  "recorded_at": "2026-10-13T21:53:39.874429+00:00",
+  "scene_changes": false,
+  "schema": "enabler-single-check-continuation-proposal-v1",
+  "scope": "Exactly one 55-second corrected-fixture isolated check after normal parent expiry; no native loading, role turns/restarts, source installation, ACTIVE changes or scene effects."
+}

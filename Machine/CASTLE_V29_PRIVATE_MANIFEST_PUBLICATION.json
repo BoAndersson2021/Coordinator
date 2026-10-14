@@ -1,0 +1,13 @@
+{
+  "accepted_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80",
+  "active_changed": false,
+  "manifest_path": "/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.json",
+  "manifest_sha256": "e6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32",
+  "native_loading_performed": false,
+  "publication_write_once": true,
+  "published_at": "2026-10-14T01:04:07.778463+00:00",
+  "schema": "castle-v29-private-review-manifest-publication-v1",
+  "scope_from_decision": "b089e3b01d5ec4ee772fecf43d2de16e64b1c737b71ec534268bb8043e83728d",
+  "source_changed": false,
+  "unlocking_verification_decision": "4e55f27e328825d28f5cb7dfe8352316fd8edaba34c675125b063c320456ed80"
+}

@@ -1,0 +1,20 @@
+{
+  "accepted_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80",
+  "actual_completed_turn_id": "01a137f0-b0fb-7593-a335-db42ca0f29fa",
+  "actual_status": "completed",
+  "adapter_identity": {
+    "source_digest": "4786992be78b9e6bdb3d7283695c9d62fa1b02db1a85470a7358b8329938b446",
+    "version": "operations-review-29"
+  },
+  "canonical_project": "/Users/boandersson/Desktop/Blender_Project",
+  "captured_at": "2026-10-14T01:06:49.343261+00:00",
+  "final_answer": "**REJECT \u2014 the exact published v29 release is not consumable by its release reader.** Prior v27/v28 REJECTs remain preserved.\n\nReviewer: original Brainstorm thread `01a136be-732f-7350-b9f5-13d1dddc5ddb`.\n\n**Blocking publication finding:** [MANIFEST.sha256:1](/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.sha256:1) contains:\n\n```text\ne6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32  MANIFEST.json\n```\n\nBut [route_contract.py:141](/private/tmp/castle-builder-012-refresh-guard-candidate/scripts/route_contract.py:141) compares the entire trimmed line against the bare digest. This exact publication would therefore raise `Route release manifest changed`. The manifest bytes themselves hash correctly. This conclusion follows from source inspection; I did not execute the reader.\n\nThe focused source corrections address the earlier findings:\n\n- Refresh queries now enter a durable canonical guard before listener/scene access, including through validate/create/load/bound. [role_receipt_refresh.py:234](/private/tmp/castle-builder-012-refresh-guard-candidate/scripts/role_receipt_refresh.py:234)\n- Guard reuse checks binding, source, target/start, ownership, and retained request evidence; idle exemptions require the exact owned context. [role_receipt_refresh.py:115](/private/tmp/castle-builder-012-refresh-guard-candidate/scripts/role_receipt_refresh.py:115)\n- Transport errors retain `outcome_unknown`; controller death leaves a nonterminal reservation that unchanged v25 admission rejects. [role_receipt_refresh.py:179](/private/tmp/castle-builder-012-refresh-guard-candidate/scripts/role_receipt_refresh.py:179)\n- Mandatory v2, nested-error rejection, borrower exclusion, and cancellation-draining controls remain unchanged from their reviewed corrections.\n\nVerification passed for **all 19 pins**, the **67-file digest**, corrected fixture hash, **1,715 admitted input hashes**, and **10 sealed artifact hashes**. The tested clone\u2019s 67 source files match the review candidate. I separately inspected the fixture correction: it aligns mocked selection metadata so the nested-binding rejection is actually reached.\n\nThe retained run records **135 passes, zero failures/errors, exit 0**, supervised elapsed **17.550048 seconds**. Its fixtures exercise unchanged v25 code in isolated subprocesses, with mocked native queries. They do not validate this subsequently published sidecar or establish native readiness.\n\nExact identity:\n\n```text\nRelease: castle-staged-refresh-query-guards-v29\nVersion: operations-review-29\nManifest SHA-256:\ne6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32\nAdapter digest:\n4786992be78b9e6bdb3d7283695c9d62fa1b02db1a85470a7358b8329938b446\nSealed result SHA-256:\nec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80\n```\n\nThe release directory is `0755` and manifest `0644`; owner-only filesystem privacy is not established.\n\nNo candidate/test imports or execution, Blender/MCP calls, edits, loading, restarts, dispatch, or runtime changes occurred. No native two-role readiness, promotion, or scene acceptance is claimed.",
+  "manifest_sha256": "e6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32",
+  "mcp_tool_calls": 0,
+  "role": "brainstorm",
+  "role_verified": true,
+  "schema": "castle-v29-actual-source-review-v1",
+  "source": "cli",
+  "status": "reject",
+  "thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb"
+}

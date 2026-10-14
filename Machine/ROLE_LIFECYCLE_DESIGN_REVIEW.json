@@ -1,0 +1,37 @@
+{
+  "accepted135_and_two_source_passes_retained": true,
+  "castle_pieces_produced": 0,
+  "checked_project_design_artifacts": 7,
+  "checked_project_source_pins": 19,
+  "design_ready_for_bounded_implementation_planning": true,
+  "implementation_authorized_by_this_record": false,
+  "independent_observations": [
+    "Receiving project controller owns effects; model output is not lifecycle authority.",
+    "Managed child/TTY custody and native turn fencing are required; unmanaged bootstrap remains explicit and unimplemented.",
+    "Controller journals intent before external effect; unknown custody prevents retry or duplicate launch.",
+    "Qualified source/loading composition and canonical readiness require original actual once-only read receipts; preservation limit retained.",
+    "SameUID/nonce/private channel remains local operator trust, not cryptographic owner authentication.",
+    "Meaningful isolated managed-fixture implementation precedes separately reviewed native provider/bootstrap/activation."
+  ],
+  "machine_design_path": "/Users/boandersson/Desktop/Machine/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+  "machine_design_sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81",
+  "mismatches": [],
+  "native_loading_or_role_restart_performed": false,
+  "owner_instruction": "Keep it automated; design a supported role-lifecycle control route first.",
+  "peer_corrections_applied": [
+    "CMS-LC-TTY",
+    "CMS-LC-REAP"
+  ],
+  "peer_review_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/ROLE_LIFECYCLE_MACHINE_DESIGN_REVIEW_20261014.json",
+  "peer_review_sha256": "a14c04f6ebd7ada92487d8fb6bda38a0bb0b22290dc7e7ac2d5e1554ffc2d112",
+  "project_builder_thread": "01a136db-6975-7d71-832f-f02c06cdff44",
+  "project_design_home": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/role-lifecycle-design-20261014",
+  "project_design_seal_sha256": "f7aaa51c36340c82b5036fdb3cc94dced269bd317c2522aedb85e14d49933d93",
+  "project_design_turn": "01a137f7-abfc-78b2-8fd4-8a8ede35a590",
+  "project_protocol_sha256": "cc7faa8622bd8bc65ac57fa736a7a5cd1fc57013ccb76878544ee96a5a4d6fc4",
+  "project_spec_sha256": "44402c5f01fc84efb566aab02f802c2145e9bf823b65c67d16cfb5823c635f0e",
+  "recorded_at": "2026-10-14T01:25:19.269619+00:00",
+  "root_reviewer_thread": "01a13696-5178-7d03-bf4e-f97d365abf9d",
+  "runtime_controller_installed": false,
+  "schema": "machine-role-lifecycle-design-review-v1"
+}

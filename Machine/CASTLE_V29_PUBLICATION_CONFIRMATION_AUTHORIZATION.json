@@ -1,0 +1,50 @@
+{
+  "accepted135_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80",
+  "adapter_identity": {
+    "source_digest": "4786992be78b9e6bdb3d7283695c9d62fa1b02db1a85470a7358b8329938b446",
+    "version": "operations-review-29"
+  },
+  "additional_test_execution": false,
+  "assignment_id": "castle-source-review-004-v29-publication",
+  "candidate_imports_or_execution": false,
+  "canonical_project": "/Users/boandersson/Desktop/Blender_Project",
+  "correction_record_path": "/Users/boandersson/Desktop/CodeExp/Machine/CASTLE_V29_PUBLICATION_FORMAT_CORRECTION.json",
+  "correction_record_sha256": "22546c2ac4357a53760a08b2fb6bf0f436f703628572388cc5b8bad2b199b696",
+  "decision_recorded_at": "2026-10-14T01:09:00.148201+00:00",
+  "dispatch_authorized": true,
+  "independent_static_review_passed": true,
+  "manifest_path": "/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.json",
+  "manifest_sha256": "e6c0d9fbf5faa84300941a8caddde628644abe2647edba284f39818dd0836d32",
+  "mcp_or_blender_calls": false,
+  "native_loading_or_role_restart": false,
+  "other_dispatch_or_new_execution_account_billing": false,
+  "owner_authorization": "Approved",
+  "previous_two_turns_consumed": true,
+  "prior_dispatch_scope_path": "/Users/boandersson/Desktop/CodeExp/Machine/CASTLE_V29_FIXTURE_VERIFICATION_AUTHORIZATION.json",
+  "prior_dispatch_scope_sha256": "4e55f27e328825d28f5cb7dfe8352316fd8edaba34c675125b063c320456ed80",
+  "proposal_only": false,
+  "retained_completed_review_reports": {
+    "brainstorm": {
+      "path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEWS/brainstorm.json",
+      "sha256": "536426451fd244276532a78e63e8ab7b4f844e96ef51b09b39a99ece8f7c6217"
+    },
+    "modeling": {
+      "path": "/Users/boandersson/Desktop/CodeExp/Machine/SOURCE_V29_REVIEWS/modeling.json",
+      "sha256": "cd0e408c7e16e842ee8c80d5b54cffba319e6f74144fdd72b10e5fbe8ca1c39f"
+    }
+  },
+  "review_turn_count": 2,
+  "roles": {
+    "brainstorm": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+    "modeling": "01a136bd-8ea9-7df3-9e62-720e8d5162e7"
+  },
+  "schema": "machine-v29-publication-confirmation-proposal-v1",
+  "scope": "Exactly two short independent read-only follow-up turns confirming corrected checksum sidecar against existing release reader and unchanged manifest/source/result; return complete PASS or REJECT for exact package. Preserve all three previous generations of actual rejections.",
+  "sidecar_path": "/private/tmp/castle-builder-012-refresh-guard-candidate/Routes/releases/castle-staged-refresh-query-guards-v29/MANIFEST.sha256",
+  "sidecar_sha256": "4cf680b053960f5d9814171552a6eda7d2cd3d40f5037e920041f5c5ab74f9ba",
+  "source_changed": false,
+  "source_digest_file_count": 67,
+  "source_pin_count": 19,
+  "stable_install_active_scene_or_save": false,
+  "static_review": "Literal checksum reader predicate now true; exact manifest hash,19pins/full67digest rechecked. Only coordinator-owned sidecar changes; originalpublication and all actualreview rejections retained. No candidate/test imports or execution."
+}

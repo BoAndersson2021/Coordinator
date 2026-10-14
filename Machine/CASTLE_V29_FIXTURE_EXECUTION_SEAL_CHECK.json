@@ -1,0 +1,9 @@
+{
+  "schema": "machine-v29-fixture-execution-seal-check-v1",
+  "checked_at": "2026-10-14T01:04:56.142797+00:00",
+  "seal_path": "/Users/boandersson/Desktop/Blender_Project/evidence/castle-live-001/qualification-enablers-20261013/review-corrections-20261013/refresh-query-guard-correction-20261014/nested-fixture-correction-20261014/one-case-admission-preparation/ACTUAL_EXECUTION_SEAL.json",
+  "seal_sha256": "245d272d2ad1fa1ae20ed8f93f8a51a9d34cb03ddafb8bc702e340d0b42c9c72",
+  "checked_artifacts": 22,
+  "mismatches": [],
+  "accepted_result_sha256": "ec9da6fbe4b5c1831e1d1a545fe720a4d5376b2d00245481766cb356a93bec80"
+}
