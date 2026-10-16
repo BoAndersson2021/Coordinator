@@ -1,0 +1,443 @@
+schema_version: 1
+registry: citizens
+version: '0.1'
+citizens:
+- id: CIT-01
+  key: laws
+  name: LAWS
+  category: governance
+  authority_owner: studio_policy_owner
+  responsibility: Define mandatory invariants and precedence
+  inputs:
+  - approved_policy
+  outputs:
+  - law_registry
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: &id001
+  - self_approve_protected_mutation
+  - invent_missing_authority
+  - promote_unverified_candidate
+  state_owner: studio_policy_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-02
+  key: rules
+  name: RULES
+  category: governance
+  authority_owner: studio_policy_owner
+  responsibility: Define scoped, overridable operating practices
+  inputs:
+  - laws
+  - approved_scope
+  outputs:
+  - rule_registry
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: studio_policy_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-03
+  key: contracts
+  name: CONTRACTS
+  category: definition
+  authority_owner: contract_registry_owner
+  responsibility: Define typed interfaces and obligations
+  inputs:
+  - specifications
+  - interfaces
+  outputs:
+  - contract_registry
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: contract_registry_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-04
+  key: tools
+  name: TOOLS
+  category: execution
+  authority_owner: tool_registry_owner
+  responsibility: Catalog executable adapters and declared effects
+  inputs:
+  - tool_descriptors
+  - capability_grants
+  outputs:
+  - tool_registry
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: tool_registry_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-05
+  key: verification
+  name: VERIFICATION
+  category: evaluation
+  authority_owner: verification_owner
+  responsibility: Assess evidence against acceptance requirements
+  inputs:
+  - test_evidence
+  - acceptance_contract
+  outputs:
+  - verification_verdict
+  dependencies: []
+  permitted_effects:
+  - read_evidence
+  - emit_verdict
+  prohibited_effects: *id001
+  state_owner: verification_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-06
+  key: red_team
+  name: RED TEAM
+  category: evaluation
+  authority_owner: red_team_owner
+  responsibility: Challenge assumptions and boundary failures within a bounded threat
+    model
+  inputs:
+  - threat_model
+  - candidate_revision
+  outputs:
+  - red_team_findings
+  dependencies: []
+  permitted_effects:
+  - inspect_scoped_candidate
+  - emit_findings
+  prohibited_effects: *id001
+  state_owner: red_team_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-07
+  key: authority
+  name: AUTHORITY
+  category: governance
+  authority_owner: authority_service
+  responsibility: Validate grants and commit authorization decisions
+  inputs:
+  - principal
+  - grant
+  - operation
+  outputs:
+  - authorization_decision
+  dependencies: []
+  permitted_effects:
+  - evaluate_grant
+  - emit_authorization_decision
+  prohibited_effects: *id001
+  state_owner: authority_service
+  mutation_boundary: authority_service_only
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-08
+  key: state
+  name: STATE
+  category: continuity
+  authority_owner: domain_record_owners
+  responsibility: Maintain domain-owned durable authoritative records
+  inputs:
+  - domain_operation
+  - expected_revision
+  outputs:
+  - domain_state_receipt
+  dependencies: []
+  permitted_effects:
+  - read_domain_records
+  - propose_transition
+  prohibited_effects: *id001
+  state_owner: domain_record_owners
+  mutation_boundary: domain_owners_commit_only
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-09
+  key: observability
+  name: OBSERVABILITY
+  category: execution
+  authority_owner: telemetry_owner
+  responsibility: Expose derived events, cost and freshness with provenance
+  inputs:
+  - event_stream
+  - source_provenance
+  outputs:
+  - derived_observations
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: telemetry_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-10
+  key: planning
+  name: PLANNING
+  category: definition
+  authority_owner: planning_owner
+  responsibility: Propose executable decomposition and dependencies
+  inputs:
+  - objective
+  - inspection_evidence
+  - roadmap_revision
+  outputs:
+  - proposed_plan
+  dependencies:
+  - CIT-11
+  - CIT-16
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: planning_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-11
+  key: inspection
+  name: INSPECTION
+  category: execution
+  authority_owner: inspection_owner
+  responsibility: Observe actual source, environment and artifacts
+  inputs:
+  - pinned_source
+  - inspection_scope
+  outputs:
+  - inspection_report
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: inspection_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-12
+  key: specification
+  name: SPECIFICATION
+  category: definition
+  authority_owner: design_authority
+  responsibility: Define required behavior and acceptance conditions
+  inputs:
+  - approved_intent
+  - inspection_evidence
+  outputs:
+  - specification_candidate
+  dependencies: []
+  permitted_effects:
+  - propose
+  - read_scoped_inputs
+  - emit_candidate_or_evidence
+  prohibited_effects: *id001
+  state_owner: design_authority
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-13
+  key: testing
+  name: TESTING
+  category: execution
+  authority_owner: test_owner
+  responsibility: Execute controlled experiments and record raw outcomes
+  inputs:
+  - candidate_revision
+  - test_definition
+  outputs:
+  - test_evidence
+  dependencies: []
+  permitted_effects:
+  - run_authorized_test
+  - emit_test_evidence
+  prohibited_effects: *id001
+  state_owner: test_owner
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-14
+  key: hardening
+  name: HARDENING LOOP
+  category: evaluation
+  authority_owner: hardening_coordinator
+  responsibility: Coordinate bounded root-cause correction and re-verification
+  inputs:
+  - findings
+  - revision
+  - budget
+  outputs:
+  - repair_tasks
+  dependencies:
+  - CIT-13
+  - CIT-05
+  - CIT-06
+  permitted_effects:
+  - propose_repair
+  - request_retest
+  prohibited_effects: *id001
+  state_owner: hardening_coordinator
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-15
+  key: documentation_reconciliation
+  name: DOCUMENTATION & RECONCILIATION
+  category: continuity
+  authority_owner: document_authority
+  responsibility: Detect drift and propose authorized reconciliation
+  inputs:
+  - dependency_changes
+  - authoritative_documents
+  outputs:
+  - reconciliation_proposals
+  dependencies:
+  - CIT-11
+  - CIT-12
+  permitted_effects:
+  - flag_staleness
+  - propose_document_revision
+  prohibited_effects: *id001
+  state_owner: document_authority
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity
+- id: CIT-16
+  key: roadmap
+  name: ROADMAP & PROGRESS CONTROL
+  category: definition
+  authority_owner: roadmap_authority
+  responsibility: Own approved milestones, frontiers and progress evidence
+  inputs:
+  - accepted_milestones
+  - verification_evidence
+  outputs:
+  - roadmap_revision
+  dependencies:
+  - CIT-05
+  - CIT-08
+  permitted_effects:
+  - propose_roadmap_revision
+  - read_accepted_evidence
+  prohibited_effects: *id001
+  state_owner: roadmap_authority
+  mutation_boundary: candidate_only_unless_separately_authorized
+  failure_mode: fail_closed_and_record
+  verification:
+    required_evidence:
+    - pinned_input_identity
+    - outcome_receipt
+    acceptance_gates:
+    - authority_consistency
+    - referential_integrity

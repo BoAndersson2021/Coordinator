@@ -1,0 +1,236 @@
+[main (root-commit) 79196b8] valid_shared_work_view
+ 87 files changed, 9796 insertions(+)
+ create mode 100755 .githooks/pre-commit
+ create mode 100644 .gitignore
+ create mode 100644 AGENTS.md
+ create mode 100644 Design/Benefit-of-System-v0.2.txt
+ create mode 100644 Design/Intent.txt
+ create mode 100644 Design/README.md
+ create mode 100644 Design/THE-MAMMUTH-MACHINE.txt
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/README.md
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/evidence/inventory.json
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/installer/installer.py
+ create mode 100644 Design/agentic-game-studio-v0.2-handoff/tests/test_installer.py
+ create mode 100644 Design/studio-capability-system-v0.1/README.md
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/asset.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/authority.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/integration.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/release.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/state.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/task.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/contracts/tool.contract.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/handoff/acceptance.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/handoff/integration.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/handoff/inventory.json
+ create mode 100644 Design/studio-capability-system-v0.1/registry/citizens.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/registry/contracts.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/registry/laws.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/registry/rules.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/registry/tools.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md
+ create mode 100644 Design/studio-capability-system-v0.1/validation/tests/test_validation.py
+ create mode 100644 Design/studio-capability-system-v0.1/validation/validate.py
+ create mode 100644 Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml
+ create mode 100644 Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml
+ create mode 100755 Machine
+ create mode 100644 README.md
+ create mode 100644 docs/ADMISSION.md
+ create mode 100644 docs/COORDINATION.md
+ create mode 100644 docs/DASHBOARD.md
+ create mode 100644 docs/DOCUMENTATION_INDEX.md
+ create mode 100644 docs/FOUNDATION_ACCEPTANCE.md
+ create mode 100644 docs/NATIVE_BRIDGE.md
+ create mode 100644 docs/ROADMAP.md
+ create mode 100644 docs/RUNBOOK.md
+ create mode 100644 docs/WORKFLOW_INVARIANT.md
+ create mode 100644 docs/WORK_VIEW.md
+ create mode 100644 docs/communications/README.md
+ create mode 100644 docs/communications/app-terminal-codex-launch-pattern.md
+ create mode 100644 docs/communications/archive/pre-invariant-20261016/README.md
+ create mode 100644 docs/communications/archive/pre-invariant-20261016/app-terminal-codex-launch-pattern.md
+ create mode 100644 docs/communications/archive/pre-invariant-20261016/how-to-communicate-with-other-codex-agents.md
+ create mode 100644 docs/communications/archive/pre-invariant-20261016/provenance.json
+ create mode 100644 docs/communications/archive/pre-invariant-20261016/universal-multi-agent-build-protocol.md
+ create mode 100644 docs/communications/how-to-communicate-with-other-codex-agents.md
+ create mode 100644 docs/communications/provenance.json
+ create mode 100644 docs/communications/universal-multi-agent-build-protocol.md
+ create mode 100644 docs/proposals/ROLE_LIFECYCLE_CONTROL.md
+ create mode 100644 machine.json
+ create mode 100755 scripts/check_workflow_invariant.py
+ create mode 100644 src/admission.py
+ create mode 100644 src/dashboard.py
+ create mode 100644 src/dashboard_assets/dashboard.css
+ create mode 100644 src/dashboard_assets/dashboard.js
+ create mode 100644 src/dashboard_assets/index.html
+ create mode 100644 src/machine.py
+ create mode 100644 src/native_bridge.py
+ create mode 100644 src/native_socket.py
+ create mode 100644 src/workflow_invariant.py
+ create mode 100644 tests/dashboard_browser_contract.cjs
+ create mode 100644 tests/test_admission.py
+ create mode 100644 tests/test_dashboard.py
+ create mode 100644 tests/test_machine.py
+ create mode 100644 tests/test_native_bridge.py
+ create mode 100644 tests/test_native_socket.py
+ create mode 100644 tests/test_workflow_invariant.py
+MACHINE_AUTOMATED_EXECUTION_REQUIRED: validating staged source and regression tests
+test_all_known_and_unknown_adapters_fail_without_a_provider (test_workflow_invariant.WorkflowInvariantTests.test_all_known_and_unknown_adapters_fail_without_a_provider) ... ok
+test_checker_cannot_succeed_without_staged_repository (test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository) ... ok
+test_dashboard_browser_failure_and_reconnection_contract (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_browser_failure_and_reconnection_contract) ... ok
+test_dashboard_is_read_only_and_never_enables_execution (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_is_read_only_and_never_enables_execution) ... ok
+test_dashboard_supervision_failure_has_no_manual_fallback (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_supervision_failure_has_no_manual_fallback) ... ok
+test_environment_cannot_enable_manual_fallback (test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback) ... ok
+test_every_cli_command_has_an_explicit_scope (test_workflow_invariant.WorkflowInvariantTests.test_every_cli_command_has_an_explicit_scope) ... ok
+test_every_runtime_module_is_in_the_closed_inventory (test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory) ... ok
+test_governance_requires_future_features_and_hook (test_workflow_invariant.WorkflowInvariantTests.test_governance_requires_future_features_and_hook) ... ok
+test_health_commands_fail_loudly_with_observation_separate_from_readiness (test_workflow_invariant.WorkflowInvariantTests.test_health_commands_fail_loudly_with_observation_separate_from_readiness) ... ok
+test_hook_bootstrap_propagates_installed_verifier_failure (test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure) ... ok
+test_launcher_cannot_bypass_guarded_cli (test_workflow_invariant.WorkflowInvariantTests.test_launcher_cannot_bypass_guarded_cli) ... ok
+test_manual_dispatch_handover_and_acceptance_deny_before_ledger (test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger) ... ok
+test_missing_or_broken_runtime_modules_fail_with_structured_invariant (test_workflow_invariant.WorkflowInvariantTests.test_missing_or_broken_runtime_modules_fail_with_structured_invariant) ... ok
+test_native_send_denies_before_ledger_or_connection (test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection) ... ok
+test_raw_wire_cannot_submit_queue_or_unknown_effects (test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects) ... ok
+test_scratch_denies_before_permit_consumption_or_initialization (test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization) ... ok
+test_socket_public_and_private_queue_paths_deny_before_writes (test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes) ... ok
+test_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok
+test_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 2.028s
+
+OK
+test_changed_request_arguments_and_bytes (test_admission.AdmissionTests.test_changed_request_arguments_and_bytes) ... ok
+test_changed_source_context_rejects (test_admission.AdmissionTests.test_changed_source_context_rejects) ... ok
+test_cut_after_init_before_result_save_does_not_repeat_effect (test_admission.AdmissionTests.test_cut_after_init_before_result_save_does_not_repeat_effect) ... ok
+test_expired_or_profile_drift_rejects_before_consumption (test_admission.AdmissionTests.test_expired_or_profile_drift_rejects_before_consumption) ... ok
+test_initializer_error_or_process_interruption_consumes (test_admission.AdmissionTests.test_initializer_error_or_process_interruption_consumes) ... ok
+test_inspection_startup_does_not_create_store (test_admission.AdmissionTests.test_inspection_startup_does_not_create_store) ... ok
+test_interrupted_issuance_is_reserved_and_never_republished (test_admission.AdmissionTests.test_interrupted_issuance_is_reserved_and_never_republished) ... ok
+test_invalid_observations_owner_and_lifetime (test_admission.AdmissionTests.test_invalid_observations_owner_and_lifetime) ... ok
+test_operation_replay_changed_input_and_one_permit_limit (test_admission.AdmissionTests.test_operation_replay_changed_input_and_one_permit_limit) ... ok
+test_process_cut_after_durable_consumption_blocks_retry (test_admission.AdmissionTests.test_process_cut_after_durable_consumption_blocks_retry) ... ok
+test_scratch_replacement_symlink_and_existing_state (test_admission.AdmissionTests.test_scratch_replacement_symlink_and_existing_state) ... ok
+test_single_execution_and_replay_rejected_without_legacy_mutation (test_admission.AdmissionTests.test_single_execution_and_replay_rejected_without_legacy_mutation) ... ok
+test_two_cli_executors_are_blocked_without_consuming_permit (test_admission.AdmissionTests.test_two_cli_executors_are_blocked_without_consuming_permit) ... ok
+test_wrong_actor_missing_identity_and_session_mismatch (test_admission.AdmissionTests.test_wrong_actor_missing_identity_and_session_mismatch) ... ok
+test_browser_failure_is_terminal_and_reason_is_preserved (test_dashboard.DashboardTests.test_browser_failure_is_terminal_and_reason_is_preserved) ... ok
+test_corrupt_ledger_fails_instead_of_serving_previous_success (test_dashboard.DashboardTests.test_corrupt_ledger_fails_instead_of_serving_previous_success) ... {"service": "machine.dashboard", "status": "observation_failed", "error": "Rejected", "at": "2026-10-16T05:21:59.394881+00:00"}
+ok
+test_empty_ledger_is_not_initialized_by_dashboard (test_dashboard.DashboardTests.test_empty_ledger_is_not_initialized_by_dashboard) ... ok
+test_historical_completion_and_review_do_not_qualify_runtime (test_dashboard.DashboardTests.test_historical_completion_and_review_do_not_qualify_runtime) ... ok
+test_http_auth_origin_and_method_boundaries (test_dashboard.DashboardTests.test_http_auth_origin_and_method_boundaries) ... ok
+test_non_macos_does_not_fall_back_to_a_terminal (test_dashboard.DashboardTests.test_non_macos_does_not_fall_back_to_a_terminal) ... ok
+test_pid_prefix_is_not_exact_supervisor_identity (test_dashboard.DashboardTests.test_pid_prefix_is_not_exact_supervisor_identity) ... ok
+test_prepared_or_missing_evidence_is_not_running_or_fresh (test_dashboard.DashboardTests.test_prepared_or_missing_evidence_is_not_running_or_fresh) ... ok
+test_queued_without_worker_never_becomes_running (test_dashboard.DashboardTests.test_queued_without_worker_never_becomes_running) ... ok
+test_readiness_calls_use_remaining_deadline (test_dashboard.DashboardTests.test_readiness_calls_use_remaining_deadline) ... ok
+test_sensitive_report_body_and_receipt_are_not_exposed (test_dashboard.DashboardTests.test_sensitive_report_body_and_receipt_are_not_exposed) ... ok
+test_supervisor_definition_change_is_not_silently_adopted (test_dashboard.DashboardTests.test_supervisor_definition_change_is_not_silently_adopted) ... ok
+test_supervisor_is_keepalive_and_repeated_start_preserves_identity (test_dashboard.DashboardTests.test_supervisor_is_keepalive_and_repeated_start_preserves_identity) ... ok
+test_boolean_schema_rejected (test_machine.CoordinatorTests.test_boolean_schema_rejected) ... ok
+test_changed_source_blocks_dispatch_and_verification (test_machine.CoordinatorTests.test_changed_source_blocks_dispatch_and_verification) ... ok
+test_crash_before_commit_preserves_last_committed_transition (test_machine.CoordinatorTests.test_crash_before_commit_preserves_last_committed_transition) ... ok
+test_dispatch_replay_cannot_authorize_resend (test_machine.CoordinatorTests.test_dispatch_replay_cannot_authorize_resend) ... ok
+test_do_not_initialize_over_existing_state (test_machine.CoordinatorTests.test_do_not_initialize_over_existing_state) ... ok
+test_executor_self_review_rejected (test_machine.CoordinatorTests.test_executor_self_review_rejected) ... ok
+test_external_project_cannot_be_machine_worktree (test_machine.CoordinatorTests.test_external_project_cannot_be_machine_worktree) ... ok
+test_failed_send_does_not_prove_no_delivery (test_machine.CoordinatorTests.test_failed_send_does_not_prove_no_delivery) ... ok
+test_full_inspection_cycle_and_replace_coordinator (test_machine.CoordinatorTests.test_full_inspection_cycle_and_replace_coordinator) ... ok
+test_incomplete_or_wrong_thread_report_rejected (test_machine.CoordinatorTests.test_incomplete_or_wrong_thread_report_rejected) ... ok
+test_machine_and_ancestor_project_paths_rejected (test_machine.CoordinatorTests.test_machine_and_ancestor_project_paths_rejected) ... ok
+test_machine_manifest_required_before_initialize (test_machine.CoordinatorTests.test_machine_manifest_required_before_initialize) ... ok
+test_missing_or_changed_retained_evidence_detected (test_machine.CoordinatorTests.test_missing_or_changed_retained_evidence_detected) ... ok
+test_nested_git_project_path_rejected (test_machine.CoordinatorTests.test_nested_git_project_path_rejected) ... ok
+test_notloaded_requires_native_queue_observation (test_machine.CoordinatorTests.test_notloaded_requires_native_queue_observation) ... ok
+test_operation_identity_cannot_change_input (test_machine.CoordinatorTests.test_operation_identity_cannot_change_input) ... ok
+test_pending_delivery_survives_restart_and_blocks_retry (test_machine.CoordinatorTests.test_pending_delivery_survives_restart_and_blocks_retry) ... ok
+test_record_and_operation_tampering_detected (test_machine.CoordinatorTests.test_record_and_operation_tampering_detected) ... ok
+test_replacement_cannot_follow_a_received_report (test_machine.CoordinatorTests.test_replacement_cannot_follow_a_received_report) ... ok
+test_replacement_pending_survives_restart_and_blocks_dispatch (test_machine.CoordinatorTests.test_replacement_pending_survives_restart_and_blocks_dispatch) ... ok
+test_replacement_preserves_task_and_original_attempt (test_machine.CoordinatorTests.test_replacement_preserves_task_and_original_attempt) ... ok
+test_replacement_removal_failure_cannot_enable_dispatch (test_machine.CoordinatorTests.test_replacement_removal_failure_cannot_enable_dispatch) ... ok
+test_replacement_requires_exact_original_queued_message (test_machine.CoordinatorTests.test_replacement_requires_exact_original_queued_message) ... ok
+test_report_and_close_cannot_bypass_delivery_or_review (test_machine.CoordinatorTests.test_report_and_close_cannot_bypass_delivery_or_review) ... ok
+test_review_must_bind_report_and_all_inputs (test_machine.CoordinatorTests.test_review_must_bind_report_and_all_inputs) ... ok
+test_silent_agent_rebind_rejected (test_machine.CoordinatorTests.test_silent_agent_rebind_rejected) ... ok
+test_source_drift_blocks_initialize (test_machine.CoordinatorTests.test_source_drift_blocks_initialize) ... ok
+test_stale_and_future_observations_rejected (test_machine.CoordinatorTests.test_stale_and_future_observations_rejected) ... ok
+test_stale_precondition_preserves_task (test_machine.CoordinatorTests.test_stale_precondition_preserves_task) ... ok
+test_startup_is_read_only_without_state (test_machine.CoordinatorTests.test_startup_is_read_only_without_state) ... ok
+test_status_after_initialize_changes_no_bytes (test_machine.CoordinatorTests.test_status_after_initialize_changes_no_bytes) ... ok
+test_transport_limit_rejection_leaves_no_pending_attempt (test_machine.CoordinatorTests.test_transport_limit_rejection_leaves_no_pending_attempt) ... ok
+test_two_cli_coordinators_are_blocked_before_dispatch (test_machine.CoordinatorTests.test_two_cli_coordinators_are_blocked_before_dispatch) ... ok
+test_uncertain_delivery_reconciliation_and_explicit_retry (test_machine.CoordinatorTests.test_uncertain_delivery_reconciliation_and_explicit_retry) ... ok
+test_unknown_schema_rejected_without_mutation (test_machine.CoordinatorTests.test_unknown_schema_rejected_without_mutation) ... ok
+test_wrong_delivery_receipt_rejected_atomically (test_machine.CoordinatorTests.test_wrong_delivery_receipt_rejected_atomically) ... ok
+test_wrong_workspace_observation_is_atomic (test_machine.CoordinatorTests.test_wrong_workspace_observation_is_atomic) ... ok
+test_acknowledgement_save_failure_collects_without_resubmission (test_native_bridge.BridgeTests.test_acknowledgement_save_failure_collects_without_resubmission) ... ok
+test_adapter_source_drift_rejects_before_contact (test_native_bridge.BridgeTests.test_adapter_source_drift_rejects_before_contact) ... ok
+test_changed_queue_acknowledgement_preserves_uncertainty (test_native_bridge.BridgeTests.test_changed_queue_acknowledgement_preserves_uncertainty) ... ok
+test_cli_bridge_error_is_structured_json (test_native_bridge.BridgeTests.test_cli_bridge_error_is_structured_json) ... ok
+test_concurrent_senders_queue_only_once (test_native_bridge.BridgeTests.test_concurrent_senders_queue_only_once) ... ok
+test_cursor_loop_is_not_inferred_as_absence (test_native_bridge.BridgeTests.test_cursor_loop_is_not_inferred_as_absence) ... ok
+test_cut_after_journal_before_send_leaves_pending_and_collects_without_send (test_native_bridge.BridgeTests.test_cut_after_journal_before_send_leaves_pending_and_collects_without_send) ... ok
+test_cut_after_submission_before_acknowledgement_persistence (test_native_bridge.BridgeTests.test_cut_after_submission_before_acknowledgement_persistence) ... ok
+test_duplicate_turns_and_missing_final_reject (test_native_bridge.BridgeTests.test_duplicate_turns_and_missing_final_reject) ... ok
+test_failed_interrupted_and_active_turns_are_not_completed_reports (test_native_bridge.BridgeTests.test_failed_interrupted_and_active_turns_are_not_completed_reports) ... ok
+test_final_before_request_rejects_report_attribution (test_native_bridge.BridgeTests.test_final_before_request_rejects_report_attribution) ... ok
+test_history_anchor_avoids_replaying_entire_old_conversation (test_native_bridge.BridgeTests.test_history_anchor_avoids_replaying_entire_old_conversation) ... ok
+test_history_pagination_and_cursor_loop (test_native_bridge.BridgeTests.test_history_pagination_and_cursor_loop) ... ok
+test_lost_ack_reconciles_completed_execution_after_restart (test_native_bridge.BridgeTests.test_lost_ack_reconciles_completed_execution_after_restart) ... ok
+test_lost_ack_reconciles_queue_without_resend (test_native_bridge.BridgeTests.test_lost_ack_reconciles_queue_without_resend) ... ok
+test_multiple_user_inputs_reject_report_attribution (test_native_bridge.BridgeTests.test_multiple_user_inputs_reject_report_attribution) ... ok
+test_repeated_send_never_sends_twice (test_native_bridge.BridgeTests.test_repeated_send_never_sends_twice) ... ok
+test_role_drift_after_dispatch_intent_preserves_uncertainty_without_send (test_native_bridge.BridgeTests.test_role_drift_after_dispatch_intent_preserves_uncertainty_without_send) ... ok
+test_role_drift_during_preflight_prevents_submission (test_native_bridge.BridgeTests.test_role_drift_during_preflight_prevents_submission) ... ok
+test_role_replacement_or_route_source_change_rejects (test_native_bridge.BridgeTests.test_role_replacement_or_route_source_change_rejects) ... ok
+test_round_trip_retains_actual_final_and_requires_review (test_native_bridge.BridgeTests.test_round_trip_retains_actual_final_and_requires_review) ... ok
+test_source_drift_during_native_baseline_read_prevents_submission (test_native_bridge.BridgeTests.test_source_drift_during_native_baseline_read_prevents_submission) ... ok
+test_unrelated_or_quoted_prompt_cannot_become_report (test_native_bridge.BridgeTests.test_unrelated_or_quoted_prompt_cannot_become_report) ... ok
+test_work_view_is_local_and_does_not_collect_or_send (test_native_bridge.BridgeTests.test_work_view_is_local_and_does_not_collect_or_send) ... ok
+test_wrong_thread_or_workspace_rejects_before_delivery (test_native_bridge.BridgeTests.test_wrong_thread_or_workspace_rejects_before_delivery) ... ok
+test_masked_binary_and_invalid_continuation_reject (test_native_socket.NativeSocketTests.test_masked_binary_and_invalid_continuation_reject) ... ok
+test_nonlocal_endpoints_and_execution_methods_reject (test_native_socket.NativeSocketTests.test_nonlocal_endpoints_and_execution_methods_reject) ... ok
+test_oversized_frame_rejects_before_reading_payload (test_native_socket.NativeSocketTests.test_oversized_frame_rejects_before_reading_payload) ... ok
+test_readonly_cli_entries_create_no_state (test_native_socket.NativeSocketTests.test_readonly_cli_entries_create_no_state) ... ok
+test_real_byte_stream_handshake_masking_fragmentation_and_rpc_identity (test_native_socket.NativeSocketTests.test_real_byte_stream_handshake_masking_fragmentation_and_rpc_identity) ... ok
+test_all_known_and_unknown_adapters_fail_without_a_provider (test_workflow_invariant.WorkflowInvariantTests.test_all_known_and_unknown_adapters_fail_without_a_provider) ... ok
+test_checker_cannot_succeed_without_staged_repository (test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository) ... ok
+test_dashboard_browser_failure_and_reconnection_contract (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_browser_failure_and_reconnection_contract) ... ok
+test_dashboard_is_read_only_and_never_enables_execution (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_is_read_only_and_never_enables_execution) ... ok
+test_dashboard_supervision_failure_has_no_manual_fallback (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_supervision_failure_has_no_manual_fallback) ... ok
+test_environment_cannot_enable_manual_fallback (test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback) ... ok
+test_every_cli_command_has_an_explicit_scope (test_workflow_invariant.WorkflowInvariantTests.test_every_cli_command_has_an_explicit_scope) ... ok
+test_every_runtime_module_is_in_the_closed_inventory (test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory) ... ok
+test_governance_requires_future_features_and_hook (test_workflow_invariant.WorkflowInvariantTests.test_governance_requires_future_features_and_hook) ... ok
+test_health_commands_fail_loudly_with_observation_separate_from_readiness (test_workflow_invariant.WorkflowInvariantTests.test_health_commands_fail_loudly_with_observation_separate_from_readiness) ... ok
+test_hook_bootstrap_propagates_installed_verifier_failure (test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure) ... ok
+test_launcher_cannot_bypass_guarded_cli (test_workflow_invariant.WorkflowInvariantTests.test_launcher_cannot_bypass_guarded_cli) ... ok
+test_manual_dispatch_handover_and_acceptance_deny_before_ledger (test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger) ... ok
+test_missing_or_broken_runtime_modules_fail_with_structured_invariant (test_workflow_invariant.WorkflowInvariantTests.test_missing_or_broken_runtime_modules_fail_with_structured_invariant) ... ok
+test_native_send_denies_before_ledger_or_connection (test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection) ... ok
+test_raw_wire_cannot_submit_queue_or_unknown_effects (test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects) ... ok
+test_scratch_denies_before_permit_consumption_or_initialization (test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization) ... ok
+test_socket_public_and_private_queue_paths_deny_before_writes (test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes) ... ok
+test_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok
+test_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok
+
+----------------------------------------------------------------------
+Ran 114 tests in 49.244s
+
+OK
+MACHINE_AUTOMATED_EXECUTION_REQUIRED: staged checks passed; operational workflows remain blocked until qualified

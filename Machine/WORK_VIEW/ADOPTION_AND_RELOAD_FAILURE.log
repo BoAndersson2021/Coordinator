@@ -1,0 +1,6 @@
+{"status": "PASS", "adopted_files": 11, "private_files_preserved": 87, "workflow_execution": "blocked"}
+Traceback (most recent call last):
+  File "/Users/boandersson/Desktop/CodeExp2/Machine/WORK_VIEW/adopt_reviewed_work_view.py", line 74, in <module>
+    assert time.monotonic() < deadline, 'Automatic dashboard source reload failed'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Automatic dashboard source reload failed

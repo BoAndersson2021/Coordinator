@@ -52,3 +52,8 @@ restart/browser reconnection. `./Machine dashboard` owns startup and automatic
 browser opening. This is read-only local diagnostics, not a project workflow
 provider. Independent V2 review, 113 tests and five staged-commit cases passed;
 the Machine implementation is committed as `574e834`, with its enforced hook passing.
+
+The original [work-view explanation feature](WORK_VIEW/README.md) is completed
+in the CLI too. Both surfaces share one safe task-state projection, while legacy
+CLI report access remains available. This installed follow-up is committed in Machine as `d24f163`;
+114 tests and independent source review passed. Workflow execution remains blocked.

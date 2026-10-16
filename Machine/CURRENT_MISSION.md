@@ -2,6 +2,15 @@
 
 ## Current enforced invariant and failed live acceptance
 
+The original [work-view explanation feature](WORK_VIEW/README.md) is now completed
+in Machine commit `d24f163`. CLI and dashboard share one core read-only
+task-state projection. It preserves legacy CLI report access, excludes HTTP report
+bodies and removes the manual collection next-step. Independent V2 review PASS,
+114 tests and four real commit-gate cases passed; installed CLI/API agreement and
+automatic browser reconnection are observed. The source reload's initial 20-second
+check failed; automatic recovery actually took 28.637 seconds and the failure is
+retained. All 87 private files remain unchanged. Workflow execution stays blocked.
+
 The new [managed dashboard](DASHBOARD/README.md) is installed, running and opened
 automatically by Machine. Its HTML/JavaScript gauges refresh ledger data every two
 seconds; stale/failing observations are explicit. launchd recovered an automated

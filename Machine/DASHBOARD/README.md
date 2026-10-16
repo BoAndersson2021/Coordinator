@@ -51,3 +51,7 @@ write only reviewed source there during owner-authorized adoption. Machine sourc
 is committed as `574e834`; the enforced commit hook passed 20 mandatory invariant
 tests and the full 113-test suite. [COMMIT_RECORD.json](COMMIT_RECORD.json) retains
 the commit identity and actual hook output. Companion evidence is tracked here.
+
+The subsequent [work-view follow-up](../WORK_VIEW/README.md) completes the CLI
+feature using this dashboard’s shared core projection. Its source changes are
+installed and committed in Machine as `d24f163`; the dashboard commit above remains historical.

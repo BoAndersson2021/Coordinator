@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "adoption": "owner_directed_invariant_communication_snapshot",
+  "does_not_grant_authority": true,
+  "source_repository": "/Users/boandersson/Desktop/CodeExp2",
+  "source_revision": "97bebfb1c404ae5989491768fa535f1a580de382",
+  "source_state": "Uncommitted owner-directed documentation synchronization; exact content bound by file hashes.",
+  "invariant": "MACHINE_AUTOMATED_EXECUTION_REQUIRED",
+  "prior_snapshot": "archive/pre-invariant-20261016/provenance.json",
+  "prior_snapshot_sha256": "f5e5551c09c1f9a2ac195cdd47bcb545f398f2303d0ab6617e58185b74590ac6",
+  "files": {
+    "app-terminal-codex-launch-pattern.md": {
+      "sha256": "574b8b6a9debb06cd0d67251e58075dd8a9b06372971aa503d6430813baafde8",
+      "source_path": "docs/app-terminal-codex-launch-pattern.md"
+    },
+    "how-to-communicate-with-other-codex-agents.md": {
+      "sha256": "2a6a19a879997a5da8c285e286901aea63a071a3316d44d507a870fe332b8750",
+      "source_path": "docs/how-to-communicate-with-other-codex-agents.md"
+    },
+    "universal-multi-agent-build-protocol.md": {
+      "sha256": "cfd60d100956023a13f7d2f2530ccb743d516dddce4d14b9a14b5a6d38dd9f29",
+      "source_path": "docs/universal-multi-agent-build-protocol.md"
+    }
+  }
+}

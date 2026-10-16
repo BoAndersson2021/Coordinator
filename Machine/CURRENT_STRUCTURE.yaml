@@ -39,6 +39,7 @@ components:
       native_bridge: src/native_bridge.py
       native_socket: src/native_socket.py
       diagnostic_dashboard: src/dashboard.py
+      shared_work_observation: src/machine.py::work_observation
     diagnostic_dashboard:
       entry: ./Machine dashboard
       scope: read_only_local_ledger_display_not_workflow_execution
@@ -99,5 +100,6 @@ references:
   - DOCUMENTATION_INDEX.md
   - INVARIANT_ENFORCEMENT/README.md
   - DASHBOARD/README.md
+  - WORK_VIEW/README.md
   - /Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md
   - /Users/boandersson/Desktop/Machine/docs/RUNBOOK.md

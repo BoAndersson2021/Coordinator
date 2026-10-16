@@ -1,0 +1,1 @@
+Preliminary CLI disagreement mutation replaced every return result, causing a KeyError before the intended comparison. Gate rejection was real, but a refined fixture must prove rejection of an actual false running state. Final proof narrows mutation to work_view only.

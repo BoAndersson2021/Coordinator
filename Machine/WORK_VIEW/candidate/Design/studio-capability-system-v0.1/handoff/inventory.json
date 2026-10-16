@@ -1,0 +1,33 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "README.md": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32",
+    "contracts/agent_execution.contract.yaml": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a",
+    "contracts/asset.contract.yaml": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73",
+    "contracts/authority.contract.yaml": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724",
+    "contracts/citizen.contract.yaml": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be",
+    "contracts/coordination.contract.yaml": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618",
+    "contracts/corpus_context.contract.yaml": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9",
+    "contracts/evidence.contract.yaml": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243",
+    "contracts/integration.contract.yaml": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7",
+    "contracts/release.contract.yaml": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc",
+    "contracts/state.contract.yaml": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec",
+    "contracts/task.contract.yaml": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75",
+    "contracts/tool.contract.yaml": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1",
+    "handoff/acceptance.yaml": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968",
+    "handoff/integration.yaml": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2",
+    "registry/citizens.yaml": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b",
+    "registry/contracts.yaml": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3",
+    "registry/laws.yaml": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc",
+    "registry/rules.yaml": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f",
+    "registry/tools.yaml": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e",
+    "specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d",
+    "validation/tests/test_validation.py": "242f5019e63d7374f9028ef623638089794443c657d4ab07dfb4f305a8239aff",
+    "validation/validate.py": "cf7fd9ed842805adac9d817948d54dc0ac614c9965ce205f5a14e8a497b821d3",
+    "workflows/documentation-reconcile.yaml": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b",
+    "workflows/execute-test-verify.yaml": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86",
+    "workflows/inspect-specify-plan.yaml": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5",
+    "workflows/redteam-harden.yaml": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744",
+    "workflows/roadmap-progress.yaml": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  }
+}

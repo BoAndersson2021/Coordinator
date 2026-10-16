@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T05:28:56.961531+00:00",
+  "machine_commit": "d24f1639929ba0e4328ee25324acfd342ec026fd",
+  "machine_worktree_clean": true,
+  "committed_review_pins_match": 11,
+  "review_manifest_sha256": "9b3e2e82d59b35bf99b376024e3f694ca20c75fe2152c4389c671e9a251ba80d",
+  "hook_bypassed": false,
+  "commit_hook": {
+    "status": "PASS",
+    "mandatory_invariant_tests": 20,
+    "full_suite_tests": 114,
+    "log": "COMMIT_HOOK.log",
+    "log_sha256": "8ff69e129ac8a0df23a30b3d3929f119488f4db18b882939a9da751493641eb6"
+  },
+  "reload_probe": {
+    "initial_deadline_seconds": 20,
+    "initial_status": "FAILED",
+    "observed_automatic_recovery_seconds": 28.637012,
+    "failure_log": "ADOPTION_AND_RELOAD_FAILURE.log"
+  },
+  "workflow_execution": "blocked",
+  "runtime_automation_qualified": false,
+  "historical_records": "Earlier RESULT.json and verification snapshots retain their original pre-commit observations.",
+  "raw_evidence_whitespace_preserved": [
+    {
+      "file": "Machine/WORK_VIEW/HOOK_cli_dashboard_disagreement.log",
+      "sha256": "6b8e78908b80456080b2ae347393299eefd9cad027ab429cd1bb56c54f9abec1"
+    },
+    {
+      "file": "Machine/WORK_VIEW/V1_STAGED_FAILURE.log",
+      "sha256": "adb02bd3cfdd2d0023c1f887a4098156f6426423d40250a809dc31d59175ba4e"
+    },
+    {
+      "file": "Machine/WORK_VIEW/preliminary_gate/HOOK_cli_dashboard_disagreement.log",
+      "sha256": "0a166e7d416e3d688bdf133f1274ca0dc5ed7eb39d480789d3066b842ef5e854"
+    }
+  ],
+  "frozen_architecture_snapshots_preserved": 2
+}

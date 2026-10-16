@@ -19,3 +19,7 @@ sealed source-review packages remain archival, not current operating authority.
 Machine's [managed work dashboard](Machine/DASHBOARD/README.md) is installed and
 running: HTML/JavaScript gauges update automatically, with visible stale states
 and proven automatic diagnostic-service recovery. Project execution remains blocked.
+
+The original [work-view feature](Machine/WORK_VIEW/README.md) is now implemented
+in the CLI as well, using the dashboard’s shared state explanation. This subsequent
+increment is committed in Machine as `d24f163`; workflow execution remains blocked.

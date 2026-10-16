@@ -1,0 +1,17 @@
+schema_version: 1
+contract_id: CON-COORDINATION
+version: '0.1'
+required_fields:
+- operation_id
+- resource_scope
+input_revision_required: true
+grant_required_for_mutation: true
+state_owner: designated_domain_owner
+failure:
+  precondition_failed: reject_no_mutation
+  effect_uncertain: recovery_required
+  retry: prohibit_until_reconciled
+evidence:
+  receipt_required: true
+  input_digest_required: true
+implementation_status: declarative_unenforced

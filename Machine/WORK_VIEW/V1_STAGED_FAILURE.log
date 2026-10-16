@@ -1,0 +1,47 @@
+{"case": "valid_shared_work_view", "expected_commit": true, "exit_code": 1, "head_changed": false, "passed": false}
+Traceback (most recent call last):
+  File "/Users/boandersson/Desktop/CodeExp2/Machine/WORK_VIEW/prove_staged_work_view.py", line 49, in <module>
+    commit('valid_shared_work_view', True)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/boandersson/Desktop/CodeExp2/Machine/WORK_VIEW/prove_staged_work_view.py", line 47, in commit
+    assert passed, result.stdout + result.stderr
+           ^^^^^^
+AssertionError: MACHINE_AUTOMATED_EXECUTION_REQUIRED: validating staged source and regression tests
+test_all_known_and_unknown_adapters_fail_without_a_provider (test_workflow_invariant.WorkflowInvariantTests.test_all_known_and_unknown_adapters_fail_without_a_provider) ... ok
+test_checker_cannot_succeed_without_staged_repository (test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository) ... ok
+test_dashboard_browser_failure_and_reconnection_contract (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_browser_failure_and_reconnection_contract) ... ok
+test_dashboard_is_read_only_and_never_enables_execution (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_is_read_only_and_never_enables_execution) ... {"service": "machine.dashboard", "status": "observation_failed", "error": "Rejected", "at": "2026-10-16T05:19:49.386349+00:00"}
+FAIL
+test_dashboard_supervision_failure_has_no_manual_fallback (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_supervision_failure_has_no_manual_fallback) ... ok
+test_environment_cannot_enable_manual_fallback (test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback) ... ok
+test_every_cli_command_has_an_explicit_scope (test_workflow_invariant.WorkflowInvariantTests.test_every_cli_command_has_an_explicit_scope) ... ok
+test_every_runtime_module_is_in_the_closed_inventory (test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory) ... ok
+test_governance_requires_future_features_and_hook (test_workflow_invariant.WorkflowInvariantTests.test_governance_requires_future_features_and_hook) ... ok
+test_health_commands_fail_loudly_with_observation_separate_from_readiness (test_workflow_invariant.WorkflowInvariantTests.test_health_commands_fail_loudly_with_observation_separate_from_readiness) ... ok
+test_hook_bootstrap_propagates_installed_verifier_failure (test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure) ... ok
+test_launcher_cannot_bypass_guarded_cli (test_workflow_invariant.WorkflowInvariantTests.test_launcher_cannot_bypass_guarded_cli) ... ok
+test_manual_dispatch_handover_and_acceptance_deny_before_ledger (test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger) ... ok
+test_missing_or_broken_runtime_modules_fail_with_structured_invariant (test_workflow_invariant.WorkflowInvariantTests.test_missing_or_broken_runtime_modules_fail_with_structured_invariant) ... ok
+test_native_send_denies_before_ledger_or_connection (test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection) ... ok
+test_raw_wire_cannot_submit_queue_or_unknown_effects (test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects) ... ok
+test_scratch_denies_before_permit_consumption_or_initialization (test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization) ... ok
+test_socket_public_and_private_queue_paths_deny_before_writes (test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes) ... ok
+test_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok
+test_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok
+
+======================================================================
+FAIL: test_dashboard_is_read_only_and_never_enables_execution (test_workflow_invariant.WorkflowInvariantTests.test_dashboard_is_read_only_and_never_enables_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/machine-staged-invariant-emp0e_ty/tests/test_workflow_invariant.py", line 227, in test_dashboard_is_read_only_and_never_enables_execution
+    self.assertEqual(response.status, 200)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 503 != 200
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.579s
+
+FAILED (failures=1)
+MACHINE_AUTOMATED_EXECUTION_REQUIRED: mandatory tests did not complete successfully: test_workflow_invariant.WorkflowInvariantTests.test_dashboard_is_read_only_and_never_enables_execution
+MACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked
+

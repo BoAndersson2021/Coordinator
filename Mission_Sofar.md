@@ -34,3 +34,10 @@ marks failures/stale observations. Independent V2 source review, 113 tests,
 five real disposable commit-gate cases and actual automatic process/browser
 recovery passed. All 87 private Machine files remain unchanged. This qualifies
 only the diagnostic display; automatic project workflows remain blocked.
+
+The subsequent [work-view completion](Machine/WORK_VIEW/README.md) is installed
+and committed in Machine as `d24f163`. CLI and dashboard share task-state explanations; 114 tests,
+independent source review and four real staged-commit cases passed. The actual
+automatic source reload took 28.637 seconds, exceeding its retained failed
+20-second probe; the browser subsequently reconnected automatically. Workflow
+execution remains blocked, with all 87 private Machine files unchanged.

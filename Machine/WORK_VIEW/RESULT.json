@@ -1,0 +1,46 @@
+{
+  "status": "PASS_CURRENT_STATE_WITH_RETAINED_RELOAD_PROBE_FAILURE",
+  "recorded_at": "2026-10-16T05:27:40.925520+00:00",
+  "implemented": "Shared Machine work-view CLI and dashboard task-state explanation",
+  "independent_review_manifest_sha256": "9b3e2e82d59b35bf99b376024e3f694ca20c75fe2152c4389c671e9a251ba80d",
+  "installed_pins_match": 11,
+  "tests": 114,
+  "staged_commit_cases": [
+    {
+      "case": "valid_shared_work_view",
+      "expected_commit": true,
+      "exit_code": 0,
+      "head_changed": true,
+      "passed": true
+    },
+    {
+      "case": "missing_staged_invariant_coverage",
+      "expected_commit": false,
+      "exit_code": 1,
+      "head_changed": false,
+      "passed": true
+    },
+    {
+      "case": "cli_dashboard_disagreement",
+      "expected_commit": false,
+      "exit_code": 1,
+      "head_changed": false,
+      "passed": true
+    },
+    {
+      "case": "manual_next_step_regression",
+      "expected_commit": false,
+      "exit_code": 1,
+      "head_changed": false,
+      "passed": true
+    }
+  ],
+  "cli_http_projection_equal": true,
+  "browser_reconnected_automatically": true,
+  "initial_reload_probe_failed_seconds": 20,
+  "observed_automatic_reload_seconds": 28.637012,
+  "private_files_preserved": 87,
+  "workflow_execution": "blocked",
+  "runtime_automation_qualified": false,
+  "git_state": "Installed changes are uncommitted; actual indexes untouched."
+}
