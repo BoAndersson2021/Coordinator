@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "stdout": "{\n  \"attempt_id\": \"15b871be-1900-4c3d-bee9-9edbd11fc245\",\n  \"detail\": \"Queued message 01a142a0-ec33-78c1-8882-053b2b84ebf9 for thread 01a136be-732f-7350-b9f5-13d1dddc5ddb.\",\n  \"outcome\": \"delivered\",\n  \"schema_version\": 1,\n  \"server_id\": \"unix:/Users/boandersson/.codex/app-server-control/app-server-control.sock\",\n  \"source\": \"codex_local.thread/queue/add\",\n  \"task_id\": \"native-inspection-fresh-start-001\",\n  \"thread_id\": \"01a136be-732f-7350-b9f5-13d1dddc5ddb\"\n}\n",
+  "stderr": ""
+}

@@ -62,6 +62,8 @@ components:
     implementation:
       cli_and_coordination: src/machine.py
       bounded_admission: src/admission.py
+      native_inspection_bridge: src/native_bridge.py
+      local_control_socket: src/native_socket.py
     private_state:
       coordination_ledger: .machine/state.sqlite3
       admission_store: .machine/admission
@@ -71,10 +73,13 @@ components:
       - Check pinned inputs, evidence integrity, and supported state transitions.
       - Expose read-only status and source integrity checks.
       - Enforce the implemented single-use scratch initialization permit.
+      - Explicitly send recorded inspections and collect matching native replies.
     observation_boundary: >-
-      The CLI reads local files and recorded state. Live project-agent activity
-      and communication receipts are supplied through the coordinator-operated
-      bridge. It has no independent automatic subscription to all conversations.
+      Status and work-view read local files and recorded state. The installed
+      native bridge can explicitly read an existing project thread, send a
+      recorded inspection and collect its actual matching reply. The coordinator
+      invokes these commands. There is no background subscription or automatic
+      startup dispatch. Fresh-session live acceptance of this bridge is pending.
     authority_model: local_operator_trust
 
   machine_workspace_agent:
@@ -106,9 +111,9 @@ communication:
   project_round_trip:
     - Coordinator verifies target thread UUID, workspace, route, and scope.
     - For a supported inspection, Machine journals the assignment and pending attempt.
-    - Coordinator uses the authorized bridge to deliver the bounded envelope.
+    - Coordinator invokes bridge-send to deliver once through the configured native route, or operates the existing manual bridge.
     - Project harness supplies context to its model and executes permitted tool requests.
-    - Coordinator collects the actual matching completed turn and transport receipts.
+    - Coordinator invokes bridge-collect to retain the actual matching completed turn, or collects through the existing manual bridge.
     - Coordinator records relevant evidence and checks it before coordination closure.
   custody: >-
     Machine retains evidence explicitly recorded through its supported interfaces.
@@ -123,6 +128,9 @@ capability_state:
     - Durable inspection coordination with a completed historical Blender pilot.
     - A session-bound scratch initialization succeeded once and permit reuse rejected.
     - Coordinator-operated communication with separately verified project sessions.
+  implemented_pending_live_acceptance:
+    - Native inspection delivery and fresh-session recovery observed the exact queued input without resend; completed-reply collection remains pending.
+    - Independent corrected-source review passed; final candidate suite passed 81 tests.
   outstanding:
     - An independently qualified automatic communication and supervision loop.
     - Authenticated scoped grants and general project work admission.
@@ -137,5 +145,7 @@ references:
   - DESIGN_AND_MISSION.md
   - CURRENT_MISSION.md
   - ADMISSION_TEST/REPORT.md
+  - COMMUNICATION_BRIDGE/README.md
+  - COMMUNICATION_BRIDGE/FRESH_START_TEST.md
   - /Users/boandersson/Desktop/Machine/docs/COORDINATION.md
   - /Users/boandersson/Desktop/Machine/docs/ADMISSION.md

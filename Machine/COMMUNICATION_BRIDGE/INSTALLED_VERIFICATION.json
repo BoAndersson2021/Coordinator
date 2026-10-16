@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "installed_verified_ready_for_fresh_start_test",
+  "source_manifest": "REVIEW_MANIFEST_V2.json",
+  "source_hashes_matching": 10,
+  "independent_review": "INDEPENDENT_REVIEW_V2.json",
+  "independent_verdict": "PASS",
+  "installed_verification": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v",
+    "tests": 81,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 17.672,
+    "actual_exec_session": 50004
+  },
+  "doctor": "source_integrity_pass",
+  "work_view": "existing closed inspection retained; no new assignment",
+  "private_file_hashes_preserved": 87,
+  "live_project_send_performed": false,
+  "live_acceptance": "pending fresh CodeExp2 delivery and another start before collection",
+  "next_handoff": "FRESH_START_TEST.md",
+  "git_state": "Implementation and accompanying CodeExp2 evidence are uncommitted. Existing unrelated untracked CodeExp2 files are untouched."
+}

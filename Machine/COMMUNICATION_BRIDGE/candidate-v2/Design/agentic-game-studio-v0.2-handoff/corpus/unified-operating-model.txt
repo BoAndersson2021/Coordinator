@@ -1,0 +1,303 @@
+# AGENTIC GAME STUDIO — UNIFIED OPERATING MODEL
+
+CORPUS + GAME PROJECT ARCHITECTURE v1.2 + AGENTIC STRUCTURE
+
+## 1. System purpose
+
+The three components together establish a persistent game development studio operated by humans and autonomous agents.
+
+Each has a distinct responsibility:
+
+- Corpus — Knowledge: What the studio knows, what has been decided, and which specifications apply.
+- Architecture v1.2 — Machine: How the game project is structured, executed, validated, and released.
+- Agentic Structure — Workforce: How agents receive work, operate within authority boundaries, produce results, and are replaced.
+
+The three components are complementary. None replaces another.
+
+HUMAN AUTHORITY
+
+Intent · Creative direction · Consequential decisions · Budgets · Release approval
+
+CORPUS
+
+Specifications · Doctrine · Decisions · Project knowledge · Evidence
+
+PROJECT MACHINE — v1.2
+
+Design · Repository · Runtime · Release · Task Manager
+
+AGENTIC WORKFORCE
+
+Design agents · Engineering agents · Content agents · Verification agents
+
+EXECUTION AND EVIDENCE
+
+Repository changes · Builds · Runtime · Tests · Playtests · Receipts
+
+Logical relationships. Agents operate the project machine; they are not subordinate source authorities created by the diagram.
+
+## 2. Responsibility boundaries
+
+| Component         | Owns                                                                   | Does not own                                    |
+| ----------------- | ---------------------------------------------------------------------- | ----------------------------------------------- |
+| Corpus            | Knowledge organization and retrieval                                   | Automatic permission to change the project      |
+| Architecture v1.2 | Project structures, contracts, state transitions, authority boundaries | Creative judgment or agent cognition            |
+| Agentic Structure | Agent roles and execution model                                        | Independent source, build, or release authority |
+| Human Authority   | Approved intent and reserved decisions                                 | Routine execution of every task                 |
+
+Important distinction: The corpus can contain authoritative documents, but storing a document in the corpus does not itself approve its contents. Approval belongs to the authority identified by the relevant project contract.
+
+## 3. How the three work together
+
+The operational cycle is:
+
+1\. Define intent
+
+Human or authorized project owner establishes the objective
+
+2\. Resolve knowledge
+
+Corpus identifies applicable specifications and decisions
+
+3\. Create task
+
+v1.2 Task Manager records scope, inputs and dependencies
+
+4\. Authorize
+
+Relevant authority validates the permitted operation
+
+5\. Assemble context
+
+Agent receives the necessary task-specific knowledge
+
+6\. Execute
+
+Agent operates approved tools within its grant
+
+7\. Produce candidate
+
+Outputs and receipts are retained under identified custody
+
+8\. Verify
+
+Independent checks establish whether requirements are met
+
+9\. Adopt
+
+Authorized owner commits accepted changes
+
+10\. Update knowledge
+
+Accepted decisions and evidence become retrievable
+
+The important property is that the output of one agent does not automatically become an instruction or accepted fact for another.
+
+Every authoritative transition passes through its appropriate validation and ownership boundary.
+
+## 4. Practical example — building a gameplay system
+
+Assume the studio is assigned to implement a shipboard power system.
+
+### Stage A — Corpus
+
+The corpus provides the applicable game design, power-system specification, coding contracts, engine requirements, and accepted architectural decisions.
+
+It must resolve current versions and identify conflicts rather than silently combining incompatible documents.
+
+Output: A bounded knowledge package with source references and revision identities.
+
+### Stage B — Project Architecture v1.2
+
+The Task Manager creates work with pinned inputs, dependencies, required tests, and an authority grant.
+
+The repository identifies the source revision. The SDK establishes integration contracts. The build system provides the authorized compilation and execution path.
+
+Output: A valid task with executable boundaries and acceptance requirements.
+
+### Stage C — Agentic Structure
+
+An engineering agent receives the task and relevant context.
+
+It implements the power system in an isolated work environment. It cannot independently promote its implementation to protected source or approve a release.
+
+Output: A candidate implementation and execution receipts.
+
+### Stage D — Verification
+
+The project machine builds and tests the candidate.
+
+Verification checks whether the implementation satisfies the declared power-system contracts, integrates with the runtime, and preserves existing behavior.
+
+Failed verification creates defects or rework requirements.
+
+Output: Evidence bound to the exact candidate.
+
+### Stage E — Adoption
+
+The authorized repository integration operation accepts the verified candidate.
+
+The corpus can then index the accepted revision, associated decisions, and validation evidence.
+
+Output: An authoritative project change that other agents can safely reference.
+
+The cycle repeats for subsequent work.
+
+## 5. The corpus must not become a second source of truth
+
+This is a central architectural risk.
+
+Suppose a design agent changes a gameplay specification and writes its new version into the corpus.
+
+If another agent immediately treats that version as authoritative, the system has bypassed the repository and approval machinery.
+
+The required distinction is:
+
+```
+AGENT PROPOSAL
+      ↓
+CANDIDATE KNOWLEDGE
+      ↓
+REVIEW / VALIDATION
+      ↓
+AUTHORITY APPROVAL
+      ↓
+AUTHORITATIVE RECORD
+      ↓
+CORPUS INDEX UPDATE
+      ↓
+AVAILABLE TO OTHER AGENTS
+```
+
+The corpus is the retrieval and knowledge-resolution layer.
+
+The authoritative record remains under its designated owner.
+
+Search results must preserve approval state, revision identity, and applicability.
+
+## 6. Agent replacement and continuity
+
+The studio must continue operating when an agent terminates, changes model, loses context, or is replaced.
+
+The replacement agent must recover from persistent project state rather than from the previous agent's conversation.
+
+It needs:
+
+- The current task and authority grant.
+- Pinned source and specification revisions.
+- Completed operation receipts.
+- Existing candidate artifacts.
+- Outstanding verification results.
+- Known failures and recovery restrictions.
+
+If an operation has an uncertain external effect, replacement must not cause automatic repetition.
+
+The task remains blocked until the authoritative external state is reconciled.
+
+An agent can disappear. Its authorized work, evidence, and unresolved effects cannot disappear with it.
+
+## 7. Operating at studio scale
+
+The same machine can support multiple projects and many concurrent agents.
+
+STUDIO CORPUS + SHARED DOCTRINE
+
+PROJECT A
+
+Project Knowledge
+
+Task Manager
+
+Repository
+
+Runtime
+
+Build / Tests
+
+Release
+
+PROJECT B
+
+Project Knowledge
+
+Task Manager
+
+Repository
+
+Runtime
+
+Build / Tests
+
+Release
+
+PROJECT C
+
+Project Knowledge
+
+Task Manager
+
+Repository
+
+Runtime
+
+Build / Tests
+
+Release
+
+SHARED AGENT CAPACITY
+
+Specialized agents assigned under project-specific authority
+
+This is a proposed studio-level deployment model, not an implementation already established by v1.2.
+
+Shared agents may operate across projects, but each assignment must receive the appropriate project-specific context and authority.
+
+Project boundaries must prevent accidental cross-project source mutation, credential exposure, and contamination of authoritative knowledge.
+
+## 8. What remains to be specified
+
+The three components establish a coherent architectural direction, but they do not yet fully define the mechanisms that connect them.
+
+The next necessary contract is a Studio Execution Interface covering:
+
+1. Corpus resolution: How authoritative knowledge is selected, versioned, and assembled into task context.
+2. Agent execution: How capabilities, model selection, tool access, budgets, and isolation are enforced.
+3. Result adoption: How agent outputs enter repository, design, and evidence authority.
+4. Recovery: How interrupted agents are replaced without losing work or repeating external effects.
+
+These interfaces must be defined before claiming end-to-end autonomous execution is safe.
+
+## 9. Architectural acceptance criteria
+
+The combined system is operationally proven only when it can demonstrate that:
+
+- An agent receives the correct authoritative context for its task.
+- Outdated or conflicting knowledge cannot silently override current decisions.
+- An agent cannot exceed its authorized mutation scope.
+- An agent can be replaced without losing accepted work.
+- An uncertain external effect cannot be duplicated by a replacement agent.
+- A completed task cannot bypass independent verification.
+- A verified candidate cannot bypass adoption authority.
+- Every accepted project change can be traced to its source, decision, execution, and evidence.
+- Multiple agents can work concurrently without corrupting shared resources.
+- A release can be reconstructed and audited independently of the agents that produced it.
+
+## 10. Governing principle
+
+The complete studio operates according to six distinct responsibilities:
+
+The Corpus provides knowledge.
+
+Architecture v1.2 defines and protects the project machine.
+
+The Agentic Structure provides replaceable execution capacity.
+
+The Task Manager coordinates work.
+
+Verification establishes evidence.
+
+Human and delegated authorities decide what becomes accepted.
+
+The intended result is a studio whose accumulated knowledge, source, decisions, and production history survive every individual agent.
+
+The machine is permanent. The workforce is replaceable. Authority remains explicit.

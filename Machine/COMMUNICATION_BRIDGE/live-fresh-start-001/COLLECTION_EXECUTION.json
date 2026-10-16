@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "command": "./Machine bridge-collect --id native-inspection-fresh-start-001",
+  "cwd": "/Users/boandersson/Desktop/Machine",
+  "sandbox_attempt": {
+    "exit_code": 2,
+    "status": "rejected",
+    "reason": "[Errno 1] Operation not permitted: '/Users/boandersson/.codex/app-server-control/app-server-control.sock'"
+  },
+  "escalated_attempt": {
+    "exit_code": 0,
+    "result_file": "COLLECT_RESULT.json"
+  },
+  "send_called": false,
+  "agent_lifecycle_called": false
+}

@@ -1,5 +1,64 @@
 # Machine current mission checkpoint
 
+## Current communication expansion
+
+Fresh-start acceptance is now **recovered after coordinator restart, awaiting
+receiving execution**. New CodeExp2 coordinator thread
+`01a142a2-a322-7693-a3b5-6cfdd7106150` read onboarding from disk, passed
+status/doctor/work-view and collected the same task without resending on
+2026-10-16. The native bridge found the exact original input still **queued**;
+there is no completed receiving turn or report to review. Task state remains
+`delivered`, version 3, with one unchanged delivery attempt. All ten installed
+source hashes, 331 tracked project files and 89 saved scene/selection files
+match the pre-test baseline; project HEAD and clean status are unchanged.
+[Recovery result](COMMUNICATION_BRIDGE/live-fresh-start-001/RECOVERY_RESULT.json)
+retains the successful collection, initial sandbox socket rejection, source
+checks and preservation evidence. No agent launch/resume, verification or
+closure occurred. Completed-reply recovery and live acceptance remain pending.
+
+The owner requested commits. The ten-file implementation is sealed in Machine
+commit `7fd3b78` (`feat: add native inspection communication bridge`), with
+a clean Machine worktree and all ten committed V2 hashes matching. The
+[commit record](COMMUNICATION_BRIDGE/COMMIT_RECORD.json) links source, review,
+validation and pending live acceptance; private state remains outside Git.
+
+Original delivery: on 2026-10-16 at 02:53:24 UTC, CodeExp2 coordinator thread
+`01a1429f-2f18-7723-aa35-abf67cac7b6c` invoked `bridge-send` once for
+`native-inspection-fresh-start-001`, attempt
+`15b871be-1900-4c3d-bee9-9edbd11fc245`. Machine retained its actual delivery
+receipt and task state `delivered`, version 3. The registered Brainstorm thread
+`01a136be-732f-7350-b9f5-13d1dddc5ddb` and workspace were freshly observed
+through the pinned existing route. All ten installed candidate hashes match;
+status, doctor and work-view passed. The 331 tracked project files and 89 saved
+scene/selection files match their pre-test hashes. No reply collection occurred.
+
+The next continuation must read onboarding and
+[the acceptance handoff](COMMUNICATION_BRIDGE/FRESH_START_TEST.md), run
+status/work-view, then `./Machine bridge-collect --id native-inspection-fresh-start-001`
+in Desktop/Machine after the existing receiving session processes its queue.
+Do not prepare or send again, or launch/resume an agent as a workaround. Review
+the actual report and both pinned inputs before verification/closure. Retained
+[delivery checkpoint](COMMUNICATION_BRIDGE/live-fresh-start-001/DELIVERY_CHECKPOINT.json)
+and adjacent raw command outputs provide disk-only recovery context. Source and
+saved-file preservation do not establish the live in-memory scene state.
+
+The owner requested direct inspection communication, verification, independent
+red teaming, fixes and reverification, followed by live testing from a fresh
+CodeExp2 start. The ten-file bridge is installed in Desktop/Machine. The existing
+Machine agent independently rejected V1, then passed the corrected V2 source.
+All 81 candidate tests passed. The actual installation retains prior source and
+preserves all private coordination/admission bytes. Installed validation is
+recorded in the [communication expansion](COMMUNICATION_BRIDGE/README.md).
+
+The new commands explicitly observe an existing native project role, submit a
+prepared inspection once, collect its matching completed reply and show retained
+work. They add no session launcher or automatic startup dispatch. Source review
+and the read-only actual socket check establish no successful new live round trip.
+Resume with the [fresh-start acceptance](COMMUNICATION_BRIDGE/FRESH_START_TEST.md):
+delivery and restart have occurred; collect and review that same task from saved
+state without sending again once the reply exists. Live acceptance is pending.
+Historical pilot and scratch permit records below remain unchanged.
+
 ## First implementation
 
 The inspection-coordination foundation is installed in `/Users/boandersson/Desktop/Machine`. It has its own Git repository, preserved Design corpus, root operating instructions, three pinned communication references, a read-only `Machine` command, and a private transactional coordination ledger.

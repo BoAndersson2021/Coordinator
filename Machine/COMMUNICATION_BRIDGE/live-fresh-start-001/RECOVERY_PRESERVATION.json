@@ -1,0 +1,45 @@
+{
+  "observed_at": "2026-10-16T02:59:10.395139+00:00",
+  "project_tracked": {
+    "checked": 331,
+    "matching": 331,
+    "changed": [],
+    "missing": []
+  },
+  "saved_scene_and_selection": {
+    "checked": 89,
+    "matching": 89,
+    "changed": [],
+    "missing": []
+  },
+  "installed_source": {
+    "checked": 10,
+    "matching": 10,
+    "changed": [],
+    "missing": []
+  },
+  "project_head": "0acde2eef5dd5e0191db5b1cdbdbfe7cf6ffed98",
+  "project_head_matches": true,
+  "project_git_status": "",
+  "project_git_status_matches": true,
+  "machine_head": "dd89d38c8d07e82b7b330f0213cfa1f70fa3eb02",
+  "machine_git_status": "M AGENTS.md\n M README.md\n M docs/COORDINATION.md\n M docs/ROADMAP.md\n M src/machine.py\n?? docs/NATIVE_BRIDGE.md\n?? src/native_bridge.py\n?? src/native_socket.py\n?? tests/test_native_bridge.py\n?? tests/test_native_socket.py",
+  "scene_observation_limit": "Saved file and selection hashes only; no live Blender scene query performed.",
+  "prior_private_files": {
+    "checked": 87,
+    "matching": 86,
+    "changed": [
+      ".machine/state.sqlite3"
+    ],
+    "missing": [],
+    "note": "Compared with pre-send baseline. The delivery checkpoint already records state.sqlite3 as changed by assignment/delivery; the recovered task and attempts remain identical to that checkpoint."
+  },
+  "project_tracked_added": [],
+  "project_tracked_removed": [],
+  "task_state": "delivered",
+  "task_version": 3,
+  "attempt_count": 1,
+  "attempts_match_checkpoint": true,
+  "machine_head_matches": true,
+  "machine_git_status_matches": true
+}

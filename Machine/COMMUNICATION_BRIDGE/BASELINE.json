@@ -1,0 +1,23 @@
+{
+  "source": "/Users/boandersson/Desktop/Machine",
+  "head": "dd89d38",
+  "files": {
+    "src/machine.py": "cfd85c9d3778cee6cd63019604d34b5db3e718cbbd41c4e99449a628e9b2626b",
+    "src/admission.py": "0e5df1253350cc8b57b026c2cc406f5a0651f510ceb2c57cf6078a9df20e126b",
+    "tests/test_admission.py": "8738b4e701548d065ce8870cb4f6d88c289c5e3befb48fadddb4b418a3cc9c69",
+    "tests/test_machine.py": "97600e96ff86ec23bc0fff4f6edbadcdcfb1f46a1060adcff274888c2ecd5c72",
+    "docs/COORDINATION.md": "5b1e4763160ecb85a8f99f0f9501a11c9a35995ac51c57d4c110f2952e26aaf1",
+    "docs/ADMISSION.md": "dc9d060565388bfce4d1dbc070f39bf2a040a07c3dd83811f580b32d5aa4161d",
+    "docs/ROADMAP.md": "2e9b3c82edb0df3c258f1eceac076677cef3a93d1f6c6994d46ad33e4bc23f8d",
+    "docs/FOUNDATION_ACCEPTANCE.md": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae",
+    "docs/communications/provenance.json": "f5e5551c09c1f9a2ac195cdd47bcb545f398f2303d0ab6617e58185b74590ac6",
+    "docs/communications/app-terminal-codex-launch-pattern.md": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e",
+    "docs/communications/universal-multi-agent-build-protocol.md": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5",
+    "docs/communications/how-to-communicate-with-other-codex-agents.md": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d",
+    "docs/proposals/ROLE_LIFECYCLE_CONTROL.md": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81",
+    "Machine": "1ccf494a9b252866f3e9e1cb57871a8a653ccb12055e7651891f6d5f4bd6c791",
+    "machine.json": "08cc5c9d5fc196ea0c0cb77eafbfae74fd2341e7a9a0733fde8c8c0d562a798d",
+    "README.md": "ddd706321e8b45bb1e57dec55769c8c0219ce2bafdf8d9abc5afd640d5fb02c0",
+    "AGENTS.md": "5b7484c3d62733579ef1490ebbda5970dfeed8136789328df8b181f74ef45ac8"
+  }
+}

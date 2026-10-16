@@ -1,0 +1,25 @@
+Agentic Game Studio — Complete Handover Package
+
+A portable architectural foundation for an AI-operated game development studio, where autonomous agents collaborate to design, program, create assets, test, and deliver games under controlled human authority.
+
+The package consists of three artifacts:
+
+1. Studio Architecture v0.2 — Defines the Corpus, project structure, agent workforce, task management, source control, runtime, builds, releases, and installation framework.
+2. Capability System v0.1 — Defines 16 first-class capabilities covering laws, rules, contracts, tools, planning, inspection, specification, testing, verification, red teaming, hardening, authority, state, observability, documentation reconciliation, and roadmap management.
+3. Benefit of System v0.2 — Explains the operational and commercial value, costs, limitations, and acceptance criteria.
+
+### Core principles
+
+- Persistent studio, replaceable agents. Knowledge and production state survive individual AI sessions.
+- Human-directed, agent-executed. Humans control intent and consequential decisions; agents perform authorized work.
+- Evidence over claims. Work is accepted through verification, not agent-reported completion.
+- Controlled production. Design, source, assets, runtime, and releases have explicit ownership and traceability.
+- Continuous improvement. Red Team, Hardening, and Documentation Reconciliation detect defects and prevent knowledge drift.
+
+### Current status
+
+Architectural handover complete. Operational implementation pending.
+
+The package provides specifications, machine-readable contracts, installation bootstrap, and static validation—not yet a functioning autonomous studio.
+
+End goal: A scalable game development organization that produces games through coordinated AI agents, with persistent institutional knowledge, measurable results, controlled costs, and minimal routine human supervision.

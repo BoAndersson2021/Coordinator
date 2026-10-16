@@ -1,0 +1,10 @@
+{
+  "finding": "Independent V2 P3 handoff ordering clarification",
+  "change": "Restart now occurs in step 4 immediately after delivery; new session collects in step 5, before review in step 6.",
+  "reviewed_original": "FRESH_START_TEST_REVIEWED_V2.md",
+  "original_sha256": "cde8a3374968fc793b15b645bcb1856e28fab2df972c2827e81b5db2a3f1055e",
+  "current": "FRESH_START_TEST.md",
+  "current_sha256": "365d62f6051cee8d5658a316b5231f9649000bb11751a5114fd75ea884e7975e",
+  "candidate_source_changed": false,
+  "verification": "Coordinator checked reordered instructions against the reviewer finding; source manifest unchanged."
+}

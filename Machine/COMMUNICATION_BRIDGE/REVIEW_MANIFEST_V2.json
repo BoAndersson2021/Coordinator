@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "communication_bridge_candidate",
+  "baseline_head": "dd89d38",
+  "candidate_root": "/Users/boandersson/Desktop/CodeExp2/Machine/COMMUNICATION_BRIDGE/candidate-v2",
+  "files": {
+    "src/machine.py": "f626db0d432f365fed9e07efbf999bc1cbdf9abfb16d0a14c2b15ca8f272a3ec",
+    "src/native_bridge.py": "d7707efaf0984e0969299955a280676a3d4fbfaa7dbd1ed250ac69c21750e64b",
+    "src/native_socket.py": "db00aaf3ff2c64be9da1a4ee0c9ee6c935d0cd12be72a981019015c7a26438dc",
+    "tests/test_native_bridge.py": "391cd92aa03e34378af54c87a374880fdbea4bf19a30ba136ca4dd1329c76265",
+    "tests/test_native_socket.py": "47ce089dcc6c2f851ca6cfafd573caf608589087d66e86ac9ebf7209421b1ca1",
+    "README.md": "a0380233b2760cd1cfe309049ef14689defeaf307935570f9862bd0867dec5d5",
+    "AGENTS.md": "0914015b6eb6a60bc7ae5f34b74c18540631f1d56c8457c93ccdea58b71d8cfa",
+    "docs/COORDINATION.md": "dbc3687fc27c26169caf21626d24191bd97354c12434ff2510bf0d9d18cc053a",
+    "docs/ROADMAP.md": "34579581e08eead19d3c6d15f2d8d616b78e62be84ae36e7615fc5c7b2d93a0d",
+    "docs/NATIVE_BRIDGE.md": "4b998e596e6a6bd0228220e129f1e0af89458767bf2a1fe7b4429f5462436f09"
+  },
+  "installed": false,
+  "live_send_performed": false,
+  "auxiliary_files": {
+    "/Users/boandersson/Desktop/CodeExp2/Machine/COMMUNICATION_BRIDGE/install_candidate.py": "a8bf6f7c449a5bc02b2087a49d55548691fada84fc13e4bd174baafd14bce58e",
+    "/Users/boandersson/Desktop/CodeExp2/Machine/COMMUNICATION_BRIDGE/FRESH_START_TEST.md": "cde8a3374968fc793b15b645bcb1856e28fab2df972c2827e81b5db2a3f1055e"
+  }
+}

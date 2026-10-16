@@ -1,0 +1,7 @@
+# Corrected communication bridge review
+
+Continue the owner-approved independent red team. V1 remains frozen and REJECT in INDEPENDENT_REVIEW_V1.json. The separate candidate-v2 is frozen by REVIEW_MANIFEST_V2.json. Verify ten candidate hashes plus the two auxiliary handoff/installer hashes. Read only: do not execute/import candidates or tests, edit state/source, send messages, activate or run the live test.
+
+Fixes: P1 revalidates registry/profile after remote preflight before dispatch and again inside the post-journal try immediately before queue addition; drift there leaves retained uncertainty and no send. P2 aliases the executable entry module as machine before bridge imports so the exception identity is shared. P3 requires exactly one userMessage and all explicit final answers after it. New regression tests cover adapter/role drift during preflight, role drift after journaling, actual CLI JSON rejection, out-of-order/multiple-input reports, acknowledgement-save failure and interruption after submission before acknowledgement saving. The original 73-test pass and intermediate 75-test pass remain historical. The final expanded full check is in progress.
+
+Review these fixes and the actual final source for remaining blocking defects. Also inspect the narrow installer and fresh-start handoff for contradictions with source/review boundaries. Installation still has not occurred. Return PASS/REJECT in the completed response, with exact triggers and file/line findings. Source acceptance does not award fresh-start live acceptance.
