@@ -1,0 +1,21 @@
+schema_version: 1
+gates:
+- id: completeness
+  required: true
+  status: unverified_until_validator_run
+- id: referential_integrity
+  required: true
+  status: unverified_until_validator_run
+- id: authority_consistency
+  required: true
+  status: unverified_until_validator_run
+- id: state_consistency
+  required: true
+  status: unverified_until_validator_run
+- id: workflow_safety
+  required: true
+  status: unverified_until_validator_run
+- id: handoff_integrity
+  required: true
+  status: unverified_until_validator_run
+operational_qualification: blocked_unbound_adapters

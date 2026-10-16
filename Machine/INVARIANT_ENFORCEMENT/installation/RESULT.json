@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "installed_at": "2026-10-16T03:34:12.082215+00:00",
+  "status": "installed_fail_closed_enforcement",
+  "source_manifest": "REVIEW_MANIFEST_V3.json",
+  "manifest_sha256": "260dccdb7ef5c0f1aecd23bd827bd14dc3fde1fa9b09336207c6a89c243fa432",
+  "source_files_matching": 17,
+  "prior_source": "installation/previous",
+  "private_files_preserved": 87,
+  "private_bytes_changed": [],
+  "hook_path": "/Users/boandersson/Desktop/Machine/.git/machine-invariant-hooks",
+  "installed_hook_sha256": "024d56a50cc59ba15707024b3f4484575afaf9db8882b49aa70c98fc972c1a4b",
+  "installed_verifier_sha256": "a13442dcb3914ce0ada1ab1224a1fc3d2065ff7d1340d0f862ae925db845f2c8",
+  "review_turn_id": "01a142c2-fe80-7913-9119-ebcc703a0d94",
+  "workflow_execution": "blocked",
+  "runtime_automation_qualified": false,
+  "project_dispatch_or_lifecycle_effects": false
+}

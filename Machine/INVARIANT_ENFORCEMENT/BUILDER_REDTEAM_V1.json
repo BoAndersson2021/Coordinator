@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "status": "REJECT",
+  "scope": "Mock socket only; no connection, real send, source change or private-state mutation.",
+  "finding": "Direct raw NativeSocket._send serializes a queue RPC without the invariant guard enforced in _request. Current Python adapter boundary needs the same guard before raw wire writes.",
+  "socket_write_count": 1
+}

@@ -1,0 +1,2222 @@
+[
+  {
+    "repository": "CodeExp2",
+    "file": "README.md",
+    "classification": "maintained_current",
+    "sha256": "d821bae8e1c03ae0df48e9c7a1e4a4df9aa36d31572dc0845b1438b44e319ef2"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Mission_Sofar.md",
+    "classification": "maintained_current",
+    "sha256": "3b1684341d59c5209aba59b7c4b6567023d334b653e9047e8d2ca7b5a26cc3ba"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "AGENTS.md",
+    "classification": "maintained_current",
+    "sha256": "9bf24df2bcbfddb687edeeefe0101586b20d02502e9b2a84b33a4eee27f3e613"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "docs/app-terminal-codex-launch-pattern.md",
+    "classification": "maintained_current",
+    "sha256": "574b8b6a9debb06cd0d67251e58075dd8a9b06372971aa503d6430813baafde8"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "docs/universal-multi-agent-build-protocol.md",
+    "classification": "maintained_current",
+    "sha256": "cfd60d100956023a13f7d2f2530ccb743d516dddce4d14b9a14b5a6d38dd9f29"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "docs/how-to-communicate-with-other-codex-agents.md",
+    "classification": "maintained_current",
+    "sha256": "2a6a19a879997a5da8c285e286901aea63a071a3316d44d507a870fe332b8750"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CASTLE_FIXTURE_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a205975dc65a4c772026a2d54508f91d4cdf9b20a74e457005796474b745c8a6"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CASTLE_V29_PUBLICATION_CONFIRMATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "277a1d878a4b8bf3c20f2f1decc1bf129ba5b94785800f28634f5259704edd8d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md",
+    "classification": "maintained_current",
+    "sha256": "76642c52d80a61beca36318346fd00d3f52c780fa41b11801ddc8d800d40bc1b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CURRENT_STRUCTURE.yaml",
+    "classification": "maintained_current",
+    "sha256": "6dd53a1005532a3b402234df30187a94b2252f471d5fded74ca631fdc6cea938"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/README.md",
+    "classification": "maintained_current",
+    "sha256": "94242d2f371eece7a0938ded11a3a258e82f0d61dc81aa2544acf9838f89de65"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CASTLE_V29_FIXTURE_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a7d0d084a65cd9f882dede7858fa96ab378418df39ab6e242d03194d28889827"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CASTLE_V28_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c6b13ee603b8913f889298a395a4ddf9f8770d168e56f6da2d909f1dd97fa380"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_INDEX.md",
+    "classification": "maintained_current",
+    "sha256": "8ae418a6b1f02eb5ad041f54cc143e6f0efcd898621ed2a752314099f436cbda"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CASTLE_LIVE_TEST.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ac282fdcb43ff02c9797c550d8feae03eddbf453c22615b38dadbac3ba1dc43e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/AGENTS.md",
+    "classification": "maintained_current",
+    "sha256": "6a22c72fd82418c735de35e328c2ec37768a942da24661967b42044f291748b4"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CASTLE_V29_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "372f6fc11fb4e6460ac46a34c184824f5760c89c52c136a9e6c85f61ebb2f1b4"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/CURRENT_MISSION.md",
+    "classification": "maintained_current",
+    "sha256": "098f7f55be9bcd7b5fd78ee8deab4fc8b358da8472f9b6d134704a641531af89"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md",
+    "classification": "maintained_current",
+    "sha256": "e006ba425aad3a643071b8a5aafb7c5d9c8832626546b4c6bc76bd6e68415125"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DESIGN_AND_MISSION.md",
+    "classification": "maintained_current",
+    "sha256": "ad5132d157b56c2c720c211ca73cbd91ed619b289c54f0f53dddd3b78c43881e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/ADMISSION_TEST/REPORT.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "658775a3cd687baf6eb07616c194851319a34a16962b7a5ebbf54a4737654d98"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/README.md",
+    "classification": "maintained_current",
+    "sha256": "662a67c0f66797b3642a539a5c39b265bd463729e5a9a28f619c0c2045551eea"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/REVIEW_BRIEF.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f1c6fec7be77e0a8f35fcd1e8be162656bfda78a7bb24a60cb23d034ee8b724c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/REVIEW_BRIEF_V2.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0813d0aca77dc1304daf7ab2ed9b72d541d79b11aa99e5d8c89655a0baa73452"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/REVIEW_BRIEF_V3.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "8ff959213db675dd506df33ee1168b59d6f6160dd6747af1c72b594fb82b19d7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/FRESH_START_TEST.md",
+    "classification": "maintained_current",
+    "sha256": "d93cb2a9ee623901cbd13ec5b6126fca37bab7f7f9c3b85e32bd22e24b9ce3f3"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/FRESH_START_TEST_REVIEWED_V2.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "cde8a3374968fc793b15b645bcb1856e28fab2df972c2827e81b5db2a3f1055e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/README.md",
+    "classification": "maintained_current",
+    "sha256": "ec7f8127178e2c28fdd6b81205c8c7bbc6a2d223a7777a1aaabae83b6ac57269"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/REVIEW_BRIEF.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "1ed528081216c23d0a103a320123dea7ae3a86dec88d08c0f58bb393291bb5e0"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/REVIEW_BRIEF_V2.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a8770d62d16d46c93cf18d05e75ef4baaf6476175777f15d0bb577a680b2ce48"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/AGENT_BEHAVIOR_TEST/REPORT.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca82fc13bceaf83d105f2b1781e72ce3aa8c738969bd3ef3d03ec40669938d26"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0a5f26b1996c0757da71f4fc3f1d2467dbe4dc51985b6986991eebae4cd7409b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6930b78e83121408d654161da092c3099f9469f5a78933c6d7d7e913379a8afc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Mission_Sofar.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "33d5d5d79bb00e506f48c4f65f55f73ae782810d028b11d076b8185383b8442e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "e6671e940bfef90ec3bc85b3be15158393e2ca68229d41e376406108b274f090"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/docs/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/docs/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/docs/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CASTLE_FIXTURE_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a205975dc65a4c772026a2d54508f91d4cdf9b20a74e457005796474b745c8a6"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CASTLE_V29_PUBLICATION_CONFIRMATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "277a1d878a4b8bf3c20f2f1decc1bf129ba5b94785800f28634f5259704edd8d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f35257c19f836954fa27173cfa5fbbc0f48cf66bd778ab2cac6921e26c61593f"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CURRENT_STRUCTURE.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ad70a46ef31fc17ee5d535d3b333c96d21912d325fc2b2740294d082fefbf4f0"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "32a70a5cec6dde9e4a3c8dc580cae038f3ea35855fc8fd72519afc3dc19c7a1e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CASTLE_V29_FIXTURE_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a7d0d084a65cd9f882dede7858fa96ab378418df39ab6e242d03194d28889827"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CASTLE_V28_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c6b13ee603b8913f889298a395a4ddf9f8770d168e56f6da2d909f1dd97fa380"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CASTLE_LIVE_TEST.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ac282fdcb43ff02c9797c550d8feae03eddbf453c22615b38dadbac3ba1dc43e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b7160c1a9092f367090d321bf646fbd951009576926d8cf6e49d281759129d41"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CASTLE_V29_VERIFICATION_DECISION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "372f6fc11fb4e6460ac46a34c184824f5760c89c52c136a9e6c85f61ebb2f1b4"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/CURRENT_MISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "74ef70ac5197b52c6c9e9cf5430637649760d22026d6070de48a0b5fef2c6a05"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a77cac9e4292c5221884da24d96e8c0f6d24257125377a3e3119b46b6204b001"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/DESIGN_AND_MISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6dc21e6e813f159a2ec75d8854a99374e2cbec061203825488bf0bf1bfd25c5c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/COMMUNICATION_BRIDGE/FRESH_START_TEST.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "3fd8508f6641b02c26515090e1a512d65768ac1a2cc7963e299f449bdbe33a05"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/CodeExp2/Machine/COMMUNICATION_BRIDGE/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "bbfdb95bcf3ad5868a349652c0dba8fdc034509f97ddb7a29ec368dee70ee8bc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/Design/Intent.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "10f643790392477055f02449560212dc0ffa7d69be8d4c39f73a27f74257c522"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/Design/Benefit-of-System-v0.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca3fdeaf23ac70e04ccd752eabb1715149cb1755c12f9f9cec25565187326c56"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c91a1cfc5f336f24a44b9b5510f67f33561d60fd09dba58d5a2a906613175561"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/WORKFLOW_INVARIANT.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "86fbc46c86109b147ca4cf34a47c26c8cfaa048baba1a59c96f0bd8e49dda675"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "995a918cb053ac0361ce63aaf2f96055447a85a5a490cb5f15a724ea37699b18"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca6c4f373b8186a7f30ed0bda31c5278d3148dc12bc69ef85d52142759056bed"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6a278972324c0f5a3e0829eeda763d9d2f2a43da79c7154d9c6c47539018ede1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "238deb36e347bf12db7382aa61e30534db66284d3d2a4c1676cd3244e51adc9c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/DOCUMENTATION_SYNC/previous/Machine/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a0380233b2760cd1cfe309049ef14689defeaf307935570f9862bd0867dec5d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0914015b6eb6a60bc7ae5f34b74c18540631f1d56c8457c93ccdea58b71d8cfa"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a0380233b2760cd1cfe309049ef14689defeaf307935570f9862bd0867dec5d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0914015b6eb6a60bc7ae5f34b74c18540631f1d56c8457c93ccdea58b71d8cfa"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/installation/previous/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ddd706321e8b45bb1e57dec55769c8c0219ce2bafdf8d9abc5afd640d5fb02c0"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/installation/previous/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5b7484c3d62733579ef1490ebbda5970dfeed8136789328df8b181f74ef45ac8"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/installation/previous/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5b1e4763160ecb85a8f99f0f9501a11c9a35995ac51c57d4c110f2952e26aaf1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/installation/previous/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2e9b3c82edb0df3c258f1eceac076677cef3a93d1f6c6994d46ad33e4bc23f8d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/Intent.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "10f643790392477055f02449560212dc0ffa7d69be8d4c39f73a27f74257c522"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/Benefit-of-System-v0.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca3fdeaf23ac70e04ccd752eabb1715149cb1755c12f9f9cec25565187326c56"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c91a1cfc5f336f24a44b9b5510f67f33561d60fd09dba58d5a2a906613175561"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "dbc3687fc27c26169caf21626d24191bd97354c12434ff2510bf0d9d18cc053a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "dc9d060565388bfce4d1dbc070f39bf2a040a07c3dd83811f580b32d5aa4161d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "34579581e08eead19d3c6d15f2d8d616b78e62be84ae36e7615fc5c7b2d93a0d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4b998e596e6a6bd0228220e129f1e0af89458767bf2a1fe7b4429f5462436f09"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "988db3530307ca16a382d0e638632bfa26aea4ef8c38d07065233d8eae0e29b7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/handoff/acceptance.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/handoff/integration.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/task.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/release.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/authority.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/state.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/integration.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/tool.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/contracts/asset.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/registry/tools.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/registry/rules.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/registry/citizens.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/registry/laws.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate-v2/Design/studio-capability-system-v0.1/registry/contracts.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/Intent.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "10f643790392477055f02449560212dc0ffa7d69be8d4c39f73a27f74257c522"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/Benefit-of-System-v0.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca3fdeaf23ac70e04ccd752eabb1715149cb1755c12f9f9cec25565187326c56"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c91a1cfc5f336f24a44b9b5510f67f33561d60fd09dba58d5a2a906613175561"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "dbc3687fc27c26169caf21626d24191bd97354c12434ff2510bf0d9d18cc053a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "dc9d060565388bfce4d1dbc070f39bf2a040a07c3dd83811f580b32d5aa4161d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "34579581e08eead19d3c6d15f2d8d616b78e62be84ae36e7615fc5c7b2d93a0d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5b2fee827bbcd68ade6015a7c60643445d76244f47a5fff834fe0ca939e4259c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "988db3530307ca16a382d0e638632bfa26aea4ef8c38d07065233d8eae0e29b7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/handoff/acceptance.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/handoff/integration.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/task.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/release.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/authority.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/state.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/integration.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/tool.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/contracts/asset.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/registry/tools.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/registry/rules.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/registry/citizens.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/registry/laws.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/COMMUNICATION_BRIDGE/candidate/Design/studio-capability-system-v0.1/registry/contracts.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0a5f26b1996c0757da71f4fc3f1d2467dbe4dc51985b6986991eebae4cd7409b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6930b78e83121408d654161da092c3099f9469f5a78933c6d7d7e913379a8afc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0a5f26b1996c0757da71f4fc3f1d2467dbe4dc51985b6986991eebae4cd7409b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f154e919c172a2e1371a1ca72b2fd7a26562a8150965ce5765fb8b90f52144c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0a5f26b1996c0757da71f4fc3f1d2467dbe4dc51985b6986991eebae4cd7409b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6930b78e83121408d654161da092c3099f9469f5a78933c6d7d7e913379a8afc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/installation/previous/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "a0380233b2760cd1cfe309049ef14689defeaf307935570f9862bd0867dec5d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/installation/previous/AGENTS.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0914015b6eb6a60bc7ae5f34b74c18540631f1d56c8457c93ccdea58b71d8cfa"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/installation/previous/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "dbc3687fc27c26169caf21626d24191bd97354c12434ff2510bf0d9d18cc053a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/installation/previous/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "dc9d060565388bfce4d1dbc070f39bf2a040a07c3dd83811f580b32d5aa4161d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/installation/previous/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "34579581e08eead19d3c6d15f2d8d616b78e62be84ae36e7615fc5c7b2d93a0d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/installation/previous/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4b998e596e6a6bd0228220e129f1e0af89458767bf2a1fe7b4429f5462436f09"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/Intent.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "10f643790392477055f02449560212dc0ffa7d69be8d4c39f73a27f74257c522"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/Benefit-of-System-v0.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca3fdeaf23ac70e04ccd752eabb1715149cb1755c12f9f9cec25565187326c56"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c91a1cfc5f336f24a44b9b5510f67f33561d60fd09dba58d5a2a906613175561"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/WORKFLOW_INVARIANT.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "86fbc46c86109b147ca4cf34a47c26c8cfaa048baba1a59c96f0bd8e49dda675"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "995a918cb053ac0361ce63aaf2f96055447a85a5a490cb5f15a724ea37699b18"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca6c4f373b8186a7f30ed0bda31c5278d3148dc12bc69ef85d52142759056bed"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6a278972324c0f5a3e0829eeda763d9d2f2a43da79c7154d9c6c47539018ede1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "238deb36e347bf12db7382aa61e30534db66284d3d2a4c1676cd3244e51adc9c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "988db3530307ca16a382d0e638632bfa26aea4ef8c38d07065233d8eae0e29b7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/handoff/acceptance.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/handoff/integration.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/task.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/release.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/authority.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/state.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/integration.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/tool.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/contracts/asset.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/registry/tools.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/registry/rules.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/registry/citizens.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/registry/laws.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v2/Design/studio-capability-system-v0.1/registry/contracts.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/Intent.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "10f643790392477055f02449560212dc0ffa7d69be8d4c39f73a27f74257c522"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/Benefit-of-System-v0.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca3fdeaf23ac70e04ccd752eabb1715149cb1755c12f9f9cec25565187326c56"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c91a1cfc5f336f24a44b9b5510f67f33561d60fd09dba58d5a2a906613175561"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/WORKFLOW_INVARIANT.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "64d780ef43e8d74975a3a60ca36229f39325a8d3a535eec58214ed431e5947db"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "995a918cb053ac0361ce63aaf2f96055447a85a5a490cb5f15a724ea37699b18"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca6c4f373b8186a7f30ed0bda31c5278d3148dc12bc69ef85d52142759056bed"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6a278972324c0f5a3e0829eeda763d9d2f2a43da79c7154d9c6c47539018ede1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "238deb36e347bf12db7382aa61e30534db66284d3d2a4c1676cd3244e51adc9c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "988db3530307ca16a382d0e638632bfa26aea4ef8c38d07065233d8eae0e29b7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/handoff/acceptance.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/handoff/integration.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/task.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/release.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/authority.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/state.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/integration.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/tool.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/contracts/asset.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/registry/tools.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/registry/rules.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/registry/citizens.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/registry/laws.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate/Design/studio-capability-system-v0.1/registry/contracts.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/Intent.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "10f643790392477055f02449560212dc0ffa7d69be8d4c39f73a27f74257c522"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/Benefit-of-System-v0.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca3fdeaf23ac70e04ccd752eabb1715149cb1755c12f9f9cec25565187326c56"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c91a1cfc5f336f24a44b9b5510f67f33561d60fd09dba58d5a2a906613175561"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/WORKFLOW_INVARIANT.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "86fbc46c86109b147ca4cf34a47c26c8cfaa048baba1a59c96f0bd8e49dda675"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/COORDINATION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "995a918cb053ac0361ce63aaf2f96055447a85a5a490cb5f15a724ea37699b18"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/ADMISSION.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ca6c4f373b8186a7f30ed0bda31c5278d3148dc12bc69ef85d52142759056bed"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/ROADMAP.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6a278972324c0f5a3e0829eeda763d9d2f2a43da79c7154d9c6c47539018ede1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/NATIVE_BRIDGE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "238deb36e347bf12db7382aa61e30534db66284d3d2a4c1676cd3244e51adc9c"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "25ef5e63a0ff9c2291c474fc5b373ba312c3bd3d96ff87f09c6e2b39d1603b81"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "988db3530307ca16a382d0e638632bfa26aea4ef8c38d07065233d8eae0e29b7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt",
+    "classification": "historical_source_or_evidence",
+    "sha256": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/handoff/acceptance.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/handoff/integration.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/task.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/release.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/authority.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/state.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/integration.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/tool.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/contracts/asset.contract.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/registry/tools.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/registry/rules.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/registry/citizens.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/registry/laws.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc"
+  },
+  {
+    "repository": "CodeExp2",
+    "file": "Machine/INVARIANT_ENFORCEMENT/candidate-v3/Design/studio-capability-system-v0.1/registry/contracts.yaml",
+    "classification": "historical_source_or_evidence",
+    "sha256": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3"
+  },
+  {
+    "repository": "Machine",
+    "file": "README.md",
+    "classification": "maintained_current",
+    "sha256": "756aab4e11832544824718e6fbd9fbe787eee6f0723eb5be36e3a8f96efb52a9"
+  },
+  {
+    "repository": "Machine",
+    "file": "AGENTS.md",
+    "classification": "maintained_current",
+    "sha256": "62199422a044f280bd1f7d1ef54ce5228309deb1c57674b2f8c2daf92ecb3a3d"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/Intent.txt",
+    "classification": "maintained_current",
+    "sha256": "be5d6055f22a2d17db83ea1f570dc3e6559425e06e619f9abbd0a89e0dbc706c"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/README.md",
+    "classification": "maintained_current",
+    "sha256": "76ec125062241a316dcd0696de44e39b7378f09e2274015bfd68b852c203a96c"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/Benefit-of-System-v0.2.txt",
+    "classification": "maintained_current",
+    "sha256": "ad4d3a4b7c89352a6d494b367a707f193dc5922c8a98f82ed74763f11000464f"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/THE-MAMMUTH-MACHINE.txt",
+    "classification": "maintained_current",
+    "sha256": "01fa8499271f8a26d1cfad7dc52fb08e8f2d71af637fe730570cf8f9b2eebc76"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/WORKFLOW_INVARIANT.md",
+    "classification": "maintained_current",
+    "sha256": "fc699287a90d0f6a5b9108d58fbd4fb853aa47e4e71738f320dbe60578f264a1"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/COORDINATION.md",
+    "classification": "maintained_current",
+    "sha256": "6c69a0f852cb9fbc3c1028edf09773e6e2d7d26be8e02903b8835d5928b498e9"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/RUNBOOK.md",
+    "classification": "maintained_current",
+    "sha256": "69fe38685f99faa96d6da5a92a78eaaa79fac6f4f16bc9d196b5ddf9c4ef500f"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/ADMISSION.md",
+    "classification": "maintained_current",
+    "sha256": "649a30d214d412ccde9a20803c7d9a388cee068faa26d438f4b9e1154829820f"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/ROADMAP.md",
+    "classification": "maintained_current",
+    "sha256": "5b0fe5222b7396394044e7e249ddfcff6b4288bab31d75fc81757ebd5fe1d096"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/DOCUMENTATION_INDEX.md",
+    "classification": "maintained_current",
+    "sha256": "e432eda8af5f17fbd37dff33ad674e9d8c6a907a01880adae0fe5fd32b713ed4"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/NATIVE_BRIDGE.md",
+    "classification": "maintained_current",
+    "sha256": "a75917864c99d4f2f7af986d4173dcd06a9ba03cff08239b0ba04aaab2b6311e"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/FOUNDATION_ACCEPTANCE.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "b34f18c0de74ce7068408de11647c2b69c8e72a1028b7e3c0d1eb2ef7451fbae"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/app-terminal-codex-launch-pattern.md",
+    "classification": "maintained_current",
+    "sha256": "574b8b6a9debb06cd0d67251e58075dd8a9b06372971aa503d6430813baafde8"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/README.md",
+    "classification": "maintained_current",
+    "sha256": "44db855417144840ba7b61cd18703d09036cb6fe3cc7a7c2f2bd018ce01f1a78"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/universal-multi-agent-build-protocol.md",
+    "classification": "maintained_current",
+    "sha256": "cfd60d100956023a13f7d2f2530ccb743d516dddce4d14b9a14b5a6d38dd9f29"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/how-to-communicate-with-other-codex-agents.md",
+    "classification": "maintained_current",
+    "sha256": "2a6a19a879997a5da8c285e286901aea63a071a3316d44d507a870fe332b8750"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/proposals/ROLE_LIFECYCLE_CONTROL.md",
+    "classification": "maintained_current",
+    "sha256": "48ee9fa0ddb25edd96579947ba321578a4e329d4c9dba1bde25ace7d1e80218b"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/archive/pre-invariant-20261016/app-terminal-codex-launch-pattern.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/archive/pre-invariant-20261016/README.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "f21119feb217f9d94939038e5e12bd630e89b80d77aa578a396b85287515e1e0"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/archive/pre-invariant-20261016/universal-multi-agent-build-protocol.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5"
+  },
+  {
+    "repository": "Machine",
+    "file": "docs/communications/archive/pre-invariant-20261016/how-to-communicate-with-other-codex-agents.md",
+    "classification": "historical_source_or_evidence",
+    "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/README.md",
+    "classification": "frozen_specification_input",
+    "sha256": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/README.md",
+    "classification": "frozen_specification_input",
+    "sha256": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/evidence/test-results.txt",
+    "classification": "frozen_specification_input",
+    "sha256": "988db3530307ca16a382d0e638632bfa26aea4ef8c38d07065233d8eae0e29b7"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt",
+    "classification": "frozen_specification_input",
+    "sha256": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt",
+    "classification": "frozen_specification_input",
+    "sha256": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt",
+    "classification": "frozen_specification_input",
+    "sha256": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt",
+    "classification": "frozen_specification_input",
+    "sha256": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/handoff/acceptance.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/handoff/integration.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/task.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/release.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/authority.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/state.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/integration.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/tool.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/contracts/asset.contract.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md",
+    "classification": "frozen_specification_input",
+    "sha256": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/registry/tools.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/registry/rules.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/registry/citizens.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/registry/laws.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc"
+  },
+  {
+    "repository": "Machine",
+    "file": "Design/studio-capability-system-v0.1/registry/contracts.yaml",
+    "classification": "frozen_specification_input",
+    "sha256": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3"
+  }
+]

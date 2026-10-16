@@ -1,0 +1,60 @@
+schema_version: 1
+registry: laws
+entries:
+- id: LAW-AUTH-001
+  statement: Protected mutations require an independently validated scoped grant
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-STATE-001
+  statement: Only the designated domain owner commits authoritative state
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-EXT-001
+  statement: Uncertain external effects block blind retries and conflicting operations
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-EVID-001
+  statement: Evidence binds to the exact tested artifact and environment
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-DOC-001
+  statement: Stale or disputed sources cannot silently become current authoritative
+    context
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-REL-001
+  statement: Promotion and publication require distinct grants
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-HARD-001
+  statement: Defect closure requires correction evidence on the corrected revision
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required
+- id: LAW-ROAD-001
+  statement: Milestone acceptance derives from verified evidence, not executor claims
+  owner: studio_policy_owner
+  scope: studio
+  override: prohibited_without_formal_law_revision
+  enforcement: required_external_adapter
+  verification: negative_test_required

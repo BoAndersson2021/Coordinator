@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T03:33:26.970563+00:00",
+  "verdict": "PASS",
+  "manifest": "REVIEW_MANIFEST_V3.json",
+  "manifest_sha256": "260dccdb7ef5c0f1aecd23bd827bd14dc3fde1fa9b09336207c6a89c243fa432",
+  "review_file": "INDEPENDENT_REVIEW_V3.json",
+  "review_file_sha256": "8e0df9a3fe30c48642b880a47eff9d21e04ec18824cbf34b5394efcc2c545056",
+  "review_thread_id": "01a13808-1755-7643-9165-f2035aa16d16",
+  "review_turn_id": "01a142c2-fe80-7913-9119-ebcc703a0d94",
+  "tests": 98,
+  "hook_proof_cases": 14,
+  "hook_proof_file": "HOOK_VERIFICATION_V3.json",
+  "source_hashes_matching": 17,
+  "owner_scope": "Owner explicitly required this invariant to be enforced across Machine/adapters and every future feature, with mandatory AGENTS and pre-commit blocking; install the reviewed fail-closed enforcement under that scope.",
+  "qualified_runtime_automation": false
+}

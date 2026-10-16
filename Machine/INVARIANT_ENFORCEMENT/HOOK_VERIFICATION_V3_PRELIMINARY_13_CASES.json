@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "reviewed staged snapshot",
+      "exit_code": 0,
+      "committed": true
+    },
+    {
+      "case": "executable edit without staged invariant regressions",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "MACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: New or edited executable features require staged invariant regression coverage\n"
+    },
+    {
+      "case": "staged disabled guard masked by repaired working tree",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "efore_state_creation) (args=['permit-execute', '--permit-id', 'permit', '--request', 'missing'])\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/machine-staged-invariant-fw29pdza/tests/test_workflow_invariant.py\", line 138, in test_workflow_cli_denies_before_state_creation\n    self.assertEqual(machine.main(args), invariant.EXIT_CODE)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 2 != 3\n\n----------------------------------------------------------------------\nRan 17 tests in 0.958s\n\nFAILED (failures=32, errors=3)\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: mandatory tests did not complete successfully: test_workflow_invariant.WorkflowInvariantTests.test_all_known_and_unknown_adapters_fail_without_a_provider, test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback, test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger, test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection, test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects, test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization, test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes, test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default, test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "new unregistered adapter",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "t_public_and_private_queue_paths_deny_before_writes) ... ok\ntest_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok\ntest_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok\n\n======================================================================\nFAIL: test_every_runtime_module_is_in_the_closed_inventory (test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/machine-staged-invariant-bhgy39bn/tests/test_workflow_invariant.py\", line 64, in test_every_runtime_module_is_in_the_closed_inventory\n    self.assertEqual(actual, set(invariant.SOURCE_MODULES),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     'New adapters/modules require invariant integration and acceptance coverage')\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Items in the first set but not the second:\n'unregistered_adapter.py' : New adapters/modules require invariant integration and acceptance coverage\n\n----------------------------------------------------------------------\nRan 17 tests in 0.953s\n\nFAILED (failures=1)\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: mandatory tests did not complete successfully: test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "missing staged checker despite working-tree checker",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "MACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Mandatory invariant enforcement file missing from index: scripts/check_workflow_invariant.py\n"
+    },
+    {
+      "case": "non-executable staged hook despite executable working copy",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "MACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged pre-commit hook must be executable (100755)\n"
+    },
+    {
+      "case": "no-op staged and working-tree hook cannot replace installed verifier",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "ects) ... ok\ntest_scratch_denies_before_permit_consumption_or_initialization (test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization) ... ok\ntest_socket_public_and_private_queue_paths_deny_before_writes (test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes) ... ok\ntest_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok\ntest_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok\n\n======================================================================\nFAIL: test_hook_bootstrap_propagates_installed_verifier_failure (test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/machine-staged-invariant-4cun56us/tests/test_workflow_invariant.py\", line 181, in test_hook_bootstrap_propagates_installed_verifier_failure\n    self.assertEqual(result.returncode, 3, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 3 : \n\n----------------------------------------------------------------------\nRan 17 tests in 0.862s\n\nFAILED (failures=1)\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: mandatory tests did not complete successfully: test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "no-op staged checker cannot replace installed verifier",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "e_or_unknown_effects) ... ok\ntest_scratch_denies_before_permit_consumption_or_initialization (test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization) ... ok\ntest_socket_public_and_private_queue_paths_deny_before_writes (test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes) ... ok\ntest_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok\ntest_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok\n\n======================================================================\nFAIL: test_checker_cannot_succeed_without_staged_repository (test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/machine-staged-invariant-gh4d5td3/tests/test_workflow_invariant.py\", line 188, in test_checker_cannot_succeed_without_staged_repository\n    self.assertEqual(result.returncode, 3, result.stderr)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 3 : \n\n----------------------------------------------------------------------\nRan 17 tests in 0.898s\n\nFAILED (failures=1)\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: mandatory tests did not complete successfully: test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "new adapter outside src inventory",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "rites) ... ok\ntest_unknown_and_workflow_commands_deny_by_default (test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default) ... ok\ntest_workflow_cli_denies_before_state_creation (test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation) ... ok\n\n======================================================================\nFAIL: test_every_runtime_module_is_in_the_closed_inventory (test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/machine-staged-invariant-hkwzksgo/tests/test_workflow_invariant.py\", line 66, in test_every_runtime_module_is_in_the_closed_inventory\n    self.assertEqual(invariant.runtime_files(ROOT), set(invariant.RUNTIME_FILES),\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                     'All executable files, scripts and adapters require invariant integration')\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Items in the first set but not the second:\n'scripts/unregistered_adapter.py' : All executable files, scripts and adapters require invariant integration\n\n----------------------------------------------------------------------\nRan 17 tests in 0.944s\n\nFAILED (failures=1)\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: mandatory tests did not complete successfully: test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "mandatory invariant test removed",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "MACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Mandatory invariant regressions removed: test_raw_wire_cannot_submit_queue_or_unknown_effects\n"
+    },
+    {
+      "case": "mandatory invariant tests skipped",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "n_adapters_fail_without_a_provider, test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository, test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback, test_workflow_invariant.WorkflowInvariantTests.test_every_cli_command_has_an_explicit_scope, test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory, test_workflow_invariant.WorkflowInvariantTests.test_governance_requires_future_features_and_hook, test_workflow_invariant.WorkflowInvariantTests.test_health_commands_fail_loudly_with_observation_separate_from_readiness, test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure, test_workflow_invariant.WorkflowInvariantTests.test_launcher_cannot_bypass_guarded_cli, test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger, test_workflow_invariant.WorkflowInvariantTests.test_missing_or_broken_runtime_modules_fail_with_structured_invariant, test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection, test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects, test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization, test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes, test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default, test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "mandatory invariant tests omitted from discovery",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "n_adapters_fail_without_a_provider, test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository, test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback, test_workflow_invariant.WorkflowInvariantTests.test_every_cli_command_has_an_explicit_scope, test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory, test_workflow_invariant.WorkflowInvariantTests.test_governance_requires_future_features_and_hook, test_workflow_invariant.WorkflowInvariantTests.test_health_commands_fail_loudly_with_observation_separate_from_readiness, test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure, test_workflow_invariant.WorkflowInvariantTests.test_launcher_cannot_bypass_guarded_cli, test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger, test_workflow_invariant.WorkflowInvariantTests.test_missing_or_broken_runtime_modules_fail_with_structured_invariant, test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection, test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects, test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization, test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes, test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default, test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    },
+    {
+      "case": "early successful exit cannot replace actual test completion",
+      "exit_code": 1,
+      "committed": false,
+      "head_unchanged": true,
+      "stderr_tail": "n_adapters_fail_without_a_provider, test_workflow_invariant.WorkflowInvariantTests.test_checker_cannot_succeed_without_staged_repository, test_workflow_invariant.WorkflowInvariantTests.test_environment_cannot_enable_manual_fallback, test_workflow_invariant.WorkflowInvariantTests.test_every_cli_command_has_an_explicit_scope, test_workflow_invariant.WorkflowInvariantTests.test_every_runtime_module_is_in_the_closed_inventory, test_workflow_invariant.WorkflowInvariantTests.test_governance_requires_future_features_and_hook, test_workflow_invariant.WorkflowInvariantTests.test_health_commands_fail_loudly_with_observation_separate_from_readiness, test_workflow_invariant.WorkflowInvariantTests.test_hook_bootstrap_propagates_installed_verifier_failure, test_workflow_invariant.WorkflowInvariantTests.test_launcher_cannot_bypass_guarded_cli, test_workflow_invariant.WorkflowInvariantTests.test_manual_dispatch_handover_and_acceptance_deny_before_ledger, test_workflow_invariant.WorkflowInvariantTests.test_missing_or_broken_runtime_modules_fail_with_structured_invariant, test_workflow_invariant.WorkflowInvariantTests.test_native_send_denies_before_ledger_or_connection, test_workflow_invariant.WorkflowInvariantTests.test_raw_wire_cannot_submit_queue_or_unknown_effects, test_workflow_invariant.WorkflowInvariantTests.test_scratch_denies_before_permit_consumption_or_initialization, test_workflow_invariant.WorkflowInvariantTests.test_socket_public_and_private_queue_paths_deny_before_writes, test_workflow_invariant.WorkflowInvariantTests.test_unknown_and_workflow_commands_deny_by_default, test_workflow_invariant.WorkflowInvariantTests.test_workflow_cli_denies_before_state_creation\nMACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: Staged invariant/coordination suite failed; commit blocked\n"
+    }
+  ],
+  "elapsed_seconds": 57.743,
+  "scope": "Disposable Git repository only; no production commit, source change or workflow dispatch."
+}

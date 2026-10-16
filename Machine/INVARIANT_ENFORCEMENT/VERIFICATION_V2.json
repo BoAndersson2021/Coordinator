@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T03:26:41.011828+00:00",
+  "manifest": "REVIEW_MANIFEST_V2.json",
+  "manifest_sha256": "3f516fb856bf1932c886e83168faf765b87a52689cbe9cafce9315159c9d429c",
+  "source_hashes_matching": 17,
+  "actual_staged_hook_suite": {
+    "tests": 98,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 37.565,
+    "log": "HOOK_POSITIVE_V2.log"
+  },
+  "hook_verification": "HOOK_VERIFICATION_V2.json",
+  "hook_cases": 10,
+  "result": "PASS",
+  "independent_review": "in_progress",
+  "installed": false,
+  "runtime_automation_qualified": false
+}

@@ -1,0 +1,21 @@
+{
+  "adoption": "communication_reference_snapshot",
+  "does_not_grant_authority": true,
+  "files": {
+    "app-terminal-codex-launch-pattern.md": {
+      "sha256": "5e7d6165da6ed04ae4addee767180df91615f3a0d0fe273eaf42356c33820f7e",
+      "source_path": "docs/app-terminal-codex-launch-pattern.md"
+    },
+    "how-to-communicate-with-other-codex-agents.md": {
+      "sha256": "2f4172f98b766f7ab3d6d2332c7f169d88be51840856673ed178992c32f7158d",
+      "source_path": "docs/how-to-communicate-with-other-codex-agents.md"
+    },
+    "universal-multi-agent-build-protocol.md": {
+      "sha256": "d5e95d5ab38b66edc381f7e5dd4c0abf7b18b2c28ba8f25dc041b7b46787c8d5",
+      "source_path": "docs/universal-multi-agent-build-protocol.md"
+    }
+  },
+  "schema_version": 1,
+  "source_repository": "/Users/boandersson/Desktop/CodeExp",
+  "source_revision": "4ab7bcd5ce09e9db51c3f08af23919195547c6ce"
+}

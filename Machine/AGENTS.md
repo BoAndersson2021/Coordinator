@@ -1,8 +1,25 @@
 # Machine builder instructions
 
-These instructions apply to the mission folder in `CodeExp/Machine`. When working in `/Users/boandersson/Desktop/Machine` or another repository, also read that repository's actual instructions. This file does not replace instructions or permission checks in those repositories.
+These instructions apply to the mission folder in `CodeExp2/Machine`. When working in `/Users/boandersson/Desktop/Machine` or another repository, also read that repository's actual instructions. This file does not replace instructions or permission checks in those repositories.
 
 ## Mission and scope
+
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED` is an owner-mandated invariant for Machine
+and every adapter it uses, controls or communicates with. Every new or edited
+feature must preserve zero manual execution steps, automatic lifecycle,
+communication and recovery, and visible failures. Missing capability or proof
+must fail loudly and block work before effects. Never introduce a manual or
+silent fallback or treat a saved thread/queue receipt as a live executor.
+
+The Machine implementation must enforce this in executable admission checks,
+each adapter effect boundary, its `AGENTS.md`, and a mandatory staged pre-commit
+check. Changes to executable features must include meaningful invariant
+regressions. A missing/failed guard, unregistered adapter/entry point, or failed
+regression must block the commit with an explicit invariant error. Never bypass
+the hook or weaken tests to enable work. Independent review remains mandatory
+for these enforcement, verification and recovery changes. The current bounded
+implementation is tracked in `INVARIANT_ENFORCEMENT/`; distinguish candidate
+checks from installed enforcement and qualified automatic operation.
 
 Read [DESIGN_AND_MISSION.md](DESIGN_AND_MISSION.md) before developing Machine. Use the Design corpus in `/Users/boandersson/Desktop/Machine/Design` and the three linked `CodeExp` communication documents as the foundation.
 

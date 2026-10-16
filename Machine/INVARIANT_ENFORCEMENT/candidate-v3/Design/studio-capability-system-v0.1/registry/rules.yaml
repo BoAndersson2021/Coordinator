@@ -1,0 +1,39 @@
+schema_version: 1
+registry: rules
+entries:
+- id: RULE-PLAN-001
+  statement: Plans are proposals and never authority grants
+  owner: studio_policy_owner
+  scope: studio_default
+  override: explicit_approved_project_exception
+  verification: contract_review
+- id: RULE-INS-001
+  statement: Inspection claims cite pinned observed sources
+  owner: studio_policy_owner
+  scope: studio_default
+  override: explicit_approved_project_exception
+  verification: contract_review
+- id: RULE-RED-001
+  statement: Red team scope, budget, threat model and closure are bounded
+  owner: studio_policy_owner
+  scope: studio_default
+  override: explicit_approved_project_exception
+  verification: contract_review
+- id: RULE-DOC-001
+  statement: Implementation recency does not override approved design
+  owner: studio_policy_owner
+  scope: studio_default
+  override: explicit_approved_project_exception
+  verification: contract_review
+- id: RULE-HARD-001
+  statement: Hardening stops or escalates at explicit budget limits
+  owner: studio_policy_owner
+  scope: studio_default
+  override: explicit_approved_project_exception
+  verification: contract_review
+- id: RULE-OBS-001
+  statement: Observability data declares provenance and freshness
+  owner: studio_policy_owner
+  scope: studio_default
+  override: explicit_approved_project_exception
+  verification: contract_review

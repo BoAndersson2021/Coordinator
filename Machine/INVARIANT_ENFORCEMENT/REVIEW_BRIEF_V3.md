@@ -1,0 +1,7 @@
+# Final invariant candidate V3
+
+Owner scope and read-only review constraints remain REVIEW_BRIEF_V2.md. Actual V2 REJECT retained in INDEPENDENT_REVIEW_V2.json (turn01a142be-4a89-70e1-80cd-8d23a5e634a3). Manifest REVIEW_MANIFEST_V3.json SHA-256 260dccdb7ef5c0f1aecd23bd827bd14dc3fde1fa9b09336207c6a89c243fa432 pins17 files at candidate-v3. Only scripts/check_workflow_invariant.py differs from V2; all other previously reviewed source remains identical.
+
+The trusted installed checker now executes a runner it supplies, records successful mandatory test IDs via TextTestResult.addSuccess, requires a completion report for both invariant-only and full-suite runs, and independently checks the report and IDs in the parent. Named but skipped, expected-failure or undiscovered mandatory tests do not count as successes. A test module exiting zero before the runner completes leaves no report and blocks. Assertion quality remains subject to independent review; no claim of hostile same-process Python isolation is made.
+
+HOOK_VERIFICATION_V3.json records final disposable commit proofs including skipped tests, suppressed discovery and premature zero exit; final source/fixtures remain separate from runtime automation qualification. Review the runner and its fail-closed handling, verify all17 pins and the one-file V2 delta, and return exact-manifest PASS/REJECT. No candidate imports/execution, edits, dispatch, lifecycle or adoption. Source-sensitive installation follows only actual independent PASS and the owner's explicit enforcement request.

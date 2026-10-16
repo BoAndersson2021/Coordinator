@@ -1,0 +1,1558 @@
+GAME PROJECT ARCHITECTURE SPECIFICATION v1.2
+
+STATUS: SPECIFICATION · SCOPE: COMPLETE PROJECT ARCHITECTURE
+
+1. System Definition
+
+A Game Project is a controlled system for designing, constructing, executing, validating, and releasing a game.
+
+The architecture separates the machinery that creates the game from the machinery that executes the game and the artifacts distributed to players.
+
+The system consists of five operational components:
+
+Design — defines the intended game and produces authored inputs.
+Repository — maintains authoritative project source, revisions, dependencies, and integration history.
+Runtime — contains and executes the game.
+Release — produces, verifies, and publishes distributable game artifacts.
+Task Manager — coordinates work, dependencies, execution, and verification across the project.
+Supporting systems include SDKs, asset pipelines, telemetry, automated tests, builds, and playtests.
+
+1.1 Architectural domains
+
+The project has three architectural domains.
+
+Domain
+
+Responsibility
+
+Production
+
+Create, modify, compile, test, measure, and validate the game
+
+Runtime
+
+Execute the game using approved code, content, data, and configuration
+
+Release
+
+Package, validate, identify, and distribute immutable runtime artifacts
+
+Production and Runtime coexist during development.
+
+Release is generated through a controlled pipeline. It is not an independent editable copy of the game.
+
+1.2 Governing laws
+
+Every authoritative mutation has an identified owner.
+Every operation that changes protected state requires authorization.
+Runtime must not depend on Production-only systems.
+Production may inspect and execute Runtime for development and verification.
+Build outputs must be traceable to exact input revisions.
+Tests must identify the artifact and environment they validate.
+Task orchestration does not grant mutation authority.
+Release artifacts must contain or explicitly declare their runtime dependencies.
+Promoted release artifacts are immutable.
+Uncertain external effects must be reconciled before retry.
+Failed or incomplete validation cannot authorize release.
+Runtime execution must not silently mutate authoritative project source.
+2. Canonical Project Structure
+
+The project has one logical root containing the authoritative source and production machinery.
+
+PROJECT/
+│
+├── design/
+│   ├── game/
+│   ├── systems/
+│   ├── levels/
+│   ├── pilots/
+│   ├── assets/
+│   └── specifications/
+│
+├── production/
+│   ├── tools/
+│   ├── generators/
+│   ├── importers/
+│   ├── converters/
+│   ├── validators/
+│   ├── tests/
+│   ├── telemetry/
+│   ├── playtests/
+│   └── build/
+│
+├── runtime/
+│   ├── src/
+│   ├── content/
+│   ├── data/
+│   ├── config/
+│   ├── dependencies/
+│   └── targets/
+│
+├── sdk/
+│   ├── interfaces/
+│   ├── adapters/
+│   ├── tooling/
+│   └── versions/
+│
+├── contracts/
+│   ├── schemas/
+│   ├── interfaces/
+│   ├── validation/
+│   └── compatibility/
+│
+├── orchestration/
+│   ├── tasks/
+│   ├── workflows/
+│   ├── dependencies/
+│   ├── execution/
+│   └── receipts/
+│
+├── manifests/
+│   ├── project.yaml
+│   ├── build.yaml
+│   ├── runtime.yaml
+│   └── release.yaml
+│
+└── output/
+    ├── intermediate/
+    ├── builds/
+    ├── test-results/
+    ├── telemetry/
+    ├── staging/
+    └── releases/
+This is a logical classification. Engine-native physical layouts remain valid.
+
+For Unreal Engine, .uproject, Source/, Content/, Config/, and Plugins/ may retain their required locations. Manifests identify their architectural ownership.
+
+Generated outputs are not authoritative source inputs unless explicitly imported through a validated source-adoption operation.
+
+3. Design System
+
+3.1 Responsibility
+
+Design owns the authoritative definition of the intended game.
+
+It establishes:
+
+Game concept and player experience
+Gameplay rules and mechanics
+Game systems and their interactions
+World, level, and encounter definitions
+Content requirements and asset specifications
+Balancing intentions and progression
+Technical and creative acceptance requirements
+Design definitions must be distinguishable from executable implementations.
+
+3.2 Design components
+
+Component
+
+Responsibility
+
+Game Design
+
+Player actions, rules, objectives, progression, and intended outcomes
+
+Systems Design
+
+State machines, interactions, resource flows, and system behavior
+
+Pilot
+
+Bounded implementation used to validate a design or technical hypothesis
+
+Map / Level
+
+Spatial composition, traversal, gameplay placement, and authored encounters
+
+Assets
+
+Models, textures, animation, audio, effects, and associated metadata
+
+Specifications
+
+Explicit requirements, constraints, contracts, and acceptance criteria
+
+3.3 Design authority
+
+Design owns intended behavior.
+
+Runtime implementation owns actual executable behavior.
+
+A design change does not automatically modify Runtime. An implementation change does not automatically rewrite authoritative design intent.
+
+Changes crossing this boundary require reconciliation and verification.
+
+3.4 Pilot lifecycle
+
+A Pilot is a bounded production experiment.
+
+PROPOSED
+    ↓
+AUTHORIZED
+    ↓
+IMPLEMENTING
+    ↓
+EXECUTABLE
+    ↓
+EVALUATING
+    ↓
+ACCEPTED / REJECTED / REWORK_REQUIRED
+An accepted Pilot may provide implementation and design inputs to the project.
+
+Pilot acceptance does not automatically authorize production integration.
+
+Integration requires a separately approved source mutation and relevant tests.
+
+4. Repository System
+
+4.1 Responsibility
+
+The Repository preserves the authoritative revision history of project source and references to controlled external inputs.
+
+It manages:
+
+Source revisions
+Content revisions
+Branches and integration
+Dependency locks
+Versioned manifests
+Change history
+Source-level validation evidence
+Provenance of generated and imported content
+The repository is a source authority, not a universal authority over the project.
+
+4.2 Revision identity
+
+Every buildable project state must resolve to an exact set of inputs.
+
+project_revision:
+  source: "<commit>"
+  content: "<revision-or-digest>"
+  contracts: "<revision-or-digest>"
+  sdk: "<version-and-digest>"
+  dependencies: "<lockfile-digest>"
+Mutable branch names, floating dependency versions, and unpinned external content are not sufficient build identities.
+
+4.3 Mutation boundary
+
+Only authorized actors may modify protected source.
+
+Source changes must pass through an identified integration operation.
+
+A successful commit proves that a revision exists. It does not prove that the revision builds, passes tests, or is suitable for release.
+
+4.4 Integration states
+
+CANDIDATE
+    ↓
+CHECKED
+    ↓
+VALIDATED
+    ↓
+AUTHORIZED
+    ↓
+INTEGRATED
+Failed candidates remain unintegrated.
+
+If integration has an uncertain outcome, the repository state must be inspected before retry.
+
+Protected branch mutation must not be repeated blindly.
+
+5. SDK System
+
+5.1 Responsibility
+
+The SDK provides versioned interfaces and tools used to develop, integrate, and validate the game.
+
+The SDK may contain:
+
+Engine integration interfaces
+Runtime-facing APIs
+Production tooling APIs
+Import/export interfaces
+Build adapters
+Validation adapters
+Test interfaces
+Compatibility definitions
+5.2 SDK separation
+
+SDK components are classified by execution requirements.
+
+Runtime SDK: Libraries and interfaces required by the running game.
+
+Production SDK: Editors, generators, inspectors, build adapters, and development tools.
+
+Shared Contracts: Neutral interfaces and schemas that contain no hidden dependency on Production implementations.
+
+A component’s physical directory does not determine whether it is permitted in a release.
+
+5.3 Versioning
+
+Every SDK dependency must resolve to a compatible, identifiable version.
+
+Breaking interface changes require compatibility evaluation before dependent Runtime or Production components may adopt them.
+
+6. Runtime System
+
+6.1 Responsibility
+
+Runtime contains the machinery required to execute the game.
+
+It includes:
+
+Game executable and engine integration
+Gameplay logic and state machines
+Levels and runtime content
+Gameplay data
+Runtime configuration
+Input, rendering, audio, physics, and animation
+Networking and persistence where required
+Runtime services and approved external dependencies
+Product-required diagnostics and telemetry
+6.2 Runtime completeness
+
+A Runtime build must be executable in its declared target environment without requiring undeclared Production systems.
+
+All required dependencies must be packaged or explicitly declared external.
+
+External dependencies require compatibility constraints and an identified availability model.
+
+6.3 Runtime authority
+
+Runtime owns live game-state mutation during execution.
+
+Runtime does not own authoritative source mutation, build promotion, or release publication.
+
+Game saves, session state, telemetry, and live-service state are distinct from project source.
+
+6.4 Runtime configuration
+
+Runtime configuration must identify:
+
+Target platform
+Build variant
+Feature configuration
+Required services
+Compatibility requirements
+Persistence schema version
+Network protocol version where applicable
+Development-only credentials, unrestricted debug interfaces, and production authoring permissions must not enter release artifacts.
+
+7. Asset System
+
+7.1 Responsibility
+
+The Asset System converts authored content into validated runtime content.
+
+It handles:
+
+Asset intake
+Source identification
+Import and conversion
+Validation
+Dependency resolution
+Runtime transformation
+Packaging inputs
+Provenance and integrity records
+7.2 Asset lifecycle
+
+SOURCE
+   ↓
+IMPORTED
+   ↓
+PROCESSED
+   ↓
+VALIDATED
+   ↓
+INTEGRATED
+   ↓
+COOKED
+   ↓
+PACKAGED
+Asset processing must not silently overwrite authoritative source.
+
+Generated assets require provenance identifying source inputs, tool versions, and transformation parameters.
+
+7.3 Asset identity
+
+A runtime asset must be traceable to its approved source or generation inputs.
+
+Content hashes and dependency references must remain valid through packaging.
+
+Missing, incompatible, or corrupted required content blocks promotion.
+
+8. Task Manager
+
+8.1 Responsibility
+
+The Task Manager coordinates project work.
+
+It manages:
+
+Task creation and assignment
+Dependencies
+Execution requests
+Scheduling
+Work status
+Resource reservations
+Validation requirements
+Execution receipts
+Failure reporting
+Recovery coordination
+The Task Manager is an orchestration authority, not a source, runtime, or release mutation authority.
+
+8.2 Task contract
+
+Every executable task must identify its authorized scope.
+
+task:
+  id: "<unique-id>"
+  type: "<task-type>"
+  requested_by: "<principal>"
+  authority_grant: "<grant-id>"
+
+  inputs:
+    project_revision: "<revision>"
+    dependencies: []
+
+  execution:
+    adapter: "<adapter-id>"
+    resource_requirements: []
+    timeout_policy: "<policy-id>"
+
+  outputs:
+    expected_artifacts: []
+    expected_receipts: []
+
+  validation:
+    required_checks: []
+
+  failure:
+    retry_policy: "<policy-id>"
+    reconciliation_policy: "<policy-id>"
+The referenced grant must bind the authorized operation, actor, resource scope, and applicable constraints.
+
+A task definition alone grants no mutation authority.
+
+8.3 Task lifecycle
+
+CREATED
+   ↓
+READY
+   ↓
+AUTHORIZED
+   ↓
+DISPATCHED
+   ↓
+RUNNING
+   ↓
+COMPLETED
+   ↓
+VERIFIED
+   ↓
+CLOSED
+Additional states:
+
+BLOCKED
+FAILED
+CANCELLED
+RECOVERY_REQUIRED
+Completion proves that execution reported a result. Verification determines whether that result satisfies the task contract.
+
+8.4 Execution authority
+
+The Task Manager may request authorized operations from domain-specific executors.
+
+The receiving executor must independently validate the authority grant.
+
+No executor may infer authority from the Task Manager’s identity alone.
+
+8.5 Concurrency
+
+Tasks operating on shared mutable resources require explicit resource coordination.
+
+A task-level lock does not automatically protect host-global or external resources.
+
+Shared build tools, repository mutation surfaces, signing services, and publication endpoints require resource-specific serialization or equivalent concurrency control.
+
+8.6 Recovery
+
+Uncertain dispatch or external execution effects must enter RECOVERY_REQUIRED.
+
+Recovery must determine whether the original effect occurred before another attempt is authorized.
+
+Retries must preserve idempotency and must not duplicate irreversible effects.
+
+9. Build System
+
+9.1 Responsibility
+
+The Build System transforms pinned project inputs into executable or distributable artifacts.
+
+It owns:
+
+Input resolution
+Toolchain selection
+Compilation
+Asset cooking
+Transformation
+Assembly
+Build artifact identity
+Build receipts
+Build failure reporting
+The Build System does not own source integration or release promotion.
+
+9.2 Build variants
+
+Development Build
+
+An executable candidate used for development, debugging, testing, and playtesting.
+
+Validation Build
+
+A controlled executable candidate used for automated verification and acceptance.
+
+Release Candidate
+
+A target-specific artifact assembled from pinned inputs and intended for release qualification.
+
+A development build may become a release candidate only if its configuration, contents, provenance, and required validation satisfy the release contract. Otherwise a separate release build is required.
+
+9.3 Build state machine
+
+REQUESTED
+    ↓
+INPUTS_RESOLVED
+    ↓
+BUILDING
+    ↓
+BUILT
+    ↓
+VALIDATING
+    ↓
+VALIDATED
+    ↓
+STAGED
+Each stage may transition to FAILED.
+
+Interrupted execution with uncertain external effects transitions to RECOVERY_REQUIRED.
+
+A build that fails cannot produce an authorized release candidate.
+
+9.4 Build identity
+
+A build identity must bind:
+
+Exact source and content revisions
+Contracts and SDK versions
+Dependency lock state
+Engine and compiler versions
+Platform SDK
+Target and configuration
+Build instructions
+Artifact digest
+Two artifacts with different bytes must not share the same immutable artifact identity.
+
+9.5 Reproducibility
+
+The Build System must declare its reproducibility boundary.
+
+Pinned inputs and toolchain must produce reproducible outputs under the defined environment, or identify controlled nondeterministic elements and provide a verification procedure that establishes artifact integrity.
+
+10. Telemetry System
+
+10.1 Responsibility
+
+Telemetry records observable execution behavior for development, validation, performance analysis, and product operation.
+
+10.2 Telemetry classes
+
+Production Telemetry
+
+Build performance
+Test execution
+Tool execution
+Asset processing
+Development profiling
+Pipeline reliability
+Runtime Telemetry
+
+Gameplay events
+Performance
+Errors and crashes
+Network conditions
+Product diagnostics
+Playtest Telemetry
+
+Session identity
+Tested build identity
+Gameplay events
+Player actions and outcomes
+Performance observations
+Test conditions
+10.3 Telemetry authority
+
+Telemetry is evidence, not mutation authority.
+
+Telemetry may trigger tasks or alerts but must not directly authorize source changes, runtime configuration changes, or release promotion.
+
+10.4 Evidence integrity
+
+Evidence used for validation must bind to:
+
+Exact build identity
+Environment identity
+Test or session identity
+Schema version
+Capture time
+Evidence integrity digest
+Operational telemetry may use a less restrictive retention and aggregation model when it is not used as authoritative validation evidence.
+
+11. Testing System
+
+11.1 Responsibility
+
+Testing verifies whether project components and artifacts satisfy explicit requirements.
+
+11.2 Test categories
+
+Category
+
+Verification
+
+Unit
+
+Isolated logic and component behavior
+
+Integration
+
+Interactions between systems
+
+Contract
+
+Schema, interface, and compatibility compliance
+
+Simulation
+
+State transitions and systemic behavior
+
+Content
+
+Asset integrity and content requirements
+
+Performance
+
+Defined resource and timing budgets
+
+Platform
+
+Target-specific execution and compatibility
+
+Regression
+
+Preservation of previously accepted behavior
+
+Runtime Smoke
+
+Minimum viable execution
+
+Release Acceptance
+
+Complete release qualification
+
+11.3 Test contracts
+
+Every authoritative test result must identify the tested revision or artifact, environment, test definition, expected result, actual result, and verdict.
+
+Results must not be reused for changed artifacts unless the validation contract explicitly permits that reuse.
+
+11.4 Test authority
+
+Tests produce evidence.
+
+A passing test does not independently authorize source integration or release promotion.
+
+A failed required test blocks the corresponding acceptance transition.
+
+12. Playtest System
+
+12.1 Responsibility
+
+Playtests evaluate executable game behavior against design, usability, performance, and product requirements.
+
+Playtests may be manual, automated, or mixed.
+
+12.2 Playtest contract
+
+Each controlled playtest records:
+
+Tested build identity
+Scenario or test objective
+Environment and configuration
+Participants or automated actors
+Relevant telemetry
+Observations
+Defects
+Evaluation result
+12.3 Playtest outcomes
+
+A playtest may produce:
+
+Accepted behavior
+Defect reports
+Design change proposals
+Balance adjustments
+Content change proposals
+Additional test requirements
+Playtest findings do not directly modify authoritative design or Runtime.
+
+Changes require authorized source operations and subsequent verification.
+
+13. Release System
+
+13.1 Responsibility
+
+The Release System qualifies, packages, identifies, and publishes distributable runtime artifacts.
+
+13.2 Release contents
+
+RELEASE/
+├── executable/
+├── content/
+├── data/
+├── config/
+├── dependencies/
+└── release-manifest.yaml
+This is a logical representation. Platform packages may embed or reorganize these components.
+
+13.3 Release pipeline
+
+VALIDATED BUILD
+       ↓
+RELEASE ASSEMBLY
+       ↓
+DEPENDENCY AUDIT
+       ↓
+PACKAGE VALIDATION
+       ↓
+TARGET EXECUTION
+       ↓
+STAGING
+       ↓
+PROMOTION APPROVAL
+       ↓
+PROMOTED
+       ↓
+PUBLICATION
+Promotion and publication are separate operations.
+
+Promotion establishes an authorized immutable release artifact.
+
+Publication makes that artifact available through a distribution channel.
+
+13.4 Release identity
+
+The release manifest must bind:
+
+Release identity
+Artifact digests
+Source and content revisions
+Toolchain identity
+Target platform
+Runtime configuration
+Dependencies
+Validation evidence
+Approval identity
+Promotion record
+13.5 Immutability
+
+A promoted artifact must not be modified in place.
+
+Corrections require a new artifact identity and manifest.
+
+Publication must not silently substitute different bytes under an existing release identity.
+
+13.6 Publication authority
+
+Publication is a separately authorized operation that makes a promoted release available through a distribution channel.
+
+Publication must identify:
+
+Promoted artifact identity
+Distribution channel
+Target audience or deployment ring
+Publication authorization
+Publication operation identity
+External publication result
+Verification evidence
+The publication system must not rebuild or modify the promoted artifact.
+
+Distribution platforms may apply required wrapping, encryption, or signing transformations. Any transformation that changes distributed bytes must produce a separately identified distribution artifact linked to the promoted release.
+
+13.7 Publication lifecycle
+
+PROMOTED
+    ↓
+PUBLICATION_REQUESTED
+    ↓
+PUBLICATION_AUTHORIZED
+    ↓
+PUBLISHING
+    ↓
+PUBLISHED
+    ↓
+AVAILABILITY_VERIFIED
+Exceptional states:
+
+FAILED
+RECOVERY_REQUIRED
+REVOKED
+SUPERSEDED
+PUBLISHED confirms that the distribution operation reported success.
+
+AVAILABILITY_VERIFIED confirms that the intended artifact is accessible through the declared distribution channel.
+
+A publication operation with an uncertain outcome must enter RECOVERY_REQUIRED.
+
+The system must reconcile the external publication state before retrying.
+
+13.8 Release compatibility
+
+Each independently deployed component requires its own release identity and compatibility contract.
+
+This includes, where applicable:
+
+Game clients
+Dedicated servers
+Backend services
+Downloadable content
+Independently updated content packages
+Platform-specific distributions
+Compatibility contracts must define supported version relationships, protocol requirements, persistence schema requirements, and migration constraints.
+
+A component may not be deployed into an incompatible product configuration merely because its individual build and validation succeeded.
+
+14. Authority and Dependency Architecture
+
+14.1 Authority owners
+
+System
+
+Authority
+
+Prohibited authority
+
+Design
+
+Game definitions and authored intent
+
+Live runtime mutation and publication
+
+Repository
+
+Source revisions and integration
+
+Runtime execution and release approval
+
+SDK
+
+Versioned interfaces and tool contracts
+
+Unilateral source or release mutation
+
+Asset Pipeline
+
+Authorized asset transformations
+
+Silent modification of approved sources
+
+Runtime
+
+Live execution state
+
+Project source mutation
+
+Task Manager
+
+Scheduling and orchestration
+
+Independent domain mutation
+
+Build System
+
+Generated build artifacts
+
+Source integration and release promotion
+
+Telemetry
+
+Observation and evidence collection
+
+Source or runtime authority
+
+Testing
+
+Validation evidence
+
+Integration or publication approval
+
+Playtest
+
+Evaluation evidence
+
+Automatic design adoption
+
+Release
+
+Artifact qualification and promotion
+
+Unapproved source modification
+
+Publication
+
+Distribution of approved artifacts
+
+Artifact rewriting
+
+An executor may possess multiple capabilities only through separately identifiable authority grants.
+
+Authority cannot be inherited merely because two systems run in the same process, repository, machine, or user account.
+
+14.2 Dependency direction
+
+                 PRODUCTION
+                     │
+          ┌──────────┼──────────┐
+          ▼          ▼          ▼
+        DESIGN      TOOLS      TESTS
+          │          │          │
+          └──────────┼──────────┘
+                     │
+                     ▼
+                 CONTRACTS
+                     ▲
+                     │
+                  RUNTIME
+                     │
+                     ▼
+              RELEASE INPUTS
+                     │
+                     ▼
+               BUILD PIPELINE
+                     │
+                     ▼
+               RELEASE ARTIFACT
+This diagram represents logical dependencies and artifact transformations, not execution order.
+
+Production may use Runtime systems for testing and development.
+
+Runtime may depend on approved shared contracts and runtime dependencies.
+
+Runtime must not import Production-only tools, editors, generators, or test harnesses.
+
+Shared contracts must not introduce hidden dependencies on Production implementations.
+
+14.3 Mutation boundary
+
+Every protected mutation must identify:
+
+The authoritative state being changed.
+The current owner of that state.
+The authorized actor.
+The operation and permitted scope.
+The expected precondition.
+The resulting state identity.
+The evidence of success or failure.
+Mutations with stale preconditions must fail without silently overwriting newer authoritative state.
+
+14.4 Cross-domain operations
+
+A cross-domain operation must not assume that success in one domain guarantees success in another.
+
+For example:
+
+DESIGN CHANGE APPROVED
+          ↓
+SOURCE CHANGE AUTHORIZED
+          ↓
+SOURCE INTEGRATED
+          ↓
+BUILD GENERATED
+          ↓
+TESTS EXECUTED
+          ↓
+VALIDATION ACCEPTED
+Each transition has a distinct result and authority boundary.
+
+Failure at a later stage must not retroactively falsify earlier completed operations.
+
+Instead, the project records the failed transition and retains the identities of completed states.
+
+15. Project Operating Machine
+
+15.1 Operating model
+
+The Project Operating Machine coordinates the complete development lifecycle.
+
+                  TASK MANAGER
+                       │
+           SCHEDULE / COORDINATE
+                       │
+       ┌───────────────┴───────────────┐
+       │                               │
+       ▼                               ▼
+     DESIGN                       REPOSITORY
+       │                               │
+       ├── Game Definitions           ├── Source
+       ├── Pilots                     ├── Revisions
+       ├── Maps                       ├── SDK
+       └── Assets                     └── Contracts
+       │                               │
+       └───────────────┬───────────────┘
+                       │
+                       ▼
+                 INTEGRATION
+                       │
+                       ▼
+                    BUILD
+                       │
+                       ▼
+                    RUNTIME
+                       │
+           ┌───────────┴───────────┐
+           │                       │
+           ▼                       ▼
+         TESTS                  PLAYTEST
+           │                       │
+           └───────────┬───────────┘
+                       │
+                       ▼
+                 VALIDATION
+                       │
+                       ▼
+                    RELEASE
+                       │
+                       ▼
+                  PUBLICATION
+Telemetry observes applicable operations throughout the machine.
+
+The diagram does not grant the Task Manager mutation authority over its connected components.
+
+15.2 Work execution
+
+Every task follows a controlled operational sequence:
+
+DEFINE
+   ↓
+RESOLVE DEPENDENCIES
+   ↓
+AUTHORIZE
+   ↓
+RESERVE RESOURCES
+   ↓
+DISPATCH
+   ↓
+EXECUTE
+   ↓
+COLLECT RESULTS
+   ↓
+VERIFY
+   ↓
+COMMIT OR REJECT
+   ↓
+CLOSE
+Execution results must remain distinguishable from accepted project state.
+
+A task may successfully execute and still fail verification.
+
+A verified result may still require separate authorization before it changes authoritative project state.
+
+15.3 Resource ownership
+
+Shared resources must have explicit concurrency policies.
+
+Resource classes include:
+
+Repository branches and integration points
+Source and content files
+Build workspaces
+Engine compilation services
+Asset processing services
+Test environments
+Device and platform test targets
+Signing infrastructure
+Distribution endpoints
+Resource reservations must identify the owner, scope, lifetime, and release condition.
+
+A reservation does not grant permission to perform operations outside the task’s authority grant.
+
+15.4 Execution receipts
+
+Each operation that affects authoritative state or produces acceptance evidence must generate a durable receipt.
+
+receipt:
+  schema_version: 1
+  operation_id: "<operation-id>"
+  task_id: "<task-id>"
+
+  executor:
+    identity: "<executor-id>"
+    version: "<executor-version>"
+
+  authority:
+    grant_id: "<grant-id>"
+
+  input:
+    identity: "<input-digest>"
+
+  result:
+    status: "<status>"
+    output_identity: "<output-digest-or-null>"
+
+  evidence:
+    references: []
+
+  recovery:
+    required: false
+    reconciliation_reference: null
+Receipts must be written by an authorized durable-record owner or accepted through a validated custody transfer.
+
+Executor self-reporting alone does not prove that an external effect occurred.
+
+16. Failure and Recovery Architecture
+
+16.1 Failure classification
+
+Failure
+
+Required behavior
+
+Invalid task contract
+
+Reject before dispatch
+
+Missing authority
+
+Reject before mutation
+
+Unresolved dependency
+
+Block execution
+
+Resource contention
+
+Wait or fail without corrupting shared state
+
+Source integration failure
+
+Preserve existing authoritative revision
+
+Asset transformation failure
+
+Reject incomplete output
+
+Build failure
+
+Prevent artifact qualification
+
+Test failure
+
+Block corresponding acceptance
+
+Playtest rejection
+
+Record findings without automatic source mutation
+
+Missing runtime dependency
+
+Block release promotion
+
+Packaging failure
+
+Keep partial artifact unpromotable
+
+Uncertain external operation
+
+Reconcile before retry
+
+Publication failure
+
+Preserve promoted artifact and record distribution failure
+
+Released runtime failure
+
+Revoke, supersede, or deploy a corrective release
+
+16.2 Failure atomicity
+
+Operations must define their atomicity boundary.
+
+An operation is atomic only with respect to state controlled by its authority owner.
+
+Operations spanning multiple independent authorities must use explicit staged transitions and reconciliation.
+
+No cross-system operation may claim atomicity without a mechanism that enforces it.
+
+16.3 Rollback
+
+Rollback is legal only while the affected state remains under the controlling authority and no irreversible external effect invalidates reversal.
+
+Examples:
+
+An uncommitted source candidate may be discarded.
+An unpublished staging artifact may be deleted.
+An integrated source change requires a new authorized revision to reverse its effects.
+A published artifact may be revoked or superseded, but previously distributed copies cannot be assumed to disappear.
+Rollback must not erase audit history.
+
+16.4 Uncertain effects
+
+If an executor cannot determine whether an external mutation succeeded, the operation enters RECOVERY_REQUIRED.
+
+While unresolved:
+
+Automatic retries of the same non-idempotent effect are prohibited.
+Conflicting mutations to the affected resource must be blocked.
+Evidence must be collected from the authoritative external system.
+The operation must be reconciled to a confirmed outcome or explicitly quarantined.
+An operation may return to normal execution only after its authoritative state has been established.
+
+16.5 Recovery authority
+
+Recovery operations require authority appropriate to the state being repaired.
+
+The Task Manager may coordinate recovery but cannot independently override repository, runtime, release, or publication authority.
+
+17. Persistence and Data Contracts
+
+17.1 Persistent project records
+
+The project must preserve durable records for:
+
+Source revisions
+Design revisions
+Asset provenance
+SDK and dependency versions
+Task identities and state transitions
+Execution receipts
+Build identities
+Test results
+Playtest evidence
+Release manifests
+Promotion decisions
+Publication records
+Recovery operations
+17.2 Schema versioning
+
+Every durable machine-readable record must declare its schema version.
+
+Schema changes require compatibility validation.
+
+Readers must reject unsupported schema versions rather than silently reinterpret unknown fields.
+
+Migrations must preserve the identities and provenance of authoritative historical records.
+
+17.3 State ownership
+
+Each persistent record must have one authoritative owner.
+
+Other systems may retain caches, mirrors, or derived views, but those copies do not become authoritative without an explicit ownership transfer.
+
+17.4 Replayability
+
+The project must retain sufficient evidence to reconstruct authoritative state transitions.
+
+Replay must distinguish:
+
+Deterministic state transitions
+External effects
+Human decisions
+Nondeterministic observations
+Derived telemetry
+Replaying an operation must not automatically repeat irreversible external effects.
+
+17.5 Data integrity
+
+Authoritative records must be protected against silent mutation.
+
+Where records form part of release or validation evidence, integrity must be verifiable through cryptographic hashes or equivalent tamper-evident mechanisms.
+
+18. Security and Credential Boundaries
+
+18.1 Credential ownership
+
+Credentials belong to explicitly authorized execution environments.
+
+Tasks and generated artifacts must not contain unrestricted credentials.
+
+18.2 Least authority
+
+Executors receive only the permissions necessary for their authorized operation.
+
+Read access does not imply mutation access.
+
+Build permission does not imply source integration permission.
+
+Source integration permission does not imply release promotion permission.
+
+Release promotion permission does not imply publication permission.
+
+18.3 Secret handling
+
+Secrets must not be embedded in:
+
+Source-controlled configuration
+Generated build receipts
+Telemetry payloads
+Test logs
+Playtest records
+Release manifests
+Distributed runtime packages
+Exceptions for product-required client credentials must be explicitly classified as public or extractable and must not rely on secrecy for security.
+
+18.4 Authority revocation
+
+Authority grants must support revocation or expiration.
+
+Revocation prevents future authorized operations but cannot automatically undo effects already completed.
+
+Operations in progress must have a defined policy for cancellation, completion, or quarantine following revocation.
+
+19. Build and Release Manifests
+
+19.1 Project manifest
+
+schema_version: 1
+
+project:
+  id: "<project-id>"
+  name: "<project-name>"
+
+architecture:
+  specification: "1.2"
+
+repository:
+  source_revision: "<commit>"
+  content_revision: "<revision-or-digest>"
+
+contracts:
+  revision: "<revision-or-digest>"
+
+sdk:
+  version: "<version>"
+  digest: "<digest>"
+
+runtime:
+  manifest: "runtime.yaml"
+
+build:
+  manifest: "build.yaml"
+
+release:
+  manifest: "release.yaml"
+19.2 Build manifest
+
+schema_version: 1
+
+build:
+  id: "<build-id>"
+  target: "windows-x64"
+  configuration: "shipping"
+
+inputs:
+  source_revision: "<commit>"
+  content_revision: "<revision-or-digest>"
+  contract_revision: "<revision-or-digest>"
+  dependency_lock_digest: "<digest>"
+
+toolchain:
+  engine: "<exact-version>"
+  compiler: "<exact-version>"
+  sdk: "<exact-version>"
+
+validation:
+  unit_tests: required
+  integration_tests: required
+  content_integrity: required
+  dependency_audit: required
+  runtime_smoke: required
+  platform_checks: required
+
+outputs:
+  artifact_identity: "<artifact-id>"
+  artifact_digest: "<digest>"
+19.3 Runtime manifest
+
+schema_version: 1
+
+runtime:
+  id: "<runtime-id>"
+  target: "windows-x64"
+  configuration: "shipping"
+
+dependencies:
+  packaged: []
+  external: []
+
+configuration:
+  identity: "<config-digest>"
+
+compatibility:
+  persistence_schema: "<version>"
+  network_protocol: "<version-or-null>"
+
+diagnostics:
+  runtime_telemetry: "<policy-id>"
+19.4 Release manifest
+
+schema_version: 1
+
+release:
+  id: "<release-id>"
+  target: "windows-x64"
+  configuration: "shipping"
+
+artifact:
+  identity: "<artifact-id>"
+  digest: "<cryptographic-digest>"
+
+provenance:
+  build_id: "<build-id>"
+  source_revision: "<commit>"
+  content_revision: "<revision-or-digest>"
+  toolchain_identity: "<toolchain-digest>"
+
+validation:
+  evidence_identity: "<evidence-digest>"
+  verdict: "passed"
+
+promotion:
+  authority: "<principal-id>"
+  approval_id: "<approval-id>"
+  record_id: "<promotion-record-id>"
+
+publication:
+  required: true
+  channel: "<distribution-channel>"
+The examples define required identity relationships. Production implementations must additionally define exact field types, allowed values, validation rules, and schema compatibility.
+
+20. Acceptance Gates
+
+The architecture is accepted for implementation only when its contracts and authority boundaries are defined.
+
+Operational compliance requires executable evidence.
+
+20.1 Structural verification
+
+Every project component is classified as Production, Runtime, Release, or shared contract.
+Engine-native directories are mapped to their logical ownership.
+Runtime dependency closure excludes Production-only modules.
+Shared contracts contain no hidden Production implementation dependencies.
+Every independently deployed component has an artifact identity and compatibility contract.
+20.2 Authority verification
+
+Every protected mutation has an explicit owner and authorization requirement.
+The Task Manager cannot bypass domain-specific authority.
+Source integration and release promotion are separately authorized.
+Build execution cannot silently mutate authoritative source.
+Stale or conflicting mutation requests fail safely.
+20.3 Build verification
+
+Build inputs resolve to immutable revisions.
+Toolchain and dependencies are pinned.
+Build artifacts have unique identities and integrity digests.
+Shared build resources have enforced concurrency control.
+Interrupted builds have deterministic reconciliation procedures.
+Reproducibility is demonstrated within the declared build environment.
+20.4 Runtime verification
+
+The game executes without authoring tools or source repositories.
+Required runtime dependencies are packaged or explicitly declared.
+Runtime configuration is identifiable and validated.
+Persistence and network compatibility requirements are enforced.
+Development credentials and unauthorized tools are absent from shipping artifacts.
+20.5 Testing and telemetry verification
+
+Test evidence binds to exact artifact and environment identities.
+Required tests block acceptance when failed.
+Telemetry cannot independently mutate protected project state.
+Playtest results are traceable to exact builds.
+Validation evidence remains available for release audit.
+20.6 Release verification
+
+Every released byte is covered by an artifact integrity manifest.
+Promotion requires completed validation and explicit authorization.
+Promoted artifacts cannot be modified in place.
+Publication cannot substitute an unapproved artifact.
+Uncertain publication operations reconcile before retry.
+Released artifacts trace to exact inputs, validation evidence, and promotion authority.
+20.7 Recovery verification
+
+Failed operations cannot advance protected state.
+Uncertain external effects prevent unsafe retries.
+Recovery authority is separated from task orchestration.
+Irreversible effects remain represented in the audit history.
+Replay does not duplicate external mutations.
+Revocation prevents future unauthorized operations.
+20.8 Acceptance evidence
+
+Each acceptance gate must have:
+
+acceptance_gate:
+  id: "<gate-id>"
+  requirement: "<requirement-id>"
+  test: "<test-id>"
+  environment: "<environment-id>"
+  evidence: "<evidence-reference>"
+  verdict: "pass | fail | blocked"
+  verified_revision: "<revision-or-artifact-id>"
+A gate without valid evidence remains unverified.
+
+21. Architectural Completion Criteria
+
+The Game Project Architecture is operationally complete when:
+
+Design definitions can be transformed into authorized source and content changes.
+The Repository preserves exact authoritative revisions and integration history.
+SDK interfaces and dependencies are versioned and compatibility-checked.
+The Task Manager can coordinate work without bypassing domain authority.
+The Build System can produce identifiable artifacts from pinned inputs.
+Runtime can execute independently of Production-only machinery.
+Tests and playtests produce artifact-bound verification evidence.
+Telemetry provides observable behavior without acquiring mutation authority.
+Release qualification rejects incomplete or invalid artifacts.
+Publication distributes only authorized immutable artifacts.
+Failure recovery preserves authoritative state and prevents duplicate external effects.
+Persistent records support audit, reconciliation, and controlled
+Failure recovery preserves authoritative state, prevents duplicate external effects, and maintains a verifiable audit history.
+All persistent project records have defined ownership, schema versions, and integrity requirements.
+Independently deployed components have explicit compatibility contracts and separate promotion lifecycles.
+All protected operations produce durable evidence sufficient for inspection, debugging, and recovery.
+Every required acceptance gate has passed against the exact implementation revision being qualified.
+21.1 Completion states
+
+SPECIFIED
+    ↓
+IMPLEMENTED
+    ↓
+INTEGRATED
+    ↓
+VERIFIED
+    ↓
+ACCEPTED
+SPECIFIED: Architecture, interfaces, authority boundaries, and acceptance criteria are defined.
+IMPLEMENTED: Required components and operations exist.
+INTEGRATED: Components operate together through their declared interfaces.
+VERIFIED: Required acceptance gates have passed with valid evidence.
+ACCEPTED: The authorized project owner has approved the verified implementation.
+No completion state may be inferred solely from the existence of documentation, source code, or a successful build.
+
+21.2 Final architectural law
+
+Production creates the game. Runtime executes the game. Release distributes the game. The Repository preserves its authoritative source. Design defines its intended behavior. The Task Manager coordinates the work without inheriting authority over the systems it operates.
+
+Every authoritative change must be identifiable, authorized, verifiable, and recoverable within its declared failure boundary.
+
+END OF SPECIFICATION — GAME PROJECT ARCHITECTURE v1.2
+

@@ -1,0 +1,167 @@
+schema_version: 1
+kind: current_operating_structure
+as_of: "2026-10-15"
+status: descriptive_documentation
+summary: >-
+  The Codex agent working from CodeExp2 currently acts as Machine's builder
+  and coordinator. That agent and Machine's persistent infrastructure together
+  form the current working system, under the user's direction.
+authority: >-
+  This document describes roles and observed capability. It grants no new
+  permissions, assignments, agent launches, or project execution authority.
+
+owner_workflow_requirement:
+  reference: AUTOMATED_WORKFLOW_REQUIREMENTS.md
+  required: >-
+    Once a workflow is authorized, execution must require zero manual process
+    start/stop, communication, coordinator restart or handover steps. The system
+    must own lifecycle, routing, collection, supervision and recovery and expose
+    every block/failure and recovery action.
+  current_verdict: FAIL
+  gap: >-
+    The current bridge and conversation-operated coordinator loop require manual
+    lifecycle and orchestration. A receiver-liveness check alone is insufficient.
+
+components:
+  user:
+    role: human_owner
+    responsibilities:
+      - Set intent, scope, and priorities.
+      - Make reserved acceptance and adoption decisions.
+
+  coordinator_agent:
+    role: machine_builder_and_coordinator
+    current_workspace: /Users/boandersson/Desktop/CodeExp2
+    identity_basis: >-
+      This conversation's agreed operating role. A live thread UUID and its
+      workspace must be verified separately before cross-thread assignment.
+    responsibilities:
+      - Interpret the user's request and applicable instructions.
+      - Develop bounded Machine candidates under the user's direction.
+      - Operate authorized communication with existing project agents.
+      - Collect replies and independently check relevant evidence.
+      - Record coordination evidence through supported Machine commands.
+      - Report progress, results, uncertainty, and decisions to the user.
+    execution_boundary: >-
+      The model generates responses and structured tool requests. Its Codex
+      harness assembles context, checks and routes requests, executes permitted
+      tools in the configured environment, and returns results to the model.
+    availability: >-
+      Communication and repository operations depend on the active session's
+      actual tools, permissions, verified targets, and authorized scope.
+    lifecycle: >-
+      Machine does not currently launch or supervise this coordinator session.
+      Spawning a Codex agent alone does not establish an admitted coordination
+      loop or broaden its permissions.
+
+  mission_workspace:
+    path: /Users/boandersson/Desktop/CodeExp2
+    role: builder_context_and_evidence
+    contents:
+      - Machine mission, checkpoints, proposals, and acceptance evidence.
+      - Shared communication and build guidance.
+    communication: >-
+      The Codex agent working here operates the relay. The repository itself
+      does not run an automatic message relay or inbox.
+    historical_paths: >-
+      Existing records also refer to Desktop/CodeExp. Preserve those references
+      as historical provenance; use the verified current workspace for new work.
+
+  machine_infrastructure:
+    path: /Users/boandersson/Desktop/Machine
+    role: persistent_coordination_and_executable_checks
+    entry: ./Machine
+    implementation:
+      cli_and_coordination: src/machine.py
+      bounded_admission: src/admission.py
+      native_inspection_bridge: src/native_bridge.py
+      local_control_socket: src/native_socket.py
+    private_state:
+      coordination_ledger: .machine/state.sqlite3
+      admission_store: .machine/admission
+    responsibilities:
+      - Preserve project and agent bindings, assignments, and delivery attempts.
+      - Retain supplied receipts, reports, reviews, and recovery history.
+      - Check pinned inputs, evidence integrity, and supported state transitions.
+      - Expose read-only status and source integrity checks.
+      - Enforce the implemented single-use scratch initialization permit.
+      - Explicitly send recorded inspections and collect matching native replies.
+    observation_boundary: >-
+      Status and work-view read local files and recorded state. The installed
+      native bridge can explicitly read an existing project thread, send a
+      recorded inspection and collect its actual matching reply. The coordinator
+      invokes these commands. There is no background subscription or automatic
+      startup dispatch. Fresh-session live acceptance failed because receiver liveness
+      was not established; queue acknowledgement does not establish a live executor.
+    authority_model: local_operator_trust
+
+  machine_workspace_agent:
+    role: separately_observed_machine_repository_session
+    historical_evidence: >-
+      The checkpoint records a separate Codex session in Desktop/Machine that
+      reviewed source and executed the admitted scratch test.
+    current_binding: unverified
+    boundary: >-
+      That historical session is distinct from this CodeExp2 coordinator.
+      Its current availability and authority require fresh verification.
+
+  project_agents:
+    role: project_execution
+    location: separate_project_repositories
+    example_project: /Users/boandersson/Desktop/Blender_Project
+    responsibilities:
+      - Perform bounded assignments through their own harnesses and project tools.
+      - Return actual results, receipts, evidence, and unresolved outcomes.
+    boundary: >-
+      Project instructions, permissions, native routing, execution and billing
+      contracts, and domain acceptance gates continue to apply. Game source,
+      scenes, assets, and runtime products remain in their project repositories.
+
+communication:
+  user_loop:
+    - User supplies intent to the CodeExp2 coordinator agent.
+    - Coordinator collects evidence and reports results or decisions to the user.
+  project_round_trip:
+    - Coordinator verifies target thread UUID, workspace, route, and scope.
+    - For a supported inspection, Machine journals the assignment and pending attempt.
+    - Coordinator invokes bridge-send to deliver once through the configured native route, or operates the existing manual bridge.
+    - Project harness supplies context to its model and executes permitted tool requests.
+    - Coordinator invokes bridge-collect to retain the actual matching completed turn, or collects through the existing manual bridge.
+    - Coordinator records relevant evidence and checks it before coordination closure.
+  custody: >-
+    Machine retains evidence explicitly recorded through its supported interfaces.
+    Mission documents retain broader development and experiment history. Neither
+    store automatically contains every conversation or every project operation.
+  acceptance: >-
+    Delivery, execution completion, independent verification, domain adoption,
+    and task closure remain separate facts. Unknown outcomes require reconciliation.
+
+capability_state:
+  established:
+    - Durable inspection coordination with a completed historical Blender pilot.
+    - A session-bound scratch initialization succeeded once and permit reuse rejected.
+    - Coordinator-operated communication with separately verified project sessions.
+  implemented_failed_live_acceptance:
+    - Native queue delivery and saved-state recovery were observed, but live acceptance failed because no active receiver was established.
+    - Independent corrected-source review passed; final candidate suite passed 81 tests.
+  outstanding:
+    - Eliminate manual execution dependencies through persistent orchestration, controlled executor lifecycle, automatic communication and observable recovery.
+    - Verify exact receiving-thread runtime liveness before live dispatch and report missing liveness as a blocker.
+    - An independently qualified automatic communication and supervision loop.
+    - Authenticated scoped grants and general project work admission.
+    - Automated native project-role lifecycle control.
+    - Production qualification and castle construction.
+  startup: >-
+    Begin with read-only status and inspection. Session startup or this role
+    description does not authorize setup, dispatch, production, or source adoption.
+
+references:
+  - AGENTS.md
+  - AUTOMATED_WORKFLOW_REQUIREMENTS.md
+  - DESIGN_AND_MISSION.md
+  - CURRENT_MISSION.md
+  - ADMISSION_TEST/REPORT.md
+  - COMMUNICATION_BRIDGE/README.md
+  - COMMUNICATION_BRIDGE/FRESH_START_TEST.md
+  - /Users/boandersson/Desktop/Machine/docs/COORDINATION.md
+  - /Users/boandersson/Desktop/Machine/docs/ADMISSION.md

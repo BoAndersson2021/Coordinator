@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "kind": "live_communication_acceptance_failure",
+  "recorded_at": "2026-10-16T03:05:21.809380+00:00",
+  "verdict": "FAIL",
+  "status": "failed_receiver_liveness_not_established",
+  "task_id": "native-inspection-fresh-start-001",
+  "attempt_id": "15b871be-1900-4c3d-bee9-9edbd11fc245",
+  "receiver_thread_id": "01a136be-732f-7350-b9f5-13d1dddc5ddb",
+  "owner_correction": "Waiting on a non-live terminal is a live communication failure; queue acknowledgement must not be presented as successful live communication.",
+  "observed_chain": [
+    "Coordinator invoked Machine bridge-send for an existing registered thread.",
+    "Bridge validated route, thread UUID and reported workspace, journaled the attempt and submitted thread/queue/add.",
+    "Queue acknowledgement advanced transport state to delivered.",
+    "A new coordinator recovered that same queued input without resending.",
+    "No receiving execution or completed reply was observed.",
+    "Subsequent live inspection found the registered thread notLoaded and none of the six running Codex terminals using Blender_Project."
+  ],
+  "liveness_observation": {
+    "source": "Actual read_thread, ps and lsof tool outputs in this coordinator conversation",
+    "thread_status": "notLoaded",
+    "latest_completed_turn": "01a137f5-92fe-7b22-acb5-4e6f36183652",
+    "registered_role_thread_unchanged": true,
+    "running_codex_terminals": [
+      {
+        "pid": 83874,
+        "tty": "ttys000",
+        "cwd": "/Users/boandersson/Desktop/NEURAL"
+      },
+      {
+        "pid": 44716,
+        "tty": "ttys002",
+        "cwd": "/Users/boandersson/Desktop/FACTORY"
+      },
+      {
+        "pid": 63423,
+        "tty": "ttys003",
+        "cwd": "/Users/boandersson/Desktop/Ballistics2"
+      },
+      {
+        "pid": 74935,
+        "tty": "ttys004",
+        "cwd": "/Users/boandersson/Desktop/Voyager"
+      },
+      {
+        "pid": 72749,
+        "tty": "ttys005",
+        "cwd": "/Users/boandersson/Desktop/CodeExp2"
+      },
+      {
+        "pid": 48421,
+        "tty": "ttys006",
+        "cwd": "/Users/boandersson/Desktop/unrealmachinebridge"
+      }
+    ],
+    "limit": "Snapshot of later inspection, not proof of historical process absence at dispatch. notLoaded alone is not a terminal-liveness test."
+  },
+  "implementation_findings": [
+    {
+      "file": "/Users/boandersson/Desktop/Machine/src/native_bridge.py",
+      "lines": [
+        153,
+        157,
+        195,
+        208,
+        333
+      ],
+      "finding": "read_thread accepts notLoaded; send refreshes saved thread metadata without positive receiving-process liveness proof; collect reports queued without identifying a receiver-liveness blocker."
+    },
+    {
+      "file": "/Users/boandersson/Desktop/Machine/src/machine.py",
+      "lines": [
+        480,
+        481
+      ],
+      "finding": "Native read_thread provenance permits dispatch of a notLoaded binding without an independent live receiver witness."
+    }
+  ],
+  "ownership": {
+    "bridge": "Verify current exact receiver runtime binding before new live dispatch and expose unverified/unavailable receiver as an actionable blocker. A reachable socket, matching registry and thread metadata do not prove an attended executor.",
+    "coordinator": "Treat missing receiver liveness as failed acceptance, never routine waiting or successful live communication.",
+    "receiving_harness": "Retains permission checks and execution; a saved thread record does not execute the queued request."
+  },
+  "required_repair": "Prepare a bounded liveness-check candidate using an exact thread-to-runtime binding or supported receiving-harness witness; when proof is unavailable, reject new live dispatch before queue addition. Independently review and qualify it without treating idle or notLoaded alone as proof.",
+  "existing_queue_custody": {
+    "ledger_state": "delivered",
+    "version": 3,
+    "attempt_count": 1,
+    "action": "Preserve the original queued message and receipt; no resend, silent deletion, replacement, launch/resume or false verification/closure. Reconcile this exact attempt before another live test."
+  },
+  "acceptance": "FAILED. Queue delivery and disk recovery remain observed component behavior; a working live communication round trip is unqualified.",
+  "historical_records_retained": [
+    "live-fresh-start-001/RECOVERY_RESULT.json",
+    "live-fresh-start-001/COLLECT_RESULT.json",
+    "COMMIT_RECORD.json"
+  ],
+  "supersedes": "Current pending/waiting interpretation in the recovery handoff; original raw observations and prior fixture/source passes remain retained.",
+  "implementation_changed": false,
+  "ledger_changed_by_this_correction": false
+}

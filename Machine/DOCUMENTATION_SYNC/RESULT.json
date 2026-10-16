@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T03:44:55.147765+00:00",
+  "status": "PASS",
+  "invariant": "MACHINE_AUTOMATED_EXECUTION_REQUIRED",
+  "maintained_documents_checked": 35,
+  "documentation_files_classified": 370,
+  "maintained_links_checked": 161,
+  "broken_links": [],
+  "coverage_file": "COVERAGE.json",
+  "maintained_link_checks_file": "LINKS.json",
+  "runtime_files_match_reviewed_v3": 10,
+  "installed_hook_and_verifier_preserved": true,
+  "frozen_package_files_preserved": 39,
+  "private_files_preserved": 87,
+  "historical_document_hashes_checked": 7,
+  "project_tracked_files_preserved": 331,
+  "saved_scene_selection_files_preserved": 89,
+  "communication_guides_byte_matching": true,
+  "source_context_change": "Intent/communication hashes updated intentionally; outstanding tasks/permits and their pinned context remain unchanged.",
+  "installed_suite": {
+    "tests": 98,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 25.341,
+    "log": "INSTALLED_SUITE.log"
+  },
+  "operational_checks": [
+    {
+      "command": [
+        "status",
+        "--json"
+      ],
+      "exit_code": 3,
+      "status": "workflow_invariant_failed",
+      "observation_status": "inspection_coordinator",
+      "context_digest": null
+    },
+    {
+      "command": [
+        "doctor",
+        "--json"
+      ],
+      "exit_code": 3,
+      "status": "workflow_invariant_failed",
+      "observation_status": "source_integrity_pass",
+      "context_digest": "e8e87b1131836bcd641a03d3db1b02f8ce25bcf4df371bf043c969f1420e1104"
+    },
+    {
+      "command": [
+        "work-view"
+      ],
+      "exit_code": 3,
+      "status": "workflow_invariant_failed",
+      "observation_status": "retained_observation",
+      "context_digest": null
+    },
+    {
+      "command": [
+        "invariant-check"
+      ],
+      "exit_code": 3,
+      "status": "workflow_invariant_failed",
+      "observation_status": "retained_observation",
+      "context_digest": null
+    }
+  ],
+  "workflow_execution": "blocked",
+  "runtime_automation_qualified": false,
+  "git_state": "Current enforcement and documentation changes remain uncommitted; unrelated untracked files are untouched."
+}

@@ -1,0 +1,23 @@
+schema_version: 1
+workflow: roadmap-progress
+version: '0.1'
+stages:
+- id: inspect_accepted_evidence
+  on_failure: blocked
+  on_uncertain_external_effect: recovery_required
+- id: reconcile_dependencies
+  on_failure: blocked
+  on_uncertain_external_effect: recovery_required
+- id: propose_progress
+  on_failure: blocked
+  on_uncertain_external_effect: recovery_required
+- id: authorize_roadmap_transition
+  on_failure: blocked
+  on_uncertain_external_effect: recovery_required
+- id: publish_derived_status
+  on_failure: blocked
+  on_uncertain_external_effect: recovery_required
+approval: required_at_protected_mutation
+max_unbounded_retries: 0
+state_owner: designated_domain_owner
+execution_status: declarative_only

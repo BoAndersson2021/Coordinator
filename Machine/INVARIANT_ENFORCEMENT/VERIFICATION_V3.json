@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "manifest_sha256": "260dccdb7ef5c0f1aecd23bd827bd14dc3fde1fa9b09336207c6a89c243fa432",
+  "suite_runs": [
+    {
+      "tests": 17,
+      "elapsed_seconds": 0.97
+    },
+    {
+      "tests": 98,
+      "elapsed_seconds": 43.588
+    }
+  ],
+  "failures": 0,
+  "errors": 0,
+  "hook_cases": 14,
+  "hook_status": "PASS",
+  "independent_verdict": "PASS",
+  "source_review_turn": "01a142c2-fe80-7913-9119-ebcc703a0d94",
+  "qualified_runtime_automation": false
+}

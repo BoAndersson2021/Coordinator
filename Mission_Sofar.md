@@ -1,57 +1,27 @@
-**Machine has a working coordination foundation and one proven, bounded execution route.** We still operate its workflow; full studio automation remains unqualified.
+# Machine current state
 
-```text
- YOU — intent, scope and adoption decisions
-  |
-  v
- BUILDER / COORDINATOR — currently me, through CodeExp
-  | implements candidates, collects evidence, operates dialogue
-  |
-  v
- +---------------- DESKTOP/MACHINE ------------------+
- | Own Git repository; infrastructure stays here     |
- |                                                   |
- | [WORKS] Design and communication foundation        |
- |         Frozen corpus + three communication docs  |
- |                                                   |
- | [WORKS] Persistent inspection coordination         |
- |         Projects, thread bindings, assignments,   |
- |         delivery records, reports and reviews     |
- |         Recovery records survive replacement      |
- |                                                   |
- | [LIVE]  Bounded session admission                  |
- |         Owner decision -> one session permit      |
- |         -> exact scratch initialization           |
- |         First execution succeeded; reuse rejected |
- |                                                   |
- | [DESIGN] Automated project-role lifecycle          |
- |          Fence work, retire, launch, verify       |
- |          Controller/native integration still open |
- |                                                   |
- | [OPEN] Authenticated grants, production adapters,  |
- |        autonomous scheduling and self-replacement |
- +-------------------+-------------------------------+
-                     |
-                     | Operator-mediated thread transport
-                     | Delivery and execution tracked separately
-                     v
- +------------ SEPARATE PROJECT REPOS ---------------+
- | Blender_Project and future game repositories     |
- |                                                   |
- | Agents execute through their own harnesses.       |
- | Project instructions and acceptance gates apply. |
- | Game source, scenes and assets remain here.       |
- |                                                   |
- | [LIVE] One historical Blender inspection verified |
- | [OPEN] Native role qualification and castle work  |
- +---------------------------------------------------+
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED` is installed and enforced for Machine and
+every adapter it uses, controls or communicates with, including all new/edited
+features. Authorized workflow execution requires zero manual starts/stops,
+communication, coordinator restarts or handovers, with visible failures that block.
 
- Verification:
-   Builder tests -> independent source review -> owner adoption
-```
+The V3 guard has independent source PASS, 98 passing tests and 14 real disposable
+commit-hook cases. It blocks native/manual dispatch, socket effect submission,
+scratch execution, handovers and workflow verification/closure before effects.
+Operational health fails loudly with invariant code and exit 3. The mandatory
+installed verifier evaluates index blobs and requires actual successful mandatory
+test IDs and runner completion; unsafe or missing integration blocks commits.
 
-The current checks show **source integrity passing**, a clean Machine repository at `dd89d38`, and **51 passing tests** from the completed validation. The scratch permit remains consumed.
+Automatic lifecycle, persistent orchestration, communication and recovery remain
+unqualified. The native acceptance test is FAIL: its exact queued input had no
+established live receiver. One delivery attempt remains in custody. Historical
+pilot/scratch successes remain evidence for their original scopes only; the
+consumed scratch permit cannot be replayed. No castle/production readiness is claimed.
 
-Its authority currently relies on **local operator trust**. General agent login/work admission and automated role management are still ahead.
-
-[Recorded live acceptance](/Users/boandersson/Desktop/CodeExp/Machine/ADMISSION_TEST/REPORT.md)
+CodeExp2 supplies development context and evidence; Desktop/Machine supplies
+persistent records and the enforced barrier. This is not a qualified automatic
+execution loop. Machine enforcement and documentation are committed as
+`50dbd19`; its installed pre-commit gate passed 17 invariant tests and the full
+98-test suite. See [onboarding](Machine/README.md),
+[current checkpoint](Machine/CURRENT_MISSION.md), [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md)
+and [documentation index](Machine/DOCUMENTATION_INDEX.md).

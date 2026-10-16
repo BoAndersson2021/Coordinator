@@ -1,0 +1,18 @@
+{
+  "handoff_version": "0.2",
+  "architecture_version": "1.2",
+  "files": {
+    "README.md": "05e135b66c3510569664f7862be570bd32ef02101f620414998ca2b60d0c69ce",
+    "agentic-studio.install.yaml": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261",
+    "corpus/system-position.txt": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950",
+    "corpus/architecture-v1.2.txt": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1",
+    "corpus/unified-operating-model.txt": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341",
+    "corpus/agentic-structure.txt": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77",
+    "tests/test_installer.py": "9e8a62983ae8acf240cc3c7b001a8ea94cfa4d055a8a2f5aa02f211eb0783194",
+    "installer/installer.py": "1c5ffadc417eabe3b37f5d77d1a94a1c7e8dd0fb3e01102e176c22aec173b290",
+    "installer/__pycache__/installer.cpython-313.pyc": "cc9c02c0f06e5f872c95ea8989238845467a140b9d2c80b1c1892f6e68393740",
+    "tests/__pycache__/test_installer.cpython-313.pyc": "c5ed975d9277cc76cbeec785d5e085fe0f106dbdedaf23f306180ba2db233300"
+  },
+  "operational_gates": "unverified",
+  "tests": "3 passed"
+}

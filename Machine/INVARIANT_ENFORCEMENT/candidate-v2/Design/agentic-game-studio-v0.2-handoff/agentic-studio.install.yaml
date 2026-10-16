@@ -1,0 +1,273 @@
+schema_version: '0.2'
+kind: AgenticGameStudioInstallation
+metadata:
+  id: agentic-game-studio
+  specification_version: '1.2'
+  status: bootstrap_staging_only_unqualified
+  description: Declarative contract for provisioning and qualifying an agentic game
+    studio. No component is considered installed solely because it is declared here.
+  package_version: '0.2'
+sources:
+  required:
+  - id: GAME PROJECT ARCHITECTURE SPECIFICATION v1.2.txt
+    file: corpus/architecture-v1.2.txt
+    role: normative_project_machine
+    sha256: 6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1
+  - id: Agentic Structure.txt
+    file: corpus/agentic-structure.txt
+    role: normative_agent_boundaries
+    sha256: 68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77
+  - id: AGENTIC-GAME-STUDIO-—-UNIFIED-OPERATING-MODEL.txt
+    file: corpus/unified-operating-model.txt
+    role: normative_integration_model
+    sha256: f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341
+  - id: System-Position.txt
+    file: corpus/system-position.txt
+    role: contextual_project_position
+    sha256: 19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950
+  validation:
+    require_exact_digest_at_install: true
+    reject_missing: true
+    reject_ambiguous_revision: true
+    digest_algorithm: sha256
+installation:
+  mode: plan_then_approve_then_apply_then_qualify
+  default_action: inspect_only
+  failure_policy: fail_closed
+  unknown_dependencies: block
+  missing_capabilities: block
+  unverified_sources: block
+  privilege_escalation: prohibit
+  provider_fallback: prohibit
+  implicit_network_access: prohibit
+  automatic_purchase: prohibit
+  overwrite_existing_authority: prohibit
+  publish_or_deploy: prohibit_without_separate_grant
+  phases:
+  - discover
+  - inspect
+  - resolve_sources
+  - validate_contracts
+  - generate_plan
+  - approve_plan
+  - provision_staging
+  - verify_staging
+  - authorize_promotion
+  - promote_installation
+  - qualify
+  promotion:
+    require_explicit_approval: true
+    require_verified_staging: true
+    require_unchanged_plan_digest: true
+    require_unchanged_source_digests: true
+    on_uncertain_commit: recovery_required
+bindings:
+  studio_root: null
+  project_root: null
+  corpus_authoritative_store: null
+  corpus_retrieval_index: null
+  source_repository: null
+  repository_integration_adapter: null
+  task_state_store: null
+  execution_receipt_store: null
+  artifact_store: null
+  execution_sandbox_provider: null
+  build_executor: null
+  test_executor: null
+  runtime_target: null
+  release_staging_store: null
+  promotion_authority_service: null
+  publication_adapter: null
+  secrets_provider: null
+  agent_model_provider: null
+  agent_dispatch_adapter: null
+components:
+  corpus:
+    required: true
+    authority: authoritative_records_remain_with_designated_owners
+    capabilities:
+    - indexed_retrieval
+    - document_revision_resolution
+    - supersession_resolution
+    - scope_and_approval_filtering
+    - conflict_detection
+    - provenance_tracking
+    - bounded_context_package
+    ingestion:
+      candidate_default: true
+      auto_approve: false
+      promote_only_from_authoritative_record: true
+      reject_unresolved_conflicts: true
+  project_machine:
+    required: true
+    architecture: '1.2'
+    domains:
+    - production
+    - runtime
+    - release
+    systems:
+    - design
+    - repository
+    - sdk
+    - contracts
+    - assets
+    - task_manager
+    - build
+    - runtime
+    - telemetry
+    - tests
+    - playtests
+    - release
+    - publication
+    laws:
+      runtime_must_not_depend_on_production_only_tools: true
+      immutable_promoted_artifacts: true
+      pinned_build_inputs: true
+      independent_validation: true
+      separate_promotion_and_publication: true
+  agent_workforce:
+    required: true
+    roles:
+    - design
+    - engineering
+    - content
+    - verification
+    execution_contract:
+      unique_agent_identity: true
+      scoped_task_grant: true
+      pinned_input_revisions: true
+      bounded_context: true
+      sandbox_isolation: true
+      tool_allowlist: true
+      resource_budget: true
+      durable_operation_identity: true
+      durable_receipts: true
+      independent_result_review: true
+      replacement_from_persistent_state: true
+    prohibited:
+    - agent_conversation_as_source_of_truth
+    - self_approval_of_protected_mutations
+    - implicit_inheritance_of_task_manager_authority
+    - unverified_candidate_adoption
+    - automatic_retry_of_uncertain_external_effect
+project_contract:
+  identity:
+    project_id: null
+    repository_revision: null
+    design_revision: null
+    content_revision: null
+    sdk_revision: null
+    dependency_lock_digest: null
+  surfaces:
+    design: design/
+    production: production/
+    runtime: runtime/
+    sdk: sdk/
+    contracts: contracts/
+    orchestration: orchestration/
+    manifests: manifests/
+    output: output/
+  layout_is_logical: true
+  engine_native_layouts_allowed: true
+  generated_output_is_not_authoritative_source: true
+operation_contract:
+  stages:
+  - resolve_authoritative_context
+  - create_task
+  - validate_grant
+  - reserve_resources
+  - dispatch
+  - execute
+  - retain_candidate_and_receipts
+  - verify_independently
+  - adopt_with_domain_authority
+  - update_corpus_index
+  protected_mutation_requires:
+  - authority_owner
+  - actor_identity
+  - scoped_grant
+  - expected_state_revision
+  - operation_id
+  - outcome_receipt
+  uncertain_external_effect:
+    state: recovery_required
+    block_conflicting_operations: true
+    require_authoritative_reconciliation: true
+    prohibit_blind_retry: true
+persistence:
+  authoritative_records:
+  - design_revisions
+  - source_revisions
+  - asset_provenance
+  - tasks_and_grants
+  - execution_receipts
+  - build_artifacts
+  - test_and_playtest_evidence
+  - release_and_publication_records
+  - recovery_records
+  schema_version_required: true
+  integrity_digest_required_for_acceptance_evidence: true
+  replay_must_not_repeat_external_effects: true
+security:
+  least_privilege: true
+  credentials_from_secrets_provider_only: true
+  credentials_in_context_or_receipts: prohibited
+  cross_project_access: deny_by_default
+  human_reserved_decisions:
+  - creative_direction
+  - consequential_changes
+  - budget_increases
+  - release_approval
+  no_implicit_human_approval: true
+qualification:
+  default_status: unverified
+  require_evidence_bound_to_exact_revision: true
+  gates:
+  - id: source_integrity
+    proof: all_required_documents_resolve_to_approved_digests
+  - id: authority_separation
+    proof: task_manager_and_agents_cannot_bypass_domain_authority
+  - id: corpus_precedence
+    proof: superseded_or_conflicting_documents_cannot_become_authoritative_context
+  - id: context_resolution
+    proof: agent_context_has_pinned_sources_and_scope
+  - id: execution_isolation
+    proof: denied_tool_and_cross_project_mutations_have_no_effect
+  - id: replacement_recovery
+    proof: replacement_resumes_from_durable_state_without_repeating_effects
+  - id: integration
+    proof: candidate_requires_verification_and_authorized_adoption
+  - id: build_reproducibility
+    proof: pinned_inputs_produce_verifiable_artifact_identity
+  - id: runtime_closure
+    proof: shipped_runtime_has_no_production_only_dependency
+  - id: release_custody
+    proof: promotion_and_publication_preserve_artifact_identity
+  - id: failure_reconciliation
+    proof: uncertain_external_effect_blocks_retry_until_reconciled
+  acceptance:
+    require_all_gates_pass: true
+    require_operator_approval: true
+    no_claim_of_operational_readiness_without_evidence: true
+unresolved_installation_dependencies:
+- concrete_package_or_repository_locations
+- exact_component_versions_and_hashes
+- executable_adapter_interfaces
+- deployment_environment_and_platform
+- persistent_store_implementations
+- authority_grant_schema_and_enforcement
+- model_provider_and_agent_runtime
+- actual_build_test_and_release_commands
+- installation_rollback_and_durability_mechanisms
+handoff:
+  version: '0.2'
+  normative_sources:
+  - architecture-v1.2.txt
+  - agentic-structure.txt
+  - unified-operating-model.txt
+  contextual_sources:
+  - system-position.txt
+  bootstrap_only: true
+  operational_readiness: unverified
+  installer_entrypoint: installer/installer.py
+  qualification_gates: unverified

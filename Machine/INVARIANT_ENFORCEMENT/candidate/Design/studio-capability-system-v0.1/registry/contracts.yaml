@@ -1,0 +1,87 @@
+schema_version: 1
+registry: contracts
+entries:
+- id: CON-TASK
+  version: '0.1'
+  required_fields:
+  - task_id
+  - authority_grant
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-AGENT-EXECUTION
+  version: '0.1'
+  required_fields:
+  - agent_id
+  - sandbox_id
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-CORPUS-CONTEXT
+  version: '0.1'
+  required_fields:
+  - context_digest
+  - source_revisions
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-TOOL
+  version: '0.1'
+  required_fields:
+  - tool_id
+  - effects
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-ASSET
+  version: '0.1'
+  required_fields:
+  - asset_id
+  - source_digest
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-INTEGRATION
+  version: '0.1'
+  required_fields:
+  - candidate_revision
+  - expected_head
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-EVIDENCE
+  version: '0.1'
+  required_fields:
+  - artifact_digest
+  - environment_digest
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-RELEASE
+  version: '0.1'
+  required_fields:
+  - release_id
+  - promotion_grant
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-CITIZEN
+  version: '0.1'
+  required_fields:
+  - citizen_id
+  - authority_owner
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-COORDINATION
+  version: '0.1'
+  required_fields:
+  - operation_id
+  - resource_scope
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-STATE
+  version: '0.1'
+  required_fields:
+  - domain_owner
+  - expected_revision
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required
+- id: CON-AUTHORITY
+  version: '0.1'
+  required_fields:
+  - grant_id
+  - principal
+  mutation: none_without_separate_grant
+  on_uncertainty: recovery_required

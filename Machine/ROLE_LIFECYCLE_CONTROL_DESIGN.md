@@ -1,5 +1,14 @@
 # Automated role lifecycle control — proposed design v0.1
 
+Current governing invariant: `MACHINE_AUTOMATED_EXECUTION_REQUIRED`, enforced
+across Machine and every used/controlled/communicating adapter, including all
+new/edited features. No manual starts/stops, relays, coordinator restarts or
+handovers are permitted in workflow execution. Missing capability/proof must fail
+loudly and block. The installed guard enforces denial; this lifecycle design is
+unimplemented and supplies no runtime admission. The staged pre-commit gate and
+independent review apply to every protected implementation increment. See
+[the invariant](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md) and [runbook](/Users/boandersson/Desktop/Machine/docs/RUNBOOK.md).
+
 Status: design only, requested by the owner after both original roles passed the corrected v29 source/artifact review. No lifecycle service, grant, enrollment, restart, native qualification or scene change is activated by this document. The frozen Design packages remain unchanged.
 
 ## Outcome and ownership
@@ -14,7 +23,7 @@ Machine should request a bounded replacement of an external project's agent thro
 | Native role harness/provider | Enforce the turn-admission fence and cooperative session lifecycle; supply actual session/process/turn receipts. |
 | Model | Perform the admitted agent task through its harness and report results. Model text cannot acknowledge process retirement, mint a lease or authorize adoption. |
 
-Machine stores references and coordination evidence. Blender source, project runtime records, scenes and assets stay in Blender_Project. The initial Machine inspection coordinator remains inspection-only until this additional adapter is implemented, independently verified and explicitly activated.
+Machine stores references and coordination evidence. Blender source, project runtime records, scenes and assets stay in Blender_Project. Current workflow execution is disabled until automatic lifecycle and orchestration are implemented, independently verified and qualified within owner scope.
 
 ## Observed chain and missing behavior
 
@@ -82,4 +91,4 @@ Require distinct adapter process identities, unchanged source/target, settled re
 5. Add Machine's typed adapter and recovery view. Preserve the existing inspection operation and transport history; no generic shell or automatic adoption endpoint is introduced.
 6. After independent source review and the exact owner activation decision, qualify the real attended lifecycle route against its frozen version. Then resume native adapter qualification and the original castle task. A fixture pass, design seal or source review cannot award that native result.
 
-These slices are the proposed implementation order. The owner's current instruction authorizes this design; it does not activate the new controller or permit live retirement/loading. The next implementation assignment should own an isolated candidate, declared files, meaningful checks and a concrete independently reviewed activation boundary.
+These slices remain a proposed implementation order, not activated lifecycle capability. The current owner-mandated guard blocks unqualified execution and does not permit live retirement/loading. The next implementation assignment should own an isolated candidate, declared files, meaningful checks and a concrete independently reviewed activation boundary.

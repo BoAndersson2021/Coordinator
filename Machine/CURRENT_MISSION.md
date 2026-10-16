@@ -1,26 +1,67 @@
 # Machine current mission checkpoint
 
-## Current communication expansion
+## Current enforced invariant and failed live acceptance
 
-Fresh-start acceptance is now **recovered after coordinator restart, awaiting
-receiving execution**. New CodeExp2 coordinator thread
-`01a142a2-a322-7693-a3b5-6cfdd7106150` read onboarding from disk, passed
-status/doctor/work-view and collected the same task without resending on
-2026-10-16. The native bridge found the exact original input still **queued**;
-there is no completed receiving turn or report to review. Task state remains
-`delivered`, version 3, with one unchanged delivery attempt. All ten installed
-source hashes, 331 tracked project files and 89 saved scene/selection files
-match the pre-test baseline; project HEAD and clean status are unchanged.
-[Recovery result](COMMUNICATION_BRIDGE/live-fresh-start-001/RECOVERY_RESULT.json)
-retains the successful collection, initial sandbox socket rejection, source
-checks and preservation evidence. No agent launch/resume, verification or
-closure occurred. Completed-reply recovery and live acceptance remain pending.
+The owner requires **zero manual start/stop, handover or communication steps
+inside workflow execution**, including silent dependencies. The
+[workflow requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md) define the binding
+outcome and acceptance scenarios. Machine must own lifecycle, communication,
+supervision and recovery, and expose every block/failure. The historical bridge and
+conversation-operated loop fail this requirement. The installed guard now blocks
+unqualified execution. A liveness check alone is insufficient; the manual
+coordinator-restart test is superseded.
+
+The fail-closed implementation is now installed in Desktop/Machine. Independent
+V3 review PASS binds all 17 adopted files; 98 tests and 14 real disposable commit
+cases passed. The CLI, core task API, native/manual sender, socket RPC/frame
+emission and scratch executor deny new workflow effects. Health reports
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED`, `workflow_invariant_failed`, exit 3.
+The pinned pre-commit verifier is active under the Git directory's
+`machine-invariant-hooks`; it evaluates staged blobs and requires actual successful
+mandatory test IDs and completion reports. All 87 private files were preserved.
+[Enforcement evidence](INVARIANT_ENFORCEMENT/README.md) retains rejected candidates,
+independent reviews, installation and actual checks. Automation itself remains
+unqualified; the current guard is an enforced stop. Machine enforcement and
+synchronized documentation are committed as `50dbd19`. Its installed pre-commit
+gate passed 17 invariant tests and the full 98-test suite; the
+[commit record](INVARIANT_ENFORCEMENT/COMMIT_RECORD.json) retains the actual log.
+
+The rules, guides, lifecycle proposal, design addenda and runbooks in Machine and
+CodeExp2 are synchronized through [the documentation index](DOCUMENTATION_INDEX.md).
+Historical source/evidence remains retained. Updated communication/context hashes
+do not re-pin the outstanding failed task or award verification.
+
+Fresh-start live acceptance is **FAILED: receiver liveness was never
+established**. Subsequent live inspection found no Brainstorm terminal or loaded
+instance: the registered thread reports `notLoaded`, and none of the six running
+Codex terminals uses Blender_Project. The exact submitted input remained queued,
+with no receiving execution or completed report. A queue acknowledgement and
+successful recovery of that queue do not establish live communication.
+
+[Failure and source diagnosis](COMMUNICATION_BRIDGE/LIVE_ACCEPTANCE_FAILURE.json)
+records the owner correction. The bridge validates saved thread identity and
+workspace but permits native `notLoaded` dispatch without positive evidence of
+an active receiving executor. Collection exposes `queued` without diagnosing
+missing receiver liveness. The coordinator then incorrectly described this as
+routine waiting. The required repair belongs in the bridge's dispatch preflight
+and operational reporting, with corresponding acceptance coverage; it must use
+an exact runtime binding rather than infer liveness from thread status alone.
+The fail-closed guard described above is installed. It does not implement the missing automatic runtime providers.
+
+The earlier [recovery result](COMMUNICATION_BRIDGE/live-fresh-start-001/RECOVERY_RESULT.json)
+is retained as historical component evidence: new coordinator thread
+`01a142a2-a322-7693-a3b5-6cfdd7106150` read disk state and recovered the original
+queued input without resending. All ten source hashes, 331 tracked project files
+and 89 saved scene/selection files matched their baselines. Those observations
+remain valid; the current acceptance verdict is FAIL. Ledger state remains
+`delivered`, version 3, for transport custody only, with one unchanged attempt.
 
 The owner requested commits. The ten-file implementation is sealed in Machine
 commit `7fd3b78` (`feat: add native inspection communication bridge`), with
 a clean Machine worktree and all ten committed V2 hashes matching. The
 [commit record](COMMUNICATION_BRIDGE/COMMIT_RECORD.json) links source, review,
-validation and pending live acceptance; private state remains outside Git.
+validation and the historical acceptance checkpoint; the subsequent live
+failure above supersedes its pending interpretation. Private state remains outside Git.
 
 Original delivery: on 2026-10-16 at 02:53:24 UTC, CodeExp2 coordinator thread
 `01a1429f-2f18-7723-aa35-abf67cac7b6c` invoked `bridge-send` once for
@@ -32,15 +73,15 @@ through the pinned existing route. All ten installed candidate hashes match;
 status, doctor and work-view passed. The 331 tracked project files and 89 saved
 scene/selection files match their pre-test hashes. No reply collection occurred.
 
-The next continuation must read onboarding and
-[the acceptance handoff](COMMUNICATION_BRIDGE/FRESH_START_TEST.md), run
-status/work-view, then `./Machine bridge-collect --id native-inspection-fresh-start-001`
-in Desktop/Machine after the existing receiving session processes its queue.
-Do not prepare or send again, or launch/resume an agent as a workaround. Review
-the actual report and both pinned inputs before verification/closure. Retained
+The next continuation must address automated lifecycle, communication,
+orchestration and visible recovery under the owner's workflow requirements
+before claiming readiness or attempting another live test. Preserve
+and reconcile the existing queued message and delivery receipt; do not prepare
+or send again, launch/resume an agent, silently delete the queue entry, or mark
+the task verified/closed as a workaround. The original
 [delivery checkpoint](COMMUNICATION_BRIDGE/live-fresh-start-001/DELIVERY_CHECKPOINT.json)
-and adjacent raw command outputs provide disk-only recovery context. Source and
-saved-file preservation do not establish the live in-memory scene state.
+and adjacent command outputs remain retained. Saved-file preservation does not
+establish live in-memory scene state.
 
 The owner requested direct inspection communication, verification, independent
 red teaming, fixes and reverification, followed by live testing from a fresh
@@ -54,10 +95,9 @@ The new commands explicitly observe an existing native project role, submit a
 prepared inspection once, collect its matching completed reply and show retained
 work. They add no session launcher or automatic startup dispatch. Source review
 and the read-only actual socket check establish no successful new live round trip.
-Resume with the [fresh-start acceptance](COMMUNICATION_BRIDGE/FRESH_START_TEST.md):
-delivery and restart have occurred; collect and review that same task from saved
-state without sending again once the reply exists. Live acceptance is pending.
-Historical pilot and scratch permit records below remain unchanged.
+The [fresh-start acceptance](COMMUNICATION_BRIDGE/FRESH_START_TEST.md) failed on
+receiver liveness. Source/fixture passes do not close that defect. Historical
+pilot and scratch permit records below remain unchanged.
 
 ## First implementation
 
@@ -82,9 +122,9 @@ The app server continued reporting `notLoaded` while the attended terminal proce
 ## Resume
 
 1. Read the Machine implementation repository's actual `AGENTS.md`.
-2. Run `./Machine status --json` and `./Machine doctor --json` there.
+2. Run `./Machine status --json` and `./Machine doctor --json` there as diagnostics. Expected workflow health is a loud invariant failure, exit 3; source integrity is separate.
 3. Read `./Machine task-show --id blender-inspection-001` when inspecting the closed pilot and its replacement history. Do not redispatch it.
-4. Follow the [implementation frontier](../../Machine/docs/ROADMAP.md): qualify a reusable native bridge with fresh role bindings, bounded delivery, and trustworthy receipt custody. Full authority services and protected production adapters remain unqualified; this first slice supports inspection only.
+4. Follow the [implementation frontier](../../Machine/docs/ROADMAP.md): qualify persistent orchestration, controlled lifecycle, automatic communication and visible recovery with zero manual execution steps. Current workflow execution remains blocked; diagnostic/custody commands do not enable it.
 
 Normal in-scope implementation continues under the current user request. New project targets, broader assignments, execution/billing changes, protected adoption, publishing, and external effects retain their own authorization boundaries.
 

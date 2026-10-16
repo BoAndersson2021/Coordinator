@@ -1,5 +1,23 @@
 # Mammuth Machine design and builder mission
 
+## Governing execution invariant
+
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED` is an enforced invariant of Machine and
+every adapter it uses, controls or communicates with, including all new/edited
+features. Authorized execution must have zero manual starts/stops, communication,
+coordinator restart or handover steps. Missing capability/proof must fail loudly
+and block effects. AGENTS.md and the mandatory staged pre-commit verifier guard
+future changes; protected changes require independent review.
+
+The V3 barrier is installed and verified. Automatic lifecycle, orchestration,
+communication and recovery remain unqualified, so current execution is blocked.
+The design corpus remains a specification input; frozen packages retain their
+bytes. Manual/operator lanes described below are historical development context
+or unfinished design, not an enabled runtime fallback. The old manual-restart
+acceptance is superseded. Use [requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md),
+[current capability](CURRENT_MISSION.md), [documentation status](DOCUMENTATION_INDEX.md)
+and [the runbook](/Users/boandersson/Desktop/Machine/docs/RUNBOOK.md).
+
 ## Purpose
 
 Build the Mammuth Machine as a human-directed, AI-operated game-development studio whose institutional knowledge and production continuity survive individual agents and models. Machine is the coordination and management layer toward separate game repositories with agents working inside them.
@@ -58,7 +76,11 @@ The communication approach has successful live use according to the user, includ
 
 Thread transport does not enforce the full studio authority contract. Each protected operation requires enforcement at the receiving execution or domain-adoption boundary. Neither Machine's coordinator identity nor a prompt can widen tool access.
 
-### Production defects and project builders
+### Historical project-builder correction and future automatic routing
+
+This section records the earlier developer-mediated experiment. It is not an
+enabled workflow fallback. The current invariant blocks execution until this
+routing, lifecycle and recovery are implemented through qualified automatic control.
 
 The owner's castle live-test correction establishes a separate project-builder lane. When a production role reports a concrete infrastructure defect, Machine retains the failed operation and pauses dependent work. It discovers an existing project system-builder session, verifies its UUID, repository/worktree, current context, execution surface and role acknowledgement, then records and sends a bounded repair handoff. Brainstorm and Modeling remain production roles; discovery must not treat every agent in the same repository as its builder.
 

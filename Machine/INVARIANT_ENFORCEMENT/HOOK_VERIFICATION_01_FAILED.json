@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "cause": "Git hook inherited repository-local GIT_* variables into disposable repository tests. Suite blocked with one worktree fixture error.",
+  "tests": 94,
+  "errors": 1,
+  "elapsed_seconds": 37.517,
+  "correction": "Strip exactly git rev-parse --local-env-vars from child test environment after reading invoking staged index; preserve source and permission policy."
+}

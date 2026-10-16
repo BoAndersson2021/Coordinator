@@ -1,6 +1,6 @@
 # Mammuth Machine builder mission
 
-This folder holds the design interpretation and working mission for the Codex builder developing the Mammuth Machine. The implementation repository is `/Users/boandersson/Desktop/Machine`; this folder belongs to the `CodeExp` repository and has no separate Git repository.
+This folder holds the design interpretation and working mission for the Codex builder developing the Mammuth Machine. The implementation repository is `/Users/boandersson/Desktop/Machine`; this folder belongs to the `CodeExp2` repository and has no nested Git repository.
 
 The mission is to turn the approved Design corpus into a persistent, human-directed studio coordination system that operates agents in separate game repositories. Machine preserves assignments, authority, results, evidence, and recovery state across agent replacement.
 
@@ -9,16 +9,16 @@ The mission is to turn the approved Design corpus into a persistent, human-direc
 1. [Builder instructions](AGENTS.md).
 2. [Design and builder mission](DESIGN_AND_MISSION.md).
 3. [Current mission checkpoint](CURRENT_MISSION.md).
-4. [Current operating structure](CURRENT_STRUCTURE.yaml): the CodeExp2 Codex agent acts as Machine's builder and coordinator; together with Machine's persistent infrastructure it forms the current working system under the user's direction.
+4. [Current operating structure](CURRENT_STRUCTURE.yaml): the CodeExp2 agent is the development coordinator; Machine holds persistent custody and the enforced stop barrier. Automatic workflow execution remains unqualified and blocked.
 5. The relevant sources in the [Machine Design corpus](../../Machine/Design/Intent.txt) and the three communication documents below.
 
-The [communication expansion record](COMMUNICATION_BRIDGE/README.md) tracks the current implementation, independent review, and planned fresh-CodeExp2 acceptance test.
+The [communication expansion record](COMMUNICATION_BRIDGE/README.md) tracks the implementation, independent review, and failed fresh-CodeExp2 live acceptance. The owner's [workflow requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md) require automated lifecycle, communication and recovery with visible status and zero manual execution steps. The current system fails that requirement.
 
 ## Repository boundaries
 
 | Location | Responsibility |
 | --- | --- |
-| `Desktop/CodeExp/Machine` | This builder's mission, design interpretation, and development approach. |
+| `Desktop/CodeExp2/Machine` | This builder's mission, design interpretation, and development approach. |
 | `Desktop/Machine` | Mammuth Machine implementation, studio specifications, contracts, adapters, coordination, and validation. |
 | Separate game repositories | Game design, game source, authored assets, runtime content, builds, and project integration. |
 
@@ -36,4 +36,12 @@ The user reports successful live use of this approach in `CodeExp` and projects 
 
 ## Current stage
 
-The first inspection coordinator is installed in `Desktop/Machine`, with durable records and 37 passing focused checks. The selected Blender documentation assignment completed through the native attended-session route and was independently reviewed and closed, including reconciliation when its registered role changed. See the [current checkpoint](CURRENT_MISSION.md). The Design corpus remains unchanged and full studio qualification remains open.
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED` is installed in Desktop/Machine, covering
+Machine and all used/controlled/communicating adapters and every new/edited
+feature. Current unqualified workflow execution is blocked loudly. V3 has
+independent source PASS, 98 tests and 14 real disposable commit-hook proofs; none
+qualifies automatic operation. The native live acceptance is FAIL. Historical
+pilot/scratch evidence is preserved, not an enabled fallback. See the
+[current checkpoint](CURRENT_MISSION.md), [requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md),
+[documentation index](DOCUMENTATION_INDEX.md) and
+[operating runbook](/Users/boandersson/Desktop/Machine/docs/RUNBOOK.md).
