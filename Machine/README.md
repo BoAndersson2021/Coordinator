@@ -9,7 +9,8 @@ The mission is to turn the approved Design corpus into a persistent, human-direc
 1. [Builder instructions](AGENTS.md).
 2. [Design and builder mission](DESIGN_AND_MISSION.md).
 3. [Current mission checkpoint](CURRENT_MISSION.md).
-4. The relevant sources in the [Machine Design corpus](../../Machine/Design/Intent.txt) and the three communication documents below.
+4. [Current operating structure](CURRENT_STRUCTURE.yaml): the CodeExp2 Codex agent acts as Machine's builder and coordinator; together with Machine's persistent infrastructure it forms the current working system under the user's direction.
+5. The relevant sources in the [Machine Design corpus](../../Machine/Design/Intent.txt) and the three communication documents below.
 
 ## Repository boundaries
 
