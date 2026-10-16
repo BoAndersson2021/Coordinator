@@ -1,0 +1,86 @@
+{
+  "command_scope": "health",
+  "context_digest": "e8e87b1131836bcd641a03d3db1b02f8ce25bcf4df371bf043c969f1420e1104",
+  "files": {
+    "Design/Benefit-of-System-v0.2.txt": "ad4d3a4b7c89352a6d494b367a707f193dc5922c8a98f82ed74763f11000464f",
+    "Design/Intent.txt": "be5d6055f22a2d17db83ea1f570dc3e6559425e06e619f9abbd0a89e0dbc706c",
+    "Design/THE-MAMMUTH-MACHINE.txt": "01fa8499271f8a26d1cfad7dc52fb08e8f2d71af637fe730570cf8f9b2eebc76",
+    "Design/agentic-game-studio-v0.2-handoff/agentic-studio.install.yaml": "4feb467d95e7f4ff05bf9bd970070dd301f1fb2344b333b9a57fc3d7ae2d4261",
+    "Design/agentic-game-studio-v0.2-handoff/corpus/agentic-structure.txt": "68d305d64fa8f3d04d5993df3401785d32aa2b1184a5c1be195dda7496ae4e77",
+    "Design/agentic-game-studio-v0.2-handoff/corpus/architecture-v1.2.txt": "6afde1414e4a5772ea3e829abe4017bd55403095572ba0e18e3fa95875632db1",
+    "Design/agentic-game-studio-v0.2-handoff/corpus/system-position.txt": "19ad5f67120e649d71e0d306e546b5b8f93d639f536ec77b239f02312ef2e950",
+    "Design/agentic-game-studio-v0.2-handoff/corpus/unified-operating-model.txt": "f852745338d2d2057177c75d572d4e625f81235047b2f29749609b1e110e4341",
+    "Design/studio-capability-system-v0.1/README.md": "9aeeb4bad68fb563be92f124b7dabec5a81f6d2a1c6f67c5b3db224af3db3b32",
+    "Design/studio-capability-system-v0.1/contracts/agent_execution.contract.yaml": "474da755589ec116748a492537c0e6a30379661446b3a505be0a1bd6d007e11a",
+    "Design/studio-capability-system-v0.1/contracts/asset.contract.yaml": "273650925b86c3e253c7205edbaf3190f7407410507af30ffd11f21e6fad4f73",
+    "Design/studio-capability-system-v0.1/contracts/authority.contract.yaml": "070b09884af5a58d33a627c7b69b6e9fd8e0350667fb6cd7d0889f922a44e724",
+    "Design/studio-capability-system-v0.1/contracts/citizen.contract.yaml": "608600d86f7ee4ee2d0d27c8ad7e7e384a660bb38602e18821610383a6db04be",
+    "Design/studio-capability-system-v0.1/contracts/coordination.contract.yaml": "0925092178afa308d691864fda1eb3b4e52ff6d65f5a2c9f07cc4b7b65bfc618",
+    "Design/studio-capability-system-v0.1/contracts/corpus_context.contract.yaml": "97c4de0afcb656f24487c4d2edc6e1ee892da3271ee83399f2a21ed93ffa60b9",
+    "Design/studio-capability-system-v0.1/contracts/evidence.contract.yaml": "070df34e01fa7846cd2eb1fa62bac04f528ec75a98c8d12f1ed3b507eafad243",
+    "Design/studio-capability-system-v0.1/contracts/integration.contract.yaml": "ae1e106bc395c6ec23f2602d5424eae545267c31b308cd4310d4ec1847cfffe7",
+    "Design/studio-capability-system-v0.1/contracts/release.contract.yaml": "4a69d2172157a70345e04fdf88b419a7cea63fd25fd80c867b903b8e000dbbdc",
+    "Design/studio-capability-system-v0.1/contracts/state.contract.yaml": "b517d206b0c392c2e00479376efb681c029cbbd65198a42487576a9658768dec",
+    "Design/studio-capability-system-v0.1/contracts/task.contract.yaml": "d25497244a1e9c42f2ce38beb2236e66fb4cd890644bbf34bc1b47725af61c75",
+    "Design/studio-capability-system-v0.1/contracts/tool.contract.yaml": "883e451d1a83f9bf86d99415b42243e19a4663db5d440038149663a87a73a3b1",
+    "Design/studio-capability-system-v0.1/handoff/acceptance.yaml": "fda37da6e2787efe27b7cd17100062b264febe89d8f996d8f1e8ade8cf7cb968",
+    "Design/studio-capability-system-v0.1/handoff/integration.yaml": "724101d2f9913b51cd0f023b0a757e5f3ea0cea37505c8f5fc3702560ab12ae2",
+    "Design/studio-capability-system-v0.1/registry/citizens.yaml": "3c86976eebf9eed423b9988e3c1dc9d59a2b4e10c57255e6c336aa7fdb143e8b",
+    "Design/studio-capability-system-v0.1/registry/contracts.yaml": "971a7cde63e5ba17f9d2efbcc5f89b6dfc44b31b527fabc7d1048fc7a86074a3",
+    "Design/studio-capability-system-v0.1/registry/laws.yaml": "c8d50b3282500cb15946a8dcd20215d7253b11df622458cc10bafa44e47156bc",
+    "Design/studio-capability-system-v0.1/registry/rules.yaml": "1ce95aae825faa1bdba8efb50bd5a5ae29c0e0d7f092202c6f50c6b730971f8f",
+    "Design/studio-capability-system-v0.1/registry/tools.yaml": "43cc6ab1cef8c8d2b5f46d1dc1bd42742d9b71d8f19fb4bdc5466d436b08065e",
+    "Design/studio-capability-system-v0.1/specification/STUDIO-CAPABILITY-SYSTEM-v0.1.md": "60dad16d90f1f9d652db1cd2b75e5cb0c8f5ee64f6935727ba7999f0456afb3d",
+    "Design/studio-capability-system-v0.1/validation/tests/test_validation.py": "242f5019e63d7374f9028ef623638089794443c657d4ab07dfb4f305a8239aff",
+    "Design/studio-capability-system-v0.1/validation/validate.py": "cf7fd9ed842805adac9d817948d54dc0ac614c9965ce205f5a14e8a497b821d3",
+    "Design/studio-capability-system-v0.1/workflows/documentation-reconcile.yaml": "60033ec951140676b97f912eea0a6f6865939c1640b87d1c8bae23c844346e7b",
+    "Design/studio-capability-system-v0.1/workflows/execute-test-verify.yaml": "84698ba712f0f5357d5533d9afd631f31b623bfa86d69d61431e19e5a8baee86",
+    "Design/studio-capability-system-v0.1/workflows/inspect-specify-plan.yaml": "7a9ac1e0b1f55708788e3b472bcdcc61c5ee5979340e411c77d69dc48baddaf5",
+    "Design/studio-capability-system-v0.1/workflows/redteam-harden.yaml": "e44f81ed51f919cc9aba2355e88c2490722e6addb13e1a9d4c4a67976e6e0744",
+    "Design/studio-capability-system-v0.1/workflows/roadmap-progress.yaml": "09f318ee329ce35d8675c9d1ee77066a9d3c2dd58b8f8a15ae56f71b53103449",
+    "docs/communications/app-terminal-codex-launch-pattern.md": "574b8b6a9debb06cd0d67251e58075dd8a9b06372971aa503d6430813baafde8",
+    "docs/communications/how-to-communicate-with-other-codex-agents.md": "2a6a19a879997a5da8c285e286901aea63a071a3316d44d507a870fe332b8750",
+    "docs/communications/universal-multi-agent-build-protocol.md": "cfd60d100956023a13f7d2f2530ccb743d516dddce4d14b9a14b5a6d38dd9f29"
+  },
+  "ledger": "inspection_coordinator",
+  "observation_status": "source_integrity_pass",
+  "operational_qualification": "unverified",
+  "status": "workflow_invariant_failed",
+  "workflow_invariant": {
+    "adapter": "machine.coordinator",
+    "adapters": [
+      {
+        "id": "machine.coordinator",
+        "qualified": false
+      },
+      {
+        "id": "native.inspection",
+        "qualified": false
+      },
+      {
+        "id": "manual.inspection",
+        "qualified": false
+      },
+      {
+        "id": "scratch.init",
+        "qualified": false
+      }
+    ],
+    "code": "MACHINE_AUTOMATED_EXECUTION_REQUIRED",
+    "manual_fallback_permitted": false,
+    "missing_capabilities": [
+      "persistent_orchestration",
+      "managed_executor_lifecycle",
+      "exact_live_receiver_binding",
+      "automatic_communication_and_handover",
+      "observable_supervision_and_recovery"
+    ],
+    "operation": "doctor",
+    "reason": "Current implementation requires manual lifecycle or orchestration",
+    "required_action": "Implement and independently qualify automatic execution; preserve unresolved work. Do not start a terminal or relay messages manually.",
+    "schema_version": 1,
+    "severity": "error",
+    "status": "workflow_invariant_failed",
+    "workflow_ready": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "browser_opened": true,
+  "command_scope": "admin",
+  "log": "/Users/boandersson/Library/Logs/MammuthMachine/6f26f1fad9f7e59b.log",
+  "service": {
+    "instance": "2eb26227e0cf627d793b5adc701a0689",
+    "pid": 62872,
+    "root": "/Users/boandersson/Desktop/Machine",
+    "service": "machine.dashboard",
+    "source_profile": "1071f451670a673f06d249e531397b15c3b13ff3b0fee209e14d2df08c42aa9b",
+    "started_at": "2026-10-16T05:08:24.549947+00:00",
+    "supervisor": "launchd",
+    "workflow_ready": false
+  },
+  "status": "dashboard_running",
+  "supervision": "launchd KeepAlive + RunAtLoad",
+  "url": "http://127.0.0.1:8765/",
+  "workflow_invariant": {
+    "adapter": "machine.coordinator",
+    "adapters": [
+      {
+        "id": "machine.coordinator",
+        "qualified": false
+      },
+      {
+        "id": "native.inspection",
+        "qualified": false
+      },
+      {
+        "id": "manual.inspection",
+        "qualified": false
+      },
+      {
+        "id": "scratch.init",
+        "qualified": false
+      }
+    ],
+    "code": "MACHINE_AUTOMATED_EXECUTION_REQUIRED",
+    "manual_fallback_permitted": false,
+    "missing_capabilities": [
+      "persistent_orchestration",
+      "managed_executor_lifecycle",
+      "exact_live_receiver_binding",
+      "automatic_communication_and_handover",
+      "observable_supervision_and_recovery"
+    ],
+    "operation": "dashboard",
+    "reason": "Current implementation requires manual lifecycle or orchestration",
+    "required_action": "Implement and independently qualify automatic execution; preserve unresolved work. Do not start a terminal or relay messages manually.",
+    "schema_version": 1,
+    "severity": "error",
+    "status": "workflow_invariant_failed",
+    "workflow_ready": false
+  },
+  "workflow_ready": false
+}

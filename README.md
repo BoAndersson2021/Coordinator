@@ -15,3 +15,7 @@ and [documentation status](Machine/DOCUMENTATION_INDEX.md). The three guides in
 docs govern build coordination, communication and lifecycle; their Machine
 snapshots match the current recorded hashes. Historical manual examples and
 sealed source-review packages remain archival, not current operating authority.
+
+Machine's [managed work dashboard](Machine/DASHBOARD/README.md) is installed and
+running: HTML/JavaScript gauges update automatically, with visible stale states
+and proven automatic diagnostic-service recovery. Project execution remains blocked.

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T05:14:22.695406+00:00",
+  "machine_repository": "/Users/boandersson/Desktop/Machine",
+  "machine_commit": "574e834bbd5e467f1aebc770261c07b7eb0aec03",
+  "machine_worktree_clean": true,
+  "committed_review_pins_match": 17,
+  "review_manifest_sha256": "aefb50e537af4942a4d72334b549aeb76caebcc825091efb5bead628f655e556",
+  "commit_exit_code": 0,
+  "hook_bypassed": false,
+  "commit_hook": {
+    "status": "PASS",
+    "mandatory_invariant_tests": 20,
+    "full_suite_tests": 113,
+    "log": "COMMIT_HOOK.log",
+    "log_sha256": "905af16a4a971f1a6b617107dd82f5d9126b90e8778237b613f1064cbeae10ed"
+  },
+  "runtime_automation_qualified": false,
+  "workflow_execution": "blocked",
+  "diagnostic_dashboard": "running under launchd; process/browser recovery verified",
+  "earlier_records": "RESULT.json retains the pre-commit verification checkpoint; candidate snapshots and historical evidence are unchanged."
+}

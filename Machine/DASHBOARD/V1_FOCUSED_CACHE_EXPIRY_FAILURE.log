@@ -1,0 +1,22 @@
+test_corrupt_ledger_fails_instead_of_serving_previous_success (test_dashboard.DashboardTests) ... FAIL
+test_empty_ledger_is_not_initialized_by_dashboard (test_dashboard.DashboardTests) ... ok
+test_historical_completion_and_review_do_not_qualify_runtime (test_dashboard.DashboardTests) ... ok
+test_http_auth_origin_and_method_boundaries (test_dashboard.DashboardTests) ... ok
+test_non_macos_does_not_fall_back_to_a_terminal (test_dashboard.DashboardTests) ... ok
+test_queued_without_worker_never_becomes_running (test_dashboard.DashboardTests) ... ok
+test_sensitive_report_body_and_receipt_are_not_exposed (test_dashboard.DashboardTests) ... ok
+test_supervisor_definition_change_is_not_silently_adopted (test_dashboard.DashboardTests) ... ok
+test_supervisor_is_keepalive_and_repeated_start_preserves_identity (test_dashboard.DashboardTests) ... ok
+
+======================================================================
+FAIL: test_corrupt_ledger_fails_instead_of_serving_previous_success (test_dashboard.DashboardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/boandersson/Desktop/CodeExp2/Machine/DASHBOARD/candidate/tests/test_dashboard.py", line 121, in test_corrupt_ledger_fails_instead_of_serving_previous_success
+    self.assertEqual(code, 503)
+AssertionError: 200 != 503
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.075s
+
+FAILED (failures=1)

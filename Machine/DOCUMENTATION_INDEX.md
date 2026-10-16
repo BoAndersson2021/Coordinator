@@ -18,6 +18,7 @@ The installed guard enforces denial; automatic runtime providers remain unqualif
 | Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md | Proposed lifecycle design under the installed stop barrier; no active controller. |
 | Machine/COMMUNICATION_BRIDGE/README.md and FRESH_START_TEST.md | Failed historical transport acceptance and retired manual-restart test. |
 | Machine/INVARIANT_ENFORCEMENT/README.md | Reviewed source, rejected versions, actual hook/runtime proof and installation. |
+| Machine/DASHBOARD/README.md and Desktop/Machine/docs/DASHBOARD.md | Installed supervised local HTML/JavaScript diagnostics, automatic refresh/recovery and evidence; workflow execution remains blocked. |
 | Desktop/Machine/README.md, AGENTS.md, docs/*.md | Current implementation contract, runbook, frontier and invariant. |
 | Desktop/Machine/docs/communications/*.md | Byte-matching current guide snapshots with updated provenance. |
 | Desktop/Machine/Design/README.md and three root design texts | Current operational addendum; original design text retained. |

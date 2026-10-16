@@ -38,6 +38,16 @@ components:
       scratch_admission: src/admission.py
       native_bridge: src/native_bridge.py
       native_socket: src/native_socket.py
+      diagnostic_dashboard: src/dashboard.py
+    diagnostic_dashboard:
+      entry: ./Machine dashboard
+      scope: read_only_local_ledger_display_not_workflow_execution
+      service: macOS_user_launchd_KeepAlive_and_RunAtLoad
+      browser: automatically_opened_HTML_JavaScript
+      refresh_seconds: 2
+      stale_limit_seconds: 8
+      recovery: actual_process_loss_and_browser_reconnection_verified
+      evidence: DASHBOARD/README.md
     custody: [.machine/state.sqlite3, .machine/admission]
     authority_model: local_operator_trust
     enforcement: >-
@@ -67,6 +77,7 @@ capability_state:
     - Durable historical inspection/admission custody, including consumed permit and queue history.
     - Independent V3 source PASS, 98 passing tests and 14 real disposable commit cases for the installed stop barrier.
     - Installed loud denial of unqualified workflow execution; no manual fallback.
+    - Managed diagnostic dashboard with independent V2 review, 113 tests and five real disposable commit cases; actual service/browser automatic recovery passed.
   failed_live_acceptance:
     task: native-inspection-fresh-start-001
     state: delivered_transport_custody_only
@@ -87,5 +98,6 @@ references:
   - DESIGN_AND_MISSION.md
   - DOCUMENTATION_INDEX.md
   - INVARIANT_ENFORCEMENT/README.md
+  - DASHBOARD/README.md
   - /Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md
   - /Users/boandersson/Desktop/Machine/docs/RUNBOOK.md

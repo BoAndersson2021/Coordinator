@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-16T05:02:01.769362+00:00",
+  "candidate_root": "/Users/boandersson/Desktop/CodeExp2/Machine/DASHBOARD/candidate",
+  "baseline_machine_commit": "50dbd1987c32a93219567199becf435c634f03dd",
+  "files": {
+    "AGENTS.md": "c6ba1bd72c48960a70d494e95844e7ef121e6799000db458574d85c408597f2f",
+    "README.md": "73edf2faa938481bb9c7a326546f1fe77a3b948b9afbd78f5bf7e338905e161c",
+    "docs/DASHBOARD.md": "7233bfab9004178f5550fe527d20096034ea451dc59108a275278e73ef1f3d58",
+    "docs/DOCUMENTATION_INDEX.md": "3b000c9e96a52c61c887ec543eea6b74c060171ea6afd9d5ca2b00bfaf35599d",
+    "docs/ROADMAP.md": "9d01aec82bf8459311b28aa844b230373c384ad85205f503d6f333925d14b6b4",
+    "docs/RUNBOOK.md": "04a6c1e97fabd8a094d2ef9a59f4c7f9abc1308fd365aeb1df1d374c8828bef1",
+    "docs/WORKFLOW_INVARIANT.md": "3b9e74b4981c8dc2f55691c4af17f1ca1b9a807d398b3d0d7d69ba4215aca2c3",
+    "scripts/check_workflow_invariant.py": "f39070862cb97e0c373278a2a49a25baaed1916a798b9fed3f58bcd0293dd3b3",
+    "src/dashboard.py": "7fa17d0530cf0ff7fc1ef21dc5790888a50c95b45536a7022cf7b8d632a89e4b",
+    "src/dashboard_assets/dashboard.css": "6d75551bcdda039a9758758db7ec0224ebd58ecf5f786d2accca0dbcd09b64ed",
+    "src/dashboard_assets/dashboard.js": "3d72963279d4adebfba657d9e1c53a3eb1eb4164578b4bf31dca04b0e3140125",
+    "src/dashboard_assets/index.html": "1c57676a3cf52e37c58558c861fbd4adda16ab845745291edbefc9263f59b08d",
+    "src/machine.py": "9a186425b30bc7f21450eb79107f09110f3ab927ac68846bf3edf944eb00769a",
+    "src/workflow_invariant.py": "c703bdaf808e3e27d7b80be11ea910e591941e8beb00e1f7334af566e5bb4da2",
+    "tests/test_dashboard.py": "809c4c4f1b7f72d28a2bc030cb50bcb8494c210e097b0f8df6d619a3601f31a9",
+    "tests/test_workflow_invariant.py": "db0694bec5e343da9529bf6f5ea077665619108192becfdee6127615e3432edd"
+  }
+}

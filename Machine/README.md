@@ -45,3 +45,10 @@ pilot/scratch evidence is preserved, not an enabled fallback. See the
 [current checkpoint](CURRENT_MISSION.md), [requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md),
 [documentation index](DOCUMENTATION_INDEX.md) and
 [operating runbook](/Users/boandersson/Desktop/Machine/docs/RUNBOOK.md).
+
+The [managed HTML/JavaScript dashboard](DASHBOARD/README.md) is now installed and
+running, with automatic refresh, visible stale failures and proven launchd
+restart/browser reconnection. `./Machine dashboard` owns startup and automatic
+browser opening. This is read-only local diagnostics, not a project workflow
+provider. Independent V2 review, 113 tests and five staged-commit cases passed;
+the Machine implementation is committed as `574e834`, with its enforced hook passing.

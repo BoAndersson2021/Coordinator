@@ -2,6 +2,16 @@
 
 ## Current enforced invariant and failed live acceptance
 
+The new [managed dashboard](DASHBOARD/README.md) is installed, running and opened
+automatically by Machine. Its HTML/JavaScript gauges refresh ledger data every two
+seconds; stale/failing observations are explicit. launchd recovered an automated
+process-loss injection and Chrome reconnected without manual restart/handover.
+Exact-source V2 review PASS, 113 tests and five real commit-gate cases passed.
+The adopted checker now requires 20 successful mandatory invariant test IDs,
+including actual JavaScript failure/reconnection coverage. All 87 private files
+are unchanged. Machine commit `574e834` seals this managed diagnostic increment; project
+workflow execution remains blocked and the original failed attempt is preserved.
+
 The owner requires **zero manual start/stop, handover or communication steps
 inside workflow execution**, including silent dependencies. The
 [workflow requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md) define the binding

@@ -25,3 +25,12 @@ execution loop. Machine enforcement and documentation are committed as
 98-test suite. See [onboarding](Machine/README.md),
 [current checkpoint](Machine/CURRENT_MISSION.md), [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md)
 and [documentation index](Machine/DOCUMENTATION_INDEX.md).
+
+The subsequent [managed dashboard increment](Machine/DASHBOARD/README.md) is
+installed and running, with Machine source committed as `574e834`. Machine opens
+the HTML/JavaScript page automatically; launchd keeps its local diagnostic service
+available and recovers process loss. The page refreshes every two seconds and
+marks failures/stale observations. Independent V2 source review, 113 tests,
+five real disposable commit-gate cases and actual automatic process/browser
+recovery passed. All 87 private Machine files remain unchanged. This qualifies
+only the diagnostic display; automatic project workflows remain blocked.

@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "adopted_at": "2026-10-16T05:08:20.341025+00:00",
+  "review_manifest_sha256": "aefb50e537af4942a4d72334b549aeb76caebcc825091efb5bead628f655e556",
+  "review_turn_id": "01a1431a-f02e-7a80-a2d6-fd95e853e7c6",
+  "files": {
+    "AGENTS.md": "c6ba1bd72c48960a70d494e95844e7ef121e6799000db458574d85c408597f2f",
+    "README.md": "73edf2faa938481bb9c7a326546f1fe77a3b948b9afbd78f5bf7e338905e161c",
+    "docs/DASHBOARD.md": "ecd820e3f17a3b78a13fe0fdb02658d9c568d88cfed93a1d3310bf4e889b771c",
+    "docs/DOCUMENTATION_INDEX.md": "3b000c9e96a52c61c887ec543eea6b74c060171ea6afd9d5ca2b00bfaf35599d",
+    "docs/ROADMAP.md": "9d01aec82bf8459311b28aa844b230373c384ad85205f503d6f333925d14b6b4",
+    "docs/RUNBOOK.md": "04a6c1e97fabd8a094d2ef9a59f4c7f9abc1308fd365aeb1df1d374c8828bef1",
+    "docs/WORKFLOW_INVARIANT.md": "3b9e74b4981c8dc2f55691c4af17f1ca1b9a807d398b3d0d7d69ba4215aca2c3",
+    "scripts/check_workflow_invariant.py": "5abfc546a00b9a6cd891c80bc6eefc63fdaab88f31a8a2474663fbe1a282dce2",
+    "src/dashboard.py": "26a06593aba270502794634feb473d05e0eaf42eb51e940a7eccf8bc4a9c672e",
+    "src/dashboard_assets/dashboard.css": "6d75551bcdda039a9758758db7ec0224ebd58ecf5f786d2accca0dbcd09b64ed",
+    "src/dashboard_assets/dashboard.js": "52be3404934e1088335da21e52fa006d5ecc0f3c81c7a356b07a4a0907436611",
+    "src/dashboard_assets/index.html": "1c57676a3cf52e37c58558c861fbd4adda16ab845745291edbefc9263f59b08d",
+    "src/machine.py": "9a186425b30bc7f21450eb79107f09110f3ab927ac68846bf3edf944eb00769a",
+    "src/workflow_invariant.py": "c703bdaf808e3e27d7b80be11ea910e591941e8beb00e1f7334af566e5bb4da2",
+    "tests/dashboard_browser_contract.cjs": "bd58db0e74aa33b3bbf36bb432dd9dc24092777f861d78616e57484174d64260",
+    "tests/test_dashboard.py": "343effff9f1d1a1b8ee032248c4e27eee8de7dbd971cad33f0c1e859d270d26a",
+    "tests/test_workflow_invariant.py": "5759f45eb727f0165a8b34b63833ca96e9606f0fb12abb132baddd5c4d5883e9"
+  },
+  "previous_source": {
+    "AGENTS.md": "62199422a044f280bd1f7d1ef54ce5228309deb1c57674b2f8c2daf92ecb3a3d",
+    "README.md": "756aab4e11832544824718e6fbd9fbe787eee6f0723eb5be36e3a8f96efb52a9",
+    "docs/DOCUMENTATION_INDEX.md": "e432eda8af5f17fbd37dff33ad674e9d8c6a907a01880adae0fe5fd32b713ed4",
+    "docs/ROADMAP.md": "5b0fe5222b7396394044e7e249ddfcff6b4288bab31d75fc81757ebd5fe1d096",
+    "docs/RUNBOOK.md": "69fe38685f99faa96d6da5a92a78eaaa79fac6f4f16bc9d196b5ddf9c4ef500f",
+    "docs/WORKFLOW_INVARIANT.md": "fc699287a90d0f6a5b9108d58fbd4fb853aa47e4e71738f320dbe60578f264a1",
+    "scripts/check_workflow_invariant.py": "a13442dcb3914ce0ada1ab1224a1fc3d2065ff7d1340d0f862ae925db845f2c8",
+    "src/machine.py": "99e882d55d76912c2864a845d4d9378089012416666ff45168c4b44af0c98cbd",
+    "src/workflow_invariant.py": "0c706a2e375e52e115f9ed519f35c686b1205fefeb18887ef567e106fd37608f",
+    "tests/test_workflow_invariant.py": "cf9d48a4a58decda47138d820a94dba074e6dc9712a21edd101a4704a715783c"
+  },
+  "previous_installed_verifier_sha256": "a13442dcb3914ce0ada1ab1224a1fc3d2065ff7d1340d0f862ae925db845f2c8",
+  "installed_verifier_sha256": "5abfc546a00b9a6cd891c80bc6eefc63fdaab88f31a8a2474663fbe1a282dce2",
+  "private_files_preserved": 87,
+  "workflow_execution": "blocked",
+  "runtime_automation_qualified": false,
+  "service_activation": "Separate explicit Machine dashboard command after this source adoption"
+}
