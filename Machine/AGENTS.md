@@ -2,6 +2,11 @@
 
 These instructions apply to the mission folder in `CodeExp2/Machine`. When working in `/Users/boandersson/Desktop/Machine` or another repository, also read that repository's actual instructions. This file does not replace instructions or permission checks in those repositories.
 
+Follow the [Delivery Discipline](../docs/delivery-discipline.md).
+Keep the user's observable outcome fixed, prove the critical real integration
+early, and apply the two-attempt limit to repairs without real-path progress.
+Passing safeguards alone do not complete a Machine feature.
+
 ## Mission and scope
 
 `MACHINE_AUTOMATED_EXECUTION_REQUIRED` is an owner-mandated invariant for Machine

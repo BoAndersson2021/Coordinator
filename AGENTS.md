@@ -1,3 +1,10 @@
+# Delivery discipline
+
+Read and follow [Delivery Discipline](docs/delivery-discipline.md) for planning,
+implementation and repairs. It is a standalone instruction that can be handed to
+agents in other repositories. Keep the user's outcome fixed, prove critical
+feasibility early, and apply its two-attempt limit to stalled repair chains.
+
 # Mandatory Machine execution invariant
 
 `MACHINE_AUTOMATED_EXECUTION_REQUIRED` governs Machine and every adapter it uses,
@@ -13,6 +20,13 @@ expected-failure or unsuccessful mandatory tests and missing completion must
 block the commit. Never bypass the hook or weaken enforcement. Protected changes
 require independent review and recorded adoption. Development/diagnosis is not
 an accepted automated workflow or a substitute for its missing runtime providers.
+
+CodeExp2's pre-commit hook blocks staged changes without reviewed verification.
+A reviewed documentation-only exception is bound to an exact parent and staged
+tree; it grants no executable-feature or workflow authority.
+Feature development requires reviewed invariant enforcement and meaningful staged
+regressions before an allow path can be installed. Never disable or bypass the
+hook to commit.
 
 Read [the documentation index](Machine/DOCUMENTATION_INDEX.md),
 [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md), and the actual target

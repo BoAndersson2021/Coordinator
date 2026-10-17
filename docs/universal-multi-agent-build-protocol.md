@@ -22,6 +22,12 @@ recovery or promotion changes.
 
 ## Development procedure
 
+Apply the [Delivery Discipline](delivery-discipline.md): keep
+the requested outcome fixed, test critical feasibility early through the real
+interface, and stop a repair chain after two attempts without real-path progress.
+Required safeguards accompany delivery; passing them alone does not establish
+that the requested workflow works.
+
 1. Inspect instructions, repository state, entry points, implementation and focused
    validation. Begin read-only; startup grants no workflow work.
 2. Define the result, owned files, interfaces, preserved state, authority and
