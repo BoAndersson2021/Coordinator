@@ -1,10 +1,21 @@
 # Machine build and execution protocol
 
+This contract applies to Machine-managed work. Use
+[Delivery Discipline](delivery-discipline.md) for shared delivery rules,
+the [plan guide](how-to-follow-and-refresh-a-plan.md) for the builder's baseline,
+the [coordinator guide](how-to-coordinate-with-a-builder-agent.md) for delegation
+and the [runtime-target guide](how-not-to-overengineer.md) for real integration.
+The [communication contract](how-to-communicate-with-other-codex-agents.md) owns
+delivery/collection requirements; the [lifecycle contract](app-terminal-codex-launch-pattern.md)
+owns managed startup, readiness, shutdown and recovery. Apply those requirements
+at their relevant boundaries. Copying this guide does not activate Machine or
+impose its installed state on an unrelated repository.
+
 `MACHINE_AUTOMATED_EXECUTION_REQUIRED` is mandatory for Machine and every adapter
 it uses, controls or communicates with, including every new or edited feature.
 Authorized execution requires zero manual starts/stops, relays, session restarts
 or handovers. Missing support or proof must produce a visible failure and block
-work before effects. See the [owner requirements](/Users/boandersson/Desktop/CodeExp2/Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md).
+work before effects. See the [owner requirements](../Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md).
 
 ## Ownership
 
@@ -22,11 +33,12 @@ recovery or promotion changes.
 
 ## Development procedure
 
-Apply the [Delivery Discipline](delivery-discipline.md): keep
-the requested outcome fixed, test critical feasibility early through the real
-interface, and stop a repair chain after two attempts without real-path progress.
-Required safeguards accompany delivery; passing them alone does not establish
-that the requested workflow works.
+Keep the requested outcome fixed, test critical feasibility early within the
+authorized diagnostic scope, and apply the
+[shared repair limit](delivery-discipline.md#shared-repair-limit). Required
+safeguards accompany delivery; passing them alone does not establish that the
+requested workflow works. A blocked approach does not stop independent authorized
+maintenance. Documentation-only work is verified as documentation.
 
 1. Inspect instructions, repository state, entry points, implementation and focused
    validation. Begin read-only; startup grants no workflow work.
@@ -35,11 +47,15 @@ that the requested workflow works.
 3. Require exact runtime identity and qualified automatic control at execution
    boundaries. Unknown/unqualified adapters deny work; metadata cannot establish
    a live executor. Unsupported capabilities are explicit failures.
-4. Build an isolated candidate. Preserve frozen sources and private state. Where
-   concurrent work is authorized, use disjoint ownership or worktrees.
+4. Make the smallest targeted change in the existing implementation. Isolate it
+   when required by mutation risk, frozen inputs or authorized concurrent work;
+   do not create a separate repair package by default. Preserve private state.
 5. Add meaningful invariant regressions for every new/edited executable feature.
-   The mandatory pre-commit gate tests index blobs through its installed verifier.
-   Missing, skipped, undiscovered or unsuccessful mandatory tests block.
+   The target repository's executable commit route must test index blobs through
+   its installed verifier. Missing, skipped, undiscovered or unsuccessful mandatory
+   tests block that route. Machine has its own verifier; CodeExp2 currently allows
+   ordinary documentation and blocks unverified executable changes. Neither hook
+   grants runtime authority or requires a runtime test for an ordinary text edit.
 6. Independently review protected changes. Adopt only reviewed bytes within owner
    scope, retaining previous source and uncertain/escaped-effect history.
 7. Report installed behavior, checks, failures and remaining gaps. A receipt,
@@ -63,7 +79,9 @@ scope, unsupported controls and verified output. The real automatic path must
 complete with zero human execution interventions. Loud capability failure proves
 detection and fails whole-workflow acceptance.
 
-Machine currently has an independently reviewed fail-closed barrier, 98 passing
-tests and 14 disposable commit-hook proofs. Workflow automation remains
-unqualified and blocked. Historical pilot/scratch passes retain their original
-scopes. Manual bridges and terminal handovers are not enabled fallbacks.
+The [enforcement record](../Machine/INVARIANT_ENFORCEMENT/README.md) preserves the
+reviewed barrier and its checkpoint verification results. Use the
+[maintained status](../Machine/DOCUMENTATION_INDEX.md) and the target repository's
+read-only observations for current capability. Historical test totals and
+pilot/scratch passes retain their original scopes; they are not fresh readiness
+checks. Manual bridges and terminal handovers are not enabled fallbacks.

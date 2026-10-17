@@ -6,11 +6,15 @@ The mission is to turn the approved Design corpus into a persistent, human-direc
 
 ## Read first
 
-1. [Builder instructions](AGENTS.md).
-2. [Design and builder mission](DESIGN_AND_MISSION.md).
-3. [Current mission checkpoint](CURRENT_MISSION.md).
-4. [Current operating structure](CURRENT_STRUCTURE.yaml): the CodeExp2 agent is the development coordinator; Machine holds persistent custody and the enforced stop barrier. Automatic workflow execution remains unqualified and blocked.
-5. The relevant sources in the [Machine Design corpus](../../Machine/Design/Intent.txt) and the three communication documents below.
+1. [Workspace instructions and guide catalog](../AGENTS.md) and
+   [current handover](../Mission_Sofar.md).
+2. [Builder instructions](AGENTS.md).
+3. [Design and builder mission](DESIGN_AND_MISSION.md).
+4. [Recorded mission checkpoint](CURRENT_MISSION.md) and
+   [operating structure](CURRENT_STRUCTURE.yaml): CodeExp2 supplies development
+   coordination; Machine holds persistent custody and the enforced stop barrier.
+5. Relevant sources in the [Machine Design corpus](../../Machine/Design/Intent.txt)
+   and the applicable instruction guides below.
 
 The [communication expansion record](COMMUNICATION_BRIDGE/README.md) tracks the implementation, independent review, and failed fresh-CodeExp2 live acceptance. The owner's [workflow requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md) require automated lifecycle, communication and recovery with visible status and zero manual execution steps. The current system fails that requirement.
 
@@ -24,36 +28,47 @@ The [communication expansion record](COMMUNICATION_BRIDGE/README.md) tracks the 
 
 Machine records references and controlled bindings to game repositories. Do not introduce a game, game source, game assets, or a sample game into either this mission folder or the Machine implementation repository. The logical game-project layout in Architecture v1.2 describes external projects operated by Machine; it is not a scaffold for Machine itself.
 
-## Communication foundation
+## Instruction corpus and communication foundation
 
-The coordination approach uses these existing `CodeExp` documents:
+The [workspace catalog](../AGENTS.md#reusable-agent-instructions) lists all seven
+standalone guides and the inline CLI review procedure. Delivery Discipline owns
+shared rules; the runtime, plan and coordinator guides refine their respective
+subjects. The [guide map](../AGENTS.md#applying-the-guides-together) explains scope,
+permissions and conflict handling. Read only the companions relevant to the task.
 
-- [Universal multi-agent project build protocol](../docs/universal-multi-agent-build-protocol.md): role separation, bounded assignments, ownership, independent review, and acceptance evidence.
-- [How to communicate with other Codex agents](../docs/how-to-communicate-with-other-codex-agents.md): discovery, thread UUID addressing, scoped messages, and response collection.
-- [Terminal and Codex launch pattern](../docs/app-terminal-codex-launch-pattern.md): repository-scoped launch, instruction loading, permission boundaries, and read-only startup.
+Machine-managed workflows additionally use:
 
-The user reports successful live use of this approach in `CodeExp` and projects including `Desktop/Project_Blender`. It is the established communication foundation. Machine must add durable coordination and enforceable transitions around it.
+- [Build and execution protocol](../docs/universal-multi-agent-build-protocol.md):
+  ownership, staged verification and evidence-based acceptance.
+- [Agent communication contract](../docs/how-to-communicate-with-other-codex-agents.md):
+  actual receiver readiness, scoped delivery, collection and uncertain outcomes.
+- [Executor lifecycle and launch contract](../docs/app-terminal-codex-launch-pattern.md):
+  managed startup, readiness, retirement and recovery.
 
-## Current stage
+Historical successful communication in other projects motivated these contracts;
+it does not establish qualified automatic Machine operation. Installed-repository
+copies retain their own recorded provenance and may differ from guidance here.
 
-`MACHINE_AUTOMATED_EXECUTION_REQUIRED` is installed in Desktop/Machine, covering
-Machine and all used/controlled/communicating adapters and every new/edited
-feature. Current unqualified workflow execution is blocked loudly. V3 has
-independent source PASS, 98 tests and 14 real disposable commit-hook proofs; none
-qualifies automatic operation. The native live acceptance is FAIL. Historical
-pilot/scratch evidence is preserved, not an enabled fallback. See the
-[current checkpoint](CURRENT_MISSION.md), [requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md),
-[documentation index](DOCUMENTATION_INDEX.md) and
-[operating runbook](/Users/boandersson/Desktop/Machine/docs/RUNBOOK.md).
+## Recorded implementation and current boundaries
 
-The [managed HTML/JavaScript dashboard](DASHBOARD/README.md) is now installed and
-running, with automatic refresh, visible stale failures and proven launchd
-restart/browser reconnection. `./Machine dashboard` owns startup and automatic
-browser opening. This is read-only local diagnostics, not a project workflow
-provider. Independent V2 review, 113 tests and five staged-commit cases passed;
-the Machine implementation is committed as `574e834`, with its enforced hook passing.
+The [enforcement evidence](INVARIANT_ENFORCEMENT/README.md) records adoption of
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED` in Desktop/Machine. Unqualified workflow
+execution is blocked; the retained native live acceptance is FAIL. Source review
+and failure-detection checks do not qualify automatic operation. Use the
+[requirements](AUTOMATED_WORKFLOW_REQUIREMENTS.md),
+[documentation status](DOCUMENTATION_INDEX.md) and target repository's current
+read-only observations before relying on a capability. Its
+[operating runbook](/Users/boandersson/Desktop/Machine/docs/RUNBOOK.md) belongs to
+that implementation repository.
 
-The original [work-view explanation feature](WORK_VIEW/README.md) is completed
-in the CLI too. Both surfaces share one safe task-state projection, while legacy
-CLI report access remains available. This installed follow-up is committed in Machine as `d24f163`;
-114 tests and independent source review passed. Workflow execution remains blocked.
+The [dashboard](DASHBOARD/README.md) installation is recorded at Machine commit
+`574e834`; [shared CLI/dashboard work-view completion](WORK_VIEW/README.md) is
+recorded at `d24f163`. Those records include observed automatic service/browser
+recovery and meaningful validation within their scopes. They do not prove that
+the dashboard is running now or that project workflows are qualified.
+
+No native application was delivered. The abandoned native MVP experiment was
+removed at the user's direction. The separate task-timeline candidate remains
+unfinished and is outside the instruction/documentation commit. Read the
+[workspace handover](../Mission_Sofar.md) before choosing further work; startup
+and documentation do not authorize dispatch, installation or retries.

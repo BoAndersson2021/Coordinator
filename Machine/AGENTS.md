@@ -2,10 +2,17 @@
 
 These instructions apply to the mission folder in `CodeExp2/Machine`. When working in `/Users/boandersson/Desktop/Machine` or another repository, also read that repository's actual instructions. This file does not replace instructions or permission checks in those repositories.
 
+Read the [workspace handover](../Mission_Sofar.md) for continuation state. Its
+recorded milestones do not replace the current user request, repository status
+or live capability checks when those are required for the task.
+
 Follow the [Delivery Discipline](../docs/delivery-discipline.md).
 Keep the user's observable outcome fixed, prove the critical real integration
-early, and apply the two-attempt limit to repairs without real-path progress.
+early, and apply its [shared repair limit](../docs/delivery-discipline.md#shared-repair-limit).
 Passing safeguards alone do not complete a Machine feature.
+Use the [workspace guide map](../AGENTS.md#applying-the-guides-together) to combine
+the plan, coordinator, runtime, communication and lifecycle instructions for the
+task at hand. A feasibility diagnostic is not automated-workflow qualification.
 
 ## Mission and scope
 
@@ -42,7 +49,8 @@ For each implementation increment:
 
 1. Inspect the target repository, status, relevant instructions, implementation, and focused validation route.
 2. State the intended behavior, owned files, authority boundary, and acceptance evidence.
-3. Implement a bounded candidate and run appropriate checks.
+3. Implement the smallest targeted change and run appropriate checks. Use separate
+   candidate isolation when needed, rather than creating a new package per repair.
 4. Review the actual diff and report commands, results, remaining gaps, and Git state.
 5. Distinguish checks performed by the builder from independent review and domain acceptance.
 

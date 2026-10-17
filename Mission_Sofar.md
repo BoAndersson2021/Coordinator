@@ -1,4 +1,45 @@
-# Machine current state
+# Current state and handover
+
+## Continuing this work
+
+Start with [README.md](README.md) and [AGENTS.md](AGENTS.md). The AGENTS catalog
+contains seven standalone instructions plus the inline workflow review procedure.
+The guides now share delivery rules, plan ownership, a single repair limit,
+coordination boundaries and distinctions between diagnostics and workflow
+qualification. Use only the guides relevant to the requested task.
+
+The latest work is instruction and documentation reconciliation. It does not
+launch Machine, qualify a runtime or authorize repository work elsewhere. No
+native application was delivered; the abandoned native MVP experiment and its
+repair packages, local experiment dependencies and temporary state were deleted
+at the user's direction. Do not revive that work or retry closed diagnostics
+merely because a new session starts.
+
+Before continuing, inspect `git status --short` and the relevant plan and history.
+Use `git log -1 --oneline -- Mission_Sofar.md` to identify this handover's revision. The
+separate `Machine/TASK_TIMELINE/` candidate remains intentionally untracked and
+outside the documentation commit; preserve it and do not include it with a broad
+`git add .`. Resume it only if the user requests that work, after checking its
+actual candidate state and recorded failures.
+
+Ordinary text documentation commits work through the local CodeExp2 hook.
+Executable/data changes still need meaningful staged invariant verification;
+agent instruction and invariant-file edits require review. The Machine repository
+has a separate hook and runtime barrier. Instructions and local hook metadata do
+not constitute a runtime allow path or a transferable execution grant.
+
+There is no newly authorized runtime implementation step in this handover. Apply
+the user's next request to the existing plan or document, and use the
+[plan guide](docs/how-to-follow-and-refresh-a-plan.md) before changing its baseline.
+For delegated execution, use the [coordinator guide](docs/how-to-coordinate-with-a-builder-agent.md).
+
+## Historical Machine implementation checkpoint
+
+The remainder records earlier installed milestones and verification results. Its
+test totals, commit identities and statements about running services belong to
+those observations; they are not a fresh health check. Consult the target
+repository's current instructions and read-only status when runtime capability
+matters. Preserve the original evidence and consumed-attempt history.
 
 `MACHINE_AUTOMATED_EXECUTION_REQUIRED` is installed and enforced for Machine and
 every adapter it uses, controls or communicates with, including all new/edited

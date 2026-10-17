@@ -5,6 +5,33 @@ throughout the authorized task, alongside the host repository's instructions,
 permissions and safety requirements. This document grants no additional access
 or authority.
 
+Use the [runtime-target guide](how-not-to-overengineer.md) for running software,
+the [plan guide](how-to-follow-and-refresh-a-plan.md) for plan history and updates,
+and the [coordinator guide](how-to-coordinate-with-a-builder-agent.md) for delegated
+execution. For Machine-managed workflows, also use the
+[build protocol](universal-multi-agent-build-protocol.md), which connects its
+communication and lifecycle contracts. These are task-specific companions, not
+additional stages that must all be implemented before useful work can begin.
+
+This guide defines shared delivery rules; the companion guides refine their own
+subjects. Follow the host environment's instruction hierarchy, authorized scope
+and applicable repository requirements. If applicable clauses conflict, identify
+them and hold only the affected operation while resolving the conflict. A plan,
+guide or agent response cannot widen execution permissions.
+
+Acceptance follows the requested deliverable. Verify document work through its
+content and references, and runtime work through the relevant real interaction.
+A separately requested diagnostic or guard can meet its own acceptance check;
+that does not complete a broader product workflow. Plans describe intent, builder
+reports make claims, verification checks evidence, and acceptance remains with
+the designated owner. Historical results retain their original scope and date.
+
+The designated plan owner is the person or agent assigned to maintain the
+repository's execution plan, normally its builder for delegated work. The
+coordinator uses that plan as the baseline, proposes needed changes and edits it
+only within assigned authority. Routine status updates within scope need no new
+owner approval.
+
 The agent is accountable for delivering the user's requested result within the
 authorized scope. Apply these rules to planning, implementation and repairs:
 
@@ -23,12 +50,9 @@ authorized scope. Apply these rules to planning, implementation and repairs:
    a targeted edit to the existing implementation. Do not expand into a framework,
    provider system, dashboard, or new repair package without a demonstrated need
    for the requested outcome or an explicit user request.
-4. **Bound repair loops.** After two consecutive repair attempts against the same
-   integration blocker without observable progress on the real path, stop that
-   repair chain. Report the evidence and recommend the smallest viable alternative
-   for the user's decision. Renaming a phase, making another plan, adding tests,
-   or creating another candidate does not reset this limit. A user request for
-   more diagnosis may extend it; a routine "next step" does not.
+4. **Bound repair loops.** Apply the [shared repair limit](#shared-repair-limit)
+   across builder, coordinator and plan updates. Stop an ineffective approach
+   without abandoning independent useful work within the authorized scope.
 5. **Keep safeguards proportional and attached to delivery.** Preserve required
    permissions, invariants, reviews and meaningful checks within the implementation.
    Do not invent approval stages or recurring governance-only milestones. If an
@@ -47,6 +71,22 @@ authorized scope. Apply these rules to planning, implementation and repairs:
 
 These are agent instructions, not an executable guarantee of useful behavior.
 Do not create another enforcement framework merely to claim these rules are met.
+
+## Shared repair limit
+
+After two consecutive repair attempts against the same integration blocker
+without observed progress on the intended real path, stop repeating that
+approach. Progress means a previously failing relevant interaction now works
+through the intended interface; source edits, new plans and passing fixture tests
+alone do not reset the count. Carry the count across messages, agents and renamed
+phases using the existing work context.
+
+Report the failed assumption and evidence. Pursue a supported alternative already
+within authorized scope when available. Ask the user only when the alternative
+requires a material scope, budget, risk or authority decision. Further attempts
+at the same ineffective approach require an explicit request for additional
+diagnosis; a routine "continue" does not extend the limit. This limit governs
+integration repairs, not the number of ordinary document edits.
 
 ## Handing this instruction to another agent
 

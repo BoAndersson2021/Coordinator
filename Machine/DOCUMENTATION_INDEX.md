@@ -11,16 +11,23 @@ and governing invariant requirements remain protected. Feature changes require
 meaningful staged invariant regressions; documentation grants no runtime authority.
 No native app is installed.
 
+The [workspace catalog and guide map](../AGENTS.md#applying-the-guides-together)
+connect the reusable instructions. Delivery Discipline owns shared delivery rules;
+plan, coordinator and runtime guides refine their subjects. Machine communication
+and lifecycle requirements apply within Machine scope. This corpus synchronization
+updates CodeExp2 guidance; it does not alter installed runtime code or declare
+external guide snapshots current.
+
 ## Maintained guidance
 
 | Location | Current role |
 | --- | --- |
 | CodeExp2/AGENTS.md and Machine/AGENTS.md | Mandatory invariant, development boundaries and staged regression/hook requirements. |
-| CodeExp2/README.md and Mission_Sofar.md | Workspace entry and truthful current capability. |
+| CodeExp2/README.md and Mission_Sofar.md | Workspace entry, current documentation handover and explicitly historical implementation milestones. |
 | Machine/README.md, CURRENT_MISSION.md, CURRENT_STRUCTURE.yaml | Onboarding, enforced state and remaining runtime gaps. |
 | Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md and DESIGN_AND_MISSION.md | Owner requirement, ownership, automated acceptance and design interpretation. |
 | [CodeExp2/docs/delivery-discipline.md](../docs/delivery-discipline.md) | Reusable agent instruction for preserving user outcomes, proving feasibility early and bounding stalled repairs; portable to other repositories. |
-| CodeExp2/docs/*.md | Current build, communication and executor-lifecycle contracts; manual workflow examples retired. |
+| CodeExp2/docs/*.md | Linked delivery, runtime-target, plan and coordination guidance, plus scoped Machine build, communication and lifecycle contracts. Follow the AGENTS catalog for applicability. |
 | Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md | Proposed lifecycle design under the installed stop barrier; no active controller. |
 | Machine/COMMUNICATION_BRIDGE/README.md and FRESH_START_TEST.md | Failed historical transport acceptance and retired manual-restart test. |
 | Machine/INVARIANT_ENFORCEMENT/README.md | Reviewed source, rejected versions, actual hook/runtime proof and installation. |
@@ -28,7 +35,7 @@ No native app is installed.
 | Machine/WORK_VIEW/README.md and Desktop/Machine/docs/WORK_VIEW.md | Completed shared CLI/dashboard state explanation, mandatory comparison checks and observed late automatic reload. |
 | Machine/TASK_TIMELINE/README.md, SPEC.md, BUILD_PLAN.md, RED_TEAM.md and build/README.md | Per-task recorded history implemented in isolated candidate V3 for CLI and dashboard; independent source review and tests pass, but adoption is blocked by an unresolved automatic reload deadline failure. Live Machine remains unchanged. |
 | Desktop/Machine/README.md, AGENTS.md, docs/*.md | Current implementation contract, runbook, frontier and invariant. |
-| Desktop/Machine/docs/communications/*.md | Byte-matching current guide snapshots with updated provenance. |
+| Desktop/Machine/docs/communications/*.md | Installed-repository guide snapshots with their recorded provenance; later CodeExp2 instruction edits are not automatically synchronized into these copies. |
 | Desktop/Machine/Design/README.md and three root design texts | Current operational addendum; original design text retained. |
 | Desktop/Machine/docs/proposals/ROLE_LIFECYCLE_CONTROL.md | Same proposed lifecycle design with links appropriate to that repository. |
 
@@ -52,7 +59,8 @@ snapshot/provenance. These are explicitly archival. The synchronized guides chan
 current context hashes intentionally; old tasks/permits are not re-pinned, renewed,
 replayed, verified or closed by documentation maintenance.
 
-[The synchronization record](DOCUMENTATION_SYNC/RESULT.json) enumerates coverage,
-current hashes, classifications and preservation checks. Future documentation and
-runbook edits must preserve the same invariant and distinguish actual installed
-checks from qualified automated workflow execution.
+[The historical synchronization record](DOCUMENTATION_SYNC/RESULT.json) enumerates
+coverage, hashes, classifications and preservation checks at that checkpoint.
+Later maintained-guide edits do not rewrite that evidence or its hashes. Future
+documentation and runbook edits must preserve the invariant and distinguish
+actual installed checks from qualified automated workflow execution.

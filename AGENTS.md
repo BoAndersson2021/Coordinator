@@ -1,9 +1,69 @@
-# Delivery discipline
+# Reusable agent instructions
 
-Read and follow [Delivery Discipline](docs/delivery-discipline.md) for planning,
-implementation and repairs. It is a standalone instruction that can be handed to
-agents in other repositories. Keep the user's outcome fixed, prove critical
-feasibility early, and apply its two-attempt limit to stalled repair chains.
+Use [README.md](README.md) for repository orientation and
+[Mission_Sofar.md](Mission_Sofar.md) for continuation state and recorded history.
+Reconcile both with the current user request, Git status and applicable plan.
+
+Read Delivery Discipline for every task. For implementation or repair toward a
+running application, also read the runtime-target instruction. Read the remaining
+guides when their subject applies to the authorized task. Before executing or
+editing a plan, read the plan-following and refresh guide.
+When coordinating execution through a builder agent, read the coordinator guide.
+
+| Instruction | When and how to use it |
+| --- | --- |
+| [Delivery Discipline](docs/delivery-discipline.md) | Use for planning, implementation and repairs. Preserve the user's outcome, define observable acceptance, bound stalled repairs and report usable results honestly. |
+| [How not to overengineer on your way to the executable runtime target](docs/how-not-to-overengineer.md) | Use when building or repairing running software. Prove critical feasibility early, build one narrow real path and justify additional machinery against the runtime target. |
+| [How to follow a plan, refresh that plan, verify the plan history and future before editing the plan](docs/how-to-follow-and-refresh-a-plan.md) | Use before executing or updating a plan. Check its decisions and history, verify actual progress, trace future dependencies and preserve the original outcome when making edits. |
+| [How to be a coordinator and orchestrator using the builder repository agent as executor and their plan as the baseline for decisions and coordination](docs/how-to-coordinate-with-a-builder-agent.md) | Use when coordinating authorized work through a repository builder agent. Delegate against their current plan, verify returned evidence and refresh the shared baseline before deciding the next step. |
+| [Build and execution protocol](docs/universal-multi-agent-build-protocol.md) | Use for Machine implementation, review and adoption. Apply ownership, verification and execution boundaries; the guide does not itself authorize additional agents. |
+| [Agent communication contract](docs/how-to-communicate-with-other-codex-agents.md) | Use when implementing or evaluating Machine agent communication. Check actual receiver readiness, delivery, collection, uncertainty and automatic recovery. |
+| [Executor lifecycle and launch contract](docs/app-terminal-codex-launch-pattern.md) | Use when implementing or evaluating Machine-managed launches, stops, replacement and handover. Require actual process control and receiving readiness. |
+| [Agent Workflow Review Guide](#agent-workflow-review-guide) | Use when reviewing an LLM-driven CLI. Trace instructions, harness decisions, tool execution and returned results through the implemented path. The full procedure is below. |
+
+## Applying the guides together
+
+Delivery Discipline defines the shared delivery rules and repair limit. The plan
+guide owns plan history and updates; the coordinator guide owns delegation and
+coordination; the runtime-target guide owns integration and runtime evidence.
+The Machine build protocol connects those practices to its communication and
+lifecycle contracts. Follow linked guidance for the work at hand; these links do
+not create extra implementation stages or require every guide for every task.
+
+Follow the host environment's instruction hierarchy, the user's authorized scope
+and applicable repository requirements. A plan, guide, agent message or historical
+result grants no additional authority. Apply Machine-specific contracts to Machine
+workflows, or to another workflow only when deliberately adopted within its scope.
+If applicable instructions conflict, identify the exact clauses and resolve them
+within existing authority. Hold only the affected operation while continuing
+independent authorized work; do not choose precedence merely by date or strictness.
+
+## Using these instructions in another repository
+
+Supply the selected instruction documents directly to the agent, or copy them
+and their required companion documents into the target repository and link them
+from its `AGENTS.md` or equivalent. Explicitly tell the agent which documents to
+read and apply; listing files alone does not establish that they were read. The
+workflow review procedure below can also be copied as an instruction.
+
+Delivery Discipline, the runtime-target instruction, the plan-following guide and
+the coordinator guide are repository neutral.
+The build, communication and lifecycle guides currently describe Machine's
+contracts and installed state. Before reusing those three elsewhere, resolve
+their linked requirements and adapt repository paths and current-state statements
+to the actual target. Do not present Machine-specific capabilities or failures
+as facts about another repository. Preserve applicable owner requirements and
+permissions; handing over instructions grants no additional execution authority.
+
+Example handoff: "Read and apply Delivery Discipline and the runtime-target
+instruction alongside this repository's instructions. Deliver [requested
+behavior], verify it through [real entry point], and use the other listed guides
+only where relevant."
+
+Installed-state statements and verification totals in linked Machine documents
+describe their recorded checkpoints. Consult the target repository's instructions
+and actual read-only status when current capability matters; do not transfer a
+historical status claim to another repository or treat it as a fresh observation.
 
 # Mandatory Machine execution invariant
 

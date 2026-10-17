@@ -1,5 +1,13 @@
 # Machine executor lifecycle and launch contract
 
+This Machine-specific contract owns executor startup, readiness, retirement and
+recovery. Use [Delivery Discipline](delivery-discipline.md) for shared rules,
+the [runtime-target guide](how-not-to-overengineer.md) for feasibility and real
+integration, and the [communication contract](how-to-communicate-with-other-codex-agents.md)
+for dispatch and collection. The [coordinator guide](how-to-coordinate-with-a-builder-agent.md)
+assigns builder work against its plan; the [build protocol](universal-multi-agent-build-protocol.md)
+connects these responsibilities. None of these documents supplies a live controller.
+
 `MACHINE_AUTOMATED_EXECUTION_REQUIRED` applies to every new/edited launch, stop,
 restart, handover and adapter feature. Execution requires zero manual terminal
 actions or session transfers, with visible status and loud blocking failures.
@@ -36,15 +44,20 @@ with them cannot be required for workflow progress.
 
 Read-only orientation and developer diagnostics do not initialize, dispatch or
 activate work. The Machine controller and automatic coordinator lifecycle remain
-unqualified; current health fails with `MACHINE_AUTOMATED_EXECUTION_REQUIRED`
-and exit 3. Lifecycle is proposed, not an available command surface.
+unqualified in the recorded checkpoint; its health failed with
+`MACHINE_AUTOMATED_EXECUTION_REQUIRED` and exit 3. The lifecycle proposal supplies
+no available command surface. Use the [maintained status](../Machine/DOCUMENTATION_INDEX.md)
+and actual read-only target observations when deciding current capability.
 
 ## Qualification
 
 Every new/edited lifecycle feature requires invariant integration, meaningful
 negative regressions, the staged pre-commit gate and independent review of
-protected changes. Qualify owned start/stop, exact receiving readiness, fencing,
-handover and recovery in fixtures, then the actual approved route. A user-operated
-restart cannot establish automatic recovery. See the
-[requirements](/Users/boandersson/Desktop/CodeExp2/Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md) and
-[lifecycle proposal](/Users/boandersson/Desktop/CodeExp2/Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md).
+protected changes. Investigate the critical real interface early through an
+authorized feasibility probe, after safeguards needed for that probe's effects.
+This is distinct from qualifying the whole workflow: check required start/stop,
+receiving readiness, fencing, handover and recovery cases in fixtures and through
+the actual approved route. Neither stage may bypass the installed stop barrier.
+An operator-driven diagnostic cannot establish automatic lifecycle or recovery.
+See the [requirements](../Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md) and
+[lifecycle proposal](../Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md).
