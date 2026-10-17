@@ -21,12 +21,12 @@ block the commit. Never bypass the hook or weaken enforcement. Protected changes
 require independent review and recorded adoption. Development/diagnosis is not
 an accepted automated workflow or a substitute for its missing runtime providers.
 
-CodeExp2's pre-commit hook blocks staged changes without reviewed verification.
-A reviewed documentation-only exception is bound to an exact parent and staged
-tree; it grants no executable-feature or workflow authority.
-Feature development requires reviewed invariant enforcement and meaningful staged
-regressions before an allow path can be installed. Never disable or bypass the
-hook to commit.
+CodeExp2's pre-commit hook permits ordinary text documentation changes, including
+deletions. Executable/data changes, redirected inputs and unresolved stages block
+with an explicit invariant error. Agent instruction files and the governing
+invariant requirements require reviewed changes; documentation changes grant no
+runtime authority. Feature development requires meaningful staged invariant
+regressions before an executable allow path is installed. Never bypass the hook.
 
 Read [the documentation index](Machine/DOCUMENTATION_INDEX.md),
 [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md), and the actual target

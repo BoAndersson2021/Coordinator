@@ -5,10 +5,10 @@ for Machine and every adapter it uses, controls or communicates with, including
 every new/edited feature. Workflow execution requires zero manual lifecycle,
 communication, coordinator restart or handover, with visible blocking failures.
 The installed Machine runtime guard enforces denial; automatic runtime providers
-remain unqualified. CodeExp2's pre-commit hook blocks staged changes without
-reviewed verification. Its reviewed documentation-only exception is bound to an
-exact parent and staged tree and grants no feature or workflow authority. Feature
-changes require reviewed invariant enforcement and meaningful staged regressions.
+remain unqualified. CodeExp2's pre-commit hook permits ordinary text documentation
+changes and blocks unverified executable/data changes. Agent instruction files
+and governing invariant requirements remain protected. Feature changes require
+meaningful staged invariant regressions; documentation grants no runtime authority.
 No native app is installed.
 
 ## Maintained guidance
