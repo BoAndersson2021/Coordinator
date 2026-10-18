@@ -30,17 +30,68 @@ When coordinating execution through a builder agent, read the coordinator guide.
 
 ## Agent Communication
 
-When explaining intended work, designs or system behavior involving several steps
-or branches, prefer compact, annotated ASCII flowcharts over long prose. Use
-short, plain-English labels, explicit outcomes and nearby annotations. Put
-diagrams in fenced code blocks to preserve alignment.
+### Human-facing visual-first standard
 
-Use color where reliably supported, or colored markers with a small legend when
-helpful. Labels must convey the full meaning without color.
+For human-facing communication, make information structure visible by default.
+Apply this standard to responses, reports, plans, reviews, audits and technical
+discussions wherever these instructions are adopted, subject to higher-priority
+instructions and required document formats. Prioritize readability and rapid
+comprehension. Simple answers may remain one sentence.
 
-Add brief supporting text for decisions, evidence and limitations. Use direct
-prose for simple answers and tables for comparisons. Distinguish proposed
-behavior from observed or verified behavior.
+Choose the format by the established recipient. Agent-to-agent exchanges retain
+their applicable structured communication contract, including delegated final
+responses returned to a coordinator. Do not add human presentation wrappers to
+required JSON payloads. Human and agent formats do not change execution authority.
+
+**Choose the smallest useful structure.** Use these elements as a toolkit, not
+a checklist that every response must satisfy:
+
+- Bold labels or headings for conclusions, important values and information
+  hierarchy; separators only when they clarify major boundaries.
+- Bullets for parallel findings and numbered steps for ordered actions.
+- Tables for comparisons, matrices and structured evidence.
+- Compact, annotated ASCII diagrams for workflows, dependencies, authority,
+  architecture, state transitions and failure paths when they explain the
+  relationships faster than prose.
+- Text status labels, measurable progress indicators and color when they convey
+  useful information. Meaning must remain clear without color.
+
+**Show relationships.** Use short, plain-English diagram labels, clear arrows,
+explicit branch conditions and outcomes, and nearby annotations. Preserve text
+diagram alignment with fenced code blocks. Show relevant dependencies and failure
+paths. Add supporting prose for decisions, evidence and limitations without
+repeating what the diagram already communicates.
+
+**Lead with the result.** Start substantive reports with the conclusion, verdict
+or current status. Where useful, group information as WHAT (state or finding),
+WHY (evidence and consequence), NEXT (action) and GATE (acceptance evidence).
+Adapt this grouping to the task; an informational explanation need not invent
+a next action or acceptance gate.
+
+**Separate outcome from evidence.** Outcome labels include `[PASS]`, `[FAIL]`,
+`[BLOCKED]` and `[WARNING]`. State what was assessed and its scope. Evidence
+labels include `[OBSERVED]` (direct measurement or inspection), `[VERIFIED]`
+(checked against a stated criterion), `[INFERRED]` (reasoned conclusion),
+`[PROPOSED]` (intended behavior or recommendation) and `[UNKNOWN]` (missing
+evidence). Use labels where the distinction matters; they are not proof by
+themselves. Link supporting sources or checks and identify material limitations.
+Never present intended behavior as verified behavior or verification as owner
+acceptance.
+
+**Measure progress honestly.** Progress bars and percentages require actual
+values, a meaningful denominator and a named scope. For example, 8/10 checks
+passed does not establish that a mission is 80% complete. Omit progress indicators
+when the remaining work cannot be measured reliably.
+
+**Render for the interface.** Use the simplest reliably supported presentation
+that improves comprehension. Rich components should add understanding without
+requiring unnecessary tools or artifacts. Use portable Markdown or text when
+appropriate. Preserve accessibility, technical accuracy, evidence, source
+references, literal code/logs and required machine-readable formats.
+
+Operating rule: a human should be able to scan a substantial response, identify
+its state, understand its major dependencies and locate any next action without
+reading every paragraph. Avoid decoration that competes with the information.
 
 ## Applying the guides together
 
