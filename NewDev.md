@@ -1,3 +1,10 @@
+# Historical Machine checkpoint
+
+This dated document is historical context, not a mission registration, startup
+guide or system-wide active mission. Bare `onboard` must not read into or resume
+this work. New CodeExp2-coordinated work on Machine requires registration and
+explicit selection through [Missions/](Missions/README.md#registered-missions).
+
 Updated 2026-10-15 22:31:29 PDT (-0700).
 
 Implementation checkpoint: Machine commit `d24f163`; supporting documentation and evidence through CodeExp2 commit `75ef3d3`.

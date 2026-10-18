@@ -51,6 +51,12 @@ Existing authorized communication route
 
 ## Install into an authorized mission repository
 
+For CodeExp2-coordinated work, verify the mission's registration in
+[the mission index](../../README.md#registered-missions) and its named running
+guide before target installation or communication. The shared package is support
+material, not a mission or a shortcut around registration. Keep each mission's
+target settings, evidence paths and builder identity separate.
+
 1. Confirm the exact target repository and that documentation installation is
    authorized. Read its ancestor/local instructions, current handover and Git
    state, including staged work. Preserve existing instructions and changes.

@@ -1,5 +1,9 @@
 # How to work on BallisticsExperimental as a CodeExp2 agent
 
+This mission is registered in [the mission index](../README.md#registered-missions).
+Load this guide after explicit selection; its state applies only to this mission
+and does not select, stop or replace any other ongoing mission.
+
 Use this guide when coordinating an authorized BallisticsExperimental mission
 from CodeExp2. It records the working arrangement and lessons from this session.
 The user's current request, applicable repository instructions and verified
@@ -27,8 +31,8 @@ handover amendment after the builder completed implementation and verification.
 
 BallisticsExperimental stays in its own Desktop repository. Always specify the
 target working directory for file and Git operations. A command issued from
-CodeExp2 must not accidentally stage game files into CodeExp2 or change its
-unrelated `Machine/TASK_TIMELINE/` candidate.
+CodeExp2 must not accidentally stage game files into CodeExp2 or change another
+mission's work.
 
 ## Read the canonical instructions first
 

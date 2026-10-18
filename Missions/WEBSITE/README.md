@@ -1,5 +1,9 @@
 # How to work on WEBSITE as a CodeExp2 agent
 
+This mission is registered in [the mission index](../README.md#registered-missions).
+Load this guide after explicit selection; its state applies only to this mission
+and does not select, stop or replace any other ongoing mission.
+
 Use this guide for authorized coordination of the standalone
 `/Users/boandersson/Desktop/WEBSITE` repository. CodeExp2 owns this mission guide
 and reusable instructions; the verified WEBSITE builder owns assigned target

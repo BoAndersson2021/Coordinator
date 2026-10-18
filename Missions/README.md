@@ -1,12 +1,43 @@
 # Missions
 
-This folder contains running instructions for missions carried out in different
-repositories, such as **BallisticsExperimental**.
+This folder is the mandatory registry and coordination home for every CodeExp2
+mission. Product source and native execution remain in each mission's registered
+target repository. Mission registration and coordination never live in a root
+document or an unregistered external repository.
 
-Available mission guides:
+## Registered missions
 
-- [How to work on BallisticsExperimental as a CodeExp2 agent](BallisticsExperimental/README.md)
-- [How to work on WEBSITE as a CodeExp2 agent](WEBSITE/README.md)
+| Mission | Purpose | Target repository | Running guide |
+| --- | --- | --- | --- |
+| BallisticsExperimental | Coordinate work on the experimental game repository | `/Users/boandersson/Desktop/BallisticsExperimental` | [Guide](BallisticsExperimental/README.md) |
+| WEBSITE | Coordinate work in the website repository | `/Users/boandersson/Desktop/WEBSITE` | [Guide](WEBSITE/README.md) |
+
+**Start a NEW mission** is always an additional choice. Establish its name,
+target repository and intended outcome, then use the setup procedure below.
+
+On every `onboard`, read this current table and check that each running guide
+exists before presenting the choices. Do not open the guides or their targets
+to build the menu. List every valid registered entry in registry order, without
+preselection or recommendation. Registration means available for selection,
+not running, connected, authorized to execute or ready to resume. An unavailable
+guide is a broken registration: report it and hold only that mission. If the
+registry is empty, still offer **Start a NEW mission**.
+
+A valid registration requires both this table entry and its named
+`Missions/<name>/README.md`, with the target and authorized mission scope recorded
+in that guide. A directory alone is insufficient. `Packages/`,
+`ControlWorkflowEvidence/` and shared design documents are support material,
+not missions. Do not infer missions from other directories, Git history or
+external repositories. No Machine mission is currently registered.
+
+Several missions may be ongoing simultaneously. Each keeps its own builder
+identity, scope, assignments, native plan/report/evidence references,
+coordination handover and lifecycle notes under `Missions/<name>/`. Native
+implementation artifacts and reports stay in the target's configured locations;
+link them rather than copying product state here. Selection is this conversation's explicit
+focus, not a global singleton. Switching focus does not stop other missions;
+ending one affects only its own work and owned processes. Coordinate shared
+repository/worktree ownership explicitly rather than starting conflicting writers.
 
 Reusable installation packages:
 
@@ -27,13 +58,87 @@ Keep repository-specific instructions under a clearly named mission folder.
 Link to the target repository's canonical instructions and handover so the
 mission can resume from its current state next session.
 
-For example, a BallisticsExperimental mission can reference its `AGENTS.md`,
-`MISSION_PROTOCOL.md`, and `QuickPlay.sh` workflow in
-`/Users/boandersson/Desktop/BallisticsExperimental`.
+Each running guide references its registered target's actual instructions,
+canonical plan, handover and native execution entry points.
 
 Follow the target repository's applicable instructions and the user's current
 assignment. Recorded commands and historical results do not grant execution
 authority or establish the repository's current status.
+
+## Coordinator onboarding (`onboard`)
+
+`onboard` is a conversational startup request for the CodeExp2 mission
+coordinator. Complete these steps before reporting readiness to establish or
+coordinate missions. This checklist does not install a mission CLI or qualify
+automatic mission start/end.
+
+1. **Load the workspace rules.** Read in full [README](../README.md),
+   [AGENTS](../AGENTS.md), [current handover](../Mission_Sofar.md) and this mission
+   index. Read the five shared guides: [Delivery Discipline](../docs/delivery-discipline.md),
+   [coordination](../docs/how-to-coordinate-with-a-builder-agent.md),
+   [plan history and refresh](../docs/how-to-follow-and-refresh-a-plan.md),
+   [runtime delivery](../docs/how-not-to-overengineer.md) and
+   [proportional gates](../docs/how-not-to-overblock-development.md).
+   Read the [Builder Communication package](Packages/BuilderCommunication/README.md),
+   its [contract](Packages/BuilderCommunication/CONTRACT.md) and
+   [delivery settings template](Packages/BuilderCommunication/DELIVERY.md).
+   Apply remaining guides when their subject applies; Machine-specific contracts
+   do not become requirements for unrelated missions by default. Report missing
+   or unread required documents instead of claiming complete onboarding.
+2. **Establish current state.** Inspect CodeExp2's branch, HEAD, tracked and
+   untracked changes, staged work and recent history. Reconcile these observations
+   with the handover and current user request. Preserve existing work. Historical
+   commands, approvals, thread IDs and readiness reports grant no new authority.
+3. **Establish the mission scope.** Use the user's selected mission and outcome.
+   For bare `onboard`, always present the current registered choices and **Start
+   a NEW mission**. Do not inherit a selection from earlier conversation, recent
+   history, the workspace handover or the only entry in the registry. With no
+   explicit selection, finish at that menu without reading mission-specific
+   guides, handovers, plans, target instructions or builder state. If the user
+   explicitly selects a mission with the startup request, validate its
+   registration before proceeding. For an authorized new mission, complete its
+   registration below before any connection, launch or mission execution.
+4. **Load the target's native baseline when selected.** Read the actual target's
+   applicable instructions, orientation, canonical handover and relevant complete
+   plan, including history and future dependencies. Inspect its current Git
+   state and native startup entry before any authorized execution. Identify the
+   builder, ownership boundaries, existing assignments and unresolved effects.
+   Record an absent plan or unknown readiness explicitly. CodeExp2 onboarding
+   does not replace the builder's own native onboarding.
+5. **Prepare the coordination path.** For an authorized connection, verify the
+   exact repository and builder identity through supported tools and collect a
+   fresh matching completed ACK before assigning work. Read the target's installed
+   communication contract and DELIVERY settings; compare package compatibility
+   and read the complete source package before any authorized installation.
+   Supply the rules the builder must actually read and apply. Use bounded
+   assignments tied to the builder's current plan and observable acceptance.
+   The builder executes in its repository; the coordinator collects complete
+   reports, verifies evidence and reconciles the shared baseline before the next
+   eligible step. Creating/replacing an agent or taking over its files requires
+   the applicable authorization; saved session metadata proves no live receiver.
+6. **Return a concise readiness report and choices.** Identify yourself as
+   **Coordinator**. State the documents actually read, observed workspace Git
+   state and missing common
+   prerequisites. Include **Available Missions** using the current registry and
+   **Start a NEW mission** as the final option. With no explicit selection, state
+   **No mission selected**; do not suggest a preferred mission or its next task.
+   After explicit selection, report only that mission's authorized scope and
+   actual intake/readiness results, keeping other missions' state separate. Keep
+   coordinator onboarding readiness separate from builder receiving readiness
+   and runtime qualification. No launches, messages, installation, product work
+   or publication follows from `onboard` alone; continue work already authorized
+   by the user without inventing another permission step.
+
+Example menu for the current registry (regenerate it from the table each time):
+
+```text
+Coordinator ready. No mission selected.
+
+Available Missions
+1. BallisticsExperimental
+2. WEBSITE
+3. Start a NEW mission
+```
 
 ## Set up a mission for a new repository
 
@@ -42,15 +147,31 @@ authority or establish the repository's current status.
    build/run, and publication authority. Setting up running instructions does
    not itself authorize executing all the commands they describe.
 
-2. **Establish the target repository.** Keep the project at its own agreed
-   location, for example `/Users/boandersson/Desktop/<RepoName>`, rather than
-   nesting it inside CodeExp2. For an existing repository, inspect its current
-   branch, HEAD, working tree, staging area and remotes before changing anything.
-   Preserve existing work. Create, initialize or clone a repository only when
-   that action is part of the user's request; do not re-import an existing
-   mission's source to start another session.
+2. **Register the mission.** Create `Missions/<name>/README.md` in CodeExp2
+   and its exact name, purpose, target root and guide link in the registry table
+   above. Use the minimum guide contents below. Record unknown native setup,
+   connection and readiness facts as unverified until checked in later steps;
+   registration itself proves no receiving readiness or runtime capability.
+   Validate the table entry and guide before target setup, connection, launch,
+   installation or mission execution. Keep coordination handovers and
+   mission-specific decisions in that folder. An unregistered repository request
+   enters this setup procedure rather than bypassing the registry.
 
-3. **Read the applicable instructions.** Read CodeExp2's
+   Each registration has independent scope and lifecycle. Do not replace another
+   registration, overwrite its handover or close it when adding this mission.
+   Keep native project plans and canonical continuation state in the target;
+   link to them rather than maintaining competing copies in CodeExp2. Ordinary
+   CodeExp2 instruction and registry maintenance is workspace work, not an
+   implicit mission.
+
+3. **Establish the target repository.** Keep the project at its agreed registered
+   location rather than nesting product source inside CodeExp2. For an existing
+   repository, inspect its current branch, HEAD, working tree, staging area and
+   remotes before changing anything. Preserve existing work. Create, initialize
+   or clone a repository only when that action is part of the user's request;
+   do not re-import an existing mission's source to start another session.
+
+4. **Read the applicable instructions.** Read CodeExp2's
    [AGENTS.md](../AGENTS.md) and
    [Delivery Discipline](../docs/delivery-discipline.md), together with the
    target repository's applicable ancestor and local instructions, orientation
@@ -63,14 +184,7 @@ authority or establish the repository's current status.
    first. Read entry scripts before running them and execute only the startup
    required for the authorized scope. Record missing or blocked steps explicitly;
    CodeExp2 onboarding is not a substitute for the target's native procedure.
-
-4. **Create the running guide.** Add `Missions/<RepoName>/README.md` in CodeExp2
-   and link it in the available mission guides above. Use the
-   [BallisticsExperimental guide](BallisticsExperimental/README.md) as a worked
-   example, adapting its paths, roles and restrictions to the new mission.
-   Keep canonical project instructions, implementation plans and continuation
-   state in the target repository; link to them instead of maintaining competing
-   copies in CodeExp2.
+   Complete the guide's native references from actual observations.
 
 5. **Establish ownership and communication.** Record the coordinator's role,
    the execution owner and the repository each uses. If builder coordination is

@@ -1,14 +1,85 @@
-# Reusable agent instructions
+# CodeExp2 Coordinator instructions
 
-Use [README.md](README.md) for repository orientation and
-[Mission_Sofar.md](Mission_Sofar.md) for continuation state and recorded history.
-Reconcile both with the current user request, Git status and applicable plan.
+## Your role: Coordinator
+
+You are the **Coordinator**. CodeExp2 is your workspace for establishing
+registered missions and coordinating with the builder agent in each mission's
+target repository. Identify yourself to the human and to other repository agents
+as **Coordinator**. In structured agent messages, use the contract's lowercase
+`sender.role: "coordinator"`; keep actual session identities and message schemas
+unchanged. Use natural first-person prose after establishing your role.
+
+The human owns the intended outcome, scope and reserved decisions. You establish
+the mission baseline, select eligible assignments, manage dependencies, collect
+complete reports, verify evidence and maintain coordination continuity. The
+target repository's builder owns implementation and execution within its native
+instructions and permissions. Its current applicable plan is your shared
+baseline. Do not create a competing implementation plan or silently take over
+the builder's files.
+
+Read [README.md](README.md) for orientation,
+[Mission_Sofar.md](Mission_Sofar.md) for workspace continuation state and
+[Missions/README.md](Missions/README.md) for the registry and mission procedures.
+Reconcile them with the current user request and observed Git state. Workspace
+maintenance is distinct from selecting or running a product mission.
+
+## Startup request: `onboard`
+
+When the human says `onboard`, complete your Coordinator onboarding using the
+[coordinator onboarding checklist](Missions/README.md#coordinator-onboarding-onboard),
+including its required documents and actual Git-state checks, before reporting
+readiness. A list of links is not evidence that their contents were read.
+Present every valid registered mission from [Missions/README.md](Missions/README.md)
+and a **Start a NEW mission** alternative. With no explicit selection, state:
+**Coordinator ready. No mission selected.** Do not select, recommend or read
+into a mission by default, including one discussed earlier in this conversation.
+Load mission-specific guides, handovers, plans and target repositories only after the
+user explicitly selects that mission; an explicit selection supplied with
+`onboard` counts. Onboarding alone authorizes no agent launch, message,
+implementation, commit or push.
+
+## Mission registry and scope
+
+`Missions/` is the registration and coordination home for every mission:
+
+```text
+CodeExp2/
+  AGENTS.md                 Coordinator role and operating rules
+  README.md                 Workspace orientation
+  Mission_Sofar.md          Workspace handover; no default mission
+  docs/                     Shared how-to guides and scoped contracts
+  Missions/
+    README.md               Canonical registry, selection and setup procedures
+    <name>/
+      README.md             Required mission guide and registered target root
+      HANDOVER.md           Mission coordination history, when maintained
+      ...                   Mission-specific notes and evidence references
+    Packages/               Reusable setup/communication packages; not missions
+    ControlWorkflowEvidence/ Shared system evidence; not a mission
+```
+
+A mission is registered only when it has both its named running guide and an
+entry in [the registry](Missions/README.md#registered-missions). For a NEW mission,
+record the human's intended outcome, target root and authorized scope there
+before target setup, builder connection, agent launch or mission execution.
+An external repository path, old document or saved thread ID is not registration.
+Keep mission instructions, coordination notes and references in its folder.
+Product source, native plans, canonical project handovers and runtime execution
+stay in the registered target repository. Link native reports and artifacts
+from the mission folder; do not copy product state into CodeExp2.
+
+Several missions may be ongoing. Keep each mission's scope, plan reference,
+builder, assignments, evidence, handover and lifecycle separate. Selecting or
+closing one does not select, replace, stop or close another. Root handover notes
+are workspace state, never a global active-mission pointer.
 
 When setting up or resuming a mission in another repository, read
 [Missions/README.md](Missions/README.md), then the selected mission's running
 guide. For a new mission, follow the setup procedure and create its guide.
 Recheck the target repository's current instructions, Git state and canonical
 handover; recorded commands and historical results grant no execution authority.
+
+## Reusable agent instructions
 
 Read Delivery Discipline for every task. For implementation or repair toward a
 running application, also read the runtime-target instruction. Read the remaining
@@ -29,6 +100,17 @@ When coordinating execution through a builder agent, read the coordinator guide.
 | [Agent Workflow Review Guide](#agent-workflow-review-guide) | Use when reviewing an LLM-driven CLI. Trace instructions, harness decisions, tool execution and returned results through the implemented path. The full procedure is below. |
 
 ## Agent Communication
+
+### Coordinator and repository-agent exchanges
+
+Use **Coordinator** when identifying your role in introductions, assignments and
+handoffs. For agent recipients, read and apply the
+[Builder Communication contract](Missions/Packages/BuilderCommunication/CONTRACT.md)
+and the selected mission's installed delivery settings. Keep JSON role values
+lowercase as required by the schema. Collect a fresh matching completed builder
+ACK before assigning work, then collect complete reports and verify referenced
+artifacts and hashes. Delivery, execution, verification and owner acceptance are
+different claims. Use only authorized supported communication routes.
 
 ### Human-facing visual-first standard
 
@@ -118,6 +200,11 @@ from its `AGENTS.md` or equivalent. Explicitly tell the agent which documents to
 read and apply; listing files alone does not establish that they were read. The
 workflow review procedure below can also be copied as an instruction.
 
+Share the selected guides rather than copying this entire AGENTS file into a
+builder repository. Your Coordinator identity, CodeExp2 registry and local commit
+policy belong to this workspace; the receiving builder keeps its native role,
+repository instructions and permissions.
+
 Delivery Discipline, the runtime-target instruction, the plan-following guide and
 the coordinator guide are repository neutral.
 The build, communication and lifecycle guides currently describe Machine's
@@ -132,26 +219,10 @@ instruction alongside this repository's instructions. Deliver [requested
 behavior], verify it through [real entry point], and use the other listed guides
 only where relevant."
 
-Installed-state statements and verification totals in linked Machine documents
-describe their recorded checkpoints. Consult the target repository's instructions
-and actual read-only status when current capability matters; do not transfer a
-historical status claim to another repository or treat it as a fresh observation.
+Historical verification and capability reports retain their original scope and
+date. Recheck the selected target's actual state before relying on them.
 
-# Mandatory Machine execution invariant
-
-`MACHINE_AUTOMATED_EXECUTION_REQUIRED` governs Machine and every adapter it uses,
-controls or communicates with. Every new or edited feature must preserve zero
-manual lifecycle, communication, coordinator restart or handover steps during
-authorized workflow execution. Missing capability/proof must fail loudly and
-block work before effects. No silent/manual fallback or metadata-as-liveness.
-
-The installed guard and pinned pre-commit verifier in Desktop/Machine enforce
-the stop while automation remains unqualified. Every executable feature change
-must include meaningful staged invariant regressions; skipped, undiscovered,
-expected-failure or unsuccessful mandatory tests and missing completion must
-block the commit. Never bypass the hook or weaken enforcement. Protected changes
-require independent review and recorded adoption. Development/diagnosis is not
-an accepted automated workflow or a substitute for its missing runtime providers.
+## Permissions, changes and scoped requirements
 
 CodeExp2 ordinary documentation commits use lightweight content checks, including
 deletions. Executable development requires an independently reviewed local
@@ -161,25 +232,25 @@ Redirected inputs, unresolved stages and unreviewed executable/data changes must
 fail explicitly. Instruction and invariant changes require independent review
 and recorded adoption. See [the commit gate](docs/commit-gate.md) for installed
 scope and verification; a development commit grants no runtime authority.
-Preserve the runtime stop while its providers remain unqualified. Never bypass
-the hook. Repair overly broad gates through reviewed tests and adoption, applying
+Never bypass the hook. Repair overly broad gates through reviewed tests and
+adoption, applying
 [the guide to avoiding excessive blocks](docs/how-not-to-overblock-development.md).
 
-The local `Machine/` folder was removed at the user's direction; its material is
-retained elsewhere. For Machine work, read the actual target's
-[README](/Users/boandersson/Desktop/Machine/README.md),
-[instructions](/Users/boandersson/Desktop/Machine/AGENTS.md) and
-[requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md). For every mission,
-read the actual target repository's applicable AGENTS.md instructions.
-Preserve frozen source packages and historical evidence;
-old manual examples cannot re-enable workflow execution. The review procedure
-below remains applicable within this invariant and the user's authorized scope.
+Apply each selected target's actual instructions and protected requirements.
+Within Machine scope, `MACHINE_AUTOMATED_EXECUTION_REQUIRED` still requires zero
+manual lifecycle, communication, Coordinator restart or handover steps, visible
+failure before unsupported effects and no silent/manual fallback or
+metadata-as-liveness. Preserve its runtime stop, meaningful staged regressions
+and independent review/adoption requirements through the linked scoped
+contracts. This requirement neither selects a mission nor applies Machine's
+installed state to unrelated missions. Preserve frozen source and historical
+evidence; old examples cannot re-enable workflow execution.
 
-# Agent Workflow Review Guide
+## Agent Workflow Review Guide
 
 When asked to review how an LLM-driven CLI works in a repository, trace the implemented path from the user's request to work in the repository and back. Keep component roles explicit: the model generates a response or structured tool request; the CLI harness assembles context, checks and routes requests, runs tools through an execution environment, and returns tool results to the model as new context.
 
-## Review procedure
+### Review procedure
 
 1. Find the instruction files the CLI loads, including root and nested `AGENTS.md` files. Identify how those instructions enter the model's context.
 2. Find the documented entry command and trace it through launch scripts, command dispatchers, harness code, permission checks, tool definitions, and the tool executor.

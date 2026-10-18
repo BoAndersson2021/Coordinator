@@ -1,190 +1,99 @@
-# Current state and handover
+# Workspace state and handover
 
-## Cleanup publication requested — 2026-10-18
+This file covers CodeExp2 workspace state. It is not a global active-mission
+pointer or a mission implementation plan. Read mission-specific state only after
+explicit selection through [the registry](Missions/README.md#registered-missions).
 
-The user authorized committing and pushing the local Machine/archive removal and
-related documentation. The outbound history also includes `c7ad298`, the prior
-communication-guidance commit. The protected-file deletion regression reproduced
-a missing passing route in the local commit gate. A targeted correction permits
-only explicitly reviewed deletion entries; code/data deletions retain exact
-inventory and staged-regression requirements. This repair changes no Machine
-runtime, workflow authority or external repository. See
-[the gate documentation](docs/commit-gate.md) for the deletion contract.
+## Startup and mission registry — 2026-10-18
 
-All 18 regression tests passed, including the exact staged snapshot. Independent
-source/policy review passed and the reviewed local gate was adopted with its
-previous installation preserved. Publication uses the normal commit hook and
-explicit `origin main:main` refspec. Identify the resulting source commit with
-`git log -1 -- scripts/check_staged.py`; publication is complete only after the
-actual remote SHA matches the committed HEAD.
+The CodeExp2 agent is the **Coordinator** and identifies itself that way to the
+human and other repository agents. Root AGENTS now directly defines this role,
+native builder ownership, onboarding duties and the mission directory layout.
+Legacy Machine installation/startup narratives and absolute target pointers were
+removed from AGENTS. The human communication advice, all eight how-to/contract
+guides and the CLI workflow review procedure are retained. Applicable Machine
+requirements remain in a concise scoped rule and the existing contract guides;
+no executable enforcement or permissions changed. Agent JSON retains the schema's
+lowercase `coordinator` role value.
 
-## Misplaced archive copies removed — 2026-10-18
+The user requires `onboard` to load common rules and actual workspace Git state,
+then present every valid registered mission plus **Start a NEW mission**.
+No mission is selected, recommended or read into by default, even when it was
+recently discussed or is the only registered entry. Explicit selection with the
+startup request permits that mission's subsequent intake.
 
-The user confirmed the early archive copies are stored elsewhere and requested
-their removal. No `.tz` files were present; the three root archives were
-`neural-b1r-7a8fa22.tar`, `neural-b1r-ae546bb.tar` and `neural-g2-187222a.tar`.
-All three were unchanged tracked files with no remaining workspace references
-before removal. They remain in Git history. No commit or push was performed.
+`Missions/README.md` is the canonical index. Every mission needs both its table
+entry and `Missions/<name>/README.md` before builder connection, launch,
+installation or execution. An external repository, root historical document or
+saved session is not an alternative registration route. New registration records
+the guide and index entry first, then uses read-only target inspection to fill
+native references; it does not run mission work.
+Product source stays in the registered target; coordination stays in its mission
+folder. Ordinary CodeExp2 instruction/registry maintenance is workspace work.
 
-## Local Machine folder removed — 2026-10-18
+Several missions may remain ongoing. Maintain each one's builder, scope, plan
+reference, assignments, evidence, coordination handover and lifecycle separately.
+Selecting, adding or closing one does not replace or stop the others. The shared
+coordination guide and accepted start/close design now state this explicitly.
+Registry entries describe selectable missions, not freshly verified live builders.
 
-The user confirmed the material is retained elsewhere and explicitly authorized
-removing CodeExp2's entire `Machine/` folder, including the previously preserved
-untracked task-timeline candidate. This supersedes the local preservation and
-resume instructions below. Tracked material remains in Git history; no new copy
-was made here. The separate `/Users/boandersson/Desktop/Machine` repository and
-mission target repositories were not changed. Workspace entry links now point to actual
-external Machine documentation. Historical local paths below describe the old
-layout, not files to recreate. This cleanup does not qualify workflow execution
-or change the Machine invariant. No commit or push is part of this request.
+Root README, AGENTS and this handover now avoid mission-specific startup intake.
+The common onboarding checklist is in [Missions/README.md](Missions/README.md#coordinator-onboarding-onboard).
+No target mission was selected, contacted, started, stopped or changed by this
+instruction update. It is documentation work, not runtime automation or a live
+startup test. The user subsequently authorized committing and pushing this
+documentation update. Publication uses the normal hook and the configured
+`origin main:main` destination; completion requires a matching observed remote
+SHA. Identify the resulting instruction commit with `git log -1 -- AGENTS.md`.
 
-Independent review passed for removal scope, active links and invariant
-preservation. Verification found 1,071 tracked deletions under `Machine/`, eight
-documentation updates outside it, no remaining local folder and an empty index;
-`git diff --check` passed. Changes remain uncommitted.
+Independent review `/root/review_folder_removal` passed the current Coordinator
+role, onboarding, directory structure, registry and scope instructions. The
+human communication advice and complete guide catalog remain byte-identical to
+the published version; the CLI review body changes only a heading level.
+Reviewed root AGENTS SHA-256:
+`85479bf75238c44036c6f4cf8658498bbaf6df5af669d52e3b5d03aca452ed37`.
+Links, heading anchors and whitespace checks passed. This source review
+establishes instruction consistency, not live startup behavior.
 
-## WEBSITE publication complete; retirement unqualified — 2026-10-18
+For the authorized publication, a separate independent review passed the local
+policy update that changes only the root AGENTS hash and the bootstrap's matching
+policy digest. The verifier, source inventory and all 18 mandatory test IDs are
+unchanged. The reviewed pin was adopted; previous trusted bytes, unchanged
+configuration hash, exact manifest, review and adoption receipt are retained in
+`.git/coordinator-onboarding-adoption-6pgzf021/`. Review receipt SHA-256:
+`0a9c88247d4322c89837e3b90bc59180e290115248a4fc66756ca503fbd3a9bd`.
+This changes no runtime permissions and uses no hook bypass.
 
-The user entered `Mission WEBSITE`, then `Mission END WEBSITE`. Native onboarding
-and fresh background readiness were verified without reinstall or product work.
-A stalled builder staging approval was reconciled after the user explicitly
-approved archival, coordinator takeover and publication of the close plus all
-thirteen existing outbound commits. The builder is archived; its close turn is
-interrupted. WEBSITE main was pushed and independently matched remote SHA
-`d79c4d4038a69d2bcb539ae7406d32852b98735a`.
+## Published workspace cleanup
 
-The close commit adds only 61 lines to native `Handover.md`. Prettier, owned
-local links, exact index bytes and preservation checks passed. All 37 previous
-dirty files remain; the target index is empty. GitHub accepted the existing
-artwork with large-file warnings. No product build, deployment or motion approval
-was performed. See [the WEBSITE coordination handover](Missions/WEBSITE/HANDOVER.md)
-for commit scope, raw evidence paths and collaboration lessons.
+Cleanup commit `5cf2f9d7a269709646706420a3eb533a50340ff4` was pushed to CodeExp2's
+configured `origin/main` and independently matched the remote on 2026-10-18.
+The earlier communication-guidance commit `c7ad298` was published with it.
 
-CodeExp2 close notes are published after the verified target-first result;
-identify their commit with `git log -1 -- Missions/WEBSITE/HANDOVER.md` and use
-the external `.git/website-current-end.json` receipt for final SHAs. The separate
-untracked `Machine/TASK_TIMELINE/` candidate stays excluded. No new assignments
-are admitted. No Terminal or service was launched by this reconnect, and the
-shared daemon remains available. Complete native process retirement and automatic
-mission start/end remain unqualified (`SHUTDOWN_BLOCKED` under the accepted
-contract); archival is not a process-exit receipt.
+The user authorized removing the local `Machine/` folder, including the untracked
+task-timeline candidate, and three misplaced root `.tar` files because their
+material is stored elsewhere. Do not restore or resume them during onboarding.
+Machine is not currently a registered mission; new work on it requires normal
+registration and explicit selection. Its invariant remains applicable within
+Machine scope and is unchanged by registry maintenance.
 
-## Mission automation — accepted 2026-10-18
+The local commit gate was independently reviewed and adopted with its previous
+installation preserved. All 18 mandatory regressions passed through the normal
+commit hook. See [the gate documentation](docs/commit-gate.md) for exact scope
+and adoption evidence. Instruction changes still require independent review and
+recorded adoption; executable changes require meaningful staged regressions.
+Neither documentation nor a commit grants mission runtime authority.
 
-The user accepted [the mission start/end design](Missions/CONTROL_WORKFLOW_PROPOSAL.md)
-for `MISSION X` / `END MISSION X` in CodeExp2. No mission CLI is installed.
-The first native-control gate remains BLOCKED on exact executor custody and
-retirement. The initial proxy probes used raw JSON without the existing native
-WebSocket handshake. Further user-authorized investigation reused the installed
-read-only client: initialization and an exact coordinator thread read passed.
-See [the corrected result and raw observations](Missions/ControlWorkflowEvidence/20261018-native-control.md).
-No new mission, model turn, process-handle or lifecycle operation was launched.
+## History and optional system-design work
 
-The earlier connection blocker is superseded by measured progress. The accepted
-outcome is unchanged; installer, routing and two-repository close automation
-still depend on the real narrow-path gate. Preserve pending WEBSITE setup
-documentation, the separate task-timeline candidate and existing sessions.
+Per-mission guides and coordination handovers live under their registered mission
+folders. Target repositories retain their native canonical handovers and plans.
+Detailed earlier global WEBSITE/Machine history remains in Git, including
+`git show 5cf2f9d:Mission_Sofar.md`; it is historical evidence, not startup intake.
+Do not follow its old resume directives or treat its dated capabilities as live.
 
-The user requested [a guide against excessive blocking](docs/how-not-to-overblock-development.md),
-now linked from AGENTS. The [development commit-gate correction](docs/commit-gate.md)
-has 16 passing real-fixture regressions and independent exact-byte review.
-Its recorded adoption and current scope are in
-[the gate evidence](Missions/ControlWorkflowEvidence/20261018-commit-gate.md).
-It admits only the reviewed checker and regression suite; future mission
-features require their own source inventory and meaningful tests. It grants no
-Machine runtime or mission lifecycle authority. At the adoption checkpoint no
-source commit or push had been made. The user subsequently authorized committing
-and pushing the current mission/gate work; identify the publication commit with
-`git log -1 -- Mission_Sofar.md`. The separate task-timeline candidate retains
-its recorded exclusion.
-
-Subsequent user update, 2026-10-18: the user manually terminated the WEBSITE
-Terminal. Read-only inspection of builder `01a15088-a22b-72e1-ab5b-ef34cc3e799b`
-still returned thread status `idle` and last turn `completed`; it does not prove
-process retirement. Record the Terminal as ended by user report, retain the
-thread/evidence, and require fresh readiness before any future assignment.
-This does not resolve the native-control blocker or qualify automatic shutdown.
-
-## Continuing this work
-
-Start with [README.md](README.md) and [AGENTS.md](AGENTS.md). The AGENTS catalog
-contains eight standalone instructions plus the inline workflow review procedure.
-The guides now share delivery rules, plan ownership, a single repair limit,
-coordination boundaries and distinctions between diagnostics and workflow
-qualification. Use only the guides relevant to the requested task.
-
-The latest work is instruction and documentation reconciliation. It does not
-launch Machine, qualify a runtime or authorize repository work elsewhere. No
-native application was delivered; the abandoned native MVP experiment and its
-repair packages, local experiment dependencies and temporary state were deleted
-at the user's direction. Do not revive that work or retry closed diagnostics
-merely because a new session starts.
-
-Before continuing, inspect `git status --short` and the relevant plan and history.
-Use `git log -1 --oneline -- Mission_Sofar.md` to identify this handover's revision. The
-separate `Machine/TASK_TIMELINE/` candidate remains intentionally untracked and
-outside the documentation commit; preserve it and do not include it with a broad
-`git add .`. Resume it only if the user requests that work, after checking its
-actual candidate state and recorded failures.
-
-Ordinary text documentation commits work through the local CodeExp2 hook.
-Executable/data changes still need meaningful staged invariant verification;
-agent instruction and invariant-file edits require review. The Machine repository
-has a separate hook and runtime barrier. Instructions and local hook metadata do
-not constitute a runtime allow path or a transferable execution grant.
-
-The section above records the newly accepted mission automation work and its
-specific blocker. The remaining sections retain the earlier Machine handover.
-Apply the user's next request to the existing plan or document, and use the
-[plan guide](docs/how-to-follow-and-refresh-a-plan.md) before changing its baseline.
-For delegated execution, use the [coordinator guide](docs/how-to-coordinate-with-a-builder-agent.md).
-
-## Historical Machine implementation checkpoint
-
-The remainder records earlier installed milestones and verification results. Its
-test totals, commit identities and statements about running services belong to
-those observations; they are not a fresh health check. Consult the target
-repository's current instructions and read-only status when runtime capability
-matters. Preserve the original evidence and consumed-attempt history.
-
-`MACHINE_AUTOMATED_EXECUTION_REQUIRED` is installed and enforced for Machine and
-every adapter it uses, controls or communicates with, including all new/edited
-features. Authorized workflow execution requires zero manual starts/stops,
-communication, coordinator restarts or handovers, with visible failures that block.
-
-The V3 guard has independent source PASS, 98 passing tests and 14 real disposable
-commit-hook cases. It blocks native/manual dispatch, socket effect submission,
-scratch execution, handovers and workflow verification/closure before effects.
-Operational health fails loudly with invariant code and exit 3. The mandatory
-installed verifier evaluates index blobs and requires actual successful mandatory
-test IDs and runner completion; unsafe or missing integration blocks commits.
-
-Automatic lifecycle, persistent orchestration, communication and recovery remain
-unqualified. The native acceptance test is FAIL: its exact queued input had no
-established live receiver. One delivery attempt remains in custody. Historical
-pilot/scratch successes remain evidence for their original scopes only; the
-consumed scratch permit cannot be replayed. No castle/production readiness is claimed.
-
-CodeExp2 supplies development context and evidence; Desktop/Machine supplies
-persistent records and the enforced barrier. This is not a qualified automatic
-execution loop. Machine enforcement and documentation are committed as
-`50dbd19`; its installed pre-commit gate passed 17 invariant tests and the full
-98-test suite. See onboarding (`Machine/README.md`, historical path),
-current checkpoint (`Machine/CURRENT_MISSION.md`, historical path), requirements (`Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md`, historical path)
-and documentation index (`Machine/DOCUMENTATION_INDEX.md`, historical path).
-
-The subsequent managed dashboard increment (`Machine/DASHBOARD/README.md`, historical path) is
-installed and running, with Machine source committed as `574e834`. Machine opens
-the HTML/JavaScript page automatically; launchd keeps its local diagnostic service
-available and recovers process loss. The page refreshes every two seconds and
-marks failures/stale observations. Independent V2 source review, 113 tests,
-five real disposable commit-gate cases and actual automatic process/browser
-recovery passed. All 87 private Machine files remain unchanged. This qualifies
-only the diagnostic display; automatic project workflows remain blocked.
-
-The subsequent work-view completion (`Machine/WORK_VIEW/README.md`, historical path) is installed
-and committed in Machine as `d24f163`. CLI and dashboard share task-state explanations; 114 tests,
-independent source review and four real staged-commit cases passed. The actual
-automatic source reload took 28.637 seconds, exceeding its retained failed
-20-second probe; the browser subsequently reconnected automatically. Workflow
-execution remains blocked, with all 87 private Machine files unchanged.
+The accepted shared [mission start/close design](Missions/CONTROL_WORKFLOW_PROPOSAL.md)
+remains unimplemented beyond recorded diagnostics. Automatic native custody and
+retirement remain unqualified; no mission CLI is installed. Its evidence and
+failures are retained under `Missions/ControlWorkflowEvidence/`. This shared
+workspace design is not a selected product mission or a reason to pick one.

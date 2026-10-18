@@ -21,23 +21,40 @@ The paragraph above is the original review checkpoint. The subsequent accepted
 implementation probe has separately retained evidence in
 [the feasibility result](ControlWorkflowEvidence/20261018-native-control.md).
 
+## Registry and multi-mission scope — clarified 2026-10-18
+
+The user's registry requirement applies to every mission in this design:
+[Missions/README.md](README.md#registered-missions) is the canonical index, and a
+named `Missions/<name>/README.md` guide is required before connection, launch or
+execution. Bare `onboard` presents all registered choices plus **Start a NEW
+mission**, with no default mission intake or recommendation. Register new
+missions before running them; an external repository path is not registration.
+
+Several registered missions may remain ongoing. Bind every start, assignment,
+close, lock and recovery record to the exact selected mission and its target;
+reconcile shared repository/executor ownership to prevent competing effects.
+There is no global active-mission slot. Ending one mission neither ends another
+nor stops shared services. The WEBSITE-specific observations below remain dated
+evidence, not the default selection or sole mission. This clarification changes
+no native-control qualification result or installed runtime.
+
 ## Human entry and implementation boundary
 
 Keep two conversational entries in the attended CodeExp2 Codex session:
 
 ```text
-MISSION WEBSITE
-END MISSION WEBSITE
+MISSION <registered-name>
+END MISSION <registered-name>
 ```
 
 The future instruction router maps them to the accepted shell interfaces:
 
 ```sh
-./mission start WEBSITE
-./mission end WEBSITE
+./mission start <registered-name>
+./mission end <registered-name>
 ```
 
-Add `./mission status WEBSITE` for observation and recovery decisions. These are
+Add `./mission status <registered-name>` for observation and recovery decisions. These are
 accepted interfaces to implement, not commands available today. Text entered in Codex is a
 model request; it is not automatically a shell command. The coordinator must
 invoke the runner and inspect returned results through its supported tools.
@@ -202,7 +219,8 @@ index bytes. If changes cannot be separated safely, require reconciliation;
 never discard or silently include the older work. Preserve an unrelated index.
 
 Check every commit the push would publish, including ancestors already ahead
-at mission start. WEBSITE currently has thirteen such commits. A new mission
+at mission start. The original WEBSITE review checkpoint had thirteen such
+commits; inspect the selected mission's actual outbound history. A new mission
 commit on main does not prevent those ancestors being pushed too. Resolve their
 publication scope explicitly; do not silently force, rebase, cherry-pick or
 change branches. Existing hooks and source/evidence checks remain applicable.

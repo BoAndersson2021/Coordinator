@@ -1,20 +1,31 @@
 # CodeExp2 — missions and reusable agent instructions
 
-This repository holds reusable agent instructions and cross-repository mission
-guides. Machine lives in `/Users/boandersson/Desktop/Machine`. The local
-`Machine/` material was removed at the user's direction because it is retained
-elsewhere. CodeExp2 is not an autonomous runtime or a qualified workflow executor.
+This repository holds reusable agent instructions and the registry for
+cross-repository missions. Every mission is registered under `Missions/` before
+it runs; product source stays in its own registered target repository. Several
+missions may be ongoing, each with its own builder, plan and coordination state.
+CodeExp2 is not an autonomous runtime or a qualified workflow executor.
 
 ## Start here
+
+The CodeExp2 agent's role is **Coordinator**, both to you and to repository
+agents. At session startup, say **`onboard`**. The Coordinator must follow the
+[onboarding checklist](Missions/README.md#coordinator-onboarding-onboard),
+read the common rules, establish workspace state and present **Available Missions**
+from the [registry](Missions/README.md#registered-missions) plus **Start a NEW mission**.
+It must not choose, recommend or read into a mission by default. Only after your
+explicit selection does it load that mission's guide, handover, plan and target.
+For a new mission, register its name, repository and outcome in `Missions/` first.
+The mission repository's builder owns implementation against its native plan;
+CodeExp2 coordinates assignments, dependencies and evidence review.
 
 1. Read [AGENTS.md](AGENTS.md) for repository rules, the complete instruction
    catalog and how the guides work together.
 2. Read [the current state and handover](Mission_Sofar.md) before continuing work.
    Reconcile it with the current user request, Git status and relevant plan.
-3. For another repository, start with [mission guidance](Missions/README.md).
-   For Machine work, read its own [README](/Users/boandersson/Desktop/Machine/README.md),
-   [instructions](/Users/boandersson/Desktop/Machine/AGENTS.md) and
-   [requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md).
+3. Use [the mission registry and setup procedure](Missions/README.md) for all
+   mission selection, registration and coordination. No mission runs through
+   an unregistered root document or an external repository shortcut.
 
 ## Instruction corpus
 
@@ -32,22 +43,18 @@ covers hooks and governance: protect concrete effects and provide a tested path
 for authorized development. Links between guides route relevant instructions
 and do not create extra stages.
 
-## Recorded implementation and current boundaries
+## Scope and history
 
-`MACHINE_AUTOMATED_EXECUTION_REQUIRED` requires zero manual lifecycle,
-communication and handover steps during Machine workflow execution, with visible
-failures before unsupported effects. The recorded installed barrier enforces a
-stop while automatic workflow providers remain unqualified.
+Mission-specific intake follows selection. Root handover notes contain workspace
+state; each registered mission's folder contains its own coordination history
+and links to native project instructions. Neither recent activity nor a saved
+builder identity makes a mission the system default. Closing one mission leaves
+other missions and shared services alone.
 
-The external [dashboard contract](/Users/boandersson/Desktop/Machine/docs/DASHBOARD.md)
-and [work-view contract](/Users/boandersson/Desktop/Machine/docs/WORK_VIEW.md)
-describe the recorded diagnostic features. Those milestones do not establish that a service is
-running now or that project execution is qualified. Use actual read-only target
-observations when current capability matters.
-
-The abandoned native MVP experiment and its repair ladder were deleted. There is
-no delivered native application to resume. The unfinished local task-timeline
-candidate was included in the user-authorized removal of `Machine/`.
+Machine-specific requirements remain in AGENTS and the scoped contract guides.
+They apply within their stated scope and do not select a mission. The removed
+local Machine folder and misplaced archives remain in Git history; their removal
+does not authorize recreating a mission outside `Missions/`.
 
 ## Local commit checks and history
 

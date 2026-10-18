@@ -13,6 +13,13 @@ inside its assigned repository and permissions. The builder's current applicable
 plan is the shared working baseline. It remains subordinate to the user's intent,
 repository instructions and actual observed results.
 
+When the host workspace has a mission registry, resolve work through that
+registry before assigning it. Keep separate scope, builder bindings, plan
+references, outstanding effects and handovers for each mission. Several missions
+may remain ongoing; conversation focus is not a system-wide active-mission slot.
+Selecting or closing one does not replace or terminate the others. Preserve
+explicit ownership and dependency boundaries when missions share resources.
+
 Delivery Discipline owns the shared delivery rules and repair limit. The plan
 guide governs changes to the shared baseline; this guide governs who coordinates
 and executes it. For Machine-managed work, also apply the
