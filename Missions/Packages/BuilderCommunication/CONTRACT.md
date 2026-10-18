@@ -7,6 +7,11 @@ exchanges. This is a documentation contract, not an installed parser or executio
 guarantee. Follow existing transport schemas, size limits, permissions and
 repository instructions. See [examples](EXAMPLES.md).
 
+Read the target's [delivery settings](DELIVERY.md), filled by the installer with
+the mission's artifact root, supported tools, request limit, inline reply budget,
+coordinator access, write scope and retention. Follow that configured path rather
+than discovering a reporting location after producing an oversized result.
+
 ## Select the audience before formatting
 
 ```text
@@ -142,10 +147,20 @@ independently verified or owner accepted. A coordinator must not invent owner
 acceptance or delegate beyond the current user authority.
 
 Transmit the JSON as the tool's message content, without surrounding prose when
-the route supports it. If tool limits prevent inline delivery, use the mission's
-existing supported artifact-reference mechanism and identify the complete message
-and its version. Do not truncate required fields, invent another transport, launch
-an agent or execute a file to deliver a message. Report an unavailable route.
+the route supports it. Keep the complete envelope within the configured reply
+budget, including final responses and ACKs. Put lengthy explanations and raw
+evidence in a complete JSON report at the assigned unique run path; return the
+required completion fields plus an evidence entry with that path and SHA256.
+Use this artifact route from the outset when inline collection would be too large.
+
+Only write artifacts within the assignment's explicit evidence scope. If a route
+or its write authority is unavailable, report the gap and hold dependent delivery.
+The coordinator must collect a completed matching message, parse its full envelope,
+read the artifact, check the hash and verify relevant evidence. A missing file,
+hash mismatch or truncated JSON is incomplete collection, not a successful report.
+Preserve incomplete attempts and link any corrected/recovered response to the
+original message. Do not truncate required fields, invent another transport,
+launch an agent or execute a received report file to deliver a message.
 
 Human-facing answers remain governed by the user's presentation preferences.
 This contract neither adds recurring approval steps nor removes existing reviews,

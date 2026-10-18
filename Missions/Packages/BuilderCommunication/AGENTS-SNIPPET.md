@@ -6,6 +6,13 @@ For delegated mission work, read and apply
 messages for assignments, acknowledgements, progress, blockers and completion
 reports through the mission's existing supported communication route.
 
+Read the installed [delivery settings](docs/agent-communication/v1/DELIVERY.md).
+Use its configured artifact directory and inline reply budget. For a detailed
+report, write the full JSON artifact within the assignment's explicit evidence
+write scope, then return a compact completion with its path, SHA256 and limits.
+Do not replace the artifact with a long inline response that cannot be collected.
+The coordinator must read and verify the referenced file before using its claims.
+
 Choose the format by the established recipient and assignment, not by a channel
 name such as `final` or whether the message is visible in a chat window:
 

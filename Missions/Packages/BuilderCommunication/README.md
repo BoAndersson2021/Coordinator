@@ -4,7 +4,8 @@ Package ID: `builder-communication`
 
 Contract version: `1`
 
-Status: prepared documentation package; not installed in a mission repository.
+Status: reusable documentation package. An earlier snapshot was installed and
+tested in BallisticsExperimental; installed copies have their own adoption state.
 
 Point a mission agent at this README to install a shared coordinator/builder
 message format. The package contains instructions and JSON examples, with no
@@ -19,6 +20,9 @@ Read target instructions and current Git state
     |
     v
 Copy contract and examples into target docs
+    |
+    v
+Configure report directory and reply budget
     |
     v
 Merge scoped snippet into target AGENTS.md
@@ -38,6 +42,7 @@ Existing authorized communication route
 | --- | --- |
 | [CONTRACT.md](CONTRACT.md) | Message envelope, roles, required fields and evidence rules. |
 | [EXAMPLES.md](EXAMPLES.md) | JSON examples for assignment, acknowledgement, progress, blocker and completion. |
+| [DELIVERY.md](DELIVERY.md) | Template the installer fills with the mission's artifact path, limits and verification status. |
 | [AGENTS-SNIPPET.md](AGENTS-SNIPPET.md) | Text to merge into the target's existing instructions. |
 
 ## Install into an authorized mission repository
@@ -47,7 +52,8 @@ Existing authorized communication route
    state, including staged work. Preserve existing instructions and changes.
 2. Inspect this complete package. Copy `CONTRACT.md` and `EXAMPLES.md` into
    `docs/agent-communication/v1/` in the target. If that location already exists,
-   compare it before updating; do not overwrite local amendments blindly.
+   compare it before updating; do not overwrite local amendments blindly. Preserve
+   the target's actual directory capitalization, such as `Docs/`.
 3. Merge the contents of `AGENTS-SNIPPET.md` into the target root `AGENTS.md`,
    preserving all existing rules. Adjust the link if the installation path or
    instruction-file location differs. Do not copy CodeExp2's root `AGENTS.md`
@@ -57,13 +63,22 @@ Existing authorized communication route
    clarify that prose/diagram preferences govern human replies and this contract
    governs agent exchanges. Preserve higher-priority requirements and report any
    unresolved conflict instead of asserting that JSON overrides them.
-4. Review the exact diff, links and JSON examples. Follow the target's required
+4. Establish the report delivery path during installation. Fill a target-local
+   `DELIVERY.md` beside the contract using the supplied template. Record the
+   absolute repository root, repository-relative artifact directory, unique run
+   and report naming, supported tool route, request limit, conservative reply
+   budget, coordinator access and retention. Inspect receiving limits as well
+   as sending limits; a large read setting may still return truncated messages.
+   Each assignment must explicitly include any permitted report-file writes,
+   even if its investigation otherwise allows only reading source. Do not leave
+   directory choice or write authority for the builder to guess at completion.
+5. Review the exact diff, links and JSON examples. Follow the target's required
    instruction review and normal commit hooks. Installation does not authorize
    changing hooks, launching agents, running the application or publication.
-5. Record the package ID, contract version, source CodeExp2 revision plus dirty
+6. Record the package ID, contract version, source CodeExp2 revision plus dirty
    package identity when applicable, installed paths and target changes in the
    mission's canonical handover. Report installation/review status accurately.
-6. During the next authorized connection, explicitly ask both parties to read
+7. During the next authorized connection, explicitly ask both parties to read
    and apply the installed contract. Confirm the fresh assignment/token in a
    completed acknowledgement through the existing supported communication tool.
    A copied file or delivery receipt does not establish adoption or readiness.
@@ -72,18 +87,31 @@ Existing authorized communication route
    while direct human replies retain their existing presentation style. Record
    this as unverified until actually observed; do not message agents solely
    because installation instructions describe the check.
+   When a delivery test is authorized, verify the complete path: builder writes
+   a full report to the configured run directory, returns a bounded completion
+   with report path and SHA256, and coordinator collects a completed matching
+   turn, reads/parses the file and verifies its hash. Record the result and any
+   limits in target DELIVERY.md and handover. If execution is outside scope,
+   leave the route explicitly unverified; document checks do not prove delivery.
 
 Suggested installation request:
 
 > In `<target repository>`, read and apply your applicable instructions. Inspect
 > the BuilderCommunication package at `<package path>/README.md`. Install its
 > version 1 contract and examples under `docs/agent-communication/v1/`, merge the
-> scoped snippet into root AGENTS.md, and record the package source identity and
-> installation status in the canonical handover. Preserve existing work. Return
+> scoped snippet into root AGENTS.md. Fill target DELIVERY.md with the artifact
+> directory, transport limits, reply budget, access and report-write scope. Record
+> the package source identity, delivery settings and installation status in the
+> canonical handover. Preserve existing work. Return
 > changed paths, checks and unresolved conflicts. Documentation only; no agent
 > launches, application execution, commits or pushes in this assignment.
 
 Change the last sentence only to reflect authority actually granted by the user.
+
+Observed BallisticsExperimental settings are documented in the
+[mission guide](../../BallisticsExperimental/README.md#agent-json-and-report-delivery).
+Use them as evidence for that host, not universal tool limits or a directory to
+reuse in another repository.
 
 ## Updating an installed copy
 

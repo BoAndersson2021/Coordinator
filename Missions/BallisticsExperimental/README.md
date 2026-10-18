@@ -149,6 +149,59 @@ Avoid mutual waiting: the builder returns a completed result, and the
 coordinator reviews it and sends the next decision. The builder should not need
 the coordinator's entire user-facing turn to finish before returning its result.
 
+## Agent JSON and report delivery
+
+The [Builder Communication installation package](../Packages/BuilderCommunication/README.md)
+was installed and exercised with the existing builder on 2026-10-18, opening at
+target HEAD `2053539fb0e84062d4906c2f589a596639556800`. Read the target's installed
+[contract](../../../BallisticsExperimental/Docs/agent-communication/v1/CONTRACT.md),
+[examples](../../../BallisticsExperimental/Docs/agent-communication/v1/EXAMPLES.md)
+and [delivery settings](../../../BallisticsExperimental/Docs/agent-communication/v1/DELIVERY.md).
+Agent exchanges use JSON; direct human replies retain human presentation guidance.
+
+```text
+Assignment names run path and evidence-write scope
+    |
+    v
+Builder writes full JSON report under Saved/AgentCommunication/<run-id>/
+    |
+    v
+Builder returns compact JSON: assignment + outcome + path + SHA256 + limits
+    |
+    v
+Coordinator collects completed turn, parses reply, reads and hashes report
+```
+
+The configured artifact root is
+`/Users/boandersson/Desktop/BallisticsExperimental/Saved/AgentCommunication/`.
+Use a unique UTC run directory and assignment-specific filenames. Explicitly
+permit those evidence writes in each assignment, including source-read-only
+investigations; preserve existing reports and source restrictions. Coordinator
+and builder share this local filesystem. These artifacts are ignored local
+evidence: handover links do not publish or commit their contents.
+
+Observed send prompts are limited to **1,000 UTF-8 bytes**. Keep inline replies
+within the mission's **3,500 UTF-8 byte budget**, including the envelope, and put
+long reports in artifacts from the outset. The tool accepted a maximum read
+setting of 20,000 characters, yet still truncated a long final reply after about
+7,000 characters. That read setting is not a guarantee of complete collection.
+Inspect current schemas and limits again when reconnecting.
+
+Recorded test `BE-RIVAL-ACCEL-001` requested the actual rival acceleration math.
+The first inline report was incompletely collected. A bounded follow-up recovered
+the full 22,689-byte JSON artifact and a 3,097-character compact completion. The
+coordinator checked the envelope/identities, installed hashes, 11 cited source
+hashes and calculated arithmetic. The reserialized artifact is not a byte-exact
+transcript of the first reply. No gameplay or native execution was part of this
+test, and it does not install automatic schema enforcement.
+
+Local retained evidence is under
+`Saved/AgentCommunication/20261018-192152-f2bf0f/` in the target: `TEST_RESULTS.json`,
+`acceleration-report.json`, `collection-completion.json` and `EVIDENCE_MANIFEST.json`.
+The canonical target handover owns current installation/adoption state. This
+record describes that observed exchange; recheck artifacts and Git state next
+session. Do not infer a new assignment, commit or push from it.
+
 ## Assign and coordinate one bounded result
 
 An assignment should state the target repository, current baseline or plan step,

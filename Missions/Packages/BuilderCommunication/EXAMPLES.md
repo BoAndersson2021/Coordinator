@@ -160,3 +160,41 @@ A fully reported completion uses `reported_complete` only after the assigned
 acceptance checks have evidence. It still awaits relevant verification and any
 reserved owner decision. Verification and acceptance messages follow the required
 body fields in the contract; neither is implied by a completion message.
+
+## Compact completion referencing a full report
+
+For a long answer, use the installed DELIVERY.md path and budget from the start.
+The file contains the complete report; the inline completion retains the required
+fields and identifies the file. This template's paths and hash are placeholders,
+not evidence. Replace them with the assigned path and its computed SHA256.
+
+```json
+{
+  "protocol": "builder-communication/1",
+  "message_id": "example-report-1",
+  "assignment_id": "example-analysis-001",
+  "reply_to": "example-analysis-assign-1",
+  "type": "completion",
+  "sender": {"role": "builder", "session_id": null},
+  "recipient": {"role": "coordinator", "session_id": null},
+  "repository": "/absolute/path/to/mission-repo",
+  "summary": "Detailed findings are in the referenced JSON report.",
+  "body": {
+    "source": {
+      "head": null, "branch": null, "dirty_paths": null,
+      "state_evidence": null,
+      "limitations": ["Replace template source fields with observations."]
+    },
+    "outcome": "reported_complete",
+    "changed_paths": ["<artifact-root>/<run-id>/example-analysis-001-report.json"],
+    "checks": [{"name": "Report JSON parses", "result": "pass", "evidence": "<report path>"}],
+    "evidence": [{
+      "path": "<artifact-root>/<run-id>/example-analysis-001-report.json",
+      "claim": "Complete explanation, checks and limitations.",
+      "sha256": "<computed SHA256 of the report bytes>"
+    }],
+    "limitations": ["Coordinator collection and evidence verification remain separate."],
+    "next_action": "Read and hash the artifact, then verify its claims."
+  }
+}
+```
