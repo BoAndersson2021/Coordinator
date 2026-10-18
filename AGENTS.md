@@ -4,6 +4,12 @@ Use [README.md](README.md) for repository orientation and
 [Mission_Sofar.md](Mission_Sofar.md) for continuation state and recorded history.
 Reconcile both with the current user request, Git status and applicable plan.
 
+When setting up or resuming a mission in another repository, read
+[Missions/README.md](Missions/README.md), then the selected mission's running
+guide. For a new mission, follow the setup procedure and create its guide.
+Recheck the target repository's current instructions, Git state and canonical
+handover; recorded commands and historical results grant no execution authority.
+
 Read Delivery Discipline for every task. For implementation or repair toward a
 running application, also read the runtime-target instruction. Read the remaining
 guides when their subject applies to the authorized task. Before executing or
@@ -20,6 +26,20 @@ When coordinating execution through a builder agent, read the coordinator guide.
 | [Agent communication contract](docs/how-to-communicate-with-other-codex-agents.md) | Use when implementing or evaluating Machine agent communication. Check actual receiver readiness, delivery, collection, uncertainty and automatic recovery. |
 | [Executor lifecycle and launch contract](docs/app-terminal-codex-launch-pattern.md) | Use when implementing or evaluating Machine-managed launches, stops, replacement and handover. Require actual process control and receiving readiness. |
 | [Agent Workflow Review Guide](#agent-workflow-review-guide) | Use when reviewing an LLM-driven CLI. Trace instructions, harness decisions, tool execution and returned results through the implemented path. The full procedure is below. |
+
+## Agent Communication
+
+When explaining intended work, designs or system behavior involving several steps
+or branches, prefer compact, annotated ASCII flowcharts over long prose. Use
+short, plain-English labels, explicit outcomes and nearby annotations. Put
+diagrams in fenced code blocks to preserve alignment.
+
+Use color where reliably supported, or colored markers with a small legend when
+helpful. Labels must convey the full meaning without color.
+
+Add brief supporting text for decisions, evidence and limitations. Use direct
+prose for simple answers and tables for comparisons. Distinguish proposed
+behavior from observed or verified behavior.
 
 ## Applying the guides together
 
@@ -88,9 +108,10 @@ invariant requirements require reviewed changes; documentation changes grant no
 runtime authority. Feature development requires meaningful staged invariant
 regressions before an executable allow path is installed. Never bypass the hook.
 
-Read [the documentation index](Machine/DOCUMENTATION_INDEX.md),
-[requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md), and the actual target
-repository AGENTS.md. Preserve frozen source packages and historical evidence;
+For Machine work, read [the documentation index](Machine/DOCUMENTATION_INDEX.md)
+and [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md). For every mission,
+read the actual target repository's applicable AGENTS.md instructions.
+Preserve frozen source packages and historical evidence;
 old manual examples cannot re-enable workflow execution. The review procedure
 below remains applicable within this invariant and the user's authorized scope.
 
