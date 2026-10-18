@@ -32,11 +32,13 @@ Reject redirected Git inputs and unresolved stages
                                     +-> missing / skipped / failed -> reject
 ```
 
-The current adoption admits only the checker and its regression suite as
-executable development files. It does not admit the future mission runner or
-Machine runtime. Later feature work must extend the independently reviewed local
-policy with its actual source and meaningful mandatory tests. Gate tests alone
-cannot qualify a new mission feature.
+The initial adoption admitted only the checker and its regression suite as
+executable development files. The independently reviewed
+[launcher publication](../Launcher/PUBLICATION.md) extends that exact inventory
+to the native Swift desktop launcher, with two additional mandatory regressions.
+It does not admit a mission runner or Machine runtime. Later feature work must
+extend the independently reviewed local policy with its actual source and
+meaningful mandatory tests. Gate tests alone cannot qualify a mission feature.
 
 The installed policy records exact file modes, SHA-256 identities and mandatory
 test IDs. The installed bootstrap pins the verifier and policy before executing

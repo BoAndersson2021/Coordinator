@@ -4,6 +4,34 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Swift desktop launcher — 2026-10-18
+
+The user requested a desktop icon that opens Terminal, starts Codex in CodeExp2
+and automatically completes onboarding to the mission menu. The native Swift
+launcher is implemented under [Launcher/](Launcher/README.md), built and ad-hoc
+signed at `Launcher/build/CodeExp2.app`. `/Users/boandersson/Desktop/CodeExp2.app`
+is a native Finder alias to that bundle with its custom icon verified in Finder.
+Keep the generated app in place; source and rebuild instructions are in Launcher.
+
+The launcher passes the fixed `onboard` first prompt directly at process start,
+following the local launch law. It does not type into a running Codex UI, choose
+a mission, reuse a session or override model, account, trust or permissions.
+The actual Desktop alias was opened and a fresh Terminal Codex session completed
+onboarding to **Coordinator ready. No mission selected.**, with both registered
+missions and the new-mission choice. That interactive test session was left open.
+See [verification](Launcher/VERIFICATION.md) for exact scope and identities.
+
+The user subsequently authorized committing and pushing the launcher. Independent
+review `/root/launcher_publication_review` passed its exact source inventory,
+bounded policy update and all 20 tests. The reviewed inventory was adopted with
+the previous installed gate and unchanged configuration preserved under
+`.git/codeexp2-launcher-adoption-5ucktqqs/`. The verifier, existing instruction and
+deletion pins, and all 18 earlier mandatory checks remain unchanged; two native
+launcher regressions are now mandatory too. See [publication evidence](Launcher/PUBLICATION.md).
+Publication uses the normal staged-source hook and explicit `origin main:main`;
+identify the resulting source commit with `git log -1 -- Launcher`. This is
+workspace startup tooling, not a selected product mission or Machine automation.
+
 ## Startup and mission registry — 2026-10-18
 
 The CodeExp2 agent is the **Coordinator** and identifies itself that way to the

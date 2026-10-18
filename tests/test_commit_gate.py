@@ -8,8 +8,10 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import plistlib
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -295,6 +297,60 @@ class CommitGateTests(unittest.TestCase):
         self.assertEqual(self.git('ls-files', '--stage', '-z').stdout, index)
         self.assertEqual((self.root / 'README.md').read_text(), 'Unstaged user edit.\n')
         self.assertEqual((self.root / 'old-user-work.md').read_text(), 'Leave this exact user content.\n')
+
+    def test_launcher_native_build_preflight_and_terminal_boundary(self):
+        """Build exact snapshot sources, verify signing and reject non-TTY launch."""
+        with tempfile.TemporaryDirectory(prefix='codeexp2-native-build-') as directory:
+            launcher = Path(directory) / 'Launcher'
+            launcher.mkdir()
+            for name in ('CodeExp2.swift', 'Icon.swift', 'build.py', 'Start CodeExp2.command'):
+                shutil.copyfile(ROOT / 'Launcher' / name, launcher / name)
+            result = subprocess.run([sys.executable, '-B', str(launcher / 'build.py')],
+                                    capture_output=True, text=True, timeout=60,
+                                    env={k: v for k, v in self.env.items()
+                                         if not k.startswith('GIT_')})
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            for message in ('missing workspace', 'missing onboarding instructions',
+                            'non-executable Codex', 'redirected workspace'):
+                self.assertIn('PASS: ' + message, result.stdout)
+            app = launcher / 'build/CodeExp2.app'
+            plist = plistlib.loads((app / 'Contents/Info.plist').read_bytes())
+            self.assertEqual(plist['CFBundleExecutable'], 'CodeExp2')
+            self.assertEqual(plist['CFBundleIdentifier'], 'local.codeexp2.coordinator-launcher')
+            resources = app / 'Contents/Resources'
+            self.assertEqual((resources / 'CodeExp2.icns').read_bytes()[:4], b'icns')
+            bridge = resources / 'Start CodeExp2.command'
+            self.assertTrue(os.access(bridge, os.X_OK))
+            self.assertEqual(bridge.read_bytes(), (ROOT / 'Launcher/Start CodeExp2.command').read_bytes())
+            executable = app / 'Contents/MacOS/CodeExp2'
+            for args, reason in ((['--terminal'], 'interactive Terminal session'),
+                                 (['--unknown'], 'Supported options')):
+                rejected = subprocess.run([str(executable), *args], stdin=subprocess.DEVNULL,
+                                          capture_output=True, text=True, timeout=10)
+                self.assertEqual(rejected.returncode, 1, rejected.stdout + rejected.stderr)
+                self.assertIn(reason, rejected.stderr)
+
+    def test_launcher_terminal_bridge_preserves_paths_and_arguments(self):
+        """The shipped bridge must exec its sibling binary with exactly --terminal."""
+        contents = self.root / "a space and 'quote $ literal.app/Contents"
+        resources = contents / 'Resources'
+        macos = contents / 'MacOS'
+        resources.mkdir(parents=True)
+        macos.mkdir()
+        bridge = resources / 'Start CodeExp2.command'
+        shutil.copyfile(ROOT / 'Launcher/Start CodeExp2.command', bridge)
+        executable = macos / 'CodeExp2'
+        executable.write_text('#!/bin/zsh\nprintf "argc:%s\\narg:%s\\n" "$#" "$1"\n')
+        executable.chmod(0o755)
+        result = subprocess.run(['/bin/zsh', str(bridge)], cwd=self.root,
+                                capture_output=True, text=True, timeout=10)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(result.stdout, 'argc:1\narg:--terminal\n')
+        executable.unlink()
+        missing = subprocess.run(['/bin/zsh', str(bridge)], cwd=self.root,
+                                 capture_output=True, text=True, timeout=10)
+        self.assertNotEqual(missing.returncode, 0)
+        self.assertIn('no such file or directory', missing.stderr)
 
 
 if __name__ == '__main__':
