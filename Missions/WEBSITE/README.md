@@ -6,6 +6,24 @@ and reusable instructions; the verified WEBSITE builder owns assigned target
 documentation, implementation and evidence. The user owns scope and acceptance.
 This guide does not select a product task, launch a server or authorize publication.
 
+Read [current coordination state](HANDOVER.md) for the latest dated reconnect
+result and its limits; recheck receiving readiness rather than treating it as
+permanent liveness.
+
+For `Mission END WEBSITE` / `END MISSION WEBSITE`, follow the accepted
+[close sequence](../CONTROL_WORKFLOW_PROPOSAL.md#corrected-close-chain): native
+handover, owned staging, target-first publication and separate retirement proof.
+Preserve pre-existing dirty work and reconcile every commit a push would publish.
+These are conversational entries; no shell mission runner is installed. Record
+native approval waits, partial publication and unverified retirement explicitly.
+
+At the 2026-10-18 close, the user approved archival and coordinator takeover
+of a stalled staging request, then publication of the close and thirteen older
+commits. WEBSITE remote main was verified at `d79c4d4038a69d2bcb539ae7406d32852b98735a`.
+See the current handover for receipts, preserved dirty work and the unresolved
+native process-retirement limit. A saved archived thread needs fresh receiving
+readiness before future work.
+
 ## Native WEBSITE onboarding comes first
 
 Read the target's [AGENTS.md](../../../WEBSITE/AGENTS.md),

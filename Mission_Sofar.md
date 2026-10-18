@@ -1,5 +1,31 @@
 # Current state and handover
 
+## WEBSITE publication complete; retirement unqualified — 2026-10-18
+
+The user entered `Mission WEBSITE`, then `Mission END WEBSITE`. Native onboarding
+and fresh background readiness were verified without reinstall or product work.
+A stalled builder staging approval was reconciled after the user explicitly
+approved archival, coordinator takeover and publication of the close plus all
+thirteen existing outbound commits. The builder is archived; its close turn is
+interrupted. WEBSITE main was pushed and independently matched remote SHA
+`d79c4d4038a69d2bcb539ae7406d32852b98735a`.
+
+The close commit adds only 61 lines to native `Handover.md`. Prettier, owned
+local links, exact index bytes and preservation checks passed. All 37 previous
+dirty files remain; the target index is empty. GitHub accepted the existing
+artwork with large-file warnings. No product build, deployment or motion approval
+was performed. See [the WEBSITE coordination handover](Missions/WEBSITE/HANDOVER.md)
+for commit scope, raw evidence paths and collaboration lessons.
+
+CodeExp2 close notes are published after the verified target-first result;
+identify their commit with `git log -1 -- Missions/WEBSITE/HANDOVER.md` and use
+the external `.git/website-current-end.json` receipt for final SHAs. The separate
+untracked `Machine/TASK_TIMELINE/` candidate stays excluded. No new assignments
+are admitted. No Terminal or service was launched by this reconnect, and the
+shared daemon remains available. Complete native process retirement and automatic
+mission start/end remain unqualified (`SHUTDOWN_BLOCKED` under the accepted
+contract); archival is not a process-exit receipt.
+
 ## Mission automation — accepted 2026-10-18
 
 The user accepted [the mission start/end design](Missions/CONTROL_WORKFLOW_PROPOSAL.md)
