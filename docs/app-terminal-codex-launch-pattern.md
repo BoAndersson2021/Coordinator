@@ -46,7 +46,7 @@ Read-only orientation and developer diagnostics do not initialize, dispatch or
 activate work. The Machine controller and automatic coordinator lifecycle remain
 unqualified in the recorded checkpoint; its health failed with
 `MACHINE_AUTOMATED_EXECUTION_REQUIRED` and exit 3. The lifecycle proposal supplies
-no available command surface. Use the [maintained status](../Machine/DOCUMENTATION_INDEX.md)
+no available command surface. Use the [maintained status](/Users/boandersson/Desktop/Machine/docs/DOCUMENTATION_INDEX.md)
 and actual read-only target observations when deciding current capability.
 
 ## Qualification
@@ -59,5 +59,5 @@ This is distinct from qualifying the whole workflow: check required start/stop,
 receiving readiness, fencing, handover and recovery cases in fixtures and through
 the actual approved route. Neither stage may bypass the installed stop barrier.
 An operator-driven diagnostic cannot establish automatic lifecycle or recovery.
-See the [requirements](../Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md) and
-[lifecycle proposal](../Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md).
+See the [requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md) and
+[lifecycle proposal](/Users/boandersson/Desktop/Machine/docs/proposals/ROLE_LIFECYCLE_CONTROL.md).

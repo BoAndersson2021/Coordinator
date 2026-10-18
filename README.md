@@ -1,9 +1,9 @@
-# CodeExp2 — Machine development and reusable agent instructions
+# CodeExp2 — missions and reusable agent instructions
 
-This repository holds the Machine builder mission, reusable agent instructions,
-reviewed candidates and historical evidence. The separate implementation
-repository is `/Users/boandersson/Desktop/Machine`. CodeExp2 is not an autonomous
-runtime or a qualified workflow executor.
+This repository holds reusable agent instructions and cross-repository mission
+guides. Machine lives in `/Users/boandersson/Desktop/Machine`. The local
+`Machine/` material was removed at the user's direction because it is retained
+elsewhere. CodeExp2 is not an autonomous runtime or a qualified workflow executor.
 
 ## Start here
 
@@ -11,10 +11,10 @@ runtime or a qualified workflow executor.
    catalog and how the guides work together.
 2. Read [the current state and handover](Mission_Sofar.md) before continuing work.
    Reconcile it with the current user request, Git status and relevant plan.
-3. For Machine development, read [builder onboarding](Machine/README.md),
-   [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md) and
-   [documentation status](Machine/DOCUMENTATION_INDEX.md), plus the actual target
-   repository's instructions.
+3. For another repository, start with [mission guidance](Missions/README.md).
+   For Machine work, read its own [README](/Users/boandersson/Desktop/Machine/README.md),
+   [instructions](/Users/boandersson/Desktop/Machine/AGENTS.md) and
+   [requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md).
 
 ## Instruction corpus
 
@@ -39,16 +39,15 @@ communication and handover steps during Machine workflow execution, with visible
 failures before unsupported effects. The recorded installed barrier enforces a
 stop while automatic workflow providers remain unqualified.
 
-The [dashboard](Machine/DASHBOARD/README.md) and
-[shared work-view feature](Machine/WORK_VIEW/README.md) retain their installation
-and verification evidence. Those milestones do not establish that a service is
+The external [dashboard contract](/Users/boandersson/Desktop/Machine/docs/DASHBOARD.md)
+and [work-view contract](/Users/boandersson/Desktop/Machine/docs/WORK_VIEW.md)
+describe the recorded diagnostic features. Those milestones do not establish that a service is
 running now or that project execution is qualified. Use actual read-only target
 observations when current capability matters.
 
 The abandoned native MVP experiment and its repair ladder were deleted. There is
-no delivered native application to resume. The separate task-timeline candidate
-is retained as unfinished work and is outside this instruction/documentation
-commit. Preserve its state until the user requests work on it.
+no delivered native application to resume. The unfinished local task-timeline
+candidate was included in the user-authorized removal of `Machine/`.
 
 ## Local commit checks and history
 

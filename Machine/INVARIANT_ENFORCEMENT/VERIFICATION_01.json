@@ -1,9 +1,0 @@
-{
-  "status": "FAIL",
-  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v",
-  "tests": 94,
-  "failures": 27,
-  "errors": 3,
-  "elapsed_seconds": 22.962,
-  "finding": "Historical bridge fixtures did not clean up the injected ledger-only guard mock; it leaked into new invariant tests. A subprocess import also needed the source module path. Correct test cleanup/import paths; no production guard weakening."
-}

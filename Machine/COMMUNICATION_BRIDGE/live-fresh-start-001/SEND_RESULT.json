@@ -1,7 +1,0 @@
-{
-  "chunk_id": "00edd9",
-  "wall_time_seconds": 0.113521292,
-  "exit_code": 0,
-  "original_token_count": 29,
-  "output": "{\n  \"replayed\": false,\n  \"state\": \"delivered\",\n  \"task_id\": \"native-inspection-fresh-start-001\",\n  \"version\": 3\n}\n"
-}

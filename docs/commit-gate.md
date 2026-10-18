@@ -57,6 +57,31 @@ or runtime processes. The fixture policy is test setup, not live adoption.
 Git may refresh index cache metadata during a rejected commit; tests preserve
 the staged paths, modes and object identities, plus HEAD and dirty file content.
 
+For the user-authorized local Machine/archive cleanup, the deletion regression
+first reproduced the missing protected-file passing route. The verifier now
+accepts a protected deletion only when that exact path has an explicit `null`
+entry in the independently reviewed instruction policy. Missing entries, old
+content pins and replacement instructions still reject deletion or replacement.
+Executable/data deletions also require an explicit reviewed inventory and
+successful staged regressions. This does not authorize deleting other paths or
+change Machine runtime enforcement.
+
+The cleanup correction received independent exact-byte PASS from
+`/root/review_folder_removal`. All 18 tests passed in the working tree,
+independent review (24.864 seconds) and the real staged snapshot through the
+candidate bootstrap (24.918 seconds). The adopted policy enumerates exactly
+24 protected deletions and 697 executable/data deletions, plus the reviewed root
+instruction hash and checker/test hashes. The remaining 353 deletions are
+ordinary documents. No wildcard deletion permission was added.
+
+The installed gate remains `.git/codeexp2-commit-gate/`. Previous installed
+bytes, unchanged configuration hash, exact candidate identities, independent
+review and adoption receipt are retained under
+`.git/codeexp2-cleanup-adoption-20261018-931empp8/`. Review SHA-256:
+`1629dc83b8617279419e471e05e171099aa42330b27afd539004cc3c2fb5990e`.
+The installed bootstrap continues to verify its policy and verifier before
+running staged-source checks; no hook bypass or runtime change was used.
+
 Adoption must preserve the previous hook and configuration, copy only reviewed
 bytes into an owned directory under this checkout's Git directory, install the
 digest-pinned bootstrap and record the independent review and checks. Never

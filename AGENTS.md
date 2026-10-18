@@ -165,8 +165,11 @@ Preserve the runtime stop while its providers remain unqualified. Never bypass
 the hook. Repair overly broad gates through reviewed tests and adoption, applying
 [the guide to avoiding excessive blocks](docs/how-not-to-overblock-development.md).
 
-For Machine work, read [the documentation index](Machine/DOCUMENTATION_INDEX.md)
-and [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md). For every mission,
+The local `Machine/` folder was removed at the user's direction; its material is
+retained elsewhere. For Machine work, read the actual target's
+[README](/Users/boandersson/Desktop/Machine/README.md),
+[instructions](/Users/boandersson/Desktop/Machine/AGENTS.md) and
+[requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md). For every mission,
 read the actual target repository's applicable AGENTS.md instructions.
 Preserve frozen source packages and historical evidence;
 old manual examples cannot re-enable workflow execution. The review procedure

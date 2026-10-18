@@ -1,8 +1,0 @@
-test_bad_digest_fails_closed (test_installer.InstallerTests.test_bad_digest_fails_closed) ... ok
-test_path_escape_denied (test_installer.InstallerTests.test_path_escape_denied) ... ok
-test_plan_and_staging (test_installer.InstallerTests.test_plan_and_staging) ... ok
-
-----------------------------------------------------------------------
-Ran 3 tests in 0.123s
-
-OK

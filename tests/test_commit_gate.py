@@ -58,14 +58,20 @@ class CommitGateTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text)
 
-    def adopt(self, tests=FIXTURE_TEST, mandatory=None):
+    def adopt(self, tests=FIXTURE_TEST, mandatory=None, instructions=None,
+              deletions=(), extra_files=()):
         """Simulate reviewed pins inside this disposable repository only."""
         code = self.root / 'tool.py'
         policy = {'version': 1, 'files': {
             'tool.py': {'mode': '100644', 'sha256': hashlib.sha256(code.read_bytes()).hexdigest()},
             checker.TEST_PATH: {'mode': '100644', 'sha256': hashlib.sha256(tests.encode()).hexdigest()}},
-            'instructions': {}, 'mandatory_tests': mandatory or [
+            'instructions': instructions or {}, 'mandatory_tests': mandatory or [
                 'test_commit_gate.CommitGateTests.test_pass']}
+        for name in extra_files:
+            policy['files'][name] = {
+                'mode': '100644',
+                'sha256': hashlib.sha256((self.root / name).read_bytes()).hexdigest()}
+        policy['files'].update({name: None for name in deletions})
         payload = (json.dumps(policy, sort_keys=True, indent=2) + '\n').encode()
         source = CHECKER.read_bytes()
         (self.hooks / 'check_staged.py').write_bytes(source)
@@ -165,6 +171,54 @@ class CommitGateTests(unittest.TestCase):
         self.write('AGENTS.md', 'Invented authority.\n')
         self.git('add', '--', 'AGENTS.md')
         self.blocked(self.commit(), 'instruction/invariant change requires review')
+
+    def test_protected_deletion_requires_explicit_review(self):
+        name = 'AGENTS.md'
+        self.write(name, 'Keep the execution invariant.\n')
+        digest = hashlib.sha256((self.root / name).read_bytes()).hexdigest()
+        self.adopt(instructions={name: digest})
+        self.git('add', '--', name)
+        self.assertEqual(self.commit().returncode, 0)
+        (self.root / name).unlink()
+        self.git('add', '-u', '--', name)
+        self.blocked(self.commit(), 'instruction/invariant change requires review')
+        self.adopt()
+        self.blocked(self.commit(), 'instruction/invariant change requires review')
+        self.adopt(instructions={name: None})
+        result = self.commit()
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
+        self.write(name, 'Deletion approval cannot authorize new instructions.\n')
+        self.git('add', '--', name)
+        self.blocked(self.commit(), 'instruction/invariant change requires review')
+
+    def test_reviewed_code_and_data_deletions_require_staged_regressions(self):
+        names = ('obsolete.py', 'legacy.json', 'bundle.tar')
+        for name in names:
+            self.write(name, 'Historical fixture.\n')
+        self.stage_feature()
+        self.adopt(extra_files=names)
+        self.git('add', '--', *names)
+        self.assertEqual(self.commit().returncode, 0)
+        for name in names:
+            (self.root / name).unlink()
+        self.git('add', '-u', '--', *names)
+        self.adopt()
+        self.blocked(self.commit(), 'unreviewed executable/data path')
+        self.adopt(deletions=names)
+        self.blocked(self.commit(), 'requires staged invariant regressions')
+        updated_tests = FIXTURE_TEST + '\n'
+        self.write(checker.TEST_PATH, updated_tests)
+        self.git('add', '--', checker.TEST_PATH)
+        self.adopt(tests=updated_tests, deletions=names)
+        result = self.commit()
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
+        self.write('bundle.tar', 'A reviewed deletion cannot authorize replacement.\n')
+        self.git('add', '--', 'bundle.tar')
+        self.blocked(self.commit(), 'requires staged invariant regressions')
+        self.write(checker.TEST_PATH, updated_tests + '\n')
+        self.git('add', '--', checker.TEST_PATH)
+        self.adopt(tests=updated_tests + '\n', deletions=names)
+        self.blocked(self.commit(), 'reviewed deletion still present')
 
     def test_binary_invalid_utf8_and_executable_documents_block(self):
         for content in (b'text\0binary', b'\xff', b'#!/bin/sh\nexit 0\n'):

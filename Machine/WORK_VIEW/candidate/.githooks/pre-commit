@@ -1,9 +1,0 @@
-#!/bin/sh
-set -eu
-# Installed with a pinned verifier copied from scripts/check_workflow_invariant.py.
-MACHINE_GIT_DIR=$(git rev-parse --absolute-git-dir)
-if [ ! -f "$MACHINE_GIT_DIR/machine-invariant-hooks/check_workflow_invariant.py" ]; then
-    echo 'MACHINE_AUTOMATED_EXECUTION_REQUIRED: COMMIT BLOCKED: installed verifier missing' >&2
-    exit 3
-fi
-PYTHONDONTWRITEBYTECODE=1 exec python3 "$MACHINE_GIT_DIR/machine-invariant-hooks/check_workflow_invariant.py" --staged

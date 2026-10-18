@@ -15,7 +15,7 @@ impose its installed state on an unrelated repository.
 it uses, controls or communicates with, including every new or edited feature.
 Authorized execution requires zero manual starts/stops, relays, session restarts
 or handovers. Missing support or proof must produce a visible failure and block
-work before effects. See the [owner requirements](../Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md).
+work before effects. See the [owner requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md).
 
 ## Ownership
 
@@ -79,9 +79,9 @@ scope, unsupported controls and verified output. The real automatic path must
 complete with zero human execution interventions. Loud capability failure proves
 detection and fails whole-workflow acceptance.
 
-The [enforcement record](../Machine/INVARIANT_ENFORCEMENT/README.md) preserves the
+The [enforcement record](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md) preserves the
 reviewed barrier and its checkpoint verification results. Use the
-[maintained status](../Machine/DOCUMENTATION_INDEX.md) and the target repository's
+[maintained status](/Users/boandersson/Desktop/Machine/docs/DOCUMENTATION_INDEX.md) and the target repository's
 read-only observations for current capability. Historical test totals and
 pilot/scratch passes retain their original scopes; they are not fresh readiness
 checks. Manual bridges and terminal handovers are not enabled fallbacks.

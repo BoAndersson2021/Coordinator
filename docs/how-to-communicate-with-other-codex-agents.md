@@ -12,7 +12,7 @@ joins these responsibilities. These references add no launch or messaging author
 controls or communicates with. Every new or edited communication feature must
 preserve it. Authorized workflow execution requires zero manual lifecycle,
 delivery, collection, restart or handover steps. Missing capability or proof
-must fail loudly and block work. See the [owner requirements](../Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md).
+must fail loudly and block work. See the [owner requirements](/Users/boandersson/Desktop/Machine/docs/WORKFLOW_INVARIANT.md).
 
 ## Required execution chain
 
@@ -42,7 +42,7 @@ The CLI, task API, bridge,
 socket RPC/frame emission and scratch executor enforce denial. Operational health
 reports `workflow_invariant_failed`, stderr `MACHINE_AUTOMATED_EXECUTION_REQUIRED`,
 and exit 3 in that evidence. Consult the
-[maintained status](../Machine/DOCUMENTATION_INDEX.md) and actual read-only target
+[maintained status](/Users/boandersson/Desktop/Machine/docs/DOCUMENTATION_INDEX.md) and actual read-only target
 observations before relying on current capability. Do not transfer this checkpoint
 to another repository or treat a source/doc edit as runtime qualification.
 
@@ -62,4 +62,4 @@ and source passes do not qualify live execution.
 
 Manual queue examples and user-operated session replacements are superseded as
 workflow instructions. Historical examples remain archived; see the
-[documentation index](../Machine/DOCUMENTATION_INDEX.md).
+[documentation index](/Users/boandersson/Desktop/Machine/docs/DOCUMENTATION_INDEX.md).

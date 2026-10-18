@@ -1,4 +1,0 @@
-#!/bin/sh
-set -eu
-MACHINE_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-PYTHONDONTWRITEBYTECODE=1 exec python3 "$MACHINE_ROOT/src/machine.py" "$@"

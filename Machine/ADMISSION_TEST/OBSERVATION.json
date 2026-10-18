@@ -1,9 +1,0 @@
-{
-  "schema_version": 1,
-  "thread_id": "01a13808-1755-7643-9165-f2035aa16d16",
-  "server_id": "codex_tui:current-task-server",
-  "cwd": "/Users/boandersson/Desktop/Machine",
-  "status": "idle",
-  "observed_at": "2026-10-14T02:19:42.841746+00:00",
-  "source": "codex_tui.read_thread"
-}

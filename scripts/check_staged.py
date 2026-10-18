@@ -147,7 +147,11 @@ def check():
         old = b'' if old_mode == '000000' else git(root, 'cat-file', 'blob', old_oid)
         new = b'' if new_mode == '000000' else git(root, 'cat-file', 'blob', new_oid)
         if protected(name):
-            if new_mode != '100644' or hashlib.sha256(new).hexdigest() != instructions.get(name):
+            reviewed_deletion = (status == 'D' and name in instructions
+                                 and instructions[name] is None)
+            reviewed_content = (new_mode == '100644'
+                                and hashlib.sha256(new).hexdigest() == instructions.get(name))
+            if not (reviewed_deletion or reviewed_content):
                 reject('instruction/invariant change requires review: ' + name)
         elif not (ordinary(old_mode, old, name) and ordinary(new_mode, new, name)):
             if name not in files:

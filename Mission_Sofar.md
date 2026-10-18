@@ -1,5 +1,48 @@
 # Current state and handover
 
+## Cleanup publication requested — 2026-10-18
+
+The user authorized committing and pushing the local Machine/archive removal and
+related documentation. The outbound history also includes `c7ad298`, the prior
+communication-guidance commit. The protected-file deletion regression reproduced
+a missing passing route in the local commit gate. A targeted correction permits
+only explicitly reviewed deletion entries; code/data deletions retain exact
+inventory and staged-regression requirements. This repair changes no Machine
+runtime, workflow authority or external repository. See
+[the gate documentation](docs/commit-gate.md) for the deletion contract.
+
+All 18 regression tests passed, including the exact staged snapshot. Independent
+source/policy review passed and the reviewed local gate was adopted with its
+previous installation preserved. Publication uses the normal commit hook and
+explicit `origin main:main` refspec. Identify the resulting source commit with
+`git log -1 -- scripts/check_staged.py`; publication is complete only after the
+actual remote SHA matches the committed HEAD.
+
+## Misplaced archive copies removed — 2026-10-18
+
+The user confirmed the early archive copies are stored elsewhere and requested
+their removal. No `.tz` files were present; the three root archives were
+`neural-b1r-7a8fa22.tar`, `neural-b1r-ae546bb.tar` and `neural-g2-187222a.tar`.
+All three were unchanged tracked files with no remaining workspace references
+before removal. They remain in Git history. No commit or push was performed.
+
+## Local Machine folder removed — 2026-10-18
+
+The user confirmed the material is retained elsewhere and explicitly authorized
+removing CodeExp2's entire `Machine/` folder, including the previously preserved
+untracked task-timeline candidate. This supersedes the local preservation and
+resume instructions below. Tracked material remains in Git history; no new copy
+was made here. The separate `/Users/boandersson/Desktop/Machine` repository and
+mission target repositories were not changed. Workspace entry links now point to actual
+external Machine documentation. Historical local paths below describe the old
+layout, not files to recreate. This cleanup does not qualify workflow execution
+or change the Machine invariant. No commit or push is part of this request.
+
+Independent review passed for removal scope, active links and invariant
+preservation. Verification found 1,071 tracked deletions under `Machine/`, eight
+documentation updates outside it, no remaining local folder and an empty index;
+`git diff --check` passed. Changes remain uncommitted.
+
 ## WEBSITE publication complete; retirement unqualified — 2026-10-18
 
 The user entered `Mission WEBSITE`, then `Mission END WEBSITE`. Native onboarding
@@ -126,11 +169,11 @@ CodeExp2 supplies development context and evidence; Desktop/Machine supplies
 persistent records and the enforced barrier. This is not a qualified automatic
 execution loop. Machine enforcement and documentation are committed as
 `50dbd19`; its installed pre-commit gate passed 17 invariant tests and the full
-98-test suite. See [onboarding](Machine/README.md),
-[current checkpoint](Machine/CURRENT_MISSION.md), [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md)
-and [documentation index](Machine/DOCUMENTATION_INDEX.md).
+98-test suite. See onboarding (`Machine/README.md`, historical path),
+current checkpoint (`Machine/CURRENT_MISSION.md`, historical path), requirements (`Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md`, historical path)
+and documentation index (`Machine/DOCUMENTATION_INDEX.md`, historical path).
 
-The subsequent [managed dashboard increment](Machine/DASHBOARD/README.md) is
+The subsequent managed dashboard increment (`Machine/DASHBOARD/README.md`, historical path) is
 installed and running, with Machine source committed as `574e834`. Machine opens
 the HTML/JavaScript page automatically; launchd keeps its local diagnostic service
 available and recovers process loss. The page refreshes every two seconds and
@@ -139,7 +182,7 @@ five real disposable commit-gate cases and actual automatic process/browser
 recovery passed. All 87 private Machine files remain unchanged. This qualifies
 only the diagnostic display; automatic project workflows remain blocked.
 
-The subsequent [work-view completion](Machine/WORK_VIEW/README.md) is installed
+The subsequent work-view completion (`Machine/WORK_VIEW/README.md`, historical path) is installed
 and committed in Machine as `d24f163`. CLI and dashboard share task-state explanations; 114 tests,
 independent source review and four real staged-commit cases passed. The actual
 automatic source reload took 28.637 seconds, exceeding its retained failed

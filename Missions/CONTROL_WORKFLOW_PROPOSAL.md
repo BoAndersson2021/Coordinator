@@ -266,7 +266,7 @@ Existing [delivery](../docs/delivery-discipline.md),
 [coordination](../docs/how-to-coordinate-with-a-builder-agent.md),
 [plan](../docs/how-to-follow-and-refresh-a-plan.md) and
 [runtime](../docs/how-not-to-overengineer.md) guides remain applicable. Reuse
-Machine's [lifecycle design](../Machine/ROLE_LIFECYCLE_CONTROL_DESIGN.md) for its
+Machine's [lifecycle design](/Users/boandersson/Desktop/Machine/docs/proposals/ROLE_LIFECYCLE_CONTROL.md) for its
 custody, quiescence, uncertainty and recovery lessons. Its operations remain
 proposals, not available commands. The inspected Desktop/Machine implementation
 still unconditionally rejects workflow execution; its ledger or a wrapper cannot

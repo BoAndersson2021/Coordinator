@@ -1,9 +1,0 @@
-{
-  "test_id": "machine-agent-test-01",
-  "target_thread_id": "01a13808-1755-7643-9165-f2035aa16d16",
-  "baseline_sha256": "5d61b0b16a99b64a31d085dc9d71e033551bd9c3e262e83b8ec9c279d3f6f21b",
-  "prompt": "Machine behavior test01 ONLY. In /Users/boandersson/Desktop/Machine, read applicable AGENTS.md, then run ./Machine doctor --json once. Report exact command, actual exit/result and what this verifies or leaves unverified. Stop and await my next test. This is observation only: no init/register/claim/dispatch/setup/install/repair, edits, external project calls, role launches, tests suite or Git writes. If blocked, report actual blocker; do not repair it. Coordinator independently checks your actual tool log and before/after file+ledger hashes.",
-  "recorded_at": "2026-10-14T01:33:07.826045+00:00",
-  "status": "delivery_acknowledged_only",
-  "acknowledged_at": "2026-10-14T01:33:35.880421+00:00"
-}

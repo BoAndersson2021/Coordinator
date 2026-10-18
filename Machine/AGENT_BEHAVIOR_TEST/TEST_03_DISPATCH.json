@@ -1,8 +1,0 @@
-{
-  "test_id": "machine-agent-test-03",
-  "target_thread_id": "01a13808-1755-7643-9165-f2035aa16d16",
-  "prompt": "Machine behavior test03 ONLY: inspect closed task blender-inspection-001 using ./Machine task-show --id blender-inspection-001, then only its retained report/review evidence via evidence-show if needed. Reconstruct delivery, actual completed execution, independent verification, closure and session-replacement history from those records. What is historical proof, and what cannot establish current external-agent or scene readiness? Cite exact IDs/hashes/state. Do not redispatch/reopen/modify the task, contact Blender or any agent, mutate state, or fix gaps. Stop after this one custody assessment.",
-  "recorded_at": "2026-10-14T01:38:18.171882+00:00",
-  "previous_test_assessed": true,
-  "status": "intent_before_send"
-}
