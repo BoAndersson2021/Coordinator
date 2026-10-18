@@ -1,0 +1,22 @@
+test_alternate_index_and_repository_inputs_block (test_commit_gate.CommitGateTests) ... ok
+test_binary_invalid_utf8_and_executable_documents_block (test_commit_gate.CommitGateTests) ... ok
+test_executable_without_staged_regressions_blocks (test_commit_gate.CommitGateTests) ... ok
+test_failed_commit_preserves_head_index_and_unrelated_dirty_bytes (test_commit_gate.CommitGateTests) ... ok
+test_failing_staged_test_hidden_by_passing_worktree_blocks (test_commit_gate.CommitGateTests) ... ok
+test_instruction_change_is_separately_reviewed (test_commit_gate.CommitGateTests) ... ok
+test_missing_or_modified_trusted_inputs_block (test_commit_gate.CommitGateTests) ... ok
+test_missing_renamed_skipped_xfail_and_failing_mandatory_tests_block (test_commit_gate.CommitGateTests) ... ok
+test_ordinary_document_add_edit_delete_pass (test_commit_gate.CommitGateTests) ... ok
+test_passing_index_ignores_unstaged_failing_replacement (test_commit_gate.CommitGateTests) ... ok
+test_reviewed_staged_feature_and_regressions_pass (test_commit_gate.CommitGateTests) ... ok
+test_runner_early_zero_exit_and_crash_block_without_completion (test_commit_gate.CommitGateTests) ... ok
+test_symlink_and_executable_mode_block (test_commit_gate.CommitGateTests) ... ok
+test_unresolved_index_blocks (test_commit_gate.CommitGateTests) ... ok
+test_unreviewed_executable_and_data_paths_block (test_commit_gate.CommitGateTests) ... ok
+test_unreviewed_source_bytes_block_before_tests (test_commit_gate.CommitGateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 20.197s
+
+OK
+MACHINE_AUTOMATED_EXECUTION_REQUIRED: reviewed staged development checks passed; runtime authority unchanged

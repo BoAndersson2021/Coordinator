@@ -20,6 +20,7 @@ When coordinating execution through a builder agent, read the coordinator guide.
 | --- | --- |
 | [Delivery Discipline](docs/delivery-discipline.md) | Use for planning, implementation and repairs. Preserve the user's outcome, define observable acceptance, bound stalled repairs and report usable results honestly. |
 | [How not to overengineer on your way to the executable runtime target](docs/how-not-to-overengineer.md) | Use when building or repairing running software. Prove critical feasibility early, build one narrow real path and justify additional machinery against the runtime target. |
+| [How not to overblock development with hooks and governance](docs/how-not-to-overblock-development.md) | Use when designing, reviewing or repairing gates and blocking rules. Protect the affected effect, provide a tested passing route for authorized development and keep runtime qualification separate. |
 | [How to follow a plan, refresh that plan, verify the plan history and future before editing the plan](docs/how-to-follow-and-refresh-a-plan.md) | Use before executing or updating a plan. Check its decisions and history, verify actual progress, trace future dependencies and preserve the original outcome when making edits. |
 | [How to be a coordinator and orchestrator using the builder repository agent as executor and their plan as the baseline for decisions and coordination](docs/how-to-coordinate-with-a-builder-agent.md) | Use when coordinating authorized work through a repository builder agent. Delegate against their current plan, verify returned evidence and refresh the shared baseline before deciding the next step. |
 | [Build and execution protocol](docs/universal-multi-agent-build-protocol.md) | Use for Machine implementation, review and adoption. Apply ownership, verification and execution boundaries; the guide does not itself authorize additional agents. |
@@ -101,12 +102,17 @@ block the commit. Never bypass the hook or weaken enforcement. Protected changes
 require independent review and recorded adoption. Development/diagnosis is not
 an accepted automated workflow or a substitute for its missing runtime providers.
 
-CodeExp2's pre-commit hook permits ordinary text documentation changes, including
-deletions. Executable/data changes, redirected inputs and unresolved stages block
-with an explicit invariant error. Agent instruction files and the governing
-invariant requirements require reviewed changes; documentation changes grant no
-runtime authority. Feature development requires meaningful staged invariant
-regressions before an executable allow path is installed. Never bypass the hook.
+CodeExp2 ordinary documentation commits use lightweight content checks, including
+deletions. Executable development requires an independently reviewed local
+development policy and meaningful regressions against the exact staged source.
+Missing, skipped, unsuccessful or incomplete mandatory checks block that commit.
+Redirected inputs, unresolved stages and unreviewed executable/data changes must
+fail explicitly. Instruction and invariant changes require independent review
+and recorded adoption. See [the commit gate](docs/commit-gate.md) for installed
+scope and verification; a development commit grants no runtime authority.
+Preserve the runtime stop while its providers remain unqualified. Never bypass
+the hook. Repair overly broad gates through reviewed tests and adoption, applying
+[the guide to avoiding excessive blocks](docs/how-not-to-overblock-development.md).
 
 For Machine work, read [the documentation index](Machine/DOCUMENTATION_INDEX.md)
 and [requirements](Machine/AUTOMATED_WORKFLOW_REQUIREMENTS.md). For every mission,

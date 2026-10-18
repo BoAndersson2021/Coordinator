@@ -19,7 +19,7 @@ runtime or a qualified workflow executor.
 ## Instruction corpus
 
 [The AGENTS catalog](AGENTS.md#reusable-agent-instructions) is the canonical list:
-seven standalone guides and an inline CLI workflow review procedure. It explains
+eight standalone guides and an inline CLI workflow review procedure. It explains
 which guides apply, how to combine them and how to hand them to agents elsewhere.
 
 Delivery Discipline defines shared delivery rules and the repair limit. The
@@ -27,7 +27,10 @@ runtime-target, plan and coordinator guides cover real integration, plan history
 and delegated execution. These four are repository neutral. The build,
 communication and lifecycle contracts describe Machine scope; reuse elsewhere
 requires mapping their requirements, paths and recorded state to the target.
-Links between guides route relevant instructions and do not create extra stages.
+The [guide to avoiding excessive blocks](docs/how-not-to-overblock-development.md)
+covers hooks and governance: protect concrete effects and provide a tested path
+for authorized development. Links between guides route relevant instructions
+and do not create extra stages.
 
 ## Recorded implementation and current boundaries
 
@@ -55,6 +58,9 @@ invariant files through reviewed changes. The separate Machine repository has
 its own verifier. Documentation edits grant no runtime authority. Git hooks are
 local configuration; copying a guide or cloning documentation does not establish
 that a hook is installed in another checkout.
+
+See [the CodeExp2 commit gate](docs/commit-gate.md) for the reviewed development
+route, its limited source inventory, staged checks and local adoption evidence.
 
 Keep frozen evidence and old acceptance results within their original scope.
 External Machine guide snapshots are not automatically updated by edits here.

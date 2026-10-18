@@ -1,0 +1,18 @@
+Installed native read-only client diagnostic
+{
+  "time_utc": "2026-10-18T20:15:14.818179+00:00",
+  "scope": "read-only installed native client feasibility; no dispatch or lifecycle effects",
+  "source": "/Users/boandersson/Desktop/Machine/src/native_socket.py",
+  "source_sha256": "fee653f5dcc9430785fa230bc70dced9f98a007e361ee0f81852b27f4fe27439",
+  "initialize": "PASS",
+  "thread_metadata": {
+    "id": "01a14b70-e481-7e13-9cb1-6d5f0d0e814a",
+    "cwd": "/Users/boandersson/Desktop/CodeExp2",
+    "status": {
+      "type": "active",
+      "activeFlags": []
+    }
+  },
+  "result": "PASS_READ_ONLY",
+  "connection_closed": true
+}

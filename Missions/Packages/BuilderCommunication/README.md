@@ -4,8 +4,9 @@ Package ID: `builder-communication`
 
 Contract version: `1`
 
-Status: reusable documentation package. An earlier snapshot was installed and
-tested in BallisticsExperimental; installed copies have their own adoption state.
+Status: reusable documentation package. Snapshots were installed and exercised
+in BallisticsExperimental and WEBSITE; installed copies have their own adoption
+state and source hashes.
 
 Point a mission agent at this README to install a shared coordinator/builder
 message format. The package contains instructions and JSON examples, with no
@@ -17,6 +18,9 @@ alongside the JSON contract; do not remove human communication guidance.
 
 ```text
 Read target instructions and current Git state
+    |
+    v
+Complete target's own scoped onboarding and startup
     |
     v
 Copy contract and examples into target docs
@@ -50,6 +54,13 @@ Existing authorized communication route
 1. Confirm the exact target repository and that documentation installation is
    authorized. Read its ancestor/local instructions, current handover and Git
    state, including staged work. Preserve existing instructions and changes.
+   Require the receiving agent to follow the target's own onboarding, startup
+   and governance first. Inspect its real entry scripts before execution; do not
+   replace native steps with this package, invent a start command, or resume an
+   old task from its handover. Hold only steps actually blocked by scope/access.
+   If a new session is explicitly authorized, follow the
+   [mission startup procedure](../../README.md#start-a-new-repository-agent-when-authorized),
+   then establish actual identity and native-onboarding readiness before editing.
 2. Inspect this complete package. Copy `CONTRACT.md` and `EXAMPLES.md` into
    `docs/agent-communication/v1/` in the target. If that location already exists,
    compare it before updating; do not overwrite local amendments blindly. Preserve
@@ -96,7 +107,8 @@ Existing authorized communication route
 
 Suggested installation request:
 
-> In `<target repository>`, read and apply your applicable instructions. Inspect
+> In `<target repository>`, first follow its own onboarding, scoped startup,
+> governance and handover; reconcile current authority and dirty work. Inspect
 > the BuilderCommunication package at `<package path>/README.md`. Install its
 > version 1 contract and examples under `docs/agent-communication/v1/`, merge the
 > scoped snippet into root AGENTS.md. Fill target DELIVERY.md with the artifact
@@ -112,6 +124,11 @@ Observed BallisticsExperimental settings are documented in the
 [mission guide](../../BallisticsExperimental/README.md#agent-json-and-report-delivery).
 Use them as evidence for that host, not universal tool limits or a directory to
 reuse in another repository.
+
+The [WEBSITE mission](../../WEBSITE/README.md) also records a user-authorized
+Terminal launch, native repository onboarding and a complete compact-reply/full-
+artifact exchange. Its installed rules live under native `infra/`, and its
+evidence uses existing ignored `.cache/`; neither is a universal installation path.
 
 ## Updating an installed copy
 

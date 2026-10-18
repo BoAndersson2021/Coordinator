@@ -1,9 +1,45 @@
 # Current state and handover
 
+## Mission automation — accepted 2026-10-18
+
+The user accepted [the mission start/end design](Missions/CONTROL_WORKFLOW_PROPOSAL.md)
+for `MISSION X` / `END MISSION X` in CodeExp2. No mission CLI is installed.
+The first native-control gate remains BLOCKED on exact executor custody and
+retirement. The initial proxy probes used raw JSON without the existing native
+WebSocket handshake. Further user-authorized investigation reused the installed
+read-only client: initialization and an exact coordinator thread read passed.
+See [the corrected result and raw observations](Missions/ControlWorkflowEvidence/20261018-native-control.md).
+No new mission, model turn, process-handle or lifecycle operation was launched.
+
+The earlier connection blocker is superseded by measured progress. The accepted
+outcome is unchanged; installer, routing and two-repository close automation
+still depend on the real narrow-path gate. Preserve pending WEBSITE setup
+documentation, the separate task-timeline candidate and existing sessions.
+
+The user requested [a guide against excessive blocking](docs/how-not-to-overblock-development.md),
+now linked from AGENTS. The [development commit-gate correction](docs/commit-gate.md)
+has 16 passing real-fixture regressions and independent exact-byte review.
+Its recorded adoption and current scope are in
+[the gate evidence](Missions/ControlWorkflowEvidence/20261018-commit-gate.md).
+It admits only the reviewed checker and regression suite; future mission
+features require their own source inventory and meaningful tests. It grants no
+Machine runtime or mission lifecycle authority. At the adoption checkpoint no
+source commit or push had been made. The user subsequently authorized committing
+and pushing the current mission/gate work; identify the publication commit with
+`git log -1 -- Mission_Sofar.md`. The separate task-timeline candidate retains
+its recorded exclusion.
+
+Subsequent user update, 2026-10-18: the user manually terminated the WEBSITE
+Terminal. Read-only inspection of builder `01a15088-a22b-72e1-ab5b-ef34cc3e799b`
+still returned thread status `idle` and last turn `completed`; it does not prove
+process retirement. Record the Terminal as ended by user report, retain the
+thread/evidence, and require fresh readiness before any future assignment.
+This does not resolve the native-control blocker or qualify automatic shutdown.
+
 ## Continuing this work
 
 Start with [README.md](README.md) and [AGENTS.md](AGENTS.md). The AGENTS catalog
-contains seven standalone instructions plus the inline workflow review procedure.
+contains eight standalone instructions plus the inline workflow review procedure.
 The guides now share delivery rules, plan ownership, a single repair limit,
 coordination boundaries and distinctions between diagnostics and workflow
 qualification. Use only the guides relevant to the requested task.
@@ -28,8 +64,9 @@ agent instruction and invariant-file edits require review. The Machine repositor
 has a separate hook and runtime barrier. Instructions and local hook metadata do
 not constitute a runtime allow path or a transferable execution grant.
 
-There is no newly authorized runtime implementation step in this handover. Apply
-the user's next request to the existing plan or document, and use the
+The section above records the newly accepted mission automation work and its
+specific blocker. The remaining sections retain the earlier Machine handover.
+Apply the user's next request to the existing plan or document, and use the
 [plan guide](docs/how-to-follow-and-refresh-a-plan.md) before changing its baseline.
 For delegated execution, use the [coordinator guide](docs/how-to-coordinate-with-a-builder-agent.md).
 

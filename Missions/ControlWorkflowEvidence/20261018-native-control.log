@@ -1,0 +1,237 @@
+CodeExp2 bounded native-control feasibility diagnostic
+No mission or model turn was launched.
+
+Artifact: live-proxy-transcript.json
+[
+  {
+    "direction": "sent",
+    "message": {
+      "id": 1,
+      "method": "initialize",
+      "params": {
+        "clientInfo": {
+          "name": "codeexp2_mission_feasibility",
+          "version": "0.1.0"
+        },
+        "capabilities": {
+          "experimentalApi": true
+        }
+      }
+    }
+  }
+]
+
+Artifact: live-proxy-result.json
+{
+  "time_utc": "2026-10-18T20:06:46.610942+00:00",
+  "scope": "bounded native interface diagnostic; no mission or model turn launch",
+  "coordinator": "01a14b70-e481-7e13-9cb1-6d5f0d0e814a",
+  "diagnostic_result": "FAIL",
+  "error": "bounded control receive expired",
+  "own_proxy_exit": 0,
+  "proxy_stderr": ""
+}
+
+Artifact: default-proxy-result.json
+{
+  "command": [
+    "codex",
+    "app-server",
+    "proxy"
+  ],
+  "request": {
+    "id": 1,
+    "method": "initialize",
+    "params": {
+      "clientInfo": {
+        "name": "codeexp2_mission_feasibility",
+        "version": "0.1.0"
+      }
+    }
+  },
+  "received_utf8": "",
+  "proxy_exit": 0,
+  "stderr": "",
+  "bounded_timeout_seconds": 8,
+  "purpose": "use native default socket discovery rather than assuming daemon version socket is JSON-RPC endpoint"
+}
+
+After-probe daemon version/status (read-only):
+{"status":"running","backend":"pid","managedCodexPath":"/Users/boandersson/.codex/packages/app-server-daemon/current/bin/codex","managedCodexVersion":"0.163.0","socketPath":"/Users/boandersson/.codex/app-server-control/app-server-control.sock","cliVersion":"0.163.0","appServerVersion":"0.163.0"}
+
+Generated experimental ClientRequest methods relevant to lifecycle:
+thread/start {"$ref": "#/definitions/ThreadStartParams"}
+thread/resume {"$ref": "#/definitions/ThreadResumeParams"}
+thread/fork {"$ref": "#/definitions/ThreadForkParams"}
+thread/archive {"$ref": "#/definitions/ThreadArchiveParams"}
+thread/delete {"$ref": "#/definitions/ThreadDeleteParams"}
+thread/unsubscribe {"$ref": "#/definitions/ThreadUnsubscribeParams"}
+thread/increment_elicitation {"$ref": "#/definitions/ThreadIncrementElicitationParams"}
+thread/decrement_elicitation {"$ref": "#/definitions/ThreadDecrementElicitationParams"}
+thread/name/set {"$ref": "#/definitions/ThreadSetNameParams"}
+thread/prediction/request {"$ref": "#/definitions/ThreadPredictionRequestParams"}
+thread/goal/set {"$ref": "#/definitions/ThreadGoalSetParams"}
+thread/goal/get {"$ref": "#/definitions/ThreadGoalGetParams"}
+thread/goal/clear {"$ref": "#/definitions/ThreadGoalClearParams"}
+thread/queue/add {"$ref": "#/definitions/ThreadQueueAddParams"}
+thread/queue/list {"$ref": "#/definitions/ThreadQueueListParams"}
+thread/queue/update {"$ref": "#/definitions/ThreadQueueUpdateParams"}
+thread/queue/delete {"$ref": "#/definitions/ThreadQueueDeleteParams"}
+thread/queue/reorder {"$ref": "#/definitions/ThreadQueueReorderParams"}
+thread/queue/start {"$ref": "#/definitions/ThreadQueueStartParams"}
+thread/metadata/update {"$ref": "#/definitions/ThreadMetadataUpdateParams"}
+thread/attachment/add {"$ref": "#/definitions/ThreadAttachmentAddParams"}
+thread/attachment/list {"$ref": "#/definitions/ThreadAttachmentListParams"}
+thread/attachmentOwner/list {"$ref": "#/definitions/ThreadAttachmentOwnerListParams"}
+thread/attachment/remove {"$ref": "#/definitions/ThreadAttachmentRemoveParams"}
+thread/section/move {"$ref": "#/definitions/ThreadSectionMoveParams"}
+thread/settings/update {"$ref": "#/definitions/ThreadSettingsUpdateParams"}
+thread/memoryMode/set {"$ref": "#/definitions/ThreadMemoryModeSetParams"}
+thread/unarchive {"$ref": "#/definitions/ThreadUnarchiveParams"}
+thread/compact/start {"$ref": "#/definitions/ThreadCompactStartParams"}
+thread/shellCommand {"$ref": "#/definitions/ThreadShellCommandParams"}
+thread/approveGuardianDeniedAction {"$ref": "#/definitions/ThreadApproveGuardianDeniedActionParams"}
+thread/backgroundTerminals/clean {"$ref": "#/definitions/ThreadBackgroundTerminalsCleanParams"}
+thread/backgroundTerminals/list {"$ref": "#/definitions/ThreadBackgroundTerminalsListParams"}
+thread/backgroundTerminals/terminate {"$ref": "#/definitions/ThreadBackgroundTerminalsTerminateParams"}
+thread/revert {"$ref": "#/definitions/ThreadRevertParams"}
+thread/list {"$ref": "#/definitions/ThreadListParams"}
+thread/search {"$ref": "#/definitions/ThreadSearchParams"}
+thread/searchOccurrences {"$ref": "#/definitions/ThreadSearchOccurrencesParams"}
+thread/loaded/list {"$ref": "#/definitions/ThreadLoadedListParams"}
+thread/read {"$ref": "#/definitions/ThreadReadParams"}
+thread/readState/update {"$ref": "#/definitions/ThreadReadStateUpdateParams"}
+thread/turns/list {"$ref": "#/definitions/ThreadTurnsListParams"}
+thread/items/list {"$ref": "#/definitions/ThreadItemsListParams"}
+thread/items/read {"$ref": "#/definitions/ThreadItemsReadParams"}
+thread/inject_items {"$ref": "#/definitions/ThreadInjectItemsParams"}
+thread/realtime/start {"$ref": "#/definitions/ThreadRealtimeStartParams"}
+thread/realtime/appendAudio {"$ref": "#/definitions/ThreadRealtimeAppendAudioParams"}
+thread/realtime/appendText {"$ref": "#/definitions/ThreadRealtimeAppendTextParams"}
+thread/realtime/appendSpeech {"$ref": "#/definitions/ThreadRealtimeAppendSpeechParams"}
+thread/realtime/stop {"$ref": "#/definitions/ThreadRealtimeStopParams"}
+thread/timeline/list {"$ref": "#/definitions/ThreadTimelineListParams"}
+thread/realtime/listVoices {"$ref": "#/definitions/ThreadRealtimeListVoicesParams"}
+process/spawn {"$ref": "#/definitions/ProcessSpawnParams"}
+process/writeStdin {"$ref": "#/definitions/ProcessWriteStdinParams"}
+process/kill {"$ref": "#/definitions/ProcessKillParams"}
+process/resizePty {"$ref": "#/definitions/ProcessResizePtyParams"}
+
+Generated definition: ProcessSpawnParams
+{
+  "description": "Spawn a standalone process (argv vector) without a Codex sandbox on the host where the app server is running.\n\n`process/spawn` returns after the process has started and the connection-scoped `processHandle` has been registered. Process output and exit are reported via `process/outputDelta` and `process/exited` notifications.",
+  "properties": {
+    "command": {
+      "description": "Command argv vector. Empty arrays are rejected.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "cwd": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/AbsolutePathBuf"
+        }
+      ],
+      "description": "Absolute working directory for the process."
+    },
+    "env": {
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "description": "Optional environment overrides merged into the app-server process environment.\n\nMatching names override inherited values. Set a key to `null` to unset an inherited variable.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "outputBytesCap": {
+      "description": "Optional per-stream stdout/stderr capture cap in bytes.\n\nWhen omitted, the server default applies. Set to `null` to disable the cap.",
+      "format": "uint",
+      "minimum": 0.0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "processHandle": {
+      "description": "Client-supplied, connection-scoped process handle.\n\nDuplicate active handles are rejected on the same connection. The same handle can be reused after the prior process exits.",
+      "type": "string"
+    },
+    "size": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ProcessTerminalSize"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Optional initial PTY size in character cells. Only valid when `tty` is true."
+    },
+    "streamStdin": {
+      "description": "Allow follow-up `process/writeStdin` requests to write stdin bytes.",
+      "type": "boolean"
+    },
+    "streamStdoutStderr": {
+      "description": "Stream stdout/stderr via `process/outputDelta` notifications.\n\nStreamed bytes are not duplicated into the `process/exited` notification.",
+      "type": "boolean"
+    },
+    "timeoutMs": {
+      "description": "Optional timeout in milliseconds.\n\nWhen omitted, the server default applies. Set to `null` to disable the timeout.",
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "tty": {
+      "description": "Enable PTY mode.\n\nThis implies `streamStdin` and `streamStdoutStderr`.",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "command",
+    "cwd",
+    "processHandle"
+  ],
+  "type": "object"
+}
+
+Generated definition: ProcessKillParams
+{
+  "description": "Terminate a running `process/spawn` session.",
+  "properties": {
+    "processHandle": {
+      "description": "Client-supplied, connection-scoped `processHandle` from `process/spawn`.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "processHandle"
+  ],
+  "type": "object"
+}
+
+Generated definition: ThreadUnsubscribeParams
+{
+  "properties": {
+    "threadId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "threadId"
+  ],
+  "type": "object"
+}
+
+Raw temporary evidence directory (retained, not portable): /var/folders/6z/68l8sdk54xxc851jg5l7xnzc0000gn/T/codeexp2-mission-protocol-ljzmupof
+ClientRequest.json sha256=92d920b10b9ce7871e21f49573275bb931a58ad7fd367ab71b3716edbb6a0352
+live-proxy-transcript.json sha256=26d46d41c3c83bf990d0e805fd8abea7a5608eb75155a83a5c6a161b7981fce6
+live-proxy-result.json sha256=00f2af5ca7e257f3c2d012925e2086f8c7f9c2fb5643e827871f302ebc2c1c54
+default-proxy-result.json sha256=0defbc34f23f75f877063804e4f4a11f93b2d57efb2d3a18b879354ad876507c

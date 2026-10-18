@@ -6,11 +6,17 @@ repositories, such as **BallisticsExperimental**.
 Available mission guides:
 
 - [How to work on BallisticsExperimental as a CodeExp2 agent](BallisticsExperimental/README.md)
+- [How to work on WEBSITE as a CodeExp2 agent](WEBSITE/README.md)
 
 Reusable installation packages:
 
 - [Builder Communication v1](Packages/BuilderCommunication/README.md) — structured
   coordinator/builder messages and a scoped target `AGENTS.md` addition.
+
+Accepted automation design: [Mission start and close](CONTROL_WORKFLOW_PROPOSAL.md)
+reviews `MISSION X` / `END MISSION X`, installation checks, scoped publication
+and verified retirement. Implementation is blocked at native-control qualification;
+no mission CLI is installed. See the linked design's implementation checkpoint.
 
 Each mission's instructions should identify its target repository, purpose,
 startup procedure, relevant guidance, build and play commands, verification
@@ -53,6 +59,10 @@ authority or establish the repository's current status.
    a plan. Identify the current assigned plan, or explicitly record that none is
    assigned. Do not transfer Machine-specific installed capabilities to another
    repository by assumption.
+   The target's own onboarding, startup entry, governance and handover come
+   first. Read entry scripts before running them and execute only the startup
+   required for the authorized scope. Record missing or blocked steps explicitly;
+   CodeExp2 onboarding is not a substitute for the target's native procedure.
 
 4. **Create the running guide.** Add `Missions/<RepoName>/README.md` in CodeExp2
    and link it in the available mission guides above. Use the
@@ -71,6 +81,8 @@ authority or establish the repository's current status.
    work. A saved thread ID is a discovery hint, not proof of receiving readiness.
    Explicitly supply the instructions the builder must read and apply. Do not
    spawn a replacement or start work merely because the guide describes one.
+   If the user authorizes a new repository agent, use the launch procedure below
+   and verify a fresh matching ACK before assigning implementation.
 
 6. **Record the real delivery path.** Identify the project's actual build,
    launch/play and focused verification commands, including their working
@@ -108,3 +120,41 @@ authority or establish the repository's current status.
 A future session should be able to find the correct repository, establish its
 current state, connect to the intended executor when applicable, and identify
 the next authorized action without relying on this chat's history.
+
+## Start a new repository agent when authorized
+
+```text
+Inspect target's own onboarding / startup / governance / handover
+    |
+    v
+Validate exact repo path, installed Codex and outstanding work
+    |
+    v
+Open Terminal there; pass known first task when starting Codex
+    |
+    v
+Agent follows native repo onboarding before external mission additions
+    |
+    v
+Discover actual new thread; collect matching completed readiness ACK
+    |
+    v
+Assign bounded installation / work; preserve existing owners and dirty files
+```
+
+Follow the local [Codex launch law](../../DOCTRINE/Codex%20Initial-Prompt%20Launch%20Law.md)
+and [launcher checklist](../../Tools%20%26%20Systems/Launchers/CODEX_LAUNCHER_PATTERN.md).
+Validate the user-selected repository and executable first. For a known task,
+change to that exact directory and launch Codex with a positional initial prompt
+in the same Terminal command. Use the installed CLI's help to confirm syntax.
+Do not open bare Codex and then inject text/Return, poll banners, or scrape its
+terminal output to establish readiness. Do not override model, account, trust or
+permissions merely to get the session started. Report any actual launch block.
+
+The initial task must instruct the agent to use its repository's actual native
+onboarding and handover first, reconcile current scope and Git state, preserve
+existing work, and return a fresh identity/readiness ACK. An old interrupted
+task does not authorize resuming its pending implementation. A Terminal window
+or thread listing alone proves no receiving readiness; collect the completed
+matching response through supported tools. Keep the launch, connection and
+assignment identities in the mission's existing evidence directory.
