@@ -4,6 +4,19 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Structured canonical agent records — 2026-10-19
+
+The owner requested a prospective default for CodeExp2 and every future mission
+repository. The canonical instruction is
+[structured-canonical-records.json](.agents/guides/structured-canonical-records.json);
+there is no duplicate Markdown guide. Root AGENTS requires startup read/apply and
+explicit handoff to each authorized native builder. This legacy handover entry
+is a discovery reference, not another copy of that policy. Existing required
+formats and frozen evidence remain under the guide's migration/exception rules.
+Exact review/adoption evidence is retained as structured records under
+`Launcher/build/odin-structured-guide-0m_gkl22/`. No current product mission or
+unrelated repository is resumed or migrated by this workspace instruction task.
+
 ## Agent-owned runbook startup — 2026-10-19
 
 The owner clarified that using the shared runbook belongs to the agent, not a

@@ -55,8 +55,14 @@ investigation remain available; this rule installs no host control or permission
 
 ## Instruction corpus
 
+New agent-facing material follows the [canonical structured guide](.agents/guides/structured-canonical-records.json),
+read on startup and supplied to native builders in every future mission. This
+existing Markdown orientation remains a routing entry; the JSON guide is the
+single authoritative record of the new authoring approach.
+
 [The AGENTS catalog](AGENTS.md#reusable-agent-instructions) is the canonical list:
-nine standalone guides and an inline CLI workflow review procedure. It explains
+the structured canonical records guide, the existing shared guides and an inline
+CLI workflow review procedure. It explains
 which guides apply, how to combine them and how to hand them to agents elsewhere.
 
 Delivery Discipline defines shared delivery rules and the repair limit. The

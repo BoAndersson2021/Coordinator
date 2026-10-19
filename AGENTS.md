@@ -23,6 +23,23 @@ Read [README.md](README.md) for orientation,
 Reconcile them with the current user request and observed Git state. Workspace
 maintenance is distinct from selecting or running a product mission.
 
+## Canonical agent records
+
+Read and apply the [structured canonical records guide](.agents/guides/structured-canonical-records.json)
+on every startup and before creating new agent-facing material. Parse the JSON
+with an approved strict reader; read its complete rules and consumption limits.
+This is the owner's default for CodeExp2 and every repository worked in through
+future missions. Required host entry files remain as thin routing instructions;
+new agent material follows the guide's structured canonical format and actual
+consumer requirements. Human communication keeps its audience-specific format.
+
+For each authorized mission, explicitly supply this exact guide to the native
+builder for reading/application before new agent documentation is created.
+Follow its cross-repository adoption procedure and the target's actual
+instructions, ownership and permissions. A copied file alone is not confirmed
+adoption. No unrelated migration, mission execution or external write follows
+from this default.
+
 ## Startup request: `onboard`
 
 When the human says `onboard`, complete your Coordinator onboarding using the
@@ -134,6 +151,7 @@ When coordinating execution through a builder agent, read the coordinator guide.
 
 | Instruction | When and how to use it |
 | --- | --- |
+| [Structured canonical records](.agents/guides/structured-canonical-records.json) | Default for new agent-only guides, plans, contracts, state and evidence here and in all future mission repositories. Use one structured canonical source, real consumer/validation paths and no duplicate Markdown edition; preserve explicit human requests and genuine host/native requirements. |
 | [Delivery Discipline](docs/delivery-discipline.md) | Use for planning, implementation and repairs. Preserve the user's outcome, define observable acceptance, bound stalled repairs and report usable results honestly. |
 | [How to end a task](docs/how-to-end-a-task.md) | Use before ending a task. State what is done, what remains and the recommended next action; recommend an available option instead of leaving failure or continuation ambiguous. |
 | [How not to overengineer on your way to the executable runtime target](docs/how-not-to-overengineer.md) | Use when building or repairing running software. Prove critical feasibility early, build one narrow real path and justify additional machinery against the runtime target. |
@@ -239,6 +257,11 @@ within existing authority. Hold only the affected operation while continuing
 independent authorized work; do not choose precedence merely by date or strictness.
 
 ## Using these instructions in another repository
+
+Include the structured canonical records guide in future mission handoffs and
+explicitly require the native builder to read and apply it. Use its established
+JSON identity/version and the target's actual instruction-loading route; preserve
+required host entry points and avoid a duplicate Markdown edition of the guide.
 
 Supply the selected instruction documents directly to the agent, or copy them
 and their required companion documents into the target repository and link them
