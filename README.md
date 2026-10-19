@@ -24,6 +24,12 @@ For a new mission, register its name, repository and outcome in `Missions/` firs
 The mission repository's builder owns implementation against its native plan;
 CodeExp2 coordinates assignments, dependencies and evidence review.
 
+You may use several CodeExp2 instances for different missions. Select the mission
+and intended outcome in each; Coordinators handle ownership, shared edits and
+conflict resolution under the
+[concurrent-instance procedure](Missions/README.md#concurrent-codeexp2-instances).
+Routine coordination and worktree management are not tasks for the human.
+
 Before a mission becomes execution-ready, the Coordinator must complete all
 three [required execution setup steps](Missions/README.md#required-mission-execution-setup):
 native approval review, ordinary mission permissions, and supported approval/

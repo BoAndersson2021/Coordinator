@@ -4,6 +4,81 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Authorized Nordic/concurrency publication — 2026-10-19
+
+The owner authorized commit and push of this conversation's launcher and
+Coordinator concurrency changes. Independent exact staged-source and bounded
+policy/bootstrap review passed; all 20 tests passed through the candidate normal
+bootstrap. The guarded adoption preserved previous trusted bytes and unchanged
+Git configuration under `.git/codeexp2-nordic-adoption-tmrs0ma3/`, and changed
+only the reviewed exact pins. The verifier and mandatory tests are unchanged.
+See [publication admission](Launcher/INSTANCE-PUBLICATION.md) for hashes and scope.
+
+Publication uses the normal installed hook and explicit `origin main:main` at
+the configured Coordinator remote. Identify its source commit with
+`git log -1 -- Launcher/CodeExp2.swift`; completion requires matching the remote
+SHA. The two earlier registry additions and unrelated untracked mission files
+are excluded and preserved. Earlier entries saying no index/policy/publication
+change occurred describe their implementation checkpoints before this separate
+authorized publication task. No product mission is selected or resumed.
+
+## Nordic instance aliases and colors — 2026-10-19
+
+The owner agreed to Nordic human aliases with OS-held name claims and requested
+automatically distinct Terminal colors. The existing native launcher now owns
+both as one atomic process-associated record lock. Twelve base names have fixed
+dark colors; suffix/color variants cover 192 live instances. No PID register,
+heartbeat, stale-claim reaper, supervisor or database was added. Permanent claim
+files stay in ignored `Launcher/build/instance-claims/`; never unlink/replace
+them while instances may be live. Process death/reboot releases ownership even
+if a helper retains the descriptor.
+
+The launcher uses the already installed native arm64 Codex executable directly
+so the real TUI retains the claim through exec. The global shim is untouched.
+Only its terminal-title display items are overridden; account, model, trust,
+approval and sandbox settings are inherited. The existing Desktop alias targets
+the rebuilt/signed app in place. New onboarding receives its human alias and
+actual structured session identities remain unchanged. Existing sessions receive
+no retroactive alias/color and no mission is selected by launch.
+
+Independent exact-source review passed after finding and correcting descendant
+retention in the first `flock` implementation. All 20 regressions passed,
+including a surviving-child crash test; the reviewed alias instructions are
+adopted for workspace conduct. See the [review receipt](Launcher/INSTANCE-REVIEW.md)
+and [runtime verification](Launcher/INSTANCE-VERIFICATION.md) for exact hashes,
+observations, historical failed/interrupted probes and display limits.
+The final Desktop-entry session completed onboarding as Coordinator Odin with
+all four mission choices and no selection (42,916 ms). That named instance is
+left open for the owner at the menu; its actual frontend holds the name/color
+claim. Closing it releases the pair. Earlier disposable frontends were cleaned;
+no shared service or unrelated mission was stopped.
+No index, commit, push or hook policy was changed. Future publication needs its
+normal authorization and exact-byte policy review/adoption; preserve other work.
+
+## Concurrent instances are Coordinator-owned — 2026-10-19
+
+The owner clarified that coordination between CodeExp2 instances is the
+Coordinator's job. The [concurrent-instance procedure](Missions/README.md#concurrent-codeexp2-instances)
+now assigns session/mission separation, overlap resolution, shared-file and Git
+ownership, routine worktree arrangements and scoped handover to Coordinators.
+The human selects outcomes/scope and retains reserved decisions; do not delegate
+coordination bookkeeping or terminal/message relay to the human.
+
+AGENTS and README link the procedure. It preserves bare onboarding, explicit
+selection, native builder ownership, permission boundaries and independent
+mission lifecycles. This is instruction maintenance, not a demonstrated locking
+system or automatic controller. No mission was selected, contacted or executed;
+existing dirty registry additions and mission files are preserved.
+
+Independent reviewer `/root/concurrent_instruction_review` returned PASS with no
+required fixes; reviewed source hashes and scope are retained in the
+[review and instruction-adoption record](Missions/ControlWorkflowEvidence/20261019-concurrent-instances-review.json).
+The reviewed workspace instructions are adopted for Coordinator conduct under
+the owner's clarification. Links and whitespace checks passed. This is distinct
+from commit-gate policy adoption: no hook policy, staging, commit or push was
+changed/performed. Future publication requires its normal authorization and
+exact-byte gate review/adoption; unrelated work must remain separate.
+
 ## Task closing communication — 2026-10-19
 
 The owner requested [How to end a task](docs/how-to-end-a-task.md): state what is

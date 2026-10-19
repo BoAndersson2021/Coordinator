@@ -2,8 +2,8 @@
 
 Open the native **CodeExp2** Finder alias on the Desktop. The Swift application
 opens Terminal, enters `/Users/boandersson/Desktop/CodeExp2` and executes the
-installed `/Users/boandersson/.local/bin/codex` with `onboard` as its positional
-first prompt. Codex submits that task automatically and remains interactive.
+installed native Codex executable with `onboard` and its assigned human alias as
+the positional first prompt. Codex submits that task automatically and remains interactive.
 Onboarding follows the current workspace instructions and stops at the mission
 menu with no mission selected. Existing Codex sessions are left alone.
 
@@ -37,8 +37,66 @@ Launcher/build/CodeExp2.app/Contents/MacOS/CodeExp2 --preflight
 ```
 
 The launcher inherits the installed Codex account, model, trust and permissions.
-It sets no overrides. Initial authentication or trust prompts, if required by
+Its only config override is `tui.terminal_title=[]`, which keeps the instance
+alias visible instead of Codex's generated progress title. Initial authentication or trust prompts, if required by
 Codex, remain visible in Terminal. Closing the Terminal session exits Codex.
+
+## Instance names and colors
+
+Each new launcher-created instance claims the first free pair from this fixed
+Nordic list. The Terminal title becomes **CodeExp2 — Odin**, for example, and
+onboarding introduces **Coordinator Odin**. The human alias supplements the real
+session ID; it is not a mission selection or a permanent conversation identity.
+
+| Alias | Background |
+| --- | --- |
+| Odin | `#19334d` blue |
+| Thor | `#4c211b` rust |
+| Freya | `#482440` plum |
+| Loki | `#18422c` green |
+| Tyr | `#483a16` ochre |
+| Heimdall | `#124346` teal |
+| Balder | `#2e2853` indigo |
+| Frigg | `#4d2630` rose |
+| Njord | `#163f59` ocean |
+| Freyr | `#35451e` olive |
+| Skadi | `#2c3f49` slate |
+| Idunn | `#40304c` violet |
+
+One nonblocking OS record lock (`fcntl(F_SETLK)`) reserves both name and color atomically. Claim files
+stay under ignored `Launcher/build/instance-claims/`; **never delete them while
+instances may be running**. File existence is not occupancy. The inherited open
+descriptor holds the lock in the actual interactive Codex process; normal exit,
+crash or reboot releases it without a heartbeat, PID register or cleanup job.
+The lock belongs to that process and is not inherited by its children, even
+when they retain a copy of the descriptor. No native code should reopen/close
+the same claim file: POSIX record locks are also released if their owning
+process closes another descriptor for that inode.
+An alive but hung process retains its name. A saved conversation may outlive the
+Terminal instance; resuming it does not reclaim its former alias automatically.
+
+After twelve live instances, names continue `Odin-2`, `Thor-2`, etc., with distinct
+lighter color variants. The bounded pool contains 192 unique name/color pairs;
+exhaustion fails visibly before launching Codex. Color uniqueness applies to
+instances started by this launcher, not unrelated Terminal windows or older
+sessions. Appearance uses per-terminal OSC title/foreground/background/cursor
+controls; saved/default Terminal profiles remain unchanged.
+
+The fixed native entry is the arm64 executable in the installed npm package:
+`/Users/boandersson/.npm-global/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex`.
+The previous shell/Node entry launches a child without retaining extra file
+descriptors there. Direct native `execv` keeps the lock with the real TUI and
+avoids a supervisor. The global shim is untouched. If the native installation
+moves or disappears, preflight fails clearly; it does not silently use a wrapper
+that would weaken claim lifetime.
+
+`--preflight` and the app's GUI phase claim no name; only the checked Terminal
+entry does. The private `--claim-probe` regression entry re-execs the same binary
+and holds a disposable claim until EOF/termination; it launches no model task.
+The native self-test checks the complete palette. The existing
+launcher regression exercises concurrent processes, exec inheritance, normal
+exit, SIGKILL/reuse with a surviving descriptor-inheriting child, whole-pool
+exhaustion and redirected-file refusal.
 
 The desktop alias targets `Launcher/build/CodeExp2.app`. Rebuild in place to
 update it, then verify signing and the alias's original target again. Never

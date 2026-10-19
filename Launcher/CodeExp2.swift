@@ -8,11 +8,91 @@ enum LauncherError: LocalizedError {
     }
 }
 
+// Permanent files, ephemeral kernel locks. Never unlink a claim file: doing so
+// could let a second process lock a different inode under the same name.
+final class InstanceClaim {
+    static let names = ["Odin", "Thor", "Freya", "Loki", "Tyr", "Heimdall",
+                        "Balder", "Frigg", "Njord", "Freyr", "Skadi", "Idunn"]
+    static let colors: [UInt32] = [0x19334d, 0x4c211b, 0x482440, 0x18422c,
+        0x483a16, 0x124346, 0x2e2853, 0x4d2630, 0x163f59, 0x35451e, 0x2c3f49, 0x40304c]
+    static let capacity = names.count * 16
+    let slot: Int
+    let descriptor: Int32
+    static func alias(for slot: Int) -> String { names[slot % 12] + (slot < 12 ? "" : "-\(slot / 12 + 1)") }
+    static func color(for slot: Int) -> String { String(format: "#%06x", colors[slot % 12] + UInt32(slot / 12) * 0x020202) }
+    var alias: String { Self.alias(for: slot) }
+    var color: String { Self.color(for: slot) }
+
+    init(slot: Int, descriptor: Int32) { self.slot = slot; self.descriptor = descriptor }
+    deinit { close(descriptor) }
+
+    static func acquire(in directory: URL) throws -> InstanceClaim {
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true,
+                                                attributes: [.posixPermissions: 0o700])
+        for slot in 0..<capacity {
+            let path = directory.appendingPathComponent("\(slot).lock").path
+            let fd = open(path, O_RDWR | O_CREAT | O_NOFOLLOW | O_CLOEXEC, 0o600)
+            guard fd >= 0 else { throw LauncherError.invalid("Cannot open instance claim: \(String(cString: strerror(errno)))") }
+            var info = stat()
+            guard fstat(fd, &info) == 0, (info.st_mode & S_IFMT) == S_IFREG, info.st_uid == geteuid() else {
+                close(fd)
+                throw LauncherError.invalid("Instance claim is not an owned regular file: \(path)")
+            }
+            // Process-associated record locks survive exec, but not fork. A
+            // helper inheriting this fd cannot retain the claim after TUI death.
+            var record = flock()
+            record.l_type = Int16(F_WRLCK)
+            record.l_whence = Int16(SEEK_SET)
+            if fcntl(fd, F_SETLK, &record) == 0 {
+                // execv must carry this descriptor into the actual native Codex
+                // process, not a JS wrapper that closes extra child descriptors.
+                guard fcntl(fd, F_SETFD, 0) == 0 else {
+                    close(fd)
+                    throw LauncherError.invalid("Cannot retain instance claim across launch.")
+                }
+                return InstanceClaim(slot: slot, descriptor: fd)
+            }
+            let error = errno
+            close(fd)
+            guard error == EAGAIN || error == EACCES else {
+                throw LauncherError.invalid("Cannot lock instance claim: \(String(cString: strerror(error)))")
+            }
+        }
+        throw LauncherError.invalid("All \(capacity) CodeExp2 name/color pairs are occupied.")
+    }
+}
+
 enum Launcher {
     static let workspace = URL(fileURLWithPath: "/Users/boandersson/Desktop/CodeExp2", isDirectory: true)
-    static let codex = "/Users/boandersson/.local/bin/codex"
+    // Same native executable used by the installed npm CLI. Direct exec keeps
+    // the claim in the interactive process; no wrapper, supervisor or daemon.
+    static let codex = "/Users/boandersson/.npm-global/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex"
     static let prompt = "onboard"
     static let fm = FileManager.default
+    static let claimDirectory = workspace.appendingPathComponent("Launcher/build/instance-claims")
+
+    static func initialPrompt(for claim: InstanceClaim) -> String {
+        """
+        onboard
+
+        Launcher-assigned instance alias: \(claim.alias). Introduce yourself as Coordinator \(claim.alias).
+        Your Terminal color is \(claim.color). This is a human alias for this running instance,
+        not a replacement for your real session ID or role. Preserve actual IDs in structured messages.
+        No mission is selected. Follow the normal onboarding checklist and present the mission menu.
+        """
+    }
+
+    static func appearance(for claim: InstanceClaim) -> String {
+        // OSC changes only this terminal, including its default background when
+        // the TUI clears/redraws. It does not edit saved/default profiles.
+        "\u{1b}]0;CodeExp2 — \(claim.alias)\u{07}\u{1b}]10;#f4f4f4\u{07}\u{1b}]11;\(claim.color)\u{07}\u{1b}]12;#ffffff\u{07}"
+    }
+
+    static func launchArguments(for claim: InstanceClaim) -> [String] {
+        // An empty display-item list prevents the TUI replacing our alias title.
+        // This is the only config override; permissions/model/account are inherited.
+        [codex, "--config", "tui.terminal_title=[]", initialPrompt(for: claim)]
+    }
 
     static func validate(workspace root: URL = workspace, executable: String = codex) throws {
         var directory: ObjCBool = false
@@ -45,18 +125,61 @@ enum Launcher {
         guard chdir(workspace.path) == 0 else {
             throw LauncherError.invalid("Cannot enter workspace: \(String(cString: strerror(errno)))")
         }
-        print("CodeExp2 — starting Coordinator onboarding…")
+        let claim = try InstanceClaim.acquire(in: claimDirectory)
+        print(appearance(for: claim), terminator: "")
+        print("CodeExp2 — Coordinator \(claim.alias) — \(claim.color)")
+        print("Starting Coordinator onboarding…")
         fflush(stdout)
         // Hand the actual Terminal to Codex. No injected input, delays, permission
         // overrides, model overrides, session reuse, or synthetic readiness claims.
         var argv: [UnsafeMutablePointer<CChar>?] = []
-        for argument in [codex, prompt] {
+        for argument in launchArguments(for: claim) {
             argv.append(argument.withCString { strdup($0) })
         }
         argv.append(nil)
         defer { argv.forEach { free($0) } }
-        argv.withUnsafeBufferPointer { _ = execv(codex, $0.baseAddress!) }
+        withExtendedLifetime(claim) {
+            argv.withUnsafeBufferPointer { _ = execv(codex, $0.baseAddress!) }
+        }
         throw LauncherError.invalid("Codex failed to start: \(String(cString: strerror(errno)))")
+    }
+
+    // Disposable process-level regression entry: no Terminal or Codex launch.
+    // EOF/termination releases the claim exactly as a terminated session does.
+    static func claimProbe(_ root: String, withChild: Bool = false) throws {
+        let claim = try InstanceClaim.acquire(in: URL(fileURLWithPath: root))
+        let arguments = [CommandLine.arguments[0], "--inherited-claim-probe",
+                         String(claim.slot), String(claim.descriptor), withChild ? "child" : "alone"]
+        let argv = arguments.map { strdup($0) } + [nil]
+        defer { argv.forEach { free($0) } }
+        withExtendedLifetime(claim) {
+            argv.withUnsafeBufferPointer { _ = execv(arguments[0], $0.baseAddress!) }
+        }
+        throw LauncherError.invalid("Claim regression exec failed.")
+    }
+
+    static func inheritedClaimProbe(slot: Int, descriptor: Int32, withChild: Bool) throws {
+        guard (0..<InstanceClaim.capacity).contains(slot), descriptor > 2,
+              fcntl(descriptor, F_GETFD) >= 0 else { throw LauncherError.invalid("Claim did not survive exec.") }
+        let claim = InstanceClaim(slot: slot, descriptor: descriptor)
+        var child: pid_t = 0
+        if withChild {
+            // Deliberately outlive the owner while retaining the claim fd.
+            // No CLOEXEC_DEFAULT spawn flag: the regression verifies this fd
+            // in the child and explicitly terminates its bounded sleep process.
+            var argv = [strdup("/bin/sleep"), strdup("60"), nil]
+            defer { argv.forEach { free($0) } }
+            let result = argv.withUnsafeMutableBufferPointer {
+                posix_spawn(&child, "/bin/sleep", nil, nil, $0.baseAddress!, nil)
+            }
+            guard result == 0 else { throw LauncherError.invalid("Cannot spawn descriptor-inheritance fixture.") }
+        }
+        let data = try JSONSerialization.data(withJSONObject: ["alias": claim.alias, "color": claim.color,
+                    "slot": slot, "pid": getpid(), "fd": descriptor,
+                    "child_pid": child,
+                    "appearance": appearance(for: claim), "arguments": launchArguments(for: claim)])
+        FileHandle.standardOutput.write(data + Data([10]))
+        withExtendedLifetime(claim) { _ = FileHandle.standardInput.readDataToEndOfFile() }
     }
 
     static func installAlias() throws {
@@ -104,6 +227,11 @@ enum Launcher {
         let link = root.appendingPathComponent("redirected")
         try fm.createSymbolicLink(at: link, withDestinationURL: root)
         try mustReject("redirected workspace") { try validate(workspace: link, executable: codex) }
+        let slots = 0..<InstanceClaim.capacity
+        guard Set(slots.map { InstanceClaim.alias(for: $0) }).count == slots.count,
+              Set(slots.map { InstanceClaim.color(for: $0) }).count == slots.count,
+              InstanceClaim.alias(for: 12) == "Odin-2" else { throw LauncherError.invalid("Duplicate name/color pair.") }
+        print("PASS: 192 distinct name/color pairs.")
         print("PASS: launcher preflight regressions; no Codex process launched.")
     }
 }
@@ -142,7 +270,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 do {
-    switch Array(CommandLine.arguments.dropFirst()) {
+    let arguments = Array(CommandLine.arguments.dropFirst())
+    switch arguments {
     case []:
         let app = NSApplication.shared
         let delegate = AppDelegate()
@@ -153,6 +282,11 @@ do {
     case ["--terminal"]: try Launcher.runInTerminal()
     case ["--install-alias"]: try Launcher.installAlias()
     case ["--self-test"]: try Launcher.selfTest()
+    case let args where args.count == 2 && args[0] == "--claim-probe": try Launcher.claimProbe(args[1])
+    case let args where args.count == 2 && args[0] == "--claim-probe-with-child": try Launcher.claimProbe(args[1], withChild: true)
+    case let args where args.count == 4 && args[0] == "--inherited-claim-probe":
+        guard let index = Int(args[1]), let fd = Int32(args[2]) else { throw LauncherError.invalid("Invalid claim probe.") }
+        try Launcher.inheritedClaimProbe(slot: index, descriptor: fd, withChild: args[3] == "child")
     default: throw LauncherError.invalid("Supported options: --preflight, --terminal, --install-alias, --self-test")
     }
 } catch {

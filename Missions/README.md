@@ -143,6 +143,56 @@ Available Missions
 3. Start a NEW mission
 ```
 
+## Concurrent CodeExp2 instances
+
+The human may open several CodeExp2 instances and select a different mission in
+each. Coordinators own the resulting coordination. Do not ask the human to track
+session ownership, relay agent messages, prevent file collisions, merge routine
+changes or arrange worktrees. Bring back only a material outcome, scope, budget,
+risk or authority decision that cannot be resolved within existing authorization.
+
+1. **Keep each selection local.** Bare onboarding still ends at the mission
+   menu, without reading other missions' state. After selection, reconcile that
+   mission's existing coordination record and current target state. Record the
+   actual Coordinator session identity when available, target/worktree, builder,
+   owned scope and outstanding assignments in the existing mission record.
+   Unknown identities remain unknown; a saved identity is not a live ownership
+   claim. Selecting the same mission in another instance does not transfer it
+   or authorize duplicate dispatch.
+2. **Resolve overlapping ownership before effects.** Within authorized scope,
+   check the selected mission's records and supported host/session information
+   for work using the same target, builder or files. Establish who owns any
+   overlap through an authorized supported route; maintain disjoint assignments
+   or arrange a single writer. Use an isolated worktree only when appropriate
+   and authorized, preserving the builder's native plan and existing work.
+   Separate worktrees do not isolate shared processes, assets or services.
+   Do not load unrelated mission histories simply because another instance may
+   exist, and do not require a global all-session check for disjoint work.
+3. **Protect shared workspace changes.** Mission notes belong in their own
+   folders. Before changing a shared file such as this registry or the root
+   handover, re-read its current content and diff, preserve other work and
+   reconcile intervening edits. When another writer is known, arrange one writer
+   for the overlapping edit before writing. Serialize shared-index, branch,
+   staging and publication operations; stage only the authorized changes and
+   never commit another instance's work incidentally. A note is not an atomic
+   lock, and an unchanged Git status does not prove another writer is absent.
+4. **Handle uncertainty without user bookkeeping.** If ownership or a necessary
+   communication route cannot be established, hold only the conflicting write,
+   dispatch or lifecycle effect. Continue independent authorized work, report
+   the concrete gap and pursue the smallest supported resolution within scope.
+   Do not silently take over, launch a replacement, invent a transport or tell
+   the human to manage another terminal. A genuine missing authority or provider
+   capability remains an explicit dependency, not a claim of automatic safety.
+5. **Close only owned work.** Update the mission's existing handover and ownership
+   record when transferring or ending coordination. Reconcile uncertain effects
+   before redispatch; release only the assignments and resources actually owned.
+   Other missions, instances and shared services retain their state and authority.
+
+These are Coordinator duties, not an installed cross-process lock or automatic
+session controller. Existing communication, execution setup, lifecycle and
+publication boundaries still apply. Opening another instance grants no agent
+contact, launch, implementation or publication authority by itself.
+
 ## Set up a mission for a new repository
 
 1. **Define the mission.** Record the user's intended outcome, repository name,

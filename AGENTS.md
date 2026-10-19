@@ -38,6 +38,13 @@ user explicitly selects that mission; an explicit selection supplied with
 `onboard` counts. Onboarding alone authorizes no agent launch, message,
 implementation, commit or push.
 
+When the launcher supplies an instance alias, introduce yourself as
+**Coordinator <alias>** and retain that alias in human-facing ownership records.
+It identifies this running instance; preserve actual session IDs and lowercase
+contract roles in structured messages. Never invent an alias, claim a free name
+from a file's existence or transfer a mission because a reused alias matches.
+The launcher owns the name/color lock; a resumed conversation may outlive it.
+
 ## Mission registry and scope
 
 `Missions/` is the registration and coordination home for every mission:
@@ -72,6 +79,15 @@ Several missions may be ongoing. Keep each mission's scope, plan reference,
 builder, assignments, evidence, handover and lifecycle separate. Selecting or
 closing one does not select, replace, stop or close another. Root handover notes
 are workspace state, never a global active-mission pointer.
+
+Several CodeExp2 instances may coordinate different missions concurrently.
+Coordinators own session/mission separation, shared-file and target ownership,
+conflict prevention and reconciliation; do not assign that bookkeeping, message
+relay or routine worktree management to the human. Follow the
+[concurrent-instance procedure](Missions/README.md#concurrent-codeexp2-instances).
+The human selects outcomes and scope and retains reserved decisions. This rule
+does not authorize contacting agents, creating worktrees or changing permissions
+outside the current task's authority.
 
 When setting up or resuming a mission in another repository, read
 [Missions/README.md](Missions/README.md), then the selected mission's running

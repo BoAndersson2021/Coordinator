@@ -4,12 +4,15 @@ Fixtures use a tiny separately pinned test suite, avoiding recursive execution
 of this integration suite. No live repository, remote or runtime is modified.
 """
 import hashlib
+import fcntl
 import importlib.util
 import json
 import os
 from pathlib import Path
 import plistlib
+import select
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
@@ -323,12 +326,116 @@ class CommitGateTests(unittest.TestCase):
             self.assertTrue(os.access(bridge, os.X_OK))
             self.assertEqual(bridge.read_bytes(), (ROOT / 'Launcher/Start CodeExp2.command').read_bytes())
             executable = app / 'Contents/MacOS/CodeExp2'
+            self.verify_launcher_claims(executable)
             for args, reason in ((['--terminal'], 'interactive Terminal session'),
                                  (['--unknown'], 'Supported options')):
                 rejected = subprocess.run([str(executable), *args], stdin=subprocess.DEVNULL,
                                           capture_output=True, text=True, timeout=10)
                 self.assertEqual(rejected.returncode, 1, rejected.stdout + rejected.stderr)
                 self.assertIn(reason, rejected.stderr)
+
+    def verify_launcher_claims(self, executable):
+        """Race real processes through exec, normal exit and SIGKILL; no model tasks."""
+        claim_root = self.root / 'instance-claims'
+        processes = []
+        inherited_children = []
+
+        def start(with_child=False):
+            mode = '--claim-probe-with-child' if with_child else '--claim-probe'
+            process = subprocess.Popen([str(executable), mode, str(claim_root)],
+                                       stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                       stderr=subprocess.PIPE)
+            processes.append(process)
+            return process
+
+        def receipt(process):
+            ready, _, _ = select.select([process.stdout], [], [], 5)
+            self.assertTrue(ready, 'claim probe did not reply')
+            line = process.stdout.readline()
+            self.assertTrue(line, 'claim probe exited without a receipt')
+            result = json.loads(line)
+            self.assertEqual(result['pid'], process.pid)
+            return result
+
+        try:
+            # Start together before collecting: a check-then-write allocator races.
+            batch = [start() for _ in range(13)]
+            reports = [receipt(process) for process in batch]
+            self.assertEqual(len({r['alias'] for r in reports}), 13)
+            self.assertEqual(len({r['color'] for r in reports}), 13)
+            self.assertIn('Odin-2', {r['alias'] for r in reports})
+            for report in reports:
+                self.assertIn('\x1b]0;CodeExp2 — ' + report['alias'] + '\x07', report['appearance'])
+                self.assertIn('\x1b]11;' + report['color'] + '\x07', report['appearance'])
+                arguments = report['arguments']
+                self.assertEqual(arguments[1:3], ['--config', 'tui.terminal_title=[]'])
+                self.assertEqual(len(arguments), 4)
+                self.assertTrue(arguments[3].startswith('onboard\n'))
+                self.assertIn('Launcher-assigned instance alias: ' + report['alias'], arguments[3])
+            owner = batch[next(i for i, r in enumerate(reports) if r['alias'] == 'Odin')]
+            owner.stdin.close()
+            self.assertEqual(owner.wait(timeout=5), 0)
+            replacement = start()
+            self.assertEqual(receipt(replacement)['alias'], 'Odin')
+            replacement.kill()
+            replacement.wait(timeout=5)
+            recovered = start()
+            self.assertEqual(receipt(recovered)['alias'], 'Odin')
+            self.assertTrue((claim_root / '0.lock').is_file(), 'claim files must remain')
+            recovered.stdin.close()
+            self.assertEqual(recovered.wait(timeout=5), 0)
+            parent = start(with_child=True)
+            parent_report = receipt(parent)
+            self.assertEqual(parent_report['alias'], 'Odin')
+            descendant = parent_report['child_pid']
+            inherited_children.append(descendant)
+            self.assertGreater(descendant, 0)
+            child_files = subprocess.run(['/usr/sbin/lsof', '-a', '-p', str(descendant),
+                                          '-d', str(parent_report['fd']), '-Fn'],
+                                         capture_output=True, text=True, timeout=10)
+            self.assertEqual(child_files.returncode, 0, child_files.stderr)
+            self.assertIn(str(claim_root / '0.lock'), child_files.stdout)
+            parent.kill()
+            parent.wait(timeout=5)
+            os.kill(descendant, 0)  # Child deliberately stays alive with inherited fd.
+            new_owner = start()
+            self.assertEqual(receipt(new_owner)['alias'], 'Odin')
+            # Fail visibly on redirected claim files; never lock an unrelated file.
+            bad = self.root / 'redirected-claims'
+            bad.mkdir()
+            (bad / '0.lock').symlink_to(self.root / 'README.md')
+            refused = subprocess.run([str(executable), '--claim-probe', str(bad)],
+                                     input=b'', capture_output=True, timeout=5)
+            self.assertEqual(refused.returncode, 1)
+            self.assertIn(b'Cannot open instance claim', refused.stderr)
+        finally:
+            for child in inherited_children:
+                try:
+                    os.kill(child, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+            for process in processes:
+                if process.poll() is None:
+                    process.kill()
+                process.wait(timeout=5)
+                for stream in (process.stdin, process.stdout, process.stderr):
+                    if stream and not stream.closed:
+                        stream.close()
+        occupied = self.root / 'occupied-claims'
+        occupied.mkdir()
+        handles = []
+        try:
+            for index in range(192):
+                handle = (occupied / f'{index}.lock').open('w+')
+                handles.append(handle)
+                fcntl.lockf(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            refused = subprocess.run([str(executable), '--claim-probe', str(occupied)],
+                                     input=b'', capture_output=True, timeout=5)
+            self.assertEqual(refused.returncode, 1)
+            self.assertIn(b'All 192 CodeExp2 name/color pairs are occupied', refused.stderr)
+        finally:
+            for handle in handles:
+                handle.close()
 
     def test_launcher_terminal_bridge_preserves_paths_and_arguments(self):
         """The shipped bridge must exec its sibling binary with exactly --terminal."""
