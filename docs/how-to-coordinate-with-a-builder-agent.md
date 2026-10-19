@@ -114,6 +114,9 @@ repository using this portable guide.
     the remaining work. Preserve enough context for another coordinator to resume
     from the existing plan and assignment history. Do not turn coordination into
     a new product, framework or recurring documentation exercise.
+    Apply [How to end a task](how-to-end-a-task.md): state what is done, what
+    remains and the recommended next action, including who owns that action and
+    whether it is available, requires a decision, or depends on an external change.
 
 A handoff can be short:
 

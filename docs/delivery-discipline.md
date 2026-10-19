@@ -13,6 +13,11 @@ execution. For Machine-managed workflows, also use the
 communication and lifecycle contracts. These are task-specific companions, not
 additional stages that must all be implemented before useful work can begin.
 
+Before ending a task, apply [How to end a task](how-to-end-a-task.md): state what
+is done, what remains and the recommended next action. Recommend an available
+action explicitly; do not leave a failed approach or unfinished work ambiguous.
+Continue necessary feasible work already authorized instead of ending early.
+
 This guide defines shared delivery rules; the companion guides refine their own
 subjects. Follow the host environment's instruction hierarchy, authorized scope
 and applicable repository requirements. If applicable clauses conflict, identify

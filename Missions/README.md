@@ -116,6 +116,9 @@ automatic mission start/end.
    reports, verifies evidence and reconciles the shared baseline before the next
    eligible step. Creating/replacing an agent or taking over its files requires
    the applicable authorization; saved session metadata proves no live receiver.
+   Before execution readiness or a product assignment, complete all three
+   [required mission execution setup steps](#required-mission-execution-setup).
+   A completed communication ACK alone is insufficient.
 6. **Return a concise readiness report and choices.** Identify yourself as
    **Coordinator**. State the documents actually read, observed workspace Git
    state and missing common
@@ -198,14 +201,26 @@ Available Missions
    If the user authorizes a new repository agent, use the launch procedure below
    and verify a fresh matching ACK before assigning implementation.
 
-6. **Record the real delivery path.** Identify the project's actual build,
+6. **Complete required execution setup.** Perform and record all three
+   [execution setup steps](#required-mission-execution-setup): native approval
+   review, ordinary mission permissions, and approval/cancellation control.
+   Provision, configure and connect the required host controls as part of mission
+   establishment; checking whether they exist is not the complete setup task.
+   Complete the bounded real verification below before declaring execution
+   readiness or dispatching product implementation, builds or conversions.
+   Registration and a messaging ACK do not satisfy this requirement. If a
+   capability is missing, record `EXECUTION_BLOCKED` with the exact gap; continue
+   independent read-only work within scope. Do not launch an uncontrolled builder
+   to discover afterward whether its approvals can be reached.
+
+7. **Record the real delivery path.** Identify the project's actual build,
    launch/play and focused verification commands, including their working
    directory, configuration and evidence locations. Define observable acceptance
    for the requested outcome and the behavior that must be preserved. Mark
    commands and capabilities as unverified when they have not been checked;
    execute them only within the current assignment's authority.
 
-7. **Set the remote boundaries.** Record the approved fetch and push destination,
+8. **Set the remote boundaries.** Record the approved fetch and push destination,
    branch and any source repository restrictions. Distinguish an imported source
    from the mission's publication remote. Inspect existing Git configuration
    before changing it, preserve applicable protection and hooks, and never infer
@@ -213,7 +228,7 @@ Available Missions
    authorized, verify the destination and scope before using an explicit branch
    refspec.
 
-8. **Start with a bounded assignment and leave a handover.** Give the execution
+9. **Start with a bounded assignment and leave a handover.** Give the execution
    owner a concrete outcome, scope, preservation requirements and required
    evidence. Review returned results against that assignment. Update the target
    repository's canonical handover with the exact checkpoint, dirty work,
@@ -221,11 +236,121 @@ Available Missions
    guide focused on how to resume; dated historical results must be clearly
    identified and rechecked next session.
 
+## Required mission execution setup
+
+These three steps are mandatory when establishing or resuming an execution
+mission, including an investigation that expands into implementation or native
+conversion. Apply them to the Coordinator and each executor at the boundaries
+they control. Record the result in the selected mission's guide or coordination
+record before declaring `EXECUTION_READY` or dispatching product work.
+
+**Host controls are a mission establishment deliverable.** The Coordinator owns
+arranging their provision/configuration, connecting the chosen executor through
+them, and collecting proof that they work. Reuse working host facilities first.
+If a control is missing, identify its host/provider owner and make its bounded
+configuration, connection or repair a setup prerequisite within the authorized
+mission scope. Do not defer it to product execution or describe the mission as
+established merely because the missing control was documented. Establishment
+remains incomplete until the required controls pass verification.
+
+If a provider change requires authority or access the mission does not have,
+record the exact owner, required change and missing authority. Continue useful
+authorized setup work; do not invent a host API, widen permissions, or turn the
+gap into an unrelated infrastructure project. A genuine external dependency may
+block completion of establishment, but it does not remove this setup obligation.
+
+Registration, bare onboarding and independent read-only investigation remain
+available without qualifying an executor. Mark execution as unqualified; do not
+describe registration or a completed messaging ACK as execution readiness.
+Authorized disposable qualification probes may precede product work, provided
+their approval and cancellation route is available before the probe starts.
+This procedure does not authorize agent launches, permission changes, probes,
+publication or resumption of an owner-ended mission by itself.
+
+1. **Establish native approval review.** For unattended builders, select native
+   automatic review (`approvals_reviewer = "auto_review"` with an eligible
+   interactive approval policy, normally `on-request`; the CLI also provides
+   `--approve-for-me`). Verify support in the installed version and the effective
+   settings of the actual receiving session. A global config file, launcher flag
+   or message saying "approved" is not proof that the host applied those settings.
+   Manual review is eligible only for an explicitly chosen attended workflow
+   whose prompt and response controls are actually accessible to the owner;
+   never depend on an unseen Terminal. Keep denied, timed-out and unsupported
+   approval categories visible. Automatic review does not guarantee acceptance
+   or replace separate app/Computer Use consent.
+
+2. **Establish ordinary mission permissions.** Identify the exact working root,
+   read-only sources, writable output/scratch directories, necessary network
+   access and native application/process requirements. Reconcile permission
+   configuration layers, including modern profiles versus legacy sandbox
+   settings, and verify effective access through harmless representative work.
+   For builds/conversions, include the real required tool or application entry
+   point. Configure access only within existing owner authority and host policy;
+   missing authority blocks that change, not unrelated inspection. Do not rely
+   on repeated escalation for routine approved work. `never` alone grants no
+   additional access; broad full access is not the default repair for missing
+   controls. Preserve source protection and unrelated project boundaries.
+
+3. **Establish approval and cancellation control.** Configure and connect the
+   supported host route that exposes the exact pending request/action and resources,
+   receives a scoped decision, and confirms request resolution plus the actual
+   action result. Bring any owner decision into the attended Coordinator
+   conversation with a supported response path; never assign the owner a hidden
+   terminal task. Separately prove cancellation of the exact executor turn while
+   approval is pending, confirmation of its final state, and cleanup of any owned
+   child processes. A queued message, archive operation, ACK or window ID is not
+   cancellation/retirement proof. For shared builders, stop only the mission's
+   turn/effects; preserve other work and the shared daemon. `END MISSION` ends
+   dispatch eligibility and supersedes unexecuted approval authority for that
+   mission. Reconcile uncertain effects rather than approving or replaying them.
+
+### Required evidence and passing route
+
+Use one small, disposable verification of the actual supported route:
+
+- An ordinary representative edit/test or native operation succeeds within the
+  configured access, without changing protected source assets.
+- A harmless request that genuinely requires approval receives a scoped decision;
+  request resolution and the actual operation result are observed.
+- A declined request returns a visible explanation and does not execute.
+- Cancellation while approval is pending produces a confirmed final turn state,
+  prevents the pending action, and accounts for any owned processes.
+- Reconnection/status reconciliation preserves pending/resolved/cancelled state
+  without duplicate work. A disconnect or timeout is not permission to replay.
+
+Retain the dated commands/events/results and relevant artifact hashes through the
+existing mission evidence route. Bind them to provider/tool version, effective
+permissions/reviewer, repository/workspace, receiver identity and configuration
+scope. Record each of the three steps as `PASS`, `BLOCKED` or `NOT_PROVEN`, with
+the supporting evidence and any excluded operation categories. Reuse existing
+evidence only after verifying that its scope still matches the actual receiver
+and route; repeat affected checks when the provider, configuration, permissions,
+workspace or control route changes. Do not rerun a whole qualification merely
+because another harmless task uses the same verified route.
+
+All three steps must pass for the proposed execution scope. Otherwise record
+`EXECUTION_BLOCKED`, the affected operation and smallest missing capability;
+retain the registration and continue independent authorized inspection. Do not
+silently switch executor, bypass policy, launch a replacement, or repeatedly ask
+for consent already supplied. A supported alternative requires reconciliation
+and its own applicable evidence. These are procedural requirements, not an
+installed admission controller or a claim that the current task tools supply
+approval responses or cancellation.
+
+Official behavior references: [Auto-review](https://learn.chatgpt.com/docs/sandboxing/auto-review),
+[permission profiles](https://learn.chatgpt.com/docs/permissions) and
+[app-server approvals and turn control](https://learn.chatgpt.com/docs/app-server#approvals).
+Recheck installed behavior before configuring a future execution route.
+
 ## Minimum contents of a mission guide
 
 - Purpose, authorized scope and preservation requirements.
 - Target repository path and links to its instructions, plan and handover.
 - Coordinator/builder roles and the verified connection procedure, if applicable.
+- Results and evidence for all three required execution setup steps, effective
+  configuration/receiver binding, and any execution block or excluded scope.
+- Host-control setup owner, configured connection, and any unresolved provision/
+  repair prerequisite that keeps mission establishment incomplete.
 - Read-only startup checks for current Git state and continuation state.
 - Build, run/play and verification entry points, with evidence requirements.
 - Approved remotes, source restrictions and commit/push boundaries.
@@ -244,6 +369,9 @@ Inspect target's own onboarding / startup / governance / handover
 Validate exact repo path, installed Codex and outstanding work
     |
     v
+Verify the proposed approval/cancellation route; authorize bounded setup probes
+    |
+    v
 Open Terminal there; pass known first task when starting Codex
     |
     v
@@ -251,6 +379,9 @@ Agent follows native repo onboarding before external mission additions
     |
     v
 Discover actual new thread; collect matching completed readiness ACK
+    |
+    v
+Complete all three execution setup steps with receiver-bound evidence
     |
     v
 Assign bounded installation / work; preserve existing owners and dirty files
@@ -264,6 +395,9 @@ in the same Terminal command. Use the installed CLI's help to confirm syntax.
 Do not open bare Codex and then inject text/Return, poll banners, or scrape its
 terminal output to establish readiness. Do not override model, account, trust or
 permissions merely to get the session started. Report any actual launch block.
+An explicitly authorized mission execution configuration must be selected and
+verified under the three setup steps above; do not silently inherit an unusable
+manual approval path or change policy to conceal a missing control.
 
 The initial task must instruct the agent to use its repository's actual native
 onboarding and handover first, reconcile current scope and Git state, preserve

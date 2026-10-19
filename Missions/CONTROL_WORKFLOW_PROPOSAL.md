@@ -1,5 +1,16 @@
 # Mission start and close — design and red-team review
 
+Current procedural requirement, 2026-10-19: all mission execution setup must
+complete the [three required steps](README.md#required-mission-execution-setup)
+before product dispatch or execution readiness. The start-chain `READY` below
+requires approval review, ordinary permissions and approval/cancellation proof
+in addition to a fresh communication ACK. This is a required procedure; native
+automatic start/close and the missing host controls remain unimplemented.
+Provisioning/configuring and connecting those host controls is part of mission
+establishment itself. Missing controls leave establishment incomplete and must
+be addressed as bounded setup prerequisites by the responsible host/provider
+owner within authorized scope; documenting their absence does not finish setup.
+
 Status: ACCEPTED by the user on 2026-10-18 ("Proposal accepted"). Implementation
 began with native-control feasibility checking. The read-only native connection
 now passes; the first gate remains BLOCKED on per-session custody/retirement, as
@@ -78,6 +89,11 @@ Resolve registered X -> canonical repository + approved mission profile
    v
 Lock this repository operation; reconcile unfinished run/effects
    |
+   v
+Provision/configure and connect host approval/cancellation controls
+   |
+   +--> missing -> establishment incomplete; resolve owned setup prerequisite
+   |
    +--> existing receiver -> verify exact identity and fresh readiness
    |
    +--> no receiver       -> supported owned launch with native onboarding task
@@ -94,6 +110,11 @@ Check installed communication contract AND live report route
    |
    v
 Completed fresh ACK + compact JSON / hashed artifact proof
+   |
+   v
+Verify approval review, ordinary permissions and approval/cancellation control
+   |
+   +--> missing / unproven -> EXECUTION_BLOCKED; independent inspection allowed
    |
    v
 READY -> tell human current scope, state, limits and eligible next action

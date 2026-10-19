@@ -81,15 +81,16 @@ handover; recorded commands and historical results grant no execution authority.
 
 ## Reusable agent instructions
 
-Read Delivery Discipline for every task. For implementation or repair toward a
-running application, also read the runtime-target instruction. Read the remaining
-guides when their subject applies to the authorized task. Before executing or
-editing a plan, read the plan-following and refresh guide.
+Read Delivery Discipline and How to end a task for every task. For implementation
+or repair toward a running application, also read the runtime-target instruction.
+Read the remaining guides when their subject applies to the authorized task.
+Before executing or editing a plan, read the plan-following and refresh guide.
 When coordinating execution through a builder agent, read the coordinator guide.
 
 | Instruction | When and how to use it |
 | --- | --- |
 | [Delivery Discipline](docs/delivery-discipline.md) | Use for planning, implementation and repairs. Preserve the user's outcome, define observable acceptance, bound stalled repairs and report usable results honestly. |
+| [How to end a task](docs/how-to-end-a-task.md) | Use before ending a task. State what is done, what remains and the recommended next action; recommend an available option instead of leaving failure or continuation ambiguous. |
 | [How not to overengineer on your way to the executable runtime target](docs/how-not-to-overengineer.md) | Use when building or repairing running software. Prove critical feasibility early, build one narrow real path and justify additional machinery against the runtime target. |
 | [How not to overblock development with hooks and governance](docs/how-not-to-overblock-development.md) | Use when designing, reviewing or repairing gates and blocking rules. Protect the affected effect, provide a tested passing route for authorized development and keep runtime qualification separate. |
 | [How to follow a plan, refresh that plan, verify the plan history and future before editing the plan](docs/how-to-follow-and-refresh-a-plan.md) | Use before executing or updating a plan. Check its decisions and history, verify actual progress, trace future dependencies and preserve the original outcome when making edits. |

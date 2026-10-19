@@ -4,6 +4,47 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Task closing communication — 2026-10-19
+
+The owner requested [How to end a task](docs/how-to-end-a-task.md): state what is
+done, what remains and the recommended next action. If an action option remains,
+recommend it clearly, with its owner and any real decision/access boundary.
+A failed approach must not silently imply that no alternative remains. Continue
+necessary feasible work already authorized; respect explicit owner stops.
+
+The guide is linked from the root AGENTS catalog, README, Delivery Discipline
+and the coordinator guide. It preserves structured agent reply contracts and
+does not authorize execution, publication or resumption of ended missions.
+
+## Required mission execution setup — 2026-10-19
+
+The owner required the three approval-workflow setup steps to be codified for
+mission establishment. [The canonical procedure](Missions/README.md#required-mission-execution-setup)
+now requires native approval review, ordinary mission permissions, and supported
+approval/cancellation control before execution readiness or product dispatch.
+This also applies when an investigation expands into execution and when resuming
+an existing mission. A completed communication ACK alone is insufficient.
+
+The owner further clarified that establishing the host controls belongs inside
+mission establishment. The Coordinator must arrange provision/configuration,
+connection and verification, with a named host/provider owner for missing
+controls. Recording an unavailable control does not finish establishment; its
+bounded setup/repair remains a prerequisite, subject to actual scope and access.
+
+The record must bind real passing evidence to the receiver, effective settings,
+workspace and control route, including a successful approval, a visible refusal,
+cancellation while approval is pending, and reconnect reconciliation without
+replay. Reuse matching proof; repeat only checks affected by changed conditions.
+Missing capability produces `EXECUTION_BLOCKED` for the dependent scope, while
+registration and independent authorized inspection remain available. No hidden
+terminal task is assigned to the owner.
+
+This is workspace procedure maintenance, not permission configuration or a
+qualified runtime admission controller. No mission is selected/resumed, no
+builder launched, and no approval/cancellation route is implemented by this
+documentation update. Existing missions retain their recorded lifecycle and
+outstanding effects; do not resume owner-ended work from historical approval.
+
 ## Swift desktop launcher — 2026-10-18
 
 The user requested a desktop icon that opens Terminal, starts Codex in CodeExp2

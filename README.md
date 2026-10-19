@@ -24,6 +24,16 @@ For a new mission, register its name, repository and outcome in `Missions/` firs
 The mission repository's builder owns implementation against its native plan;
 CodeExp2 coordinates assignments, dependencies and evidence review.
 
+Before a mission becomes execution-ready, the Coordinator must complete all
+three [required execution setup steps](Missions/README.md#required-mission-execution-setup):
+native approval review, ordinary mission permissions, and supported approval/
+cancellation control, with evidence bound to the actual receiver. Missing
+controls must be provisioned/configured and connected as part of mission
+establishment, with a named owner for any required repair. Establishment stays
+incomplete until they work; dependent execution is blocked before dispatch.
+Registration and read-only
+investigation remain available; this rule installs no host control or permission.
+
 1. Read [AGENTS.md](AGENTS.md) for repository rules, the complete instruction
    catalog and how the guides work together.
 2. Read [the current state and handover](Mission_Sofar.md) before continuing work.
@@ -35,7 +45,7 @@ CodeExp2 coordinates assignments, dependencies and evidence review.
 ## Instruction corpus
 
 [The AGENTS catalog](AGENTS.md#reusable-agent-instructions) is the canonical list:
-eight standalone guides and an inline CLI workflow review procedure. It explains
+nine standalone guides and an inline CLI workflow review procedure. It explains
 which guides apply, how to combine them and how to hand them to agents elsewhere.
 
 Delivery Discipline defines shared delivery rules and the repair limit. The
@@ -47,6 +57,10 @@ The [guide to avoiding excessive blocks](docs/how-not-to-overblock-development.m
 covers hooks and governance: protect concrete effects and provide a tested path
 for authorized development. Links between guides route relevant instructions
 and do not create extra stages.
+
+Use [How to end a task](docs/how-to-end-a-task.md) for closing reports: state
+what is done, what remains and the recommended next action. When an action
+option remains, recommend it clearly and identify its owner and authority needs.
 
 ## Scope and history
 
