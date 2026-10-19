@@ -4,6 +4,28 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Session lessons control path — 2026-10-19
+
+Coordinator Odin implemented the complete approved six-improvement chain as
+workspace maintenance under the owner's instruction to execute every step.
+The [delivery/continuation record](Missions/ControlWorkflowEvidence/20261019-session-lessons-delivery.md)
+is the canonical checkpoint; the [runbook](docs/native-control.md) gives the
+single bounded CLI entry. Final six-operation native diagnostics and synthetic
+visual review passed, and independent repaired-source/admission review passed.
+All 50 exact staged-source checks passed; the independently reviewed policy and
+bootstrap were adopted with previous trusted bytes/configuration preserved. The
+second-reader continuity check passed. Exact receipts are in that checkpoint.
+Historical earlier-byte probes must not be promoted to current proof.
+
+The final owned diagnostic is dispatch-ended, all four requests resolved, no
+uncertain sends, process inventory empty and receiver archived. Executor
+retirement is not proven. Product dispatch remains ineligible without fresh
+mission/setup/ACK checks. Native UI, standalone TUI attachment and unattended
+review were not qualified. PANEL remains owner-ended; a future native
+chat/status/notices slice needs explicit resumption and its native builder's
+current baseline. No product mission or shared daemon is started/stopped by
+this continuation entry. No remote publication is part of this task.
+
 ## Authorized Valhall publication — 2026-10-19
 
 The owner subsequently requested commit and push of the Valhall app/name/icon

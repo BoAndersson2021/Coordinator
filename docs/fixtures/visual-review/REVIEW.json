@@ -1,0 +1,61 @@
+{
+  "kind": "synthetic-fixture",
+  "options": [
+    {
+      "id": "option-1",
+      "path": "option-1.png",
+      "sha256": "133a02e1cce26cafbfd1ce46f2b4ce35a5052af2d7c48f9f400b88b81204674b",
+      "dimensions": [
+        1000,
+        650
+      ],
+      "label": "Synthetic option 1"
+    },
+    {
+      "id": "option-2",
+      "path": "option-2.png",
+      "sha256": "b31173cfe8559c09f2e8b77290b07a7286b0fa0e2d23aa1fdfb4134f0e9e92f3",
+      "dimensions": [
+        1000,
+        650
+      ],
+      "label": "Synthetic option 2"
+    },
+    {
+      "id": "option-3",
+      "path": "option-3.png",
+      "sha256": "1396f5143a3fe1ad560c498ea66062e043288de0b5d397fea6b114bf80deb4f7",
+      "dimensions": [
+        1000,
+        650
+      ],
+      "label": "Synthetic option 3"
+    }
+  ],
+  "reordered_display": [
+    "option-2",
+    "option-3",
+    "option-1"
+  ],
+  "selection": {
+    "base_id": "option-3",
+    "sidebar_id": "option-1"
+  },
+  "refinement": {
+    "path": "refinement.png",
+    "sha256": "048db0e54556e71c02252f7c8a2f251e5ac41498cce92a989e9871b0c981b305",
+    "dimensions": [
+      1000,
+      650
+    ],
+    "lineage": [
+      "option-3",
+      "option-1"
+    ]
+  },
+  "owner_acceptance": {
+    "decision": "not_requested",
+    "reason": "Known composition replayed only as a synthetic fixture; no new actual owner decision."
+  },
+  "runtime_qualification": "not_proven"
+}

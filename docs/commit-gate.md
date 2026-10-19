@@ -89,3 +89,17 @@ bytes into an owned directory under this checkout's Git directory, install the
 digest-pinned bootstrap and record the independent review and checks. Never
 use `--no-verify` or install an unreviewed working-tree replacement. Keep adoption
 separate from a source commit; no source commit is implied by installation.
+
+## Shared native-control development admission — 2026-10-19
+
+The independently reviewed session-lessons inventory adds the bounded native
+control client, evidence checker, diagnostic/proof reader, declared transport,
+28 offline regressions and fixture data. One new mandatory wrapper requires all
+28 exact successes/completion with native transport forbidden; the prior 21
+mandatory IDs, file/instruction/deletion requirements and verifier are preserved.
+Final exact staged source passed 50 tests through the reviewed pinned bootstrap.
+The exact policy/bootstrap are adopted with previous trusted bytes and unchanged
+configuration preserved. See the [delivery/adoption record](../Missions/ControlWorkflowEvidence/20261019-session-lessons-delivery.md)
+for hashes, backup, independent source review, native proof and continuation.
+This extends development admission; product mission dispatch and executor
+retirement still need their own applicable authority and runtime evidence.

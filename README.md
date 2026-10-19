@@ -96,3 +96,8 @@ route, its limited source inventory, staged checks and local adoption evidence.
 Keep frozen evidence and old acceptance results within their original scope.
 External Machine guide snapshots are not automatically updated by edits here.
 See [the handover](Mission_Sofar.md) for remaining work and historical milestones.
+
+The [shared native-control runbook](docs/native-control.md) documents the bounded
+inspection and owned diagnostic entry, evidence limits and review/closure
+templates. Its [delivery record](Missions/ControlWorkflowEvidence/20261019-session-lessons-delivery.md)
+separates tested diagnostic capabilities from current product readiness.

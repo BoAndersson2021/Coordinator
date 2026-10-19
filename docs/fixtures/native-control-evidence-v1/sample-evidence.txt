@@ -1,0 +1,2 @@
+Synthetic CodeExp2 evidence fixture.
+No native connection, model turn, approval decision or owner acceptance occurred.
