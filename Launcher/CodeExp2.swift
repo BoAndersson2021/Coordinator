@@ -70,6 +70,17 @@ enum Launcher {
     static let prompt = "onboard"
     static let fm = FileManager.default
     static let claimDirectory = workspace.appendingPathComponent("Launcher/build/instance-claims")
+    static let configHome = URL(fileURLWithPath: ProcessInfo.processInfo.environment["CODEX_HOME"]
+        ?? fm.homeDirectoryForCurrentUser.appendingPathComponent(".codex").path, isDirectory: true)
+    static let profilePath = configHome.appendingPathComponent("valhalla.config.toml")
+
+    static func validateProfile(installed: URL = profilePath,
+                                bundled: URL? = Bundle.main.url(forResource: "valhalla.config", withExtension: "toml")) throws {
+        guard let bundled, let expected = try? Data(contentsOf: bundled),
+              let actual = try? Data(contentsOf: installed), actual == expected else {
+            throw LauncherError.invalid("Valhalla profile is missing or differs from the bundled source. Coordinator setup: run python3 -B Launcher/install_valhalla.py in CodeExp2.")
+        }
+    }
 
     static func initialPrompt(for claim: InstanceClaim) -> String {
         """
@@ -78,6 +89,8 @@ enum Launcher {
         Launcher-assigned instance alias: \(claim.alias). Introduce yourself as Coordinator \(claim.alias).
         Your Terminal color is \(claim.color). This is a human alias for this running instance,
         not a replacement for your real session ID or role. Preserve actual IDs in structured messages.
+        The launcher selected the owner-approved Valhalla profile. Verify effective capability when needed;
+        requested full access is not proof of OS consent, tool availability, or authority for unrelated work.
         No mission is selected. Follow the normal onboarding checklist and present the mission menu.
         """
     }
@@ -90,8 +103,9 @@ enum Launcher {
 
     static func launchArguments(for claim: InstanceClaim) -> [String] {
         // An empty display-item list prevents the TUI replacing our alias title.
-        // This is the only config override; permissions/model/account are inherited.
-        [codex, "--config", "tui.terminal_title=[]", initialPrompt(for: claim)]
+        // Valhalla is the owner's explicit permission/tool overlay; model/account
+        // remain inherited. Never use a bypass flag or override managed policy.
+        [codex, "--profile", "valhalla", "--config", "tui.terminal_title=[]", initialPrompt(for: claim)]
     }
 
     static func validate(workspace root: URL = workspace, executable: String = codex) throws {
@@ -112,13 +126,16 @@ enum Launcher {
 
     static func preflight() throws {
         try validate()
+        try validateProfile()
         // Filesystem-only check: never start Codex or a model task here.
         print("PASS: CodeExp2 workspace and Codex executable are available.")
-        print("Workspace: \(workspace.path)\nCommand: \(codex) \(prompt)")
+        print("Workspace: \(workspace.path)\nCommand: \(codex) --profile valhalla \(prompt)")
+        print("Profile bytes match bundled Valhalla source; effective tool/OS access requires real verification.")
     }
 
     static func runInTerminal() throws -> Never {
         try validate()
+        try validateProfile()
         guard isatty(STDIN_FILENO) == 1, isatty(STDOUT_FILENO) == 1 else {
             throw LauncherError.invalid("Open CodeExp2.app to start an interactive Terminal session.")
         }
@@ -130,8 +147,8 @@ enum Launcher {
         print("CodeExp2 — Coordinator \(claim.alias) — \(claim.color)")
         print("Starting Coordinator onboarding…")
         fflush(stdout)
-        // Hand the actual Terminal to Codex. No injected input, delays, permission
-        // overrides, model overrides, session reuse, or synthetic readiness claims.
+        // Hand the actual Terminal to Codex, with its owner-selected profile.
+        // No injected input, delays, model overrides or synthetic readiness claims.
         var argv: [UnsafeMutablePointer<CChar>?] = []
         for argument in launchArguments(for: claim) {
             argv.append(argument.withCString { strdup($0) })
@@ -187,19 +204,36 @@ enum Launcher {
         guard bundle.pathExtension == "app", bundle.lastPathComponent == "CodeExp2.app" else {
             throw LauncherError.invalid("Run --install-alias from the built CodeExp2.app executable.")
         }
-        let alias = workspace.deletingLastPathComponent().appendingPathComponent("CodeExp2.app")
-        // Preserve any existing Desktop object, including an unrelated alias.
-        guard !fm.fileExists(atPath: alias.path), (try? alias.resourceValues(forKeys: [.isAliasFileKey])) == nil else {
-            throw LauncherError.invalid("Desktop item already exists; left unchanged: \(alias.path)")
+        let desktop = workspace.deletingLastPathComponent()
+        let alias = desktop.appendingPathComponent("Valhall.app")
+        let legacy = desktop.appendingPathComponent("CodeExp2.app")
+        func exists(_ url: URL) -> Bool {
+            fm.fileExists(atPath: url.path) || (try? url.resourceValues(forKeys: [.isAliasFileKey])) != nil
         }
-        let bookmark = try bundle.bookmarkData(options: .suitableForBookmarkFile,
-                                               includingResourceValuesForKeys: nil, relativeTo: nil)
-        try URL.writeBookmarkData(bookmark, to: alias)
-        let icon = NSWorkspace.shared.icon(forFile: bundle.path)
+        func pointsHere(_ url: URL) -> Bool {
+            guard (try? url.resourceValues(forKeys: [.isAliasFileKey]).isAliasFile) == true,
+                  let target = try? URL(resolvingAliasFileAt: url, options: [.withoutUI, .withoutMounting]) else { return false }
+            return target.resolvingSymlinksInPath() == bundle.resolvingSymlinksInPath()
+        }
+        if exists(alias) {
+            guard pointsHere(alias) else {
+                throw LauncherError.invalid("Desktop item is not this launcher's native alias; left unchanged: \(alias.path)")
+            }
+        } else if exists(legacy) && pointsHere(legacy) {
+            try fm.moveItem(at: legacy, to: alias)
+        } else {
+            let bookmark = try bundle.bookmarkData(options: .suitableForBookmarkFile,
+                                                   includingResourceValuesForKeys: nil, relativeTo: nil)
+            try URL.writeBookmarkData(bookmark, to: alias)
+        }
+        guard let iconURL = Bundle.main.url(forResource: "Valhall", withExtension: "icns"),
+              let icon = NSImage(contentsOf: iconURL) else {
+            throw LauncherError.invalid("Bundled Valhall icon is missing.")
+        }
         guard NSWorkspace.shared.setIcon(icon, forFile: alias.path, options: []) else {
             throw LauncherError.invalid("Alias was created, but its icon could not be applied: \(alias.path)")
         }
-        print("Created native Finder alias: \(alias.path)\nOriginal: \(bundle.path)")
+        print("Installed native Finder alias: \(alias.path)\nOriginal: \(bundle.path)")
     }
 
     static func selfTest() throws {
@@ -227,6 +261,14 @@ enum Launcher {
         let link = root.appendingPathComponent("redirected")
         try fm.createSymbolicLink(at: link, withDestinationURL: root)
         try mustReject("redirected workspace") { try validate(workspace: link, executable: codex) }
+        let installedProfile = root.appendingPathComponent("installed-profile.toml")
+        let bundledProfile = root.appendingPathComponent("bundled-profile.toml")
+        try Data("fixture profile\n".utf8).write(to: bundledProfile)
+        try mustReject("missing Valhalla profile") { try validateProfile(installed: installedProfile, bundled: bundledProfile) }
+        try Data("different profile\n".utf8).write(to: installedProfile)
+        try mustReject("changed Valhalla profile") { try validateProfile(installed: installedProfile, bundled: bundledProfile) }
+        try Data(contentsOf: bundledProfile).write(to: installedProfile)
+        try validateProfile(installed: installedProfile, bundled: bundledProfile)
         let slots = 0..<InstanceClaim.capacity
         guard Set(slots.map { InstanceClaim.alias(for: $0) }).count == slots.count,
               Set(slots.map { InstanceClaim.color(for: $0) }).count == slots.count,
@@ -240,6 +282,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         do {
             try Launcher.validate()
+            try Launcher.validateProfile()
             guard let script = Bundle.main.url(forResource: "Start CodeExp2", withExtension: "command"),
                   let terminal = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.Terminal") else {
                 throw LauncherError.invalid("Terminal or the bundled launch command is missing.")

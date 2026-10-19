@@ -241,6 +241,19 @@ date. Recheck the selected target's actual state before relying on them.
 
 ## Permissions, changes and scoped requirements
 
+For owner-authorized work, the Coordinator owns final technical validation and
+routine capability provisioning: discover, install, connect, route and verify
+the tools needed for the selected scope. Do not transfer that bookkeeping to
+the human. App-launched instances use the owner-approved
+[Valhalla profile](Launcher/VALHALLA.md) for full local/network access and
+preapproved supported tools. Check actual tool and OS access when needed;
+configuration alone is not verification. The human retains outcome, scope and
+reserved decisions. Full access does not select a mission, authorize unrelated
+effects, replace native builder ownership, bypass host/tool restrictions or
+supply macOS consent, provider authentication or administrator privileges.
+Surface only the specific owner-controlled step that cannot be completed
+through supported authorized routes, while continuing independent work.
+
 CodeExp2 ordinary documentation commits use lightweight content checks, including
 deletions. Executable development requires an independently reviewed local
 development policy and meaningful regressions against the exact staged source.

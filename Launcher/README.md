@@ -1,6 +1,6 @@
-# CodeExp2 desktop launcher
+# Valhall — CodeExp2 desktop launcher
 
-Open the native **CodeExp2** Finder alias on the Desktop. The Swift application
+Open the native **Valhall** Finder alias on the Desktop. The Swift application
 opens Terminal, enters `/Users/boandersson/Desktop/CodeExp2` and executes the
 installed native Codex executable with `onboard` and its assigned human alias as
 the positional first prompt. Codex submits that task automatically and remains interactive.
@@ -21,10 +21,13 @@ This is CodeExp2 workspace startup tooling, not a product mission or mission run
 Build, sign and run the focused preflight regressions (Xcode command-line tools):
 
 ```sh
+python3 -B Launcher/install_valhalla.py
 python3 -B Launcher/build.py
 ```
 
-Create the native Finder alias once; refuses to overwrite any existing item:
+Install/refresh the native Finder alias. A matching former `CodeExp2.app` Desktop
+alias is renamed to `Valhall.app`; an existing matching Valhall alias gets its
+icon refreshed. Unrelated Desktop entries are preserved:
 
 ```sh
 Launcher/build/CodeExp2.app/Contents/MacOS/CodeExp2 --install-alias
@@ -36,10 +39,14 @@ Check prerequisites without starting Codex or opening Terminal:
 Launcher/build/CodeExp2.app/Contents/MacOS/CodeExp2 --preflight
 ```
 
-The launcher inherits the installed Codex account, model, trust and permissions.
-Its only config override is `tui.terminal_title=[]`, which keeps the instance
-alias visible instead of Codex's generated progress title. Initial authentication or trust prompts, if required by
-Codex, remain visible in Terminal. Closing the Terminal session exits Codex.
+The launcher selects the owner-approved **Valhalla** profile for full local and
+network access, no CLI approval prompts, live web search, native local memory and
+supported tool approvals. Account, model and trust remain inherited. See
+[setup, capabilities and limits](VALHALLA.md). Source and installed profile must
+match; a missing/different overlay fails visibly before starting a session.
+`tui.terminal_title=[]` keeps the instance alias visible instead of Codex's
+generated progress title. Initial authentication or trust prompts, if required
+by Codex, remain visible in Terminal. Closing the Terminal session exits Codex.
 
 ## Instance names and colors
 
@@ -101,6 +108,13 @@ exhaustion and redirected-file refusal.
 The desktop alias targets `Launcher/build/CodeExp2.app`. Rebuild in place to
 update it, then verify signing and the alias's original target again. Never
 replace the native alias with a symbolic link.
+
+The app's visible name is **Valhall**, using the Swedish spelling. Internal
+workspace paths, executable and bundle identifier retain CodeExp2 for continuity.
+The Viking artwork is project-owned [`valhall-icon.png`](valhall-icon.png),
+packaged into all native icon resolutions by `Icon.swift`. Regenerate only when
+requested; builds use the checked-in source image and make no image-service call.
+See the [artwork prompt](VALHALL-ICON.md).
 
 The local commit gate now admits the independently reviewed exact launcher
 inventory and requires all 20 staged regressions, including a real native build

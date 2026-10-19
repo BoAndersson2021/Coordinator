@@ -4,6 +4,63 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Authorized Valhall publication — 2026-10-19
+
+The owner subsequently requested commit and push of the Valhall app/name/icon
+and earlier full-access setup. The [publication record](Launcher/VALHALL-PUBLICATION.md)
+defines the exact scoped changes, normal hook checks, independent review and
+guarded local pin adoption. Historical setup entries saying uncommitted or no
+policy change describe those earlier checkpoints. The verifier and all 20
+mandatory regressions stay unchanged. Unrelated mission registrations/files
+remain excluded. Publication is complete only when the source commit matches
+the observed configured `origin/main`; identify it with `git log -1 -- Launcher`.
+No product mission is selected, resumed or executed by this publication.
+
+## Valhall app name and Viking icon — 2026-10-19
+
+The owner requested **Valhall**, the Swedish spelling, as the app's visible name
+and new Viking artwork. The launcher now builds with Valhall bundle display/name
+metadata and a generated helmet/ravens/knotwork icon. The internal app path,
+executable, bundle identifier, workspace and `valhalla` permission profile stay
+stable. `--install-alias` migrates only a verified matching old native Desktop
+alias to `Valhall.app`, refreshes a matching alias's artwork, and preserves
+unrelated entries. Source art and the final built-in ImageGen prompt are retained
+under [Launcher](Launcher/VALHALL-ICON.md). No product mission is selected by this
+workspace presentation change.
+
+Installed and ad-hoc signed in place. The native Desktop entry is now
+`/Users/boandersson/Desktop/Valhall.app`; Finder Get Info verified its name,
+Viking icon (header and large preview), Alias kind and unchanged original target.
+Both focused native launcher regressions passed (8.138 s), including display
+metadata/icon packaging and earlier profile/claim checks. Updating the enclosing
+app timestamp refreshed an initially stale Finder artwork preview. Changes
+remain uncommitted; unrelated Desktop items and mission work are preserved.
+
+## Valhalla full-access startup — 2026-10-19
+
+The owner approved installing the proposed shared launch profile. New app-created
+instances explicitly use `--profile valhalla`: full local/network access, CLI
+approval policy `never`, live web, supported tool preapprovals and native local
+memory. The standalone overlay preserves global configuration, account and model.
+The rebuilt/signed app requires matching installed/bundled profile bytes. The
+missing native Desktop alias was restored to the existing app path.
+
+Actual Desktop-created Coordinator Freya completed onboarding without selecting
+a mission. Its session context records `danger-full-access` and `never`;
+supported host Calculator control, native Safari navigation and screenshots
+worked. All 20 regressions passed. Existing terminals keep their earlier settings;
+their ongoing work was left alone. See [setup](Launcher/VALHALLA.md) and
+[verification/review adoption](Launcher/VALHALLA-VERIFICATION.md) for exact
+identities, tested scope, evidence and host/provider limitations.
+
+Independent source/instruction review passed; the reviewed Coordinator rule is
+adopted. The Coordinator owns technical validation and routine tool provisioning
+within owner scope. This grants no unrelated effects, mission selection,
+provider credentials or OS consent. Earlier launcher history describing inherited
+permissions predates this explicit owner-approved change. No staging, commit,
+push or local gate-policy change was performed for this setup; unrelated mission
+files/registry edits are preserved. Use new Desktop launches for Valhalla access.
+
 ## Authorized Nordic/concurrency publication — 2026-10-19
 
 The owner authorized commit and push of this conversation's launcher and

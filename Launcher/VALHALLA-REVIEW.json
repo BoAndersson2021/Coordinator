@@ -1,0 +1,147 @@
+{
+  "assignment_id": "valhalla-source-review",
+  "body": {
+    "checks": [
+      {
+        "evidence": "launchArguments includes --profile valhalla before the alias-bearing initial prompt, retains tui.terminal_title=[] and actual native exec. Official OpenAI documentation confirms top-level profile settings belong in $CODEX_HOME/<profile>.config.toml selected by --profile. Account/model/provider are not changed by this overlay.",
+        "name": "Explicit native separate-profile selection",
+        "result": "pass"
+      },
+      {
+        "evidence": "Source inspection: build copies valhalla.config.toml into resources. GUI startup, preflight and Terminal entry all compare installed bytes to bundled bytes and refuse missing/different data before native launch. Independent read confirmed current ~/.codex/valhalla.config.toml exactly equals source. This is content identity, not runtime authorization proof.",
+        "name": "Bundled and installed overlay identity with visible refusal",
+        "result": "pass"
+      },
+      {
+        "evidence": "Read install_valhalla.py: requires absolute config-home; rejects symlink destination; avoids rewriting equal content; preserves differing prior overlay under a unique ignored backup; writes/fsyncs/chmods0600 then atomically replaces only valhalla.config.toml; cleans failed temporary output. Global config.toml is never written. Backup/write failures are not swallowed.",
+        "name": "Installer preservation, atomicity and failure handling",
+        "result": "pass"
+      },
+      {
+        "evidence": "Profile requests :danger-full-access, approval_policy never, live web, supported app/MCP/plugin approvals and local memories. AGENTS and VALHALLA.md expressly preserve owner scope, native IDs, builder ownership, no mission selection, managed/host/provider restrictions, credentials/admin/OS consent boundaries and required verification. No bypass flag or global-policy modification added.",
+        "name": "Permission/tool overlay semantics and authority boundaries",
+        "result": "pass"
+      },
+      {
+        "evidence": "Existing native launcher regression now copies/bundles exact overlay, checks selected profile arguments, exercises missing/mismatched installed bytes in native self-test and tests installer backup/idempotence/symlink refusal/global-config preservation using a disposable config-home. Earlier name/color and descendant-lock regressions remain. Full suite intentionally not rerun: Coordinator reported its execution; this reviewer claims coverage inspection only.",
+        "name": "Regression coverage assessment",
+        "result": "pass"
+      },
+      {
+        "evidence": "Parsed source TOML and asserted selected permission/approval/web fields plus absence of legacy profiles table; AST-parsed changed Python source/tests; installed/source profile equality checked. Scoped git diff --check exited0.",
+        "name": "Independent static checks",
+        "result": "pass"
+      },
+      {
+        "evidence": null,
+        "name": "Actual native session effective permissions and OS/tool operation",
+        "result": "not_proven"
+      }
+    ],
+    "evidence": [
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "AGENTS.md",
+        "sha256": "7f46977c643e25da3b90aee548f5a14e102c090e3eb8d6d94e443b4632be3949"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "Launcher/CodeExp2.swift",
+        "sha256": "796939546fcc73e270e2596ccd862704e9d7799084da7db91e1917314e2f7b04"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "Launcher/README.md",
+        "sha256": "1383bb274c678afc739a9f2a79c5a80b34cf4cae02d2e798d3784338e192f2c5"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "Launcher/build.py",
+        "sha256": "2d54e972a7240a8e87bba1732516a87036fe0b3d2f2220982d95d764809f9086"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "Launcher/VALHALLA.md",
+        "sha256": "fb40e46b600574b2c6a83a241303d208e5a366fa770c86d1ab85501925f55247"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "Launcher/install_valhalla.py",
+        "sha256": "5690d7cd88a4247147e33250c6e118f041632938fea7433d9cb4cca151b56175"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "Launcher/valhalla.config.toml",
+        "sha256": "b2a3f2030f69a67f7d0134e7ec35f3627f2d6026128f9bfaea284074305ee4ee"
+      },
+      {
+        "claim": "Exact independently reviewed source bytes.",
+        "path": "tests/test_commit_gate.py",
+        "sha256": "609bff9ba05990afbce6594ba3d88c44ae667c83dd59828bd0132f8832ca29b6"
+      }
+    ],
+    "findings": [],
+    "independence": {
+      "independent_of_implementation": true,
+      "reviewer_task": "/root/nordic_launcher_review",
+      "scope": "Reviewer edited no source, configuration or instructions; performed no install, model task, app launch, gate-policy change, staging, commit or push. Only this assigned source-review.json artifact was written."
+    },
+    "limitations": [
+      "Source PASS does not establish every tool works, OS consent exists, authentication is ready, or effective managed restrictions permit any proposed action. No independent runtime task or OS action was performed.",
+      "Compatibility caveat from official permissions documentation: a loaded legacy sandbox_mode can take precedence over default_permissions unless managed permission-profile selection applies. Current source requests the profile correctly; actual route must be checked and relevant configuration changes require renewed effective-permission proof.",
+      "Specific app/server/tool and project or managed configuration can override defaults. Documented preapproval applies where those higher-priority or more-specific rules permit it; it is not a universal override.",
+      "Config validation is exact-file matching, not a native merged-config audit. CLI updates, config changes and OS/provider state can alter behavior despite identical source bytes.",
+      "Installer preservation was assessed from code and regression content, not by modifying the real user configuration. Parent-supplied runtime/regression observations remain Coordinator evidence, distinct from this independent source review.",
+      "No commit or push is authorized by this review. Normal exact-byte gate review/adoption and mandatory staged regressions remain prerequisites for any later publication."
+    ],
+    "next_action": "Coordinator should retain the already authorized real-session effective-profile and focused filesystem/network/tool evidence, record instruction adoption and finish the setup with precise OS/provider limitations. No material source fixes remain.",
+    "official_sources": [
+      {
+        "supports": "Separate profile-file layout and CLI selection; profile is a configuration layer rather than a full independent global configuration.",
+        "url": "https://learn.chatgpt.com/docs/config-file/config-advanced"
+      },
+      {
+        "supports": "Documented app/MCP/plugin approval and feature configuration; managed requirements and specific overrides can restrict defaults.",
+        "url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+      },
+      {
+        "supports": "Permission-profile compatibility with legacy sandbox settings and managed requirements. Configuration does not supersede managed constraints.",
+        "url": "https://learn.chatgpt.com/docs/permissions"
+      }
+    ],
+    "required_fixes": [],
+    "result": "pass",
+    "source": {
+      "branch": "main",
+      "dirty_paths": [
+        "AGENTS.md",
+        "Launcher/CodeExp2.swift",
+        "Launcher/README.md",
+        "Launcher/build.py",
+        "Launcher/VALHALLA.md",
+        "Launcher/install_valhalla.py",
+        "Launcher/valhalla.config.toml",
+        "tests/test_commit_gate.py"
+      ],
+      "head": "268b4521f4d82267a6d2d4bd81a7e80eae153ed5",
+      "limitations": [
+        "Source hashes in this report identify exact reviewed dirty bytes; HEAD alone does not. Unrelated Missions/README.md changes and untracked mission files were preserved and excluded."
+      ],
+      "state_evidence": null
+    }
+  },
+  "message_id": "valhalla-source-verification-001",
+  "protocol": "builder-communication/1",
+  "recipient": {
+    "role": "coordinator",
+    "session_id": null
+  },
+  "reply_to": "valhalla-review-source-1",
+  "repository": "/Users/boandersson/Desktop/CodeExp2",
+  "sender": {
+    "role": "reviewer",
+    "session_id": null
+  },
+  "summary": "PASS: exact Valhalla sources, separate-profile selection, guarded installation and scoped authority amendment; no material source defects. Runtime/OS qualification remains separate.",
+  "type": "verification"
+}

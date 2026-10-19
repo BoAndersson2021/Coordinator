@@ -306,7 +306,8 @@ class CommitGateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='codeexp2-native-build-') as directory:
             launcher = Path(directory) / 'Launcher'
             launcher.mkdir()
-            for name in ('CodeExp2.swift', 'Icon.swift', 'build.py', 'Start CodeExp2.command'):
+            for name in ('CodeExp2.swift', 'Icon.swift', 'build.py', 'Start CodeExp2.command',
+                         'valhalla.config.toml', 'install_valhalla.py', 'valhall-icon.png'):
                 shutil.copyfile(ROOT / 'Launcher' / name, launcher / name)
             result = subprocess.run([sys.executable, '-B', str(launcher / 'build.py')],
                                     capture_output=True, text=True, timeout=60,
@@ -319,12 +320,17 @@ class CommitGateTests(unittest.TestCase):
             app = launcher / 'build/CodeExp2.app'
             plist = plistlib.loads((app / 'Contents/Info.plist').read_bytes())
             self.assertEqual(plist['CFBundleExecutable'], 'CodeExp2')
+            self.assertEqual(plist['CFBundleName'], 'Valhall')
+            self.assertEqual(plist['CFBundleDisplayName'], 'Valhall')
             self.assertEqual(plist['CFBundleIdentifier'], 'local.codeexp2.coordinator-launcher')
             resources = app / 'Contents/Resources'
-            self.assertEqual((resources / 'CodeExp2.icns').read_bytes()[:4], b'icns')
+            self.assertEqual((resources / plist['CFBundleIconFile']).read_bytes()[:4], b'icns')
             bridge = resources / 'Start CodeExp2.command'
             self.assertTrue(os.access(bridge, os.X_OK))
             self.assertEqual(bridge.read_bytes(), (ROOT / 'Launcher/Start CodeExp2.command').read_bytes())
+            self.assertEqual((resources / 'valhalla.config.toml').read_bytes(),
+                             (ROOT / 'Launcher/valhalla.config.toml').read_bytes())
+            self.verify_valhalla_installation(launcher)
             executable = app / 'Contents/MacOS/CodeExp2'
             self.verify_launcher_claims(executable)
             for args, reason in ((['--terminal'], 'interactive Terminal session'),
@@ -368,10 +374,10 @@ class CommitGateTests(unittest.TestCase):
                 self.assertIn('\x1b]0;CodeExp2 — ' + report['alias'] + '\x07', report['appearance'])
                 self.assertIn('\x1b]11;' + report['color'] + '\x07', report['appearance'])
                 arguments = report['arguments']
-                self.assertEqual(arguments[1:3], ['--config', 'tui.terminal_title=[]'])
-                self.assertEqual(len(arguments), 4)
-                self.assertTrue(arguments[3].startswith('onboard\n'))
-                self.assertIn('Launcher-assigned instance alias: ' + report['alias'], arguments[3])
+                self.assertEqual(arguments[1:5], ['--profile', 'valhalla', '--config', 'tui.terminal_title=[]'])
+                self.assertEqual(len(arguments), 6)
+                self.assertTrue(arguments[5].startswith('onboard\n'))
+                self.assertIn('Launcher-assigned instance alias: ' + report['alias'], arguments[5])
             owner = batch[next(i for i, r in enumerate(reports) if r['alias'] == 'Odin')]
             owner.stdin.close()
             self.assertEqual(owner.wait(timeout=5), 0)
@@ -436,6 +442,32 @@ class CommitGateTests(unittest.TestCase):
         finally:
             for handle in handles:
                 handle.close()
+
+    def verify_valhalla_installation(self, launcher):
+        config_home = self.root / 'disposable-codex-home'
+        config_home.mkdir()
+        global_config = config_home / 'config.toml'
+        global_config.write_text('model = "leave-this-owner-value"\n')
+        profile = config_home / 'valhalla.config.toml'
+        profile.write_text('previous owner profile\n')
+        installer = launcher / 'install_valhalla.py'
+        command = [sys.executable, '-B', str(installer), '--config-home', str(config_home)]
+        installed = subprocess.run(command, capture_output=True, text=True, timeout=10)
+        self.assertEqual(installed.returncode, 0, installed.stdout + installed.stderr)
+        self.assertEqual(global_config.read_text(), 'model = "leave-this-owner-value"\n')
+        self.assertEqual(profile.read_bytes(), (launcher / 'valhalla.config.toml').read_bytes())
+        backups = list((launcher / 'build/valhalla-profile-backups').glob('*/valhalla.config.toml'))
+        self.assertEqual(len(backups), 1)
+        self.assertEqual(backups[0].read_text(), 'previous owner profile\n')
+        repeated = subprocess.run(command, capture_output=True, text=True, timeout=10)
+        self.assertEqual(repeated.returncode, 0, repeated.stdout + repeated.stderr)
+        self.assertIn('already matches', repeated.stdout)
+        profile.unlink()
+        profile.symlink_to(global_config)
+        refused = subprocess.run(command, capture_output=True, text=True, timeout=10)
+        self.assertNotEqual(refused.returncode, 0)
+        self.assertIn('Refusing redirected', refused.stderr)
+        self.assertEqual(global_config.read_text(), 'model = "leave-this-owner-value"\n')
 
     def test_launcher_terminal_bridge_preserves_paths_and_arguments(self):
         """The shipped bridge must exec its sibling binary with exactly --terminal."""

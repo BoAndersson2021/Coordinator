@@ -1,0 +1,57 @@
+# Selected only by the CodeExp2 launcher (--profile valhalla).
+# Capabilities do not authorize work outside the owner's selected task.
+default_permissions = ":danger-full-access"
+approval_policy = "never"
+web_search = "live"
+
+[apps._default]
+enabled = true
+default_tools_approval_mode = "approve"
+destructive_enabled = true
+open_world_enabled = true
+
+[mcp_servers.node_repl]
+default_tools_approval_mode = "approve"
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled".mcp_servers.cua_repl]
+enabled = true
+default_tools_approval_mode = "approve"
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[features]
+apps = true
+plugins = true
+computer_use = true
+browser_use = true
+browser_use_external = true
+in_app_browser = true
+image_generation = true
+view_image = true
+memories = true
+
+[memories]
+generate_memories = true
+use_memories = true

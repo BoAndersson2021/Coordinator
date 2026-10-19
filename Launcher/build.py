@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and ad-hoc sign the local CodeExp2 macOS launcher, without launching it."""
+"""Build and ad-hoc sign the Valhall launcher for CodeExp2, without launching it."""
 import os
 from pathlib import Path
 import plistlib
@@ -25,20 +25,21 @@ def main():
     compiler = ["xcrun", "swiftc", "-module-cache-path", cache, "-O", "-framework", "AppKit"]
     run(*compiler, ROOT / "CodeExp2.swift", "-o", MACOS / "CodeExp2")
     run(*compiler, ROOT / "Icon.swift", "-o", BUILD / "make-icon")
-    run(BUILD / "make-icon", BUILD / "CodeExp2.iconset")
-    run("/usr/bin/iconutil", "-c", "icns", BUILD / "CodeExp2.iconset", "-o", RESOURCES / "CodeExp2.icns")
+    run(BUILD / "make-icon", ROOT / "valhall-icon.png", BUILD / "CodeExp2.iconset")
+    run("/usr/bin/iconutil", "-c", "icns", BUILD / "CodeExp2.iconset", "-o", RESOURCES / "Valhall.icns")
     command = RESOURCES / "Start CodeExp2.command"
     shutil.copyfile(ROOT / "Start CodeExp2.command", command)
     os.chmod(command, 0o755)
+    shutil.copyfile(ROOT / "valhalla.config.toml", RESOURCES / "valhalla.config.toml")
     plist = {
-        "CFBundleName": "CodeExp2",
-        "CFBundleDisplayName": "CodeExp2",
+        "CFBundleName": "Valhall",
+        "CFBundleDisplayName": "Valhall",
         "CFBundleIdentifier": "local.codeexp2.coordinator-launcher",
         "CFBundleExecutable": "CodeExp2",
         "CFBundlePackageType": "APPL",
         "CFBundleShortVersionString": "1.0",
-        "CFBundleVersion": "1",
-        "CFBundleIconFile": "CodeExp2.icns",
+        "CFBundleVersion": "2",
+        "CFBundleIconFile": "Valhall.icns",
         "LSMinimumSystemVersion": "13.0",
         "LSUIElement": True,
         "NSHighResolutionCapable": True,
@@ -47,6 +48,8 @@ def main():
         plistlib.dump(plist, handle)
     run("/usr/bin/codesign", "--force", "--sign", "-", APP)
     run("/usr/bin/codesign", "--verify", "--strict", APP)
+    # Refresh the package timestamp after updating bundled artwork in place.
+    os.utime(APP, None)
     run(MACOS / "CodeExp2", "--self-test")
     run(MACOS / "CodeExp2", "--preflight")
     print(f"Built and signed: {APP}")

@@ -8,7 +8,7 @@ CodeExp2 is not an autonomous runtime or a qualified workflow executor.
 
 ## Start here
 
-For desktop startup, open the **CodeExp2** alias. The local Swift
+For desktop startup, open the **Valhall** alias. The local Swift
 [launcher](Launcher/README.md) opens Terminal in this workspace and starts
 interactive Codex with `onboard` already submitted. The alias points to the
 generated app under `Launcher/build/`; preserve that directory.
