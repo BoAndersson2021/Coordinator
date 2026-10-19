@@ -4,6 +4,10 @@ This mission is registered in [the mission index](../README.md#registered-missio
 Load this guide after explicit selection; its state applies only to this mission
 and does not select, stop or replace any other ongoing mission.
 
+For the current parked checkpoint and exact pickup references, read
+[HANDOVER.md](HANDOVER.md), then the game's canonical `MISSION_PROTOCOL.md`.
+The reviewed suspension/contact candidate has not been implemented or tested live.
+
 Use this guide when coordinating an authorized BallisticsExperimental mission
 from CodeExp2. It records the working arrangement and lessons from this session.
 The user's current request, applicable repository instructions and verified
