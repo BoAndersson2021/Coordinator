@@ -4,6 +4,18 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Required target-host adoption on establishment/resume — 2026-10-19
+
+The owner clarified that the structured default must be installed and active in
+the target host, checked on every authorized establishment or mission pickup.
+The canonical JSON guide is now version 2; its `host_adoption_check` owns the
+procedure and evidence contract. Root AGENTS routes the Coordinator to that
+check before readiness/dependent product work. This legacy entry is only a
+pointer. Structured exact review/adoption evidence is retained under
+`Launcher/build/odin-host-adoption-5pw6k02u/`. CodeExp2's instruction installation
+is updated here; no external mission is selected, resumed or claimed installed
+by this maintenance task. Future authorized pickups verify/complete target setup.
+
 ## Structured canonical agent records — 2026-10-19
 
 The owner requested a prospective default for CodeExp2 and every future mission

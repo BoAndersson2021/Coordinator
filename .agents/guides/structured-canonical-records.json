@@ -1,12 +1,12 @@
 {
   "format": "agent-working-guide/1",
   "id": "structured-canonical-records",
-  "version": 1,
+  "version": 2,
   "title": "How to work predominantly with structured canonical records consumed by execution code, without duplicate Markdown versions",
   "audience": "agents",
   "authority": {
     "kind": "owner_instruction",
-    "reference": "Owner request, 2026-10-19: apply the structured-canonical-record approach in CodeExp2 and every repository worked in through future missions.",
+    "reference": "Owner instructions, 2026-10-19: structured canonical records are the default for CodeExp2/all future mission targets; host adoption must be checked on mission establishment and pickup, and missing installation completed.",
     "grants_execution_permission": false
   },
   "scope": {
@@ -77,6 +77,11 @@
       "id": "SCR-10",
       "requirement": "When format conflicts arise, preserve applicable host/native requirements and resolve them within existing authority. Record the concrete exception and its reason; convenience, habit and assumed human readership are insufficient reasons for new Markdown.",
       "check": "Each new format exception has a specific human request or host/native requirement; no undocumented blanket waiver."
+    },
+    {
+      "id": "SCR-11",
+      "requirement": "On every authorized mission establishment or resumption, verify current target-host adoption before declaring execution readiness or dispatching dependent product work. Install or repair a missing/outdated guide and its native instruction-loading reference within authorized scope, then obtain matching builder read/apply confirmation and structured evidence. A delivered guide or a recorded missing installation does not complete establishment.",
+      "check": "The host_adoption_check has verified evidence for the actual target/worktree, current approved guide, native entry and receiving builder; unresolved setup remains explicit."
     }
   ],
   "format_selection": [
@@ -137,19 +142,20 @@
     }
   ],
   "cross_repository_adoption": {
-    "owner": "Coordinator supplies this guide; the target builder applies it under its native instructions.",
-    "when": "During authorized establishment/resumption and before creating new agent-facing material in a mission target.",
+    "owner": "Coordinator owns verification and arranging missing installation; the target builder installs/applies it through its native instructions, ownership and permissions.",
+    "when": "Mandatory on every authorized mission establishment, pickup or resumption, before declaring execution readiness or dispatching dependent product work, including new agent-facing documentation.",
     "procedure": [
-      "Provide the exact canonical guide through the authorized supported route; explicitly require it to be read and applied.",
-      "If installation is needed within scope, use the target repository's established instruction/configuration location and retain the source identity/version. Keep required native entry files as thin references where supported.",
-      "Collect the applicable matching acknowledgement/report confirming the guide was read; inspect actual target instructions, consumer contracts and permissions. Do not infer adoption from a copied file alone.",
-      "Apply the default to subsequent new agent records and wire operational records to actual consumers. Record specific native-format exceptions and unresolved consumer gaps in the existing target record.",
-      "Keep product state and execution in the target repository; CodeExp2 stores coordination references, not a duplicate maintained product record."
+      "Run the host_adoption_check at every authorized establishment/resumption; inspect the actual target and native instruction-loading route instead of trusting old mission metadata.",
+      "Provide the current approved canonical guide by stable identity/version/hash through the authorized supported route. Verify an existing installation or arrange missing/outdated installation and native entry wiring; this is setup work owned by the Coordinator, not a human manual step.",
+      "Collect fresh matching receiving-builder acknowledgement that the exact installed guide was read and will be applied with the current target instructions. Preserve source identity, actual receiver and native setup evidence; a file copy or reference alone is insufficient.",
+      "Apply the verified default to subsequent new agent records and wire operational records to actual consumers. Record genuine native-format exceptions and unresolved consumer gaps in the existing canonical target setup record.",
+      "Keep product setup state and its evidence in the target repository; CodeExp2 records scoped coordination references, not a duplicate maintained installation record."
     ],
     "boundaries": [
       "No mission selection, resumption, contact, launch, external write or permission change is authorized merely by this guide.",
       "Do not replace target ownership, required protected instructions or an existing canonical schema without applicable authority and review.",
-      "This prospective default does not reopen owner-ended missions or authorize bulk migration of unrelated repositories."
+      "This prospective default does not reopen owner-ended missions or authorize bulk migration of unrelated repositories.",
+      "Routine installation/repair is part of an authorized establishment/resumption; respect native protected-file review, permissions and actual supported routes. Do not invent extra human sublevel approvals, weaken controls or silently accept an incomplete host setup."
     ]
   },
   "migration": {
@@ -177,7 +183,76 @@
     "Canonical guide is structured, versioned and discoverable; no duplicate Markdown guide exists.",
     "Declared consumers and enforcement limits are accurate.",
     "Applicable parsing, reference and independent instruction/adoption checks pass.",
-    "Future mission handoffs explicitly assign read/apply responsibility without claiming unobserved adoption.",
+    "Every authorized mission establishment/resumption verifies current host installation and native entry, completes missing setup and obtains a fresh matching builder read/apply ACK before readiness/dependent product dispatch; records do not claim unobserved external adoption.",
     "No unrelated source migration, mission effect or authority expansion is performed."
-  ]
+  ],
+  "host_adoption_check": {
+    "required": true,
+    "host_definition": "The selected mission target/worktree and the native instruction loader used by its actual repository agent. Do not assume machine-wide configuration or modify unrelated hosts.",
+    "triggers": [
+      "Authorized establishment of a registered mission",
+      "Authorized pickup/resumption of an existing mission",
+      "Recheck when guide version/hash, target/worktree, native entry or receiving builder changes"
+    ],
+    "workflow": [
+      {
+        "step": 1,
+        "action": "Inspect current target instructions, Git/ownership state, supported delivery route, installed guide identity and native loader entry. Preserve unrelated changes and existing native rules."
+      },
+      {
+        "step": 2,
+        "action": "Compare installed guide ID/version/hash to the current approved canonical guide. If current and correctly wired, reuse the installation after verification. Treat same-version hash mismatch, unknown/newer versions or changed native entries as drift to reconcile; do not blindly overwrite them."
+      },
+      {
+        "step": 3,
+        "action": "If missing or known outdated, arrange installation/update through the target builder or supported native setup path within existing mission authority. Use the established instruction location or a durable supported managed installation. Retain the canonical source identity; an installed copy is a deployment, not an independently edited policy fork."
+      },
+      {
+        "step": 4,
+        "action": "Wire the actual target agent entry, such as required AGENTS.md or equivalent, to read/apply that installed JSON guide at native startup and before new agent material. Preserve native instructions and use only the minimum required routing text; no duplicate Markdown guide."
+      },
+      {
+        "step": 5,
+        "action": "Verify installed bytes, supported strict parsing and actual entry-path/reference resolution with evidence. Where target instruction changes require independent review/adoption, complete its actual native requirements. Do not infer runtime semantic enforcement from this instruction wiring."
+      },
+      {
+        "step": 6,
+        "action": "Collect a fresh matching completed ACK from the intended builder identifying the target/worktree, installed guide ID/version/hash, native entry read, applicable exceptions and actual read/apply result. Re-establish communication readiness through its own contract; a saved session, old ACK or copy receipt is insufficient."
+      },
+      {
+        "step": 7,
+        "action": "Retain a structured adoption receipt in the target canonical setup record and reference it from mission coordination. Mark verified only after current installation, entry wiring, checks and builder confirmation agree. Continue into product work only with all other applicable setup/authority requirements also satisfied."
+      }
+    ],
+    "bootstrap_allowance": "The bounded authorized installation, native instruction review and read/apply acknowledgement exchange may occur before host-adoption verification; they establish it. The communication contract still governs readiness for assigning bootstrap work. This is not permission for product work, an unapproved launch or unsupported transport.",
+    "receipt_contract": {
+      "format": "mission-host-guide-adoption/1",
+      "use_existing_equivalent": "Extend or reference the established canonical setup record if it already represents these facts; do not create a second authority or a new state database.",
+      "required_facts": [
+        "Mission/task scope and actual repository/worktree",
+        "Current Coordinator and intended receiving-builder identities; unknown values need explicit limitations",
+        "Guide ID/version/hash and installed location",
+        "Native instruction entry location/identity and loading/reference check",
+        "Actual parser/review/adoption results and evidence references",
+        "Fresh matching completed builder ACK identity and read/apply result",
+        "Genuine format exceptions, unresolved effects/limits and next action",
+        "Observed state and observation time"
+      ],
+      "states": [
+        "unverified",
+        "setup_required",
+        "verified",
+        "blocked"
+      ],
+      "verified_means": "Current approved installed bytes, native entry wiring, applicable native validation/review and fresh actual builder read/apply confirmation are all supported by scoped evidence.",
+      "storage": "Target canonical setup record owns target adoption state. Mission coordination retains its reference and only necessary coordination facts."
+    },
+    "missing_or_blocked": "Arrange the bounded missing installation/configuration/repair within authorized scope and retain the exact gap. Do not call the host established or execution-ready while this prerequisite is unresolved. Hold dependent product dispatch/new-agent-material work; continue permitted read-only inspection, bootstrap and independent work. Surface only a specific missing authority/host capability or material native-rule conflict that cannot be resolved through supported authorized routes.",
+    "limits": [
+      "Bare onboard selects no mission and performs no external installation, contact, diagnostic or launch.",
+      "Do not restart an agent or host unnecessarily; use a supported current read/apply exchange and verify future native entry wiring. A restart or new agent still requires its applicable authority.",
+      "This is an establishment/resumption instruction, not a newly installed runtime admission controller or a guarantee of model compliance.",
+      "Do not bulk-install into unrelated or owner-ended missions without their authorized establishment/resumption."
+    ]
+  }
 }

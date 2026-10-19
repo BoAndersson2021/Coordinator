@@ -56,7 +56,9 @@ investigation remain available; this rule installs no host control or permission
 ## Instruction corpus
 
 New agent-facing material follows the [canonical structured guide](.agents/guides/structured-canonical-records.json),
-read on startup and supplied to native builders in every future mission. This
+read on startup and verified as installed/loaded on every authorized mission
+establishment or pickup. The Coordinator completes missing setup and confirms
+the receiving builder has read/applied it before declaring readiness. This
 existing Markdown orientation remains a routing entry; the JSON guide is the
 single authoritative record of the new authoring approach.
 

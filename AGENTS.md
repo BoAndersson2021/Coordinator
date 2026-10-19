@@ -33,12 +33,19 @@ future missions. Required host entry files remain as thin routing instructions;
 new agent material follows the guide's structured canonical format and actual
 consumer requirements. Human communication keeps its audience-specific format.
 
-For each authorized mission, explicitly supply this exact guide to the native
-builder for reading/application before new agent documentation is created.
-Follow its cross-repository adoption procedure and the target's actual
-instructions, ownership and permissions. A copied file alone is not confirmed
-adoption. No unrelated migration, mission execution or external write follows
-from this default.
+On every authorized mission establishment or pickup/resumption, complete the
+guide's required `host_adoption_check` against the actual target/worktree and
+receiving builder. Verify the current approved guide installation and native
+instruction entry; arrange missing/outdated installation or wiring through the
+target's supported setup path. Collect a fresh matching completed builder ACK
+that the installed guide was read and will be applied, and retain structured
+adoption evidence. Do not declare execution readiness or dispatch dependent
+product/new-agent-material work while this setup is unresolved. Bounded setup
+and the read/ACK exchange may establish this prerequisite under the guide's
+bootstrap allowance. The Coordinator owns this work; it is not a human manual
+step. Follow the target's actual instructions, ownership, review and permissions.
+A copied file alone is not confirmed adoption. Bare onboarding and this default
+do not authorize unrelated host installation, mission resumption or execution.
 
 ## Startup request: `onboard`
 
