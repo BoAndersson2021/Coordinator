@@ -28,7 +28,12 @@ You may use several CodeExp2 instances for different missions. Select the missio
 and intended outcome in each; Coordinators handle ownership, shared edits and
 conflict resolution under the
 [concurrent-instance procedure](Missions/README.md#concurrent-codeexp2-instances).
-Routine coordination and worktree management are not tasks for the human.
+Routine coordination and worktree management are not tasks for the human. The
+Coordinator also reads the [shared native-control runbook](docs/native-control.md)
+on every startup and carries out its applicable setup, checks, recovery and
+closure steps automatically within the authorized task. You do not need to run
+its command examples or prepare its bindings. Bare onboarding still stops at
+the mission menu without connecting to a receiver or launching diagnostics.
 
 Before a mission becomes execution-ready, the Coordinator must complete all
 three [required execution setup steps](Missions/README.md#required-mission-execution-setup):

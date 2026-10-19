@@ -38,6 +38,35 @@ user explicitly selects that mission; an explicit selection supplied with
 `onboard` counts. Onboarding alone authorizes no agent launch, message,
 implementation, commit or push.
 
+On every `onboard`, also read the [shared native-control runbook](docs/native-control.md)
+in full before reporting readiness. It is a Coordinator operating instruction;
+using it is not a manual task for the human. The launcher already submits
+`onboard`, so this requirement applies to desktop-created instances too.
+
+After the user authorizes the relevant mission/task connection, automatically
+choose its supported control route and carry out the applicable runbook steps.
+Use the shared CLI's `preflight` and exact receiver `status` only within its
+supported CodeExp2 inspection/owned-diagnostic scope. For an external mission's
+builder, use that mission's supported qualified route for setup, status and
+recovery; do not substitute a CodeExp2 binding or broaden the shared executable.
+Verify the available interpreter/dependency and actual session, receiver,
+workspace and authority; retain private evidence. Reconcile owned uncertain
+effects before further sends and produce the summary/continuation record at
+closure. Use the visual-review and
+task-closure templates when their subjects apply. Provision routine missing
+capabilities within existing authority; do not tell the human to run shell
+commands, prepare binding files or relay agent messages. Surface only a concrete
+owner-controlled decision or unavailable host/provider capability.
+
+Startup loading does not authorize native connection or execution. Bare `onboard`
+still ends at the mission menu; do not probe other receivers, launch diagnostics,
+run `qualify`, or resume owner-ended work automatically. Run effectful diagnostics
+only within their actual authorized scope. The shared entry qualifies bounded
+owned diagnostics; it is not a product assignment transport or complete mission
+runner. Before product work, use the selected mission's supported delivery route,
+fresh matching completed builder ACK and required execution setup. Report missing
+capability honestly while continuing independent authorized work.
+
 When the launcher supplies an instance alias, introduce yourself as
 **Coordinator <alias>** and retain that alias in human-facing ownership records.
 It identifies this running instance; preserve actual session IDs and lowercase

@@ -4,6 +4,24 @@ This file covers CodeExp2 workspace state. It is not a global active-mission
 pointer or a mission implementation plan. Read mission-specific state only after
 explicit selection through [the registry](Missions/README.md#registered-missions).
 
+## Agent-owned runbook startup — 2026-10-19
+
+The owner clarified that using the shared runbook belongs to the agent, not a
+human manual next step. AGENTS now requires reading it on every `onboard`, which
+the desktop launcher already submits. Following an authorized mission/task
+connection, the Coordinator owns environment/binding/evidence preparation,
+applicable preflight/status, scoped recovery, visual review and closure. Use the
+shared CLI only for its supported CodeExp2 inspection/owned diagnostics and the
+selected mission's qualified route for an external builder. Bare
+onboarding still selects no mission and performs no native connection or probe;
+effectful qualification and product dispatch retain their scope/setup rules.
+This wires the procedure into agent startup instructions, not a background
+mission runner or a claim that all native execution categories are supported.
+Instruction review/adoption is recorded in the
+[startup-wiring receipt](Missions/ControlWorkflowEvidence/20261019-native-control-startup.md).
+The preceding closing recommendation to “use the runbook” is superseded as a
+human task; future Coordinators carry it out within the authorized workflow.
+
 ## Session lessons control path — 2026-10-19
 
 Coordinator Odin implemented the complete approved six-improvement chain as

@@ -2,6 +2,30 @@
 
 The shared entry is `scripts/native_control.py`. It observes the installed Unix WebSocket route and qualifies only its owned disposable diagnostics. It does not attach existing standalone Terminals, implement PANEL, run product assignments, select unattended automatic review or retire a native executor.
 
+## Coordinator-owned startup and use
+
+Every Coordinator must read this runbook during `onboard`, including startup
+from the desktop launcher. The human supplies the intended outcome, selected
+mission/task and reserved decisions. The Coordinator owns procedure, tool setup,
+binding creation, command execution, evidence and continuation; command examples
+below are for the agent to execute within existing authority.
+
+| Trigger | Coordinator action |
+| --- | --- |
+| Bare startup / `onboard` | Read this runbook, workspace rules and actual Git state; present the mission menu. Do not connect to receivers or create diagnostics merely to onboard. |
+| Authorized mission/task connection | Choose the supported route and verify actual ownership/session/receiver/workspace/authority. For supported CodeExp2 inspection/owned diagnostics, prepare the interpreter/dependency, private binding/evidence and run shared `preflight`/exact `status`. For an external builder, automatically use its mission's supported qualified setup/status/recovery route; never substitute a CodeExp2 binding to force access. |
+| Product assignment | Verify the selected mission's delivery route, fresh matching completed builder ACK and all required execution setup. This client alone cannot send product assignments or qualify unattended review. |
+| Connection uncertainty | Use the same supported route to reconcile the exact owned operation without replay. Shared `reconcile` applies only to its owned diagnostic run. Preserve unknowns and block only effects dependent on missing proof. |
+| Authorized diagnostic qualification | Reuse matching evidence; run `qualify` only when the task actually authorizes its disposable effects and new proof is needed. No startup model/approval probes by default. |
+| Visual decision / closure | Use the linked templates, retain stable asset identities and actual owner decisions, and generate summary/continuation automatically for the applicable task. |
+
+Do not make the human activate environments, run these commands, assemble JSON
+bindings, relay messages or inspect evidence as a prerequisite to ordinary
+agent-owned work. Ask only for a material reserved decision or a specific
+host/provider step that the Coordinator cannot complete through authorized
+supported routes. Readiness observations and historical proof do not resume
+ended work or grant mission execution authority.
+
 ## Environment and binding
 
 Use Python with the pinned dependency in [requirements-native-control.txt](../scripts/requirements-native-control.txt). A fresh authorized local environment can be prepared with:
