@@ -492,5 +492,59 @@ class CommitGateTests(unittest.TestCase):
         self.assertIn('no such file or directory', missing.stderr)
 
 
+    def test_ballistics_host_control_offline_regressions(self):
+        """Exercise staged host guards with transport forbidden, without native effects."""
+        host = ROOT / 'Missions/BallisticsExperimental/host-control-20261019'
+        runner = r'''
+import json, sys, types, unittest
+# Offline tests exercise real client logic with explicit fake clients. Import
+# transport is unavailable under -S; forbid it rather than needing a live venv.
+transport = types.ModuleType('websockets.sync.client')
+def forbidden_transport(*args, **kwargs):
+    raise AssertionError('Native transport is forbidden in staged regressions')
+transport.unix_connect = forbidden_transport
+sys.modules['websockets'] = types.ModuleType('websockets')
+sys.modules['websockets.sync'] = types.ModuleType('websockets.sync')
+sys.modules['websockets.sync.client'] = transport
+sys.path.insert(0, sys.argv[1])
+expected = {
+    'test_host_control.ApprovalScopeTests.test_exact_command_and_native_shell_wrapper',
+    'test_host_control.ApprovalScopeTests.test_shell_command_separators_never_count_as_argument_whitespace',
+    'test_host_control.ApprovalScopeTests.test_other_effects_and_malformed_commands_refuse',
+    'test_host_control.ApprovalScopeTests.test_unrelated_thread_and_unlisted_mutation_rejected_before_send',
+    'test_host_control.RetirementTests.test_lost_start_response_is_reconciled_without_redispatch',
+    'test_host_control.RetirementTests.test_interrupt_ack_without_final_state_is_not_cleanup',
+    'test_host_control.RetirementTests.test_remaining_process_prevents_cleanup_claim',
+    'test_host_control.RetirementTests.test_unknown_or_mismatched_start_does_not_interrupt_other_work',
+    'test_host_control.RetirementTests.test_identical_payload_from_a_different_dispatch_is_not_owned',
+    'test_host_control.SettingsTests.test_restoration_reads_actual_settings_and_preserves_permissions',
+    'test_host_control.SettingsTests.test_finalizer_can_reconcile_lost_restoration_response',
+    'test_host_control.SettingsTests.test_intervening_unowned_setting_change_is_preserved',
+}
+class Result(unittest.TextTestResult):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.successes = set()
+    def addSuccess(self, test):
+        self.successes.add(test.id())
+        super().addSuccess(test)
+suite = unittest.defaultTestLoader.discover(sys.argv[1], pattern='test_host_control.py')
+result = unittest.TextTestRunner(verbosity=2, resultclass=Result).run(suite)
+passed = (result.wasSuccessful() and not result.skipped
+          and not result.expectedFailures and result.successes == expected
+          and result.testsRun == 12)
+print(json.dumps({'host_regressions_complete': passed,
+                  'tests_run': result.testsRun, 'successes': sorted(result.successes)}))
+sys.exit(0 if passed else 3)
+'''
+        result = subprocess.run([sys.executable, '-I', '-S', '-B', '-c', runner, str(host)],
+                                capture_output=True, text=True, timeout=20)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        report = json.loads(result.stdout)
+        self.assertIs(report['host_regressions_complete'], True)
+        self.assertEqual(report['tests_run'], 12)
+        self.assertEqual(len(report['successes']), 12)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

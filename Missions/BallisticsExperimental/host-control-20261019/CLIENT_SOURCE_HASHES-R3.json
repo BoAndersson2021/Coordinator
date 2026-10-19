@@ -1,0 +1,6 @@
+{
+  "native_host_control.py": "8d7ccabca3f23d00d388244aefca364a80a7abdd65e109d690dee450f8f93fea",
+  "qualify_host_control.py": "90c92d1775e8cb1928738457b8288bbc333f66b6f0b9df9a112f189ef76056a4",
+  "test_host_control.py": "3d8182614be5e2d27e63e7b0edc95f477107e2e5154d0a9299479aeadc347305",
+  "test_native_start_recovery.py": "f61d0483abd8c4d8f34d588b09b62fe1440c317134aa281a651c4589f7b54798"
+}

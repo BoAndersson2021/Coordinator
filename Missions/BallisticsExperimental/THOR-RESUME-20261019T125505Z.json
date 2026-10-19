@@ -1,0 +1,74 @@
+{
+  "record_type": "coordinator_resume_checkpoint",
+  "date_utc": "2026-10-19T12:55:05Z",
+  "mission": "BallisticsExperimental",
+  "sender": {"role": "coordinator", "session_id": null},
+  "coordinator_alias": "Thor",
+  "identity_limit": "Actual Coordinator session ID is not exposed in this context. Alias does not replace it or transfer previous ownership.",
+  "authority": {
+    "owner_request": "Ok resume",
+    "meaning": "Resume the parked reviewed frontal escape/suspension-contact repair, starting with builder ownership, readiness and mandatory execution setup reconciliation.",
+    "publication": "No new staging, commit or push authority.",
+    "previous_pause": "Owner's prior parking instruction is superseded by this explicit resume. Historical failures and execution prerequisites remain."
+  },
+  "repository": "/Users/boandersson/Desktop/BallisticsExperimental",
+  "baseline": {
+    "branch": "main",
+    "head": "bf8753ed55da5e94e9e85042c98b0b0d6b6559c9",
+    "tracked_modified_count": 9,
+    "untracked": "Existing contact-arrival investigation artifacts and Scripts/__pycache__; preserved.",
+    "staged_paths": [],
+    "plan": "Engineering/Investigations/BE-CONTACT-ARRIVAL-001/PLAN.md",
+    "plan_checkpoint": "R26; builder-owned historical parked baseline. Not edited by Coordinator.",
+    "source_identity": {
+      "Portable/BallisticsV2/src/production_solver.cpp": "0c57a62bdb7781962a778ab36a89065374f25c60d0171a3af7f454146a2f1e28",
+      "Portable/BallisticsV2Worker/src/production_worker.cpp": "2a15f332c8e72485f14b83c1300539c432ac678155e5600a68d6bf99f66ad284",
+      "Binaries/Mac/libUnrealEditor-BallisticsRuntime.dylib": "32081f831f494ce0b0e8520ef78c9d1f754c18bdff6bdc7d0e9d6d558581f760"
+    },
+    "qualification": "Current runtime remains unqualified; all 12 prior numerical variants and stopped approaches carry. Candidate 13 has not started."
+  },
+  "reviewed_artifacts": [
+    {
+      "path": "Saved/Investigations/BE-CONTACT-FRONTAL-001/normal-preflight-1/PREFLIGHT.json",
+      "sha256": "b408daf2da280492eb00f713b2d8aa5f23f596ac8c40cbb68b5a2934de1c4472",
+      "check": "Freshly rehashed; matches reviewed identity. Proposal, not implementation."
+    },
+    {
+      "path": "Saved/Investigations/BE-CONTACT-FRONTAL-001/normal-preflight-1/CLARIFICATION.json",
+      "sha256": "dd7a62d3cc02e03fdb4a8228828a9288cd5ee0e085e08f775c37d5f45f83f9ad",
+      "check": "Freshly rehashed; matches reviewed identity. Mandatory geometric/kinetic/time/reaction distinctions preserved."
+    }
+  ],
+  "connection": {
+    "historical_builder_session_id": "01a14b73-b7a5-7062-865e-ebd47b6b3ce0",
+    "fresh_readiness": "NOT_PROVEN",
+    "current_tool_inventory": "No codex_tui/list_threads/read_thread/send_message_to_thread/wait_threads or builder-bound approval-decision/exact-turn interrupt tools exposed.",
+    "plugin_searches": ["Codex agent thread control", "codex_tui"],
+    "plugin_result": "No matching builder-control integration returned. Search results are not an exhaustive directory or proof of permanent absence.",
+    "effects": "No builder messages, launches, replacements or ownership transfer. Actual builder availability/outstanding effects remain unknown."
+  },
+  "execution_setup": {
+    "overall": "EXECUTION_BLOCKED",
+    "native_approval_review": "NOT_PROVEN for actual receiver",
+    "ordinary_permissions": "Repository reads observed; full receiver-bound edit/build/live scope NOT_PROVEN",
+    "approval_cancellation_control": "BLOCKED: no connected supported decision/interrupt/status route",
+    "historical_setup": "Saved/AgentCommunication/BE-CONTACT-FRONTAL-001-NORMAL-LIVE-20261019-1/EXECUTION_SETUP.json",
+    "official_reference": "https://learn.chatgpt.com/docs/app-server",
+    "reference_scope": "Official documentation describes request-scoped approval resolution and turn/interrupt with interrupted completion; documentation does not establish a connection or installed capability in this session.",
+    "probe_status": "No pending approval probe or product execution started. No approval rejection occurred in this resume attempt."
+  },
+  "next_action": {
+    "setup_owner": "Coordinator Thor owns arranging connection and qualification within available authority.",
+    "external_dependency_owner": "Host integration/provider owner; exact person or team unknown.",
+    "needed": "Expose/connect supported existing-builder discovery, read, send and completion tools plus receiver-bound approval decisions, exact-turn interrupt and final status. Then obtain fresh matching ACK, reconcile ownership and qualify the mandatory setup before bounded candidate dispatch.",
+    "consent": "Repair/live-test intent is already authorized; no repeated product-consent question is required.",
+    "boundary": "Do not substitute Terminal input, scraped transcripts, an uncontrolled replacement, permission widening or Coordinator product-file takeover."
+  },
+  "effects": {
+    "written": ["Missions/BallisticsExperimental/THOR-RESUME-20261019T125505Z.json"],
+    "target_files_changed": false,
+    "build_replay_live_test": "not_run",
+    "commit_push": "not_run",
+    "limits": "This checkpoint records authorization and observed access only. It does not prove builder liveness, cancellation, repaired physics or owner acceptance."
+  }
+}

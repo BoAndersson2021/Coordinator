@@ -1,0 +1,167 @@
+{
+  "record_type": "host_control_installation_and_scoped_adoption",
+  "date_utc": "2026-10-19 13:41:42 UTC",
+  "status": "INSTALLED_AND_VERIFIED",
+  "coordinator": {
+    "role": "coordinator",
+    "session_id": "01a15430-c8d2-74c0-86bc-04dfd8a42dc7",
+    "human_alias": "Coordinator Thor",
+    "launcher_color": "#4c211b"
+  },
+  "owner_authority": [
+    "Ok resume",
+    "Ok install the host dependency"
+  ],
+  "installed": {
+    "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 17.0.0 (clang-1700.6.4.2)]",
+    "interpreter": "/Users/boandersson/Desktop/CodeExp2/Launcher/build/thor-host-control/venv/bin/python",
+    "package": "websockets",
+    "version": "17.2",
+    "installation_root": "/Users/boandersson/Desktop/CodeExp2/Launcher/build/thor-host-control/venv",
+    "native_daemon": "existing Codex app-server 0.163.0; no new daemon installed or restarted",
+    "endpoint": "Unix WebSocket at ~/.codex/app-server-control/app-server-control.sock",
+    "scope": "Existing Ballistics builder session only"
+  },
+  "client_source_hashes": {
+    "native_host_control.py": "8d7ccabca3f23d00d388244aefca364a80a7abdd65e109d690dee450f8f93fea",
+    "qualify_host_control.py": "90c92d1775e8cb1928738457b8288bbc333f66b6f0b9df9a112f189ef76056a4",
+    "test_host_control.py": "3d8182614be5e2d27e63e7b0edc95f477107e2e5154d0a9299479aeadc347305",
+    "test_native_start_recovery.py": "f61d0483abd8c4d8f34d588b09b62fe1440c317134aa281a651c4589f7b54798"
+  },
+  "selected_receiver": {
+    "session_id": "01a14b73-b7a5-7062-865e-ebd47b6b3ce0",
+    "repository": "/Users/boandersson/Desktop/BallisticsExperimental",
+    "final_status": {
+      "type": "idle"
+    }
+  },
+  "scope": "Local native host connection and scratch/native-tool access. No new daemon, global MCP/config/profile change, model override, replacement builder, or product implementation.",
+  "observed_effective_receiver": {
+    "provider": "Codex app-server 0.163.0",
+    "approvalPolicy": "on-request",
+    "approvalsReviewer": "auto_review",
+    "activePermissionProfile": ":workspace",
+    "sandbox": "workspaceWrite; network disabled"
+  },
+  "qualification": {
+    "native_automatic_review": {
+      "result": "PASS",
+      "turn": "01a15447-d694-7e20-9a41-721fc0bd813a",
+      "evidence": "probe-auto-1/"
+    },
+    "scoped_accept": {
+      "result": "PASS",
+      "turn": "01a15449-21a8-7751-bd8c-b218566ada43",
+      "request_id": 794,
+      "evidence": "probe-accept-1/"
+    },
+    "visible_decline_without_execution": {
+      "result": "PASS",
+      "turn": "01a1544a-0c6b-70b1-ba6e-e88540677629",
+      "request_id": 798,
+      "evidence": "probe-decline-1/AUDIT.json"
+    },
+    "pending_reconnect_and_exact_turn_cancel": {
+      "result": "PASS",
+      "turn": "01a1544a-ba8e-7650-a418-db3312390e3d",
+      "request_id": 799,
+      "evidence": "probe-cancel-1/RESULT.json"
+    },
+    "discarded_start_reply_reconciliation": {
+      "result": "PASS",
+      "turn": "01a1545d-1ce9-7f33-8ea7-53936754c7ba",
+      "evidence": "lost-start-1/RESULT.json",
+      "limit": "Intentionally discarded returned identity; not an injected server/network failure. Final stricter UUID matcher verified offline against exact native pages."
+    },
+    "ordinary_access": {
+      "result": "PASS",
+      "tested": "Repository read, isolated scratch source edit/clang++ compile/execution; real installed Unreal Build.sh -help -WaitMutex entry, exit 0",
+      "evidence_absolute": "/Users/boandersson/Desktop/BallisticsExperimental/Saved/AgentCommunication/THOR-HOST-VERIFY-20261019-1/HOST-VERIFY-report.json",
+      "limit": "No game-target compilation, lock contention or native game lifecycle proved."
+    },
+    "final_source_tests": {
+      "result": "PASS",
+      "count": 12,
+      "scope": "Host command/action binding, dispatch identity, cleanup and settings recovery",
+      "evidence": "GREEN_TESTS-R3.json"
+    },
+    "independent_source_review": {
+      "result": "PASS",
+      "reviewer_session_id": "01a14b73-b7a5-7062-865e-ebd47b6b3ce0",
+      "independence": "Builder reviewed Coordinator-authored client; builder did not edit client source.",
+      "report_absolute": "/Users/boandersson/Desktop/BallisticsExperimental/Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/HOST-REVIEW3-report.json",
+      "sha256": "ba0b980d918c194431f09e3e993c4c5ba7fa52d2f42919b0b2def351ab0f313d"
+    }
+  },
+  "technical_adoption": "Coordinator verified matching completed report, source pins, directly referenced artifact hashes and final idle receiver. Final R3 client accepted for this scoped local host connection; no owner acceptance or broader runtime qualification claimed.",
+  "preserved_failures": [
+    "Initial JSONL-to-raw-proxy handshake timeout; corrected by documented Unix WebSocket framing.",
+    "Original decline checker false result; native decline verified from retained request/resolution/refusal and absent marker without retry.",
+    "First review found three issues; second found remaining text-only dispatch fallback. Prior source copies, reports, red tests and all raw native evidence retained."
+  ],
+  "final_target": {
+    "head": "bf8753ed55da5e94e9e85042c98b0b0d6b6559c9",
+    "git_status": "## main...origin/main\n M Portable/BallisticsV2Worker/src/production_worker.cpp\n M Scripts/quick_play.py\n M Source/BallisticsRuntime/Private/BallisticsResultsNaturalTest.cpp\n M Source/BallisticsRuntime/Private/BallisticsTubeMovementComponent.cpp\n M Source/BallisticsRuntime/Private/BallisticsV2WorkerRuntime.cpp\n M Source/BallisticsRuntime/Private/BallisticsV2WorkerRuntime.h\n M Source/BallisticsRuntime/Public/BallisticsTubeMovementComponent.h\n M Tests/CollisionPacing/README.md\n M Tests/CollisionPacing/test_guard.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/ARITHMETIC.md\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/ASSIGNMENT.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/BASELINE.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/ENDPOINT_CAPTURE.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/ENDPOINT_EXACT_GEOMETRY.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/EVIDENCE_MANIFEST.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/EXACT_AFTER_GEOMETRY.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/EXACT_GEOMETRY.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/FRACTION_COMPARISON.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/NATIVE_OUTCOMES.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/ORIGINAL_RECAPTURE_COMPARISON.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/P34_ASSIGNMENT.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/P34_EVIDENCE_MANIFEST.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/P34_REPORT.md\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/P34_SOURCE_DIFF.patch\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/P34_VERIFICATION.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/PROCESS_STATE.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/PROCESS_STATE_P34.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/PROCESS_STATE_STEERING.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/REPORT.md\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/STEERING_ASSIGNMENT.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/STEERING_EVIDENCE_MANIFEST.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/STEERING_REPORT.md\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/STEERING_SOURCE_DIFF.patch\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/STEERING_VERIFICATION.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/VERIFIED_BEFORE_HANDOVER.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/VERIFIED_FINAL.json\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/analyze_endpoint.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/analyze_geometry.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/contact_after.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/contact_repeated.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/contact_replay.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/endpoint_after.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/endpoint_replay.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/filter_checks.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/frontal/\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/make_diagnostic_worker.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/make_endpoint_probe.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/p12-frozen/\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/p34-frozen/\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/run_after.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/run_endpoint.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/run_endpoint_after.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/run_focused.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/run_native.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/run_replay.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/terminal_checks.cpp\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/verify_evidence.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/verify_p34.py\n?? Engineering/Investigations/BE-CONTACT-ARRIVAL-001/verify_steering.py\n?? Scripts/__pycache__/\n",
+    "staged_paths": [],
+    "protected_hashes": {
+      "Portable/BallisticsV2/src/production_solver.cpp": "0c57a62bdb7781962a778ab36a89065374f25c60d0171a3af7f454146a2f1e28",
+      "Portable/BallisticsV2Worker/src/production_worker.cpp": "2a15f332c8e72485f14b83c1300539c432ac678155e5600a68d6bf99f66ad284",
+      "Binaries/Mac/libUnrealEditor-BallisticsRuntime.dylib": "32081f831f494ce0b0e8520ef78c9d1f754c18bdff6bdc7d0e9d6d558581f760"
+    },
+    "product_bytes_unchanged": true
+  },
+  "mission_state": {
+    "owner_resume": "Still recorded; earlier owner park is superseded by explicit resume.",
+    "original_repair": "Unimplemented; source11/native module remain unqualified; all12 numerical attempts/stops retained; candidate13 not started.",
+    "native_game_qualification": "NOT_RUN",
+    "next_coordinator_action": "Use existing builder-owned PLAN R26, reviewed PREFLIGHT and mandatory CLARIFICATION for the next bounded candidate assignment; no repeated product-consent question. Qualify each expanded native execution scope and preserve all final game gates."
+  },
+  "changes": "Only mission-local client/test/coordination artifacts, ignored local dependency environment and authorized native Saved qualification evidence. No staging, commit or push. Concurrent Valhalla changes preserved.",
+  "review_evidence_verified": [
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/BEFORE.json",
+      "claim": "Requested hashes verified; review-2-source copies match prior reviewed hashes. Both diffs retained.",
+      "sha256": "dbb75db263269e74b60c42dbe40833e07f3172a1da4ea97cb5b82304f1381b33"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/OFFLINE-TESTS.json",
+      "claim": "12 tests, exit 0, including identical-payload/different-UUID no-interrupt negative.",
+      "sha256": "bb6a9e058501948ecd49ae5b214f3848dab1305d34d3d5f5db43d8a6b134eccb"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/FINAL-UUID-JOIN.json",
+      "claim": "Same exact UUID and turn selected from actual pre/post-interrupt persisted pages offline.",
+      "sha256": "6bd6b9283cd6880ccb1801b6a6ead5e9e24af11a65ce31adf5bbac40d5cc25fa"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/CLIENT-REVIEW3.json",
+      "claim": "Unchanged prior fixes reused; affected helper tests pass.",
+      "sha256": "3b3d77fceaf627c6033ebbc191c1025498ad8df16486ef7484c2535652f226ff"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/AFTER.json",
+      "claim": "All comparison groups unchanged.",
+      "sha256": "cce48e0d1929c4f44ec1e095b72f68634b52a382a05751660d26c23413e5a1a9"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/MANIFEST.json",
+      "claim": "Local artifacts and hashes.",
+      "sha256": "0b2cd7964bd6c5188cd11444ca0e6b4dd9fa3b39531a37aaa617810195238a7b"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/CLIENT-REVIEW3.json",
+      "claim": "Final independent focused review.",
+      "sha256": "3b3d77fceaf627c6033ebbc191c1025498ad8df16486ef7484c2535652f226ff"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW3-20261019-1/FINAL-UUID-JOIN.json",
+      "claim": "Offline final-selector audit and external native evidence hashes.",
+      "sha256": "6bd6b9283cd6880ccb1801b6a6ead5e9e24af11a65ce31adf5bbac40d5cc25fa"
+    },
+    {
+      "path": "Saved/AgentCommunication/THOR-HOST-REVIEW2-20261019-1/HOST-REVIEW2-report.json",
+      "claim": "Prior completed review and actual lost-start audit reused; old defect and prior failures remain preserved. Earlier tool-entry evidence remains scoped as originally reported.",
+      "sha256": "c78cf4b2bfe5b3ba83b5d6c110becb12a92140b9de6b84d2968da0fd435d0721"
+    }
+  ]
+}

@@ -1,5 +1,38 @@
 # BallisticsExperimental — pickup checkpoint, 2026-10-19
 
+## Current update — Coordinator Thor restored host control, 2026-10-19
+
+The owner explicitly said **“Ok resume”**, then **“Ok install the host dependency”**.
+The earlier owner park below is historical. Coordinator Thor's actual session is
+`01a15430-c8d2-74c0-86bc-04dfd8a42dc7`; the existing builder remains
+`01a14b73-b7a5-7062-865e-ebd47b6b3ce0` in the registered game repository.
+
+The installed Codex 0.163.0 daemon already supplied a native Unix WebSocket
+control interface. A pinned local WebSocket dependency and mission-scoped client
+are now installed and connected. Automatic review, exact request acceptance,
+visible refusal without execution, pending-request reconnection, exact-turn
+cancellation, final state/process checks and settings restoration were verified.
+Scratch C++ compilation/execution and the real installed Unreal build-tool help
+entry passed. Twelve focused host checks and independent final exact-source
+review passed after correcting the recorded client findings.
+
+The [installation receipt](host-control-20261019/INSTALLATION.json) binds the
+installed paths, source hashes, native events, review reports and tested limits.
+The final builder was observed **idle**, with `on-request` / `auto_review`
+restored and its workspace permissions preserved. No daemon restart, replacement
+builder or global permission/profile change was made. Concurrent Valhalla work
+was preserved. These are host-control results, not game-runtime qualification.
+
+Product source/module hashes and the empty game index remain unchanged at
+`bf8753ed55da5e94e9e85042c98b0b0d6b6559c9`. Candidate 13 has not started; all
+12 numerical attempts/stops and the unresolved frontal escape remain. The next
+Coordinator action is the bounded reviewed candidate against the existing
+builder-owned PLAN and preflight/clarification. The resume/repair intent is
+already authorized; expanded native execution and final game gates still need
+their applicable evidence. No staging, commit or push occurred here.
+
+## Earlier owner-parked checkpoint — preserved history
+
 **Parked at the owner's request. The suspension/contact repair is preflighted,
 but has not been implemented or tested live.** Frontal wall pinning remains
 unresolved. This checkpoint neither closes the mission nor resumes execution.

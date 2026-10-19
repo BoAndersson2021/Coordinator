@@ -1,0 +1,10 @@
+{
+  "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "interpreter": "/Users/boandersson/Desktop/CodeExp2/Launcher/build/thor-host-control/venv/bin/python",
+  "package": "websockets",
+  "version": "17.2",
+  "installation_root": "/Users/boandersson/Desktop/CodeExp2/Launcher/build/thor-host-control/venv",
+  "native_daemon": "existing Codex app-server 0.163.0; no new daemon installed or restarted",
+  "endpoint": "Unix WebSocket at ~/.codex/app-server-control/app-server-control.sock",
+  "scope": "Existing Ballistics builder session only"
+}
