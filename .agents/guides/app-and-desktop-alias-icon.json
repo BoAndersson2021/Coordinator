@@ -1,0 +1,129 @@
+{
+  "format": "agent-working-guide/1",
+  "id": "app-and-desktop-alias-icon",
+  "version": 2,
+  "title": "How to make an icon for an app and its desktop alias",
+  "audience": "Coordinator and authorized native repository builder",
+  "authority": {
+    "kind": "owner_instruction",
+    "reference": "Owner requested a faster reusable CodeExp2 icon guide, truthful wiring and an end to icon-generation/verification churn.",
+    "grants_execution_permission": false
+  },
+  "scope": "macOS app icon artwork, durable native build integration and the corresponding native Finder desktop alias; adapt platform-specific packaging for other operating systems.",
+  "success": "The requested artwork is visible on the installed app and actual desktop alias, alias kind/name/target are preserved, and the existing build retains the icon. Stop when this is verified. Icon completion does not establish software readiness; functional launcher changes need their relevant real workflow check.",
+  "consumer": {
+    "entry": "AGENTS.md#reusable-agent-instructions",
+    "register": "AGENTS.md#reusable-agent-instructions",
+    "discovery": "README.md#instruction-corpus",
+    "kind": "agent_interpreted",
+    "runtime_enforcement": false,
+    "syntax_validator": "scripts/native_evidence.py:strict_json",
+    "limits": "Parsing and links prove discoverability, not automatic model compliance or a generic runtime gate."
+  },
+  "workflow": [
+    {
+      "step": 1,
+      "action": "Find and reuse the artwork and native route first.",
+      "details": [
+        "Inspect the requested image, including an image already on the Desktop, and existing source PNG/SVG/ICNS before calling an image generator. Reuse a suitable image; do not redraw it merely because installation is unfinished. Resolve an ambiguous intended image with one focused question.",
+        "Identify the actual app bundle, icon resource/plist keys, existing build command and source asset home. Inspect the desktop item type, alias target and any custom-icon override. Preserve unrelated files and native ownership."
+      ]
+    },
+    {
+      "step": 2,
+      "action": "Choose one master; stop creative generation once it is usable.",
+      "details": [
+        "Respect the requested art medium: preserve/edit native vector artwork for a vector task. When new raster artwork is needed and no usable master exists, apply the available image-generation skill and make one initial generation for the agreed brief. Inspect that result, select the usable master and record its path/hash once.",
+        "Another creative call requires a named artwork defect against the brief or an owner-requested visual revision; explain that reason before the call. Packaging, icon sizes, signing, alias resolution, cache lag or slow reporting are not artwork defects.",
+        "Never call an image generator for each icon size, app versus alias, or each preview. Once a suitable image exists on disk or Desktop, proceed to packaging. Preserve the original."
+      ]
+    },
+    {
+      "step": 3,
+      "action": "Save and check the master once.",
+      "details": [
+        "Copy the chosen master into the project source asset home, not only a tool-generated or temporary directory. Retain the prompt and generation mode when generated. Verify delivered dimensions and actual alpha rather than assuming requested dimensions.",
+        "Read applicable image-detail guidance. Check the subject silhouette, required parts and contrast at intended icon sizes, typically 32/64/128 px. Use deterministic size previews; these are derivatives, not new generations or new native detail. One combined preview or one selected image is enough for the human unless a change needs showing."
+      ]
+    },
+    {
+      "step": 4,
+      "action": "Use the existing icon packager.",
+      "details": [
+        "Reuse an existing native icon script when present. Otherwise use standard native format/size conversion, such as sips plus iconutil, to produce an ICNS from the master. Typical iconset names include icon_16x16.png through icon_512x512.png and their @2x variants; 1024 px supplies 512@2x when supported by the master. Preserve alpha; do not claim resizing creates native detail.",
+        "Keep one source master and one derived installable icon. Do not create another launcher, generic workflow engine, icon-generation service or test framework for a cosmetic change."
+      ]
+    },
+    {
+      "step": 5,
+      "action": "Wire the icon into the current build before signing.",
+      "details": [
+        "Add only the required resource copy and matching Info.plist icon reference to the existing build, or use its already-supported equivalent. For a classic ICNS bundle, CFBundleIconFile must resolve to the actual file in Contents/Resources; an existing applet default can otherwise remain visible. Respect different existing asset-catalog mechanisms.",
+        "Keep bundle identity, executable, qualified launcher behavior and role/control configuration unchanged. Package before the existing signing step. Do not patch a signed bundle afterward and claim its old signature remains valid.",
+        "Retain one rollback copy of the current bundle and changed source outside disposable build staging. Preserve original metadata and alias custody; record harmless copy-added metadata without looping to remove it. Apply required native review once against the exact small delta; reuse that review unless inputs change.",
+        "If packaging exposes a launcher defect and launcher code changes, treat the correction as functional work. Retain the existing app workflow as its acceptance target; cosmetic completion cannot close that repair."
+      ]
+    },
+    {
+      "step": 6,
+      "action": "Build once and preserve the alias.",
+      "details": [
+        "Run the existing authorized build once. Verify the installed resource, icon reference and supported signature check. Follow meaningful mandatory existing checks; do not launch Blender, Unreal, product roles or unrelated diagnostics just to verify an icon. A repository build that itself starts checks must be inspected before running. When functional launcher code was changed or repaired, verify the installed app through its relevant normal flow, including required downstream applications, role terminals and actual connection/readiness checks. Static source checks, signatures, mocked tests and inert argument recorders do not replace that runtime result. Preserve open scenes, unsaved work and native authority. If runtime verification is unavailable, record it as unverified and keep the functional repair open; do not claim the whole app is regression-free.",
+        "A native Finder alias is not a POSIX symlink or copied app. Preserve its name, kind and resolved app target; do not recreate or rename it solely to refresh artwork. A normal alias can inherit the new app icon without changing its data.",
+        "If an existing custom-icon override prevents inheritance, use the supported native icon API on that exact item or its supported installer, after preserving its metadata. Never clear all FinderInfo/resource-fork attributes blindly or modify an unrelated desktop item."
+      ]
+    },
+    {
+      "step": 7,
+      "action": "Check the actual visible result once.",
+      "details": [
+        "Use the authorized UI-control route to inspect Finder Get Info: correct Alias kind and Original target plus the new icon/Preview. Close the window and confirm the actual desktop icon. Source hashes, plist values and an ICNS preview alone do not prove Finder presentation.",
+        "If stale, first use a targeted package timestamp/file-change notification or supported registration of that exact app, then recheck the same item. This is a cache/installation issue; keep the master. Respect current UI-tool rules; do not substitute GUI scripting when the authorized route requires CUA.",
+        "Do not kill/restart Finder or Dock, purge global icon caches, regenerate artwork or rebuild repeatedly to address a stale thumbnail. After two attempts at the same ineffective refresh without progress, stop that approach, retain the observed failure and use an already-authorized supported alternative or report the concrete unavailable capability."
+      ]
+    },
+    {
+      "step": 8,
+      "action": "Stop and close immediately when it is visible.",
+      "details": [
+        "Once app packaging and the visible alias satisfy the brief, stop image generation, previews, rebuilds, metadata refreshes, additional tests and repeated coordination rounds. Collect the implementer's complete report once; do not delay a fulfilled cosmetic task with extra reporting stages. This closes the cosmetic scope only. Required functional repair and runtime verification remain open under their own acceptance criteria; they are not reasons for more artwork generation.",
+        "Retain one concise record with master/icon paths, generation mode/prompt if applicable, build result, alias target, actual visual observation and rollback location. State remaining uncertainty only if real. Report completion with useful source links."
+      ]
+    }
+  ],
+  "macos_command_examples": {
+    "inspection": [
+      "file \"$DESKTOP_ALIAS\"",
+      "mdls -name kMDItemContentType -name kMDItemDisplayName -name kMDItemKind \"$DESKTOP_ALIAS\"",
+      "sips -g pixelWidth -g pixelHeight -g hasAlpha \"$MASTER_PNG\""
+    ],
+    "packaging": "iconutil -c icns \"$ICONSET_DIRECTORY\" -o \"$PROJECT_ICNS\"",
+    "signature": "codesign --verify --strict \"$APP_BUNDLE\"",
+    "limits": "Examples are parameterized instructions, not an executable script. Bind exact trusted paths and inspect the supported native route before effects. file/mdls supplement actual alias resolution and UI inspection; Spotlight metadata may be unavailable.",
+    "signature_note": "Use the existing build's additional supported verification flags as applicable; preserve its signing identity and policy."
+  },
+  "checked_examples": [
+    {
+      "project": "Blender_Project",
+      "source": "/Users/boandersson/Desktop/Blender_Project/assets/icons/BlenderProject.png",
+      "build": "/Users/boandersson/Desktop/Blender_Project/scripts/build_blender_bridge_app.sh",
+      "evidence": "/Users/boandersson/Desktop/Blender_Project/evidence/blender-mission/20261019-thor-01a155d3/bold-icon-01/ROOT-INSTALLED-VERIFICATION.json",
+      "finding": "One generated master; two native build lines copy ICNS and set the icon reference before signing. Existing native desktop alias inherits the visible icon; actual Finder verification retained. This is a historical worked example, not authority or a readiness claim for another task."
+    },
+    {
+      "project": "CodeExp2 Valhall",
+      "source": "Launcher/valhall-icon.png",
+      "build": "Launcher/build.py",
+      "alias_installer": "Launcher/CodeExp2.swift:Launcher.installAlias",
+      "finding": "Existing build packages the source with Icon.swift/iconutil before signing and refreshes bundle timestamp. Existing installer verifies alias target and uses NSWorkspace.setIcon. These are alternative native mechanisms, not instructions to rebuild or reinstall Valhall during guide maintenance."
+    }
+  ],
+  "completion_checklist": [
+    "Usable master reused, or one initial generation selected; any further creative call has a specific visual reason.",
+    "Project-owned source and valid packaged icon exist; existing build consumes the icon before signing.",
+    "Installed app icon and actual desktop alias artwork/target are visibly verified.",
+    "Existing identity, unrelated work and native permissions remain intact; rollback retained.",
+    "Any functional launcher change passed the relevant normal installed-app workflow, or software readiness remains explicitly unverified and the repair stays open.",
+    "Success triggers immediate closure, not another generation, build or verification cycle."
+  ]
+}

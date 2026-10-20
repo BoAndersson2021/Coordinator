@@ -67,6 +67,8 @@ the structured canonical records guide, the existing shared guides and an inline
 CLI workflow review procedure. It explains
 which guides apply, how to combine them and how to hand them to agents elsewhere.
 
+For app artwork and desktop aliases, use [How to make an icon for an app and desktop alias](.agents/guides/app-and-desktop-alias-icon.json). It requires reusing usable artwork and stopping after the installed icon and actual alias are visibly verified.
+
 Delivery Discipline defines shared delivery rules and the repair limit. The
 runtime-target, plan and coordinator guides cover real integration, plan history
 and delegated execution. These four are repository neutral. The build,
