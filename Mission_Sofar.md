@@ -213,6 +213,27 @@ The guide is linked from the root AGENTS catalog, README, Delivery Discipline
 and the coordinator guide. It preserves structured agent reply contracts and
 does not authorize execution, publication or resumption of ended missions.
 
+## Failure resolution before task closure — 2026-10-20
+
+Delivery Discipline now requires agents to diagnose failed steps, repair the
+owning layer or use a distinct supported route within scope, reconcile uncertain
+effects, verify against the original outcome and keep the user informed during
+sustained work. Its two-attempt limit retires an ineffective route, not the task
+outcome. How to end a task applies this check before blocked, stopped or partial
+closure. Both guides remain agent-interpreted instructions; no runtime
+enforcement is claimed.
+
+Independent read-only review `review_recovery_guidance` returned PASS with no
+required changes. It checked the exact two-file diff, repair-limit consistency,
+authority boundaries and owner-stop handling. The Coordinator adopted the
+reviewed guidance through the existing AGENTS startup/catalog route. Exact
+reviewed SHA-256 values:
+
+| Guide | SHA-256 |
+| --- | --- |
+| `docs/delivery-discipline.md` | `9871e00892f7469c047b315ca3be765089bfc7d2aa63c1f9049b210ed9662dd9` |
+| `docs/how-to-end-a-task.md` | `9d88e62a758c2553bd961395f842a7ad3b740a7703a44c3840ac0c6258038028` |
+
 ## Required mission execution setup — 2026-10-19
 
 The owner required the three approval-workflow setup steps to be codified for

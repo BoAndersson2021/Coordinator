@@ -55,9 +55,21 @@ authorized scope. Apply these rules to planning, implementation and repairs:
    a targeted edit to the existing implementation. Do not expand into a framework,
    provider system, dashboard, or new repair package without a demonstrated need
    for the requested outcome or an explicit user request.
-4. **Bound repair loops.** Apply the [shared repair limit](#shared-repair-limit)
-   across builder, coordinator and plan updates. Stop an ineffective approach
-   without abandoning independent useful work within the authorized scope.
+4. **Drive failures toward a verified resolution.** A failed command, timeout,
+   rejected request or unavailable interaction is evidence about that attempt,
+   not by itself a reason to end the task. Preserve the original outcome and
+   identify the exact failing step. Inspect the response, logs and current state;
+   determine which layer owns the failure; then pursue the smallest safe repair
+   or supported alternative already within scope. Reconcile uncertain effects
+   before retrying. Verify the repaired behavior through the intended real
+   interface against the original acceptance check. Keep the user informed with
+   concise updates during sustained work; do not go silent or use an update or a
+   list of limitations as a substitute for diagnosis, repair and verification.
+   Apply the [shared repair limit](#shared-repair-limit)
+   to repeated ineffective approaches, not to the overall task: when one route
+   reaches its limit, use another supported route already within authority if it
+   can advance the outcome. Stop only when no authorized feasible diagnostic,
+   repair, alternative or verification step remains, or the owner ends the work.
 5. **Keep safeguards proportional and attached to delivery.** Preserve required
    permissions, invariants, reviews and meaningful checks within the implementation.
    Do not invent approval stages or recurring governance-only milestones. If an
@@ -86,12 +98,16 @@ through the intended interface; source edits, new plans and passing fixture test
 alone do not reset the count. Carry the count across messages, agents and renamed
 phases using the existing work context.
 
-Report the failed assumption and evidence. Pursue a supported alternative already
-within authorized scope when available. Ask the user only when the alternative
-requires a material scope, budget, risk or authority decision. Further attempts
-at the same ineffective approach require an explicit request for additional
-diagnosis; a routine "continue" does not extend the limit. This limit governs
-integration repairs, not the number of ordinary document edits.
+The limit retires that ineffective approach; it does not retire the requested
+outcome or authorize a premature blocked report. Diagnose why the attempts
+failed, preserve and reconcile their effects, and pursue a distinct supported
+alternative already within authorized scope. Verify that alternative on the real
+path. Ask the user only when the next viable action needs a material scope,
+budget, risk or authority decision. If no such alternative exists, report the
+specific evidence-backed blocker and the concrete change that would reopen work.
+Further attempts at the same ineffective approach require an explicit request
+for additional diagnosis; a routine "continue" does not extend the limit. This
+limit governs integration repairs, not the number of ordinary document edits.
 
 ## Handing this instruction to another agent
 
