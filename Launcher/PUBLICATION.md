@@ -56,3 +56,46 @@ Generated app binaries, icons and build caches remain ignored and local. The
 Desktop native alias remains installed and points to `Launcher/build/CodeExp2.app`.
 The reviewed source can rebuild that application. A source commit neither
 installs this local gate on another checkout nor selects any product mission.
+
+## PANEL bridge admission — 2026-10-20
+
+The owner authorized committing and pushing the Valhall PANEL entry. This adds
+`--panel-agent`, its canonical-profile projection and three bounded bridge
+regressions. PANEL continues to use native onboarding, aliases and mission
+selection. No model conversation is created by the publication tests.
+
+Independent PANEL builder `01a155cd-9b3e-7433-b0e7-eeb730e6be6d` reviewed the
+Coordinator-authored root sources, candidate policy and bootstrap. Its final
+review passed all three launcher gate tests in 15.614 seconds; the new wrapper
+requires all three exact nested bridge successes and completion. The Coordinator
+separately passed all **51 tests from the exact staged source**. The normal
+installed commit hook remains required.
+
+The policy updates three existing source pins, admits only
+`Launcher/test_panel_bridge.py` as a new source path, and adds one mandatory test,
+`test_launcher_panel_bridge_regressions`. All 22 previous mandatory IDs,
+instruction pins, deletion requirements and other inventory entries remain.
+The verifier is unchanged; the bootstrap changes only its policy digest.
+
+The launcher build requires Python 3.11 or newer for standard-library `tomllib`.
+The trusted Apple Python gate remains unchanged; launcher checks select and probe
+a supported interpreter from their environment. The independent initial shell
+lacked that interpreter on PATH; its failure is retained. A per-command PATH
+exposing installed Homebrew Python 3.14.8 resolved it. The successful rerun used
+`/usr/bin/env`, since this host's unqualified `env` is a PATH-only user helper.
+No source repair, skipped check or global configuration change was needed.
+
+| Reviewed/adopted input | SHA-256 |
+| --- | --- |
+| Independent final review | `29ba739c2f7b927e90c14753d9d3f7878357c2430c65c3a9a22a483f26fd4e56` |
+| Policy | `894ae5121f1becb75bf1d1fb66adbcd631e0343aa1626e2dcb4bdda1c80b13da` |
+| Bootstrap | `fc09b741c2b4905ba99d5671cc5561e75011905cd08eaa81eb6aa01c3ac09235` |
+| Adoption receipt | `d84ca35cca68cf5691fbb5b0d9f35a328a05be8a9f73372cdda9e4086d13a312` |
+
+After collecting the matching completed review and verifying all input hashes,
+the Coordinator adopted only the reviewed policy/bootstrap. Previous trusted
+bytes, unchanged Git configuration, both review attempts and successful staged
+checks are retained privately under
+`.git/codeexp2-panel-adoption-20261020-7vfy2qb_/`. The full review is also retained
+in PANEL's `Evidence/Implementation/20261020-valhall/`. Binaries, account/native
+frames, local conversation state and unrelated mission work are excluded.

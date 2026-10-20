@@ -1,4 +1,5 @@
 import AppKit
+import CryptoKit
 import Darwin
 
 enum LauncherError: LocalizedError {
@@ -106,6 +107,46 @@ enum Launcher {
         // Valhalla is the owner's explicit permission/tool overlay; model/account
         // remain inherited. Never use a bypass flag or override managed policy.
         [codex, "--profile", "valhalla", "--config", "tui.terminal_title=[]", initialPrompt(for: claim)]
+    }
+
+    // PANEL uses the same front door without opening a Terminal. The app server
+    // does not accept --profile; build.py projects the canonical profile into
+    // supported --config values. No second policy or mission menu lives here.
+    static func panelArguments() throws -> [String] {
+        guard let source = Bundle.main.url(forResource: "valhalla.config", withExtension: "toml"),
+              let projection = Bundle.main.url(forResource: "valhall-panel-profile", withExtension: "json"),
+              let record = try JSONSerialization.jsonObject(with: Data(contentsOf: projection)) as? [String: Any],
+              record["format"] as? String == "valhall-panel-profile/1",
+              record["profile"] as? String == "valhalla",
+              record["source_sha256"] as? String == SHA256.hash(data: try Data(contentsOf: source)).map({ String(format: "%02x", $0) }).joined(),
+              let arguments = record["arguments"] as? [String], !arguments.isEmpty,
+              arguments.count % 2 == 0,
+              stride(from: 0, to: arguments.count, by: 2).allSatisfy({ arguments[$0] == "--config" }) else {
+            throw LauncherError.invalid("Valhall PANEL profile projection is missing or stale. Rebuild the launcher from its canonical profile.")
+        }
+        return [codex, "app-server", "--stdio"] + arguments
+    }
+
+    static func runForPanel() throws -> Never {
+        try validate()
+        try validateProfile()
+        let arguments = try panelArguments()
+        guard chdir(workspace.path) == 0 else { throw LauncherError.invalid("Cannot enter CodeExp2 workspace.") }
+        let claim = try InstanceClaim.acquire(in: claimDirectory)
+        let receipt: [String: Any] = ["method": "valhall/launch", "params": [
+            "format": "valhall-panel-launch/1", "alias": claim.alias, "color": claim.color,
+            "pid": getpid(), "workspace": workspace.path, "profile": "valhalla",
+            "onboard_prompt": initialPrompt(for: claim)
+        ]]
+        // Exactly one local handoff line precedes native JSONL. A receipt means
+        // launch intent; PANEL still initializes and verifies the native receiver.
+        try FileHandle.standardOutput.write(contentsOf: JSONSerialization.data(withJSONObject: receipt, options: [.sortedKeys]) + Data([10]))
+        let argv = arguments.map { strdup($0) } + [nil]
+        defer { argv.forEach { free($0) } }
+        withExtendedLifetime(claim) {
+            argv.withUnsafeBufferPointer { _ = execv(codex, $0.baseAddress!) }
+        }
+        throw LauncherError.invalid("Codex app server failed to start: \(String(cString: strerror(errno)))")
     }
 
     static func validate(workspace root: URL = workspace, executable: String = codex) throws {
@@ -323,6 +364,7 @@ do {
         withExtendedLifetime(delegate) { app.run() }
     case ["--preflight"]: try Launcher.preflight()
     case ["--terminal"]: try Launcher.runInTerminal()
+    case ["--panel-agent"]: try Launcher.runForPanel()
     case ["--install-alias"]: try Launcher.installAlias()
     case ["--self-test"]: try Launcher.selfTest()
     case let args where args.count == 2 && args[0] == "--claim-probe": try Launcher.claimProbe(args[1])
@@ -330,7 +372,7 @@ do {
     case let args where args.count == 4 && args[0] == "--inherited-claim-probe":
         guard let index = Int(args[1]), let fd = Int32(args[2]) else { throw LauncherError.invalid("Invalid claim probe.") }
         try Launcher.inheritedClaimProbe(slot: index, descriptor: fd, withChild: args[3] == "child")
-    default: throw LauncherError.invalid("Supported options: --preflight, --terminal, --install-alias, --self-test")
+    default: throw LauncherError.invalid("Supported options: --preflight, --terminal, --panel-agent, --install-alias, --self-test")
     }
 } catch {
     FileHandle.standardError.write(Data("CodeExp2: \(error.localizedDescription)\n".utf8))

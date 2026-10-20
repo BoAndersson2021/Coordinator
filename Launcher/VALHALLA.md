@@ -1,7 +1,9 @@
 # Valhalla launch access
 
-The owner approved this setup on 2026-10-19. Every new CodeExp2 app launch selects
-`--profile valhalla`; existing sessions retain their original effective settings.
+The owner approved this setup on 2026-10-19. New Terminal launches select
+`--profile valhalla`; the PANEL chat entry derives native `--config` arguments
+from that same canonical profile because app-server rejects `--profile`.
+Existing sessions retain their original effective settings.
 The Coordinator owns capability provisioning and final technical validation
 within the owner's task. No product mission is selected by startup.
 

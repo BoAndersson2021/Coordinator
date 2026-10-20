@@ -301,6 +301,55 @@ class CommitGateTests(unittest.TestCase):
         self.assertEqual((self.root / 'README.md').read_text(), 'Unstaged user edit.\n')
         self.assertEqual((self.root / 'old-user-work.md').read_text(), 'Leave this exact user content.\n')
 
+    def launcher_python(self):
+        """Use a verified 3.11+ interpreter for the launcher's stdlib TOML parser."""
+        for executable in dict.fromkeys((sys.executable, shutil.which('python3'))):
+            if not executable:
+                continue
+            probe = subprocess.run([executable, '-I', '-S', '-B', '-c',
+                                    'import sys, tomllib; assert sys.version_info >= (3, 11)'],
+                                   capture_output=True, timeout=10)
+            if probe.returncode == 0:
+                return executable
+        self.fail('Launcher build and bridge checks require Python 3.11+ with tomllib')
+
+    def test_launcher_panel_bridge_regressions(self):
+        """Compile staged bridge bytes and require all three native no-model checks."""
+        runner = r'''
+import importlib.util, json, sys, unittest
+from pathlib import Path
+source = Path(sys.argv[1]) / 'Launcher/test_panel_bridge.py'
+spec = importlib.util.spec_from_file_location('test_panel_bridge', source)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+expected = {
+    'test_panel_bridge.PanelBridgeTests.test_projection_round_trips_exact_canonical_profile',
+    'test_panel_bridge.PanelBridgeTests.test_native_profile_identity_and_shared_claim_release',
+    'test_panel_bridge.PanelBridgeTests.test_stale_projection_and_terminal_boundaries_fail_before_launch',
+}
+class Result(unittest.TextTestResult):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.successes = set()
+    def addSuccess(self, test):
+        self.successes.add(test.id())
+        super().addSuccess(test)
+result = unittest.TextTestRunner(verbosity=2, resultclass=Result).run(
+    unittest.defaultTestLoader.loadTestsFromModule(module))
+passed = (result.wasSuccessful() and not result.skipped
+          and not result.expectedFailures and result.successes == expected
+          and result.testsRun == len(expected))
+print(json.dumps({'panel_bridge_complete': passed, 'tests_run': result.testsRun,
+                  'successes': sorted(result.successes)}))
+sys.exit(0 if passed else 3)
+'''
+        result = subprocess.run([self.launcher_python(), '-I', '-S', '-B', '-c', runner, str(ROOT)],
+                                capture_output=True, text=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        report = json.loads(result.stdout)
+        self.assertIs(report['panel_bridge_complete'], True)
+        self.assertEqual(report['tests_run'], 3)
+
     def test_launcher_native_build_preflight_and_terminal_boundary(self):
         """Build exact snapshot sources, verify signing and reject non-TTY launch."""
         with tempfile.TemporaryDirectory(prefix='codeexp2-native-build-') as directory:
@@ -309,7 +358,7 @@ class CommitGateTests(unittest.TestCase):
             for name in ('CodeExp2.swift', 'Icon.swift', 'build.py', 'Start CodeExp2.command',
                          'valhalla.config.toml', 'install_valhalla.py', 'valhall-icon.png'):
                 shutil.copyfile(ROOT / 'Launcher' / name, launcher / name)
-            result = subprocess.run([sys.executable, '-B', str(launcher / 'build.py')],
+            result = subprocess.run([self.launcher_python(), '-B', str(launcher / 'build.py')],
                                     capture_output=True, text=True, timeout=60,
                                     env={k: v for k, v in self.env.items()
                                          if not k.startswith('GIT_')})

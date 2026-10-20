@@ -18,7 +18,8 @@ Source is in this folder. Generated binaries, icons and build caches are ignored
 under `build/`; keep that directory because the Desktop alias points into it.
 This is CodeExp2 workspace startup tooling, not a product mission or mission runner.
 
-Build, sign and run the focused preflight regressions (Xcode command-line tools):
+Build, sign and run the focused preflight regressions (Xcode command-line tools
+and Python 3.11 or newer):
 
 ```sh
 python3 -B Launcher/install_valhalla.py
@@ -48,6 +49,35 @@ match; a missing/different overlay fails visibly before starting a session.
 generated progress title. Initial authentication or trust prompts, if required
 by Codex, remain visible in Terminal. Closing the Terminal session exits Codex.
 
+## PANEL chat entry
+
+PANEL's **Spawn new agent in new chat** uses the same built executable with
+`--panel-agent`. This entry validates the workspace and installed profile,
+claims an alias through the existing lock pool and emits one local JSONL
+`valhall/launch` notification containing its alias, color, process ID, fixed
+workspace and existing onboarding prompt. It then directly executes the native
+Codex app server over stdio. PANEL initializes that receiver, creates one chat
+and submits the normal onboarding prompt; CodeExp2 supplies the mission menu.
+The notification alone proves neither native readiness nor completed onboarding.
+
+The installed app server does not accept `--profile`. `build.py` derives
+`valhall-panel-profile.json` from the same canonical `valhalla.config.toml`,
+using native `--config` arguments and a source hash. There is no second profile,
+mission registry or alias allocator. The bridge refuses a missing/stale
+projection. Native account, model, managed requirements and unrelated inherited
+configuration remain in effect.
+
+The actual server process holds its alias lock until it exits. Closing its
+stdio input stops that owned server. PANEL retains the native conversation ID;
+a later explicit reconnect can claim another running-instance alias while
+resuming that same saved conversation, without replaying onboarding. This entry
+does not attach an existing standalone Terminal.
+
+Run the bounded bridge regressions with `python3 -B Launcher/test_panel_bridge.py`.
+They build a disposable launcher and verify exact effective profile values,
+simultaneous claims, release on exit, projection drift and launch boundaries.
+They create no model conversation and open no Terminal.
+
 ## Instance names and colors
 
 Each new launcher-created instance claims the first free pair from this fixed
@@ -73,7 +103,7 @@ session ID; it is not a mission selection or a permanent conversation identity.
 One nonblocking OS record lock (`fcntl(F_SETLK)`) reserves both name and color atomically. Claim files
 stay under ignored `Launcher/build/instance-claims/`; **never delete them while
 instances may be running**. File existence is not occupancy. The inherited open
-descriptor holds the lock in the actual interactive Codex process; normal exit,
+descriptor holds the lock in the actual Codex process (TUI or PANEL server); normal exit,
 crash or reboot releases it without a heartbeat, PID register or cleanup job.
 The lock belongs to that process and is not inherited by its children, even
 when they retain a copy of the descriptor. No native code should reopen/close
@@ -97,8 +127,8 @@ avoids a supervisor. The global shim is untouched. If the native installation
 moves or disappears, preflight fails clearly; it does not silently use a wrapper
 that would weaken claim lifetime.
 
-`--preflight` and the app's GUI phase claim no name; only the checked Terminal
-entry does. The private `--claim-probe` regression entry re-execs the same binary
+`--preflight` and the app's GUI phase claim no name; the checked Terminal and
+PANEL entries do. The private `--claim-probe` regression entry re-execs the same binary
 and holds a disposable claim until EOF/termination; it launches no model task.
 The native self-test checks the complete palette. The existing
 launcher regression exercises concurrent processes, exec inheritance, normal
