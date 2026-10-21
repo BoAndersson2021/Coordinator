@@ -1,0 +1,37 @@
+{
+  "format": "codeexp2-mission-evidence/1",
+  "schema": "codeexp2.factory-run.809-inspection-correction.v1",
+  "record_id": "20261021T200900Z-tyr-809-seat-inspection-correction",
+  "recorded_at": "2026-10-21T20:09:00Z",
+  "coordinator": {
+    "role": "coordinator",
+    "human_alias": "Tyr",
+    "session_id": "01a15fa0-a194-7a13-8f74-802448ded43f"
+  },
+  "mission": "FACTORY Run",
+  "evidence_only": true,
+  "consumer": {
+    "kind": "agent-interpreted",
+    "grants_execution_permission": false
+  },
+  "supersedes_interpretation_only": {
+    "record": "/Users/boandersson/Desktop/CodeExp2/Missions/FactoryRun/20261021T193620Z-tyr-809-seat-apply-d630fc-VERIFICATION.json",
+    "statement": "A source-bound authored chart/domain and exact writable corner set must be supplied by a human before the system can inspect the asset.",
+    "correction": "The 8.01-8.05 implementation is designed to produce the numerical UV defect ledger and derive the eligible edit domain automatically. A human visual chart choice is not part of that route."
+  },
+  "verified_implementation_boundary": {
+    "inspection": "8.02 reopens the source with scripts disabled; 8.03 captures complete UV/tangent inventory; 8.04 captures maps and the numerical defect ledger; 8.05 calculates the edit domain and held dependencies.",
+    "application": "8.09 applies a placement produced by the earlier inspection/planning steps; it does not discover defects or choose an editable region.",
+    "required_machine_inputs": "The automated derivation still requires current source-bound, machine-readable creative/surface targets, preservation bindings, and map/normal dependency evidence. Missing inputs block the relevant inspection stage rather than requiring a human eye to select UVs."
+  },
+  "current_state": {
+    "setup_request": "/Users/boandersson/Desktop/CodeExp2/Missions/FactoryRun/20261021T200000Z-tyr-809-seat-inspection-SETUP-REQUEST.json",
+    "status": "awaiting_fresh_builder_ack",
+    "limitation": "No bounded evidence-only inspection has begun; it depends on a fresh builder ACK."
+  },
+  "holds_preserved": [
+    "8.10 remains saved, stopped, and unqualified.",
+    "No Blender/native inspection or asset write has begun under the correction request.",
+    "Source selection, material rebake, export, production acceptance, commit, and push remain outside this scope."
+  ]
+}

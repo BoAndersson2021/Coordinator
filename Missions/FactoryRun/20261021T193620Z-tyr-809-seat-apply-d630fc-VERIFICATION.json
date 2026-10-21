@@ -1,0 +1,88 @@
+{
+  "format": "codeexp2-mission-evidence/1",
+  "schema": "codeexp2.factory-run.809-real-asset-execution.v1",
+  "record_id": "20261021T193620Z-tyr-809-seat-apply-d630fc",
+  "recorded_at": "2026-10-21T19:49:23Z",
+  "coordinator": {
+    "role": "coordinator",
+    "human_alias": "Tyr",
+    "session_id": "01a15fa0-a194-7a13-8f74-802448ded43f"
+  },
+  "builder": {
+    "role": "builder",
+    "session_id": "01a15989-6084-7990-873c-e93d4b47a875"
+  },
+  "mission": "FACTORY Run",
+  "evidence_only": true,
+  "consumer": {
+    "kind": "agent-interpreted",
+    "grants_execution_permission": false
+  },
+  "request": "Execute the selected Dust Air seat as one bounded real-asset 8.09 test.",
+  "baseline": {
+    "repository": "/Users/boandersson/Desktop/FACTORY",
+    "head": "ad451de3a4e735a84f9e79cb6678caaf23b931e2",
+    "branch": "main",
+    "tracked_worktree_status": "clean"
+  },
+  "asset": {
+    "asset_id": "dust-air-seat-multi-max-r1",
+    "source_revision_id": "cfafc8c2-91c1-45df-84be-6c174e7fcbe2",
+    "source": "/Users/boandersson/Desktop/FACTORY/assets/3d/props/dust-air-seat-multi-max-r1/evidence/geometry-tools/seat-source-repair/local-native-20261014T035715Z/candidate/source.blend",
+    "source_sha256": "b6b3565a522ff8663413e845dd051975e32d09edcbb9c599c03e354f5b7bdc33",
+    "source_hash_verified": true
+  },
+  "result": {
+    "status": "blocked_before_effect",
+    "effects_started": false,
+    "blender_or_native_application_launched": false,
+    "source_or_working_copy_written": false,
+    "application_or_placement_created": false,
+    "source_selection_material_rebake_export_commit_or_push": false
+  },
+  "verified": [
+    "The builder returned a fresh completed ACK-1 and a JSON-valid read-only readiness assessment for the exact assignment token.",
+    "The selected source SHA-256 matches the source-selection record and the builder request.",
+    "After the assessment, the FACTORY tracked worktree remains clean at ad451de3a4e735a84f9e79cb6678caaf23b931e2.",
+    "The 8.10 owner hold remains preserved; no 8.10 or later work was started."
+  ],
+  "blockers": [
+    {
+      "id": "chart_intent_missing",
+      "detail": "No source-bound authored chart/domain or exact writable corner set is declared. Choosing it would make an unresolved asset/creative decision."
+    },
+    {
+      "id": "current_placement_missing",
+      "detail": "There is no current 8.08 placement receipt for the selected source and package. Historical UV/repair receipts cannot substitute for it."
+    },
+    {
+      "id": "dependency_closure_not_readmitted",
+      "detail": "The 597878-face source has no current 8.06-8.09 dependency closure and source/readiness binding. Older proofs bind older code, runtime, and inputs."
+    },
+    {
+      "id": "held_normal_consumers_unresolved",
+      "detail": "The current native material graph and normal-map consumers are unestablished; the runbook prohibits touching an affected chart without an authorized invalidation or rebake path."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "/Users/boandersson/Desktop/FACTORY/3D Generation Pipeline/evidence/codeexp2-factory-run/20261021T193620Z-tyr-809-seat-apply-d630fc/ACK-1.json",
+      "sha256": "025418aefd2c9b8dc9015dc7dfc5bb877c69130c136f8bc9aa33a0c094630681"
+    },
+    {
+      "path": "/Users/boandersson/Desktop/FACTORY/3D Generation Pipeline/evidence/codeexp2-factory-run/20261021T193620Z-tyr-809-seat-apply-d630fc/READINESS-ASSESSMENT.json",
+      "sha256": "29cd74d47899f72f24a31071032f924f97381480923085912eff035be164a549"
+    }
+  ],
+  "required_before_retry": [
+    "A source-bound, authored seat chart/domain with its exact writable corner set.",
+    "A current 8.08 placement receipt for the exact selected source and disposable package.",
+    "A current dependency-closure readmission through the 8.09 inputs.",
+    "A resolved material/normal-consumer decision, including an authorized invalidation or rebake path if the chart affects held normal consumers.",
+    "A fresh builder preflight and matching authorization limited to the resulting disposable package."
+  ],
+  "nonclaims": [
+    "This record does not claim a passed real-asset 8.09 application, source selection, material readiness, engine delivery, production acceptance, or Repair6 completion.",
+    "The read-only assessment wrote its assigned evidence only; pre-existing target untracked material was preserved."
+  ]
+}

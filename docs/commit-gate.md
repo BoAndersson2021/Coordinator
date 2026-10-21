@@ -59,6 +59,13 @@ or runtime processes. The fixture policy is test setup, not live adoption.
 Git may refresh index cache metadata during a rejected commit; tests preserve
 the staged paths, modes and object identities, plus HEAD and dirty file content.
 
+Mandatory regression groups are scoped to the staged source paths they protect.
+The core commit-gate suite runs for reviewed gate changes; Launcher and native
+control regressions run when their owned paths change. This prevents unrelated
+uncommitted work from making a reviewed documentation or gate correction
+uncommittable, while preserving the required regression for each protected
+feature path.
+
 For the user-authorized local Machine/archive cleanup, the deletion regression
 first reproduced the missing protected-file passing route. The verifier now
 accepts a protected deletion only when that exact path has an explicit `null`
@@ -129,6 +136,24 @@ their full semantics, establish registration/readiness, authorize commands, or
 grant runtime effects. Operational/configuration JSON still needs reviewed
 development admission. Protected instructions retain their independent review
 checks. No generic JSON exception is installed.
+
+## Mission evidence records
+
+Root-level evidence records may use the narrow `codeexp2-mission-evidence/1`
+content route when their filename matches `*-VERIFICATION.json` under
+`Missions/<mission>/`. They must include a nonempty `schema` and `mission`,
+`evidence_only: true`, and an agent-interpreted consumer that explicitly grants
+no execution permission. This route rejects nested paths, packages, shared
+control evidence, executable modes, malformed JSON, non-finite values and
+duplicate keys.
+
+This permits inert coordinator/reviewer observations only. Assignments,
+acknowledgements, setup requests, Builder Communication envelopes, configuration
+and any record that can direct a receiver remain executable/data changes subject
+to the exact reviewed development inventory. The route does not validate evidence
+truth, create a runtime consumer, grant authority or permit an operational JSON
+exception. It rejects every Builder Communication envelope field even when a
+record falsely claims the evidence format.
 
 Five mandatory disposable-commit regressions cover legitimate add/edit/delete,
 malformed or permission-granting records, path/mode boundaries, staged-versus-

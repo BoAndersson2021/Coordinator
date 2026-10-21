@@ -9,6 +9,7 @@ import json
 import math
 import os
 from pathlib import Path, PurePosixPath
+import re
 import subprocess
 import sys
 import tempfile
@@ -20,6 +21,7 @@ TEST_PATH = 'tests/test_commit_gate.py'
 RUNNER = r'''
 import json, sys, unittest
 expected = set(json.loads(sys.argv[1]))
+sys.path.insert(0, 'tests')
 class Result(unittest.TextTestResult):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -27,10 +29,12 @@ class Result(unittest.TextTestResult):
     def addSuccess(self, test):
         self.successes.append(test.id())
         super().addSuccess(test)
-suite = unittest.defaultTestLoader.discover('tests', pattern='test*.py')
+suite = unittest.TestSuite()
+for name in sorted(expected):
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromName(name))
 result = unittest.TextTestRunner(verbosity=2, resultclass=Result).run(suite)
 passed = (result.wasSuccessful() and not result.skipped
-          and not result.expectedFailures and expected <= set(result.successes))
+          and not result.expectedFailures and expected == set(result.successes))
 payload = {'passed': passed, 'successes': result.successes,
            'tests_run': result.testsRun, 'skipped': len(result.skipped),
            'expected_failures': len(result.expectedFailures)}
@@ -147,6 +151,60 @@ def mission_document(mode, blob, name):
         return False
 
 
+def mission_evidence_document(mode, blob, name):
+    """Content-only admission for inert, root-level mission evidence records.
+
+    This narrow route is for coordinator/reviewer observations. It does not
+    admit assignments, acknowledgements, setup requests, or operational
+    Builder Communication messages; those remain reviewed data paths.
+    """
+    if mode == '000000':
+        return True
+    parts = PurePosixPath(name).parts
+    if (mode != '100644' or len(parts) != 3 or parts[0] != 'Missions'
+            or parts[1].casefold() in {'packages', 'controlworkflowevidence'}
+            or not re.fullmatch(r'.+-VERIFICATION\.json', parts[2])
+            or len(blob) > 1048576):
+        return False
+
+    def pairs(items):
+        result = {}
+        for key, value in items:
+            if key in result:
+                raise ValueError('duplicate JSON key')
+            result[key] = value
+        return result
+
+    def finite(value):
+        if isinstance(value, float) and not math.isfinite(value):
+            raise ValueError('non-finite JSON number')
+        if isinstance(value, dict):
+            for item in value.values():
+                finite(item)
+        elif isinstance(value, list):
+            for item in value:
+                finite(item)
+
+    try:
+        body = json.loads(blob.decode('utf-8'), object_pairs_hook=pairs)
+        finite(body)
+        if not isinstance(body, dict):
+            return False
+        consumer = body.get('consumer')
+        return (body.get('format') == 'codeexp2-mission-evidence/1'
+                and isinstance(body.get('schema'), str) and bool(body['schema'].strip())
+                and isinstance(body.get('mission'), str) and bool(body['mission'].strip())
+                and body.get('evidence_only') is True
+                and isinstance(consumer, dict)
+                and consumer.get('kind') == 'agent-interpreted'
+                and consumer.get('grants_execution_permission') is False
+                and not any(key in body for key in {
+                    'protocol', 'message_id', 'assignment_id', 'reply_to',
+                    'sender', 'recipient', 'type', 'body'}))
+    except (UnicodeError, ValueError, RecursionError):
+        return False
+
+
 def check():
     if sys.argv[1:] != ['--staged']:
         reject('use --staged; working-tree checks cannot authorize a commit')
@@ -168,10 +226,18 @@ def check():
     files = policy['files']
     instructions = policy['instructions']
     mandatory = policy['mandatory_tests']
+    path_test_groups = policy.get('path_test_groups', {})
     if not files or not mandatory or len(set(mandatory)) != len(mandatory):
         reject('missing or duplicate mandatory regressions')
     if any(not name.startswith('test_commit_gate.CommitGateTests.test_') for name in mandatory):
         reject('invalid mandatory regression identity')
+    if not isinstance(path_test_groups, dict):
+        reject('invalid path test groups')
+    for prefix, tests in path_test_groups.items():
+        if (not isinstance(prefix, str) or not prefix or not isinstance(tests, list)
+                or not tests or len(set(tests)) != len(tests)
+                or any(not isinstance(name, str) or not name.startswith('test_') for name in tests)):
+            reject('invalid path test group')
     if git(root, 'ls-files', '--unmerged', '-z'):
         reject('unresolved staged entries')
     entries = {}
@@ -209,13 +275,19 @@ def check():
                 reject('instruction/invariant change requires review: ' + name)
         elif not ((ordinary(old_mode, old, name) and ordinary(new_mode, new, name))
                   or (mission_document(old_mode, old, name)
-                      and mission_document(new_mode, new, name))):
+                      and mission_document(new_mode, new, name))
+                  or (mission_evidence_document(old_mode, old, name)
+                      and mission_evidence_document(new_mode, new, name))):
             if name not in files:
                 reject('unreviewed executable/data path: ' + name)
             feature = True
     if not feature:
         print(CODE + ': ordinary/reviewed documentation passed')
         return
+    required_tests = set(mandatory)
+    for prefix, tests in path_test_groups.items():
+        if any(name == prefix or name.startswith(prefix.rstrip('/') + '/') for name in changed):
+            required_tests.update(tests)
     if TEST_PATH not in changed:
         reject('executable development requires staged invariant regressions in ' + TEST_PATH)
     for name, expected in files.items():
@@ -240,13 +312,13 @@ def check():
             path.chmod(0o755 if mode == '100755' else 0o644)
         with tempfile.TemporaryFile() as report:
             result = subprocess.run(['/usr/bin/python3', '-I', '-S', '-B', '-c', RUNNER,
-                                     json.dumps(mandatory), str(report.fileno())],
+                                     json.dumps(sorted(required_tests)), str(report.fileno())],
                                     cwd=snapshot, env=clean_environment(),
                                     pass_fds=(report.fileno(),), timeout=120)
             report.seek(0)
             body = json.load(report)
         if (result.returncode or not body.get('passed')
-                or not set(mandatory) <= set(body.get('successes', []))):
+                or set(required_tests) != set(body.get('successes', []))):
             reject('mandatory staged regressions failed, skipped or did not complete')
     print(CODE + ': reviewed staged development checks passed; runtime authority unchanged')
 

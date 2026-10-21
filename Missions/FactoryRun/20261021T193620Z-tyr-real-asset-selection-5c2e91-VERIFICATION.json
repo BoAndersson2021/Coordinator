@@ -1,0 +1,96 @@
+{
+  "format": "codeexp2-mission-evidence/1",
+  "schema": "codeexp2.factory-run.real-asset-selection.v1",
+  "record_id": "20261021T193620Z-tyr-real-asset-selection-5c2e91",
+  "recorded_at": "2026-10-21T19:36:20Z",
+  "coordinator": {
+    "role": "coordinator",
+    "human_alias": "Tyr",
+    "session_id": "01a15fa0-a194-7a13-8f74-802448ded43f"
+  },
+  "mission": "FACTORY Run",
+  "evidence_only": true,
+  "consumer": {
+    "kind": "agent-interpreted",
+    "grants_execution_permission": false
+  },
+  "baseline": {
+    "repository": "/Users/boandersson/Desktop/FACTORY",
+    "head": "ad451de3a4e735a84f9e79cb6678caaf23b931e2",
+    "branch": "main",
+    "tracked_worktree_status": "clean"
+  },
+  "request": "Find a suitable real asset for a bounded 8.09 test.",
+  "selection": {
+    "asset_id": "dust-air-seat-multi-max-r1",
+    "package": "/Users/boandersson/Desktop/FACTORY/assets/3d/props/dust-air-seat-multi-max-r1",
+    "source_revision_id": "cfafc8c2-91c1-45df-84be-6c174e7fcbe2",
+    "source": {
+      "path": "/Users/boandersson/Desktop/FACTORY/assets/3d/props/dust-air-seat-multi-max-r1/evidence/geometry-tools/seat-source-repair/local-native-20261014T035715Z/candidate/source.blend",
+      "sha256": "b6b3565a522ff8663413e845dd051975e32d09edcbb9c599c03e354f5b7bdc33",
+      "size_bytes": 81788928
+    },
+    "mesh": {
+      "name": "Mesh_0",
+      "vertices": 298897,
+      "faces": 597878,
+      "materials": ["Material_0"],
+      "packed_images": [
+        "8192x8192 sRGB base color",
+        "4096x4096 Non-Color map",
+        "4096x4096 Non-Color map"
+      ]
+    },
+    "selection_basis": [
+      "Only discovered package with a currently selected, byte-verified Blender source revision.",
+      "The source hash matches the selected-source record and the retained source inventory reports a static single mesh with no external dependencies.",
+      "The package has complete source-bound brief, prompt, four-view image, and readiness records; its readiness decision is ready for the bounded delivery input, without claiming generated-asset acceptance.",
+      "The dedicated FB03 seat packet explicitly scopes this asset independently from the unresolved MAX material/appearance work."
+    ]
+  },
+  "rejected_or_deferred": [
+    {
+      "asset_id": "frosted-blue-banana",
+      "reason": "Its package has no selected source revision; the prior candidate also remains pending owner review for the requested frost, ridges, relief and 4 cm depth."
+    },
+    {
+      "asset_class": "industrial-crate packages and remaining catalog entries",
+      "reason": "No currently selected source revision was recorded for a bounded 8.09 application."
+    }
+  ],
+  "status": {
+    "candidate_for_bounded_8_09_preflight": "suitable",
+    "authorized_for_native_application": false,
+    "production_acceptance": false,
+    "owner_hold": "8.10 remains saved, stopped and unqualified; do not start 8.11 or later."
+  },
+  "required_before_any_real_asset_effect": [
+    "The builder must fresh-read the current source, package, ownership state and 8.09 interfaces, then return a matching ACK.",
+    "Use a newly created, unselected working-copy package and bind a declared finite editable chart/domain. Do not reuse historical UV plans or alter the retained source.",
+    "Re-establish current source/protected-byte and placement/preflight evidence, and reject if the exact 8.09 input contract cannot represent this asset without implementation changes.",
+    "Set a source-appropriate finite time/memory budget before any Blender write; this 597878-face source is far larger than the 200-face disposable test fixture.",
+    "Apply only through 8.09 public interfaces, save an unselected working.blend, independently verify it, and preserve all material/normal/geometry data outside the declared UV domain."
+  ],
+  "nonclaims": [
+    "Selection does not establish current 8.09 applicability, a passed native application, artistic quality, material readiness, source selection, engine delivery, production acceptance or Repair6 completion.",
+    "No target repository files, existing asset files, 8.10 data, provider tasks, branches, commits or remote state were changed by this inspection."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/boandersson/Desktop/FACTORY/assets/3d/props/dust-air-seat-multi-max-r1/asset.json",
+      "finding": "Selected source revision cfafc8c2-91c1-45df-84be-6c174e7fcbe2."
+    },
+    {
+      "path": "/Users/boandersson/Desktop/FACTORY/assets/3d/props/dust-air-seat-multi-max-r1/evidence/source-revisions/cfafc8c2-91c1-45df-84be-6c174e7fcbe2/record.json",
+      "finding": "Source path and source SHA-256 bind the retained candidate."
+    },
+    {
+      "path": "/Users/boandersson/Desktop/FACTORY/assets/3d/props/dust-air-seat-multi-max-r1/evidence/source-revisions/cfafc8c2-91c1-45df-84be-6c174e7fcbe2/reopen/inventory.json",
+      "finding": "Single Mesh_0, 298897 vertices, 597878 faces, packed maps, no external dependencies in retained inventory."
+    },
+    {
+      "path": "/Users/boandersson/Desktop/FACTORY/3D Generation Pipeline/docs/builds/factory-blender-escalation/FB03_SEAT_APPEARANCE.md",
+      "finding": "Seat-specific real-asset scope and preserved unresolved boundaries."
+    }
+  ]
+}
