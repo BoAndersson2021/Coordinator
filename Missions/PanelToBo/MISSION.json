@@ -1,0 +1,65 @@
+{
+  "format": "codeexp2-mission-coordination/1",
+  "mission": "PANEL To BO",
+  "consumer": {
+    "kind": "agent-interpreted",
+    "grants_execution_permission": false,
+    "owner": "Current mission Coordinator",
+    "canonical_scope": "Current CodeExp2 coordination and publication references; target records own product/setup/runtime state. RESUMPTION.json is historical."
+  },
+  "observed_at_utc": "2026-10-21T05:53:26.718801+00:00",
+  "coordinator": {
+    "role": "coordinator",
+    "session_id": "01a15cea-c64e-7513-a1ca-3b71eeccaaf5",
+    "human_alias": "Thor"
+  },
+  "builder": {
+    "role": "builder",
+    "session_id": "01a155cd-9b3e-7433-b0e7-eeb730e6be6d"
+  },
+  "target": "/Users/boandersson/Desktop/PANEL",
+  "authority": [
+    "Owner selected Mission5 PANEL To BO",
+    "Owner requested wipe locked General Coordinator record and setup from start",
+    "Owner requested commit and push"
+  ],
+  "state": "general_coordinator_reset_and_fresh_onboarding_verified",
+  "target_records": {
+    "handover": "/Users/boandersson/Desktop/PANEL/HANDOVER.json",
+    "plan": "/Users/boandersson/Desktop/PANEL/PLAN.json",
+    "observed_plan_revision": 48,
+    "host_adoption": "/Users/boandersson/Desktop/PANEL/Setup/host-adoption.json",
+    "execution_setup": "/Users/boandersson/Desktop/PANEL/Setup/execution-setup.json",
+    "reset_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-general-reset-publication-01a15cea/RESET.json"
+  },
+  "coordination_review": {
+    "setup": "Matching completed fresh builder ACK, installed guide/native entry hashes and setup diff independently checked by Coordinator; current actual binding recorded without changing permissions.",
+    "reset": "Completed matching diagnosis/apply reports and hashes collected; actual CUA fresh Create/Onboard/Send and visible completed mission menu observed. Fresh saved adoption matched new receiver; saved uncertainty/pending/Stop guards clear.",
+    "publication_exclusions": [
+      "Runtime and backups",
+      "Private conversation/native records and raw transport logs",
+      "Unrelated mission/source changes"
+    ]
+  },
+  "limits": [
+    "Old backend thread is abandoned locally, not proved cancelled or deleted.",
+    "Other registered chats preserved; no shared daemon restart.",
+    "No app-source change or new history feature; S20-S22 remain unassigned.",
+    "Fresh General Coordinator has no mission selected; this conversation remains on PANEL To BO.",
+    "Prior accepted feature/runtime claims retain their recorded scope; owner acceptance remains separate.",
+    "Historical local support/evidence references in the running guide remain local unless separately tracked; they grant no current authority."
+  ],
+  "publication": {
+    "target": {
+      "commit": "9a47f2a3511898fa4bdbd480d79d46d5fdb04356",
+      "branch": "main",
+      "remote": "https://github.com/WRRTREPO/PANEL.git",
+      "live_remote_equality_independently_checked": true,
+      "path_count": 13,
+      "scope": "Reviewed setup handoff and sanitized reset receipt; no source or private Runtime/rollback/raw frames."
+    },
+    "codeexp2": "This coordination document and thin running-guide routing only; normal hook and explicit origin main:main."
+  },
+  "next_action": "Use the fresh General Coordinator; future feature work needs its own bounded assignment.",
+  "unresolved_reset_effects": []
+}
