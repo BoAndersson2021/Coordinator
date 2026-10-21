@@ -1,0 +1,203 @@
+{
+  "format": "codeexp2-mission-coordination/1",
+  "mission": "IMPACT revive",
+  "observed_at_utc": "2026-10-21T02:08:35.082424+00:00",
+  "coordinator": {
+    "role": "coordinator",
+    "alias": "Odin",
+    "session_id": "01a15c20-7895-78e3-9af0-95afcd1eed7a",
+    "identity_limit": null
+  },
+  "target_repository": "/Users/boandersson/Desktop/IMPACT_CODE",
+  "design_source": "/Users/boandersson/Desktop/IMPACT_docs",
+  "outcome": "Establish current design, implemented code and plan progress, reconcile gaps and recommend a revival starting point.",
+  "authority": {
+    "reference": "Owner selected new mission IMPACT revive and authorized Investigation.",
+    "allowed": [
+      "Read project instructions, Git state, source, plans and design documents",
+      "Read external design documents in place",
+      "Maintain scoped CodeExp2 registration and investigation evidence",
+      "Owner follow-up authorizes read-only machine search for the referenced IMPACT design and architecture documents.",
+      "Owner requested import of the other recovered documents; collect them in the existing external IMPACT design collection, preserving original source bytes and separating the earlier corpus.",
+      "Owner requested creation of Desktop/IMPACT_CODE with README and initial AGENTS.md that identify IMPACT_docs as design authority. Initial documentation only."
+    ],
+    "excluded": [
+      "Product implementation, build/run, agent launch or further publication unless assigned by the owner.",
+      "Bulk design rewriting or migration outside an owner assignment."
+    ],
+    "completed_owner_followups": [
+      "Organized and imported current design sources; design commits c4a3e41 and db9f9a9.",
+      "Renamed old code checkout and deprecated/archived both legacy remotes.",
+      "Created fresh IMPACT_CODE, initialized Git and configured owner-selected origin.",
+      "Owner-authorized initial commit and push 7052703 verified against remote main.",
+      "Owner requested explicit mission knowledge of two active local repositories and one active remote."
+    ]
+  },
+  "consumer": {
+    "kind": "agent-interpreted",
+    "owner": "Current IMPACT revive Coordinator",
+    "enforcement": "No runtime admission controller; this record does not authorize commands.",
+    "grants_execution_permission": false
+  },
+  "baseline": {
+    "instructions": "/Users/boandersson/Desktop/IMPACT_CODE/AGENTS.md",
+    "authority": "/Users/boandersson/Desktop/IMPACT_docs/05_Provenance/DESIGN-AUTHORITY.json",
+    "plan": null,
+    "handover": null,
+    "git": {
+      "head": "705270364091f7eaf8a989425bce47a317cad74b",
+      "branch": "main",
+      "state": "clean",
+      "remote": "https://github.com/WRRTREPO/IMPACT_CODE.git",
+      "publication": "Verified origin/main matches local HEAD"
+    },
+    "limit": "Fresh documentation workspace; no game implementation or assigned implementation plan."
+  },
+  "builder": {
+    "session_id": null,
+    "connection": "not_established",
+    "fresh_ack": "not_collected"
+  },
+  "host_adoption": {
+    "state": "setup_required",
+    "guide_id": "structured-canonical-records",
+    "guide_version": 2,
+    "installation": null,
+    "native_entry": "/Users/boandersson/Desktop/IMPACT_CODE/AGENTS.md",
+    "builder_read_apply_ack": null,
+    "limit": "Initial AGENTS routes to the current shared structured guide. No receiving builder read/apply ACK or execution readiness is claimed by documentation setup.",
+    "source_guide_sha256": "f5f560921c6306303383dc4504aca98adc0fddf4693d7eb467329ffb409c5180"
+  },
+  "execution_setup": {
+    "state": "unqualified",
+    "approval_review": "NOT_PROVEN",
+    "permissions": "NOT_PROVEN",
+    "approval_cancellation_control": "NOT_PROVEN",
+    "limit": "Independent read-only investigation is authorized; implementation and runtime execution are outside current scope."
+  },
+  "state": "two_active_local_repositories_one_active_code_remote_initial_documentation_published",
+  "evidence": [
+    "EVIDENCE.json",
+    "NATIVE-INSPECT.json"
+  ],
+  "unresolved": [
+    "No native implementation builder connected or fresh read/apply ACK collected.",
+    "Current code workspace has initial documentation only; no Unreal project, gameplay code or assigned implementation plan.",
+    "Future execution requires applicable host adoption and execution setup; retired legacy claim/inspection failures do not describe the fresh code workspace.",
+    "Design repository README has uncommitted relocation/decommission updates."
+  ],
+  "report": "REPORT.json",
+  "next_action_reference": "continuation",
+  "document_recovery": "DOCUMENT-SEARCH.json",
+  "owner_reference_decision": "DOCUMENT-SEARCH.json owner_reference_decision",
+  "source_import": {
+    "path": "/Users/boandersson/Desktop/IMPACT_docs/05_Provenance/IMPORT-MANIFEST.json",
+    "sha256": "d87a5650312cc6780ef9b20b197e36ec4c9b48c064de743298f356c9bf7e2c2f",
+    "claim": "19 source files imported into the external IMPACT design collection and individually byte-verified."
+  },
+  "design_source_commit": {
+    "repository": "/Users/boandersson/Desktop/IMPACT_docs",
+    "branch": "main",
+    "commit": "db9f9a9a05a79a17adbd25d94ef96ffa17ce327f",
+    "tracked_file_count": 40,
+    "working_tree": "README.md modified locally with legacy relocation/decommission references",
+    "remote": "none configured",
+    "publication": "not_pushed",
+    "scope": "Current design authority and preserved historical sources; separate from implementation."
+  },
+  "repository_disposition": {
+    "state": "legacy_reference",
+    "owner_decision": "Preserve old code repository as IMPACT_Legacy; a fresh implementation repository may be established later.",
+    "relocation_evidence": "REPOSITORY-RENAME.json",
+    "execution": "Not resumed or qualified. Old ownership/setup records are historical context.",
+    "future_implementation_repository": "/Users/boandersson/Desktop/IMPACT_CODE",
+    "remote_decommission": "REMOTE-DECOMMISSION.json",
+    "remote_state": "Both configured GitHub repositories renamed IMPACT_Legacy, explicitly deprecated and archived; branch heads preserved.",
+    "scope": "Retired predecessor only; not the active mission target."
+  },
+  "current_design_authority": {
+    "path": "/Users/boandersson/Desktop/IMPACT_docs/05_Provenance/DESIGN-AUTHORITY.json",
+    "commit": "db9f9a9",
+    "scope": "Current High Concept and GDD Parts 1–2; technical runtime proof remains unestablished."
+  },
+  "fresh_code_workspace": {
+    "path": "/Users/boandersson/Desktop/IMPACT_CODE",
+    "scope": "Initial README.md and AGENTS.md only",
+    "design_authority": "/Users/boandersson/Desktop/IMPACT_docs/05_Provenance/DESIGN-AUTHORITY.json",
+    "legacy_reference": "/Users/boandersson/Projects/IMPACT_Legacy",
+    "git_initialization": "Standalone main branch, initial documentation committed and pushed to owner-selected origin.",
+    "builder": "Not launched or connected",
+    "runtime": "No engine project or gameplay implementation created"
+  },
+  "legacy_baseline": {
+    "instructions": "/Users/boandersson/Projects/IMPACT_Legacy/AGENTS.md",
+    "authority": "/Users/boandersson/Projects/IMPACT_Legacy/governance/REPOSITORY_CONTRACT.json",
+    "plan": null,
+    "plan_limit": "No assigned game execution plan found; native task-completion investigation is governance work.",
+    "handover": null,
+    "handover_limit": "No canonical project handover found; old native work claim/journal retained.",
+    "git": {
+      "head": "57a26ace65143ff99b5316953095e07cfba85fb2",
+      "branch": "feature/impact-task-completion-20261001",
+      "evidence": "EVIDENCE.json"
+    }
+  },
+  "previous_coordination_observation": {
+    "observed_at_utc": "2026-10-20T03:36:06.990044+00:00",
+    "coordinator": {
+      "role": "coordinator",
+      "alias": "Freya",
+      "session_id": "01a1574f-0821-7dc1-a56f-fc07745ae937",
+      "identity_limit": null
+    }
+  },
+  "repository_topology": {
+    "active_local_count": 2,
+    "active_remote_count": 1,
+    "local_repositories": [
+      {
+        "role": "design_authority",
+        "path": "/Users/boandersson/Desktop/IMPACT_docs",
+        "branch": "main",
+        "head": "db9f9a9a05a79a17adbd25d94ef96ffa17ce327f",
+        "dirty_paths": [
+          "README.md"
+        ],
+        "remote": null,
+        "owns": "Current High Concept, GDDs, design authority, source history and design changes."
+      },
+      {
+        "role": "implementation",
+        "path": "/Users/boandersson/Desktop/IMPACT_CODE",
+        "branch": "main",
+        "head": "705270364091f7eaf8a989425bce47a317cad74b",
+        "dirty_paths": [],
+        "remote_name": "origin",
+        "remote_url": "https://github.com/WRRTREPO/IMPACT_CODE.git",
+        "owns": "Game implementation; currently README and AGENTS only."
+      }
+    ],
+    "remote_repositories": [
+      {
+        "role": "implementation_publication",
+        "url": "https://github.com/WRRTREPO/IMPACT_CODE.git",
+        "local_repository": "/Users/boandersson/Desktop/IMPACT_CODE",
+        "branch": "main",
+        "verified_remote_head": "705270364091f7eaf8a989425bce47a317cad74b"
+      }
+    ],
+    "relationship": "IMPACT_docs supplies design authority to IMPACT_CODE. Only IMPACT_CODE has an active configured remote. Legacy repositories are excluded from these active counts."
+  },
+  "legacy_assessment_limits": [
+    "Prior native work claim and nonterminal task journal remain owned by prior worker.",
+    "Current native inspection fails on five existing untracked files.",
+    "Parent v1.4 specification/usage and v0.3 unknown review located; redundant references resolved by owner decision. No adopted current target game baseline is established.",
+    "Target guide installation, builder identity/read-apply ACK and execution qualification remain unverified."
+  ],
+  "continuation": {
+    "design": "Read IMPACT_docs/05_Provenance/DESIGN-AUTHORITY.json and its current High Concept and both GDD parts.",
+    "code": "Read IMPACT_CODE/README.md and AGENTS.md, then inspect actual Git state.",
+    "next_authority_boundary": "Further implementation, engine setup or agent launch needs an applicable owner assignment.",
+    "legacy": "Historical evidence only; no resumption."
+  }
+}

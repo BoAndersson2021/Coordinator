@@ -12,6 +12,8 @@ document or an unregistered external repository.
 | BallisticsExperimental | Coordinate work on the experimental game repository | `/Users/boandersson/Desktop/BallisticsExperimental` | [Guide](BallisticsExperimental/README.md) |
 | WEBSITE | Coordinate work in the website repository | `/Users/boandersson/Desktop/WEBSITE` | [Guide](WEBSITE/README.md) |
 
+| IMPACT revive | Coordinate current design and fresh code workspace; design authority stays in IMPACT_docs | `/Users/boandersson/Desktop/IMPACT_docs` (design); `/Users/boandersson/Desktop/IMPACT_CODE` (code) | [Guide](ImpactRevive/README.md) |
+
 **Start a NEW mission** is always an additional choice. Establish its name,
 target repository and intended outcome, then use the setup procedure below.
 

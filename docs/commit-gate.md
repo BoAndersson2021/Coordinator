@@ -103,3 +103,37 @@ configuration preserved. See the [delivery/adoption record](../Missions/ControlW
 for hashes, backup, independent source review, native proof and continuation.
 This extends development admission; product mission dispatch and executor
 retirement still need their own applicable authority and runtime evidence.
+
+## Structured mission documentation
+
+The owner authorized a bounded correction after the gate rejected IMPACT's
+canonical coordination record as executable data. The documentation route also
+admits regular non-executable UTF-8 JSON files at these exact mission locations:
+
+| Path under `Missions/<mission>/` | Required `format` |
+| --- | --- |
+| `MISSION.json` | `codeexp2-mission-coordination/1` |
+| `REPOSITORY-RENAME.json` | `codeexp2-repository-relocation/1` |
+| `REMOTE-DECOMMISSION.json` | `codeexp2-remote-decommission/1` |
+
+Each record must be an object with a nonempty string `mission`, and a `consumer`
+object declaring `kind: "agent-interpreted"` and
+`grants_execution_permission: false`. Duplicate keys, non-finite numbers,
+malformed JSON, unsupported formats, executable modes and symlinks are rejected.
+The maximum document size is 1 MiB. Both old and new staged bytes are checked
+for edits; deletion requires a valid old document. Shared package/evidence
+directories and nested paths are excluded.
+
+This is a content classification for committing documents. It does not validate
+their full semantics, establish registration/readiness, authorize commands, or
+grant runtime effects. Operational/configuration JSON still needs reviewed
+development admission. Protected instructions retain their independent review
+checks. No generic JSON exception is installed.
+
+Five mandatory disposable-commit regressions cover legitimate add/edit/delete,
+malformed or permission-granting records, path/mode boundaries, staged-versus-
+working-tree bytes, and operational/protected JSON refusal. Existing mandatory
+tests and policy protections remain required. Adoption preserves the previous
+gate and Git configuration under `.git/codeexp2-mission-doc-adoption-*/`; its
+exact-byte manifest, independent review, test logs and adoption receipt identify
+the installed correction. No hook bypass or runtime qualification is implied.

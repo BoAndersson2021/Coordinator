@@ -133,6 +133,100 @@ class CommitGateTests(unittest.TestCase):
                 self.blocked(self.commit(), 'unreviewed executable/data path')
                 self.git('reset', '-q', 'HEAD', '--', name)
 
+    def mission_document(self, name='MISSION.json'):
+        formats = {
+            'MISSION.json': 'codeexp2-mission-coordination/1',
+            'REPOSITORY-RENAME.json': 'codeexp2-repository-relocation/1',
+            'REMOTE-DECOMMISSION.json': 'codeexp2-remote-decommission/1',
+        }
+        return {'format': formats[name], 'mission': 'Fixture',
+                'consumer': {'kind': 'agent-interpreted',
+                             'grants_execution_permission': False}}
+
+    def test_mission_document_add_edit_delete_pass(self):
+        for name in ('MISSION.json', 'REPOSITORY-RENAME.json', 'REMOTE-DECOMMISSION.json'):
+            path = 'Missions/Fixture/' + name
+            body = self.mission_document(name)
+            for operation in ('add', 'edit', 'delete'):
+                with self.subTest(name=name, operation=operation):
+                    if operation == 'delete':
+                        (self.root / path).unlink()
+                    else:
+                        body['summary'] = operation
+                        self.write(path, json.dumps(body) + '\n')
+                    self.git('add', '-A', '--', path)
+                    result = self.commit()
+                    self.assertEqual(result.returncode, 0, result.stderr.decode())
+
+    def test_mission_document_malformed_or_authorizing_records_block(self):
+        path = 'Missions/Fixture/MISSION.json'
+        good = self.mission_document()
+        bad = [b'not JSON', b'\xff', b'{}\0', b'#!/bin/sh\nexit 0\n', b'[]',
+               json.dumps(good).replace('"Fixture"', 'NaN').encode(),
+               json.dumps(good).replace('"Fixture"', '1e999').encode(),
+               (json.dumps(good)[:-1] + ', "mission": "duplicate"}').encode(),
+               json.dumps(dict(good, format='codeexp2-mission-coordination/2')).encode(),
+               json.dumps(dict(good, mission=None)).encode(),
+               json.dumps(dict(good, consumer={'kind': 'runtime-enforced',
+                                              'grants_execution_permission': False})).encode(),
+               json.dumps(dict(good, consumer={'kind': 'agent-interpreted',
+                                              'grants_execution_permission': True})).encode(),
+               json.dumps(dict(good, consumer={'kind': 'agent-interpreted'})).encode(),
+               json.dumps(dict(good, extra={'duplicate': 1})).replace(
+                   '"duplicate": 1', '"duplicate": 1, "duplicate": 2').encode()]
+        for blob in bad:
+            with self.subTest(blob=blob):
+                (self.root / path).parent.mkdir(parents=True, exist_ok=True)
+                (self.root / path).write_bytes(blob)
+                self.git('add', '--', path)
+                self.blocked(self.commit(), 'unreviewed executable/data path')
+
+    def test_mission_document_scope_and_modes_remain_bounded(self):
+        for path in ('unknown.json', 'Missions/Fixture/config.json',
+                     'Missions/Packages/MISSION.json',
+                     'Missions/ControlWorkflowEvidence/MISSION.json',
+                     'Missions/Fixture/nested/MISSION.json',
+                     'Runtime/Fixture/MISSION.json'):
+            with self.subTest(path=path):
+                self.write(path, json.dumps(self.mission_document()))
+                self.git('add', '--', path)
+                self.blocked(self.commit(), 'unreviewed executable/data path')
+                self.git('reset', '-q', 'HEAD', '--', path)
+        path = 'Missions/Fixture/MISSION.json'
+        self.write(path, json.dumps(self.mission_document()))
+        (self.root / path).chmod(0o755)
+        self.git('add', '--', path)
+        self.blocked(self.commit(), 'unreviewed executable/data path')
+        (self.root / path).unlink()
+        (self.root / path).symlink_to(self.root / 'README.md')
+        self.git('add', '--', path)
+        self.blocked(self.commit(), 'unreviewed executable/data path')
+
+    def test_mission_document_uses_index_not_worktree(self):
+        path = 'Missions/Fixture/MISSION.json'
+        self.write(path, '{}\n')
+        self.git('add', '--', path)
+        self.write(path, json.dumps(self.mission_document()))
+        self.blocked(self.commit(), 'unreviewed executable/data path')
+        self.git('add', '--', path)
+        self.write(path, '{}\n')
+        self.assertEqual(self.commit().returncode, 0)
+        self.assertEqual(json.loads(self.git('show', 'HEAD:' + path).stdout),
+                         self.mission_document())
+
+    def test_mission_document_does_not_admit_operational_or_protected_json(self):
+        path = 'Missions/Fixture/MISSION.json'
+        for record_format in ('builder-communication/1', 'agent-working-guide/1',
+                              'codeexp2-native-binding/1'):
+            self.write(path, json.dumps(dict(self.mission_document(), format=record_format)))
+            self.git('add', '--', path)
+            self.blocked(self.commit(), 'unreviewed executable/data path')
+        self.git('reset', '-q', 'HEAD', '--', path)
+        path = 'Missions/Fixture/.agents/MISSION.json'
+        self.write(path, json.dumps(self.mission_document()))
+        self.git('add', '--', path)
+        self.blocked(self.commit(), 'instruction/invariant change requires review')
+
     def test_unreviewed_source_bytes_block_before_tests(self):
         self.stage_feature()
         self.write('tool.py', 'VALUE = 2\n')

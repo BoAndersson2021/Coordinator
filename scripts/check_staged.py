@@ -6,6 +6,7 @@ cannot replace either trusted input. No installation or runtime dispatch occurs.
 """
 import hashlib
 import json
+import math
 import os
 from pathlib import Path, PurePosixPath
 import subprocess
@@ -93,6 +94,59 @@ def ordinary(mode, blob, name):
     return not blob.startswith(b'#!') and b'\0' not in blob
 
 
+def mission_document(mode, blob, name):
+    """Content-only admission for three agent-interpreted documentation records.
+
+    This is not validation of mission readiness, owner acceptance or permission
+    to execute anything described by a record. Operational JSON stays subject
+    to the reviewed development inventory, as do all protected instructions.
+    """
+    if mode == '000000':
+        return True
+    parts = PurePosixPath(name).parts
+    formats = {
+        'MISSION.json': 'codeexp2-mission-coordination/1',
+        'REPOSITORY-RENAME.json': 'codeexp2-repository-relocation/1',
+        'REMOTE-DECOMMISSION.json': 'codeexp2-remote-decommission/1',
+    }
+    if (mode != '100644' or len(parts) != 3 or parts[0] != 'Missions'
+            or parts[1].casefold() in {'packages', 'controlworkflowevidence'}
+            or parts[2] not in formats or len(blob) > 1048576):
+        return False
+
+    def pairs(items):
+        result = {}
+        for key, value in items:
+            if key in result:
+                raise ValueError('duplicate JSON key')
+            result[key] = value
+        return result
+
+    def finite(value):
+        if isinstance(value, float) and not math.isfinite(value):
+            raise ValueError('non-finite JSON number')
+        if isinstance(value, dict):
+            for item in value.values():
+                finite(item)
+        elif isinstance(value, list):
+            for item in value:
+                finite(item)
+
+    try:
+        body = json.loads(blob.decode('utf-8'), object_pairs_hook=pairs)
+        finite(body)
+        if not isinstance(body, dict):
+            return False
+        consumer = body.get('consumer')
+        return (body.get('format') == formats[parts[2]]
+                and isinstance(body.get('mission'), str) and bool(body['mission'].strip())
+                and isinstance(consumer, dict)
+                and consumer.get('kind') == 'agent-interpreted'
+                and consumer.get('grants_execution_permission') is False)
+    except (UnicodeError, ValueError, RecursionError):
+        return False
+
+
 def check():
     if sys.argv[1:] != ['--staged']:
         reject('use --staged; working-tree checks cannot authorize a commit')
@@ -153,7 +207,9 @@ def check():
                                 and hashlib.sha256(new).hexdigest() == instructions.get(name))
             if not (reviewed_deletion or reviewed_content):
                 reject('instruction/invariant change requires review: ' + name)
-        elif not (ordinary(old_mode, old, name) and ordinary(new_mode, new, name)):
+        elif not ((ordinary(old_mode, old, name) and ordinary(new_mode, new, name))
+                  or (mission_document(old_mode, old, name)
+                      and mission_document(new_mode, new, name))):
             if name not in files:
                 reject('unreviewed executable/data path: ' + name)
             feature = True

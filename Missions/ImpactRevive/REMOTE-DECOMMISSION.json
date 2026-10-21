@@ -1,0 +1,67 @@
+{
+  "format": "codeexp2-remote-decommission/1",
+  "mission": "IMPACT revive",
+  "authority": "Owner requested decommissioning the legacy remote to avoid confusion with a future runtime repository.",
+  "coordinator": {
+    "role": "coordinator",
+    "alias": "Odin"
+  },
+  "started_at_utc": "2026-10-21T01:59:30.253991+00:00",
+  "method": "Rename, explicit deprecation description, and GitHub archive; preserve all branches/history and privacy.",
+  "repositories": [
+    {
+      "old_full_name": "WRRTREPO/IMPACTPRO",
+      "new_full_name": "WRRTREPO/IMPACT_Legacy",
+      "repository_id": 1400096073,
+      "original_description": null,
+      "visibility": "private",
+      "branch_refs_before": {
+        "refs/heads/main": "9042e82783d86570343a0d677a5c0ea22048e765"
+      },
+      "state": "verified_archived",
+      "url": "https://github.com/WRRTREPO/IMPACT_Legacy",
+      "description": "DECOMMISSIONED — Legacy IMPACT governance/prototype repository. Archived for history only. Not the current or future IMPACT game runtime. Do not resume development here.",
+      "all_branch_heads_preserved": true
+    },
+    {
+      "old_full_name": "BoAndersson2021/IMPACT",
+      "new_full_name": "BoAndersson2021/IMPACT_Legacy",
+      "repository_id": 1399852009,
+      "original_description": null,
+      "visibility": "private",
+      "branch_refs_before": {
+        "refs/heads/feature/impact-authority-first-agents": "c4d906d474f037376c592c516dc4b2beb4a4e5bd",
+        "refs/heads/feature/impact-cas-closure": "d0d344ec4b8f5038cba2a21c9b866003c163ecd4",
+        "refs/heads/feature/impact-contract-gate-wiring": "ccfa96222b4d2e0f3a221b607c308e5ee33a40ed",
+        "refs/heads/feature/impact-documentation-governance": "fbf9d5c9b14778ea05d816dd86cd43564f64cae5",
+        "refs/heads/feature/impact-governance-pilot": "b79fd1d81dad58589450979624c105789d7424df",
+        "refs/heads/feature/impact-intent-packet-protocol": "f0c8262db5fb6586cb9a62896f9029e655535170",
+        "refs/heads/feature/impact-main-bootstrap-sealed": "bf1f19c6bd13acaff3d4ce65b5055b7673321d5e",
+        "refs/heads/feature/impact-protected-branch-ci": "5d5bba4a23913a974bdbc4beb95170ef22a8ec84",
+        "refs/heads/feature/impact-red-team-protocol": "1f5f6e97f18658dacf2d6636c28a6bfbcc21a487",
+        "refs/heads/feature/impact-repository-contract": "29efd4bb6a60ca10ddc334fc32bc109bcea488fb",
+        "refs/heads/feature/impact-repository-contract-self-test": "146282a2ddd3db2f22e48bf92a7076d645a745b5",
+        "refs/heads/feature/impact-root-file-guard": "8bc43f13080af6094d5ba0a300a42902d2a041d9",
+        "refs/heads/feature/impact-self-audit-fuzz-tests": "b79fd1d81dad58589450979624c105789d7424df",
+        "refs/heads/feature/impact-surface-topology": "5015c72db39363134910af57c1c6a6a44dd433c1",
+        "refs/heads/feature/impact-surface-topology-red-team": "30e134758b98ba73c58e1866751303bad91cbd7c",
+        "refs/heads/main": "bf1f19c6bd13acaff3d4ce65b5055b7673321d5e"
+      },
+      "state": "verified_archived",
+      "url": "https://github.com/BoAndersson2021/IMPACT_Legacy",
+      "description": "DECOMMISSIONED — Legacy IMPACT governance/prototype repository. Archived for history only. Not the current or future IMPACT game runtime. Do not resume development here.",
+      "all_branch_heads_preserved": true
+    }
+  ],
+  "local_checkout": "/Users/boandersson/Projects/IMPACT_Legacy",
+  "local_remote_updates": "verified",
+  "limitations": [
+    "No repository deletion, code push, branch rewrite or new runtime repository."
+  ],
+  "completed_at_utc": "2026-10-21T01:59:36.109080+00:00",
+  "consumer": {
+    "kind": "agent-interpreted",
+    "grants_execution_permission": false,
+    "enforcement": "Historical documentation only; no runtime enforcement or execution authority."
+  }
+}
