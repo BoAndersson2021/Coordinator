@@ -165,3 +165,13 @@ launch an agent or execute a received report file to deliver a message.
 Human-facing answers remain governed by the user's presentation preferences.
 This contract neither adds recurring approval steps nor removes existing reviews,
 repair limits, connection checks, authority boundaries or lifecycle requirements.
+
+## Compatible bounded-delivery extensions
+
+The [bounded-delivery guide](../../../.agents/guides/bounded-delivery-session.json)
+owns optional body fragments for plan/authority bindings, write ownership,
+critical feasibility, frozen review inputs, superseded reports and final
+reconciliation/retention. Fill them from actual observations alongside the
+required v1 fields above. They are not an alternative envelope or a new contract
+version, and are not automatically enforced by the transport. A template, frozen
+manifest or old PASS cannot substitute for current review and evidence.

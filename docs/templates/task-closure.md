@@ -23,3 +23,9 @@ Canonical native handover: `<target path; workspace-only tasks may use this work
 Evidence: `<durable paths and hashes; private raw logs stay private>`.
 
 An observation-only summary does not cancel or end anything. An authorized end action records end intent before subsequent cooperating-client sends, then reconciles in-flight work. Unknown effects stay visible. Ending one mission does not affect another, close the shared daemon or prove executor retirement. A handover never resumes an ended mission by itself.
+
+For bounded agent-to-agent closeout, use the optional structured fragments in
+the [bounded-delivery guide](../../.agents/guides/bounded-delivery-session.json)
+inside the existing communication envelope. This human-facing template and its
+lifecycle observations remain applicable; source freeze/review and final
+reconciliation do not establish process retirement or publication.

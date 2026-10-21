@@ -48,6 +48,7 @@ Existing authorized communication route
 | [EXAMPLES.md](EXAMPLES.md) | JSON examples for assignment, acknowledgement, progress, blocker and completion. |
 | [DELIVERY.md](DELIVERY.md) | Template the installer fills with the mission's artifact path, limits and verification status. |
 | [AGENTS-SNIPPET.md](AGENTS-SNIPPET.md) | Text to merge into the target's existing instructions. |
+| [Bounded-delivery procedure and templates](../../../.agents/guides/bounded-delivery-session.json) | Optional compatible v1 body fragments for assignment, source freeze, independent review and closeout; canonical shared procedure. |
 
 ## Install into an authorized mission repository
 
@@ -147,3 +148,9 @@ new contract version and an explicit migration when message meaning changes.
 This package defines message content. It does not replace a mission's connection
 protocol, delivery evidence, lifecycle controls, build rules or product laws.
 It does not qualify Machine automation or install its enforcement.
+
+For bounded delivery sessions, explicitly supply the linked procedure and verify
+its read/apply acknowledgement during authorized setup. The guide is centrally
+managed here; copying this package does not automatically install that guide or
+update existing target snapshots. Resolve its location through the target's
+supported native loading route and preserve its actual requirements.

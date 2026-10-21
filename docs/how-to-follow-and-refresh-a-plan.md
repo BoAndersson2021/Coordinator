@@ -98,3 +98,9 @@ real interface rejected the requested operation. The implementation exists, but
 the runtime check failed. Steps 4 and 5 still depend on this result. Next: verify
 the supported alternative within the existing scope." Link the actual evidence
 when available. Never copy an example as if it were an observed result.
+
+For bounded execution assignments, the
+[bounded-delivery procedure](../.agents/guides/bounded-delivery-session.json)
+provides assignment and final-evidence bindings. Keep this guide's history,
+dependency and native-plan ownership requirements; the procedure creates no
+second implementation plan.

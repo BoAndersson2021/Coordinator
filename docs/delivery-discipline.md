@@ -120,3 +120,8 @@ Suggested handoff:
 > Read and follow Delivery Discipline alongside this repository's other
 > instructions. Keep my requested outcome fixed, prove critical feasibility early,
 > and apply its repair-loop limit. Report usable results and remaining gaps.
+
+For bounded delegated sessions, also apply the
+[bounded-delivery procedure](../.agents/guides/bounded-delivery-session.json).
+It operationalizes this guide through the existing Coordinator and communication
+contracts; it does not replace the delivery rules or shared repair limit.

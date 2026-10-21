@@ -127,3 +127,12 @@ A handoff can be short:
 
 Use the repository's existing tools and records. Creating a guide or writing an
 assignment does not establish that a builder is running or that work occurred.
+
+## Reusable bounded-delivery procedure
+
+For a bounded delivery assignment, read and apply the
+[bounded-delivery session guide](../.agents/guides/bounded-delivery-session.json).
+It adds the reusable sequence, exact-input review/invalidation rules and optional
+BuilderCommunication body templates. This guide retains ownership of coordination;
+the linked procedure preserves the existing delivery, plan, setup and closure
+requirements. It installs no transport or execution authority.

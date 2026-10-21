@@ -1,0 +1,133 @@
+{
+  "format": "agent-working-guide/1",
+  "id": "bounded-delivery-session",
+  "version": 1,
+  "title": "Reusable procedure for one bounded delivery session",
+  "audience": "agents",
+  "authority": {
+    "reference": "Owner authorized additive workflow/guide improvements after the IMPACT F01 session, preserving existing guides and requirements.",
+    "grants_execution_permission": false
+  },
+  "consumer": {
+    "kind": "agent-interpreted",
+    "owner": "Coordinator for the assignment, native builder for implementation, independent reviewer for assigned verification",
+    "discovery": "Existing coordinator, delivery, plan, task-closure and BuilderCommunication entries route here.",
+    "syntax_validation": "CodeExp2 scripts/native_evidence.py:strict_json; a target uses its own approved strict reader.",
+    "semantic_validation": "Receiving agents check actual authority, baseline, applicable contracts, evidence and prerequisites before dependent effects.",
+    "runtime_enforcement": "No generic workflow engine, transport, permission grant or blocking hook is installed by this guide. JSON syntax and hashes alone cannot establish technical correctness."
+  },
+  "preservation": {
+    "relationship": "Additive procedure and optional message-body extensions. Existing guides, native plans, BuilderCommunication v1 and host requirements retain their roles and requirements.",
+    "conflicts": "Identify exact conflicting clauses and resolve through applicable instruction hierarchy and owner authority; hold only the affected effect. Do not assume this guide overrides another rule because it is newer.",
+    "canon": "Keep one native implementation plan. Reference existing authority, setup, delivery and handover records instead of creating synchronized copies.",
+    "adoption": "CodeExp2 routes and local adoption do not update external installed snapshots. On an authorized pickup, supply this guide explicitly, verify its identity and collect a fresh matching read/apply ACK before relying on it in that target. Preserve native instruction-loading, independent review and setup requirements."
+  },
+  "roles": {
+    "human": "Owns outcome, scope and reserved decisions; receives concise progress and final results.",
+    "coordinator": "Owns assignment boundaries, supported setup/communication, dependency decisions, evidence collection and final technical verification. Does not silently take over builder-owned files.",
+    "builder": "Owns assigned native implementation, meaningful tests and native plan/document updates. One writer per overlapping source scope.",
+    "reviewer": "Independently examines assigned frozen inputs and relevant evidence; does not modify reviewed source. Any allowed evidence writes are named explicitly. Review is not owner acceptance."
+  },
+  "procedure": [
+    {
+      "id": "BD-01",
+      "name": "Bind the assignment",
+      "action": "Observe target/worktree, branch, HEAD, logical index, relevant dirty bytes and ownership. Read current instructions, applicable native plan/history and future dependencies. Bind one stable assignment ID to the requested outcome, plan step, observable acceptance, exclusions, delivery settings and stopping condition. Confirm host adoption and execution setup for the actual scope before dependent execution.",
+      "evidence": "Reuse existing source/setup/assignment records. A HEAD alone cannot identify dirty source. Record unknown identities as null with limitations; retain actual task/session IDs separately from human aliases."
+    },
+    {
+      "id": "BD-02",
+      "name": "Prove critical feasibility early",
+      "action": "Identify the integration assumption most likely to invalidate the approach. Perform the smallest authorized experiment through the actual supported interface before expanding implementation. Name what synthetic fixtures, static inspection and real execution each establish.",
+      "evidence": "Retain exact inputs, command/configuration, source binding, measured result and limits. An unavailable real interface leaves that integration unproved; it does not invalidate useful independent work."
+    },
+    {
+      "id": "BD-03",
+      "name": "Implement and verify one step",
+      "action": "Let the native builder execute within the assigned scope and maintain its existing plan. Use meaningful passing and refusal cases where safeguards or effect boundaries change. Inspect inherited configuration, environment variables and supported bypass controls that can defeat the stated acceptance condition; test concrete relevant cases rather than an unlimited adversarial checklist.",
+      "evidence": "Tests identify actual executable/configuration/input bytes and observed outcomes. Use the real relevant integration route when required. Retain failed attempts and reconcile uncertain effects before retrying. Delivery Discipline owns the shared repair limit."
+    },
+    {
+      "id": "BD-04",
+      "name": "Freeze and review exact inputs",
+      "action": "When independent review is applicable, identify the reviewed files, input/configuration dependencies, hashes and review revision in an existing source manifest. The builder announces a freeze of those inputs; the reviewer acknowledges that exact revision and verifies identity before and after review. Other disjoint work may continue only if it cannot change review inputs or disturb its evidence.",
+      "evidence": "Review binds to hashes and scope, not merely a filename, assignment ID, HEAD or PASS label. Required independent review remains required; this procedure does not mandate another reviewer for every harmless document edit."
+    },
+    {
+      "id": "BD-05",
+      "name": "Invalidate stale results and repair",
+      "action": "A changed reviewed input, newly discovered relevant defect or changed premise prevents relying on the affected prior PASS. Preserve it as historical and mark its replacement/reason in the current canonical evidence reference. Before using a late report, compare its actual revision/hashes with the current freeze and unresolved findings. Return concrete defects to the owning builder; create a new manifest revision after repairs.",
+      "evidence": "Repeat affected tests and independent review; reuse unchanged verified work only after checking identities and dependencies. Changes to code, tools, configuration, relevant instructions or environment can matter even when a particular file hash is unchanged. Do not overwrite failed or superseded reports."
+    },
+    {
+      "id": "BD-06",
+      "name": "Reconcile documents and close",
+      "action": "Collect completed tests and required review, verify their source/evidence bindings, and refresh factual native plan/docs. Run the target's existing synchronization procedure when required; inspect all proposed/applied corrections. If later factual edits affect that reconciliation, rerun or otherwise perform the target's required reconciliation on the affected final content. Store volatile run receipts outside maintained prose so announcing a synchronization does not require a self-referential document edit.",
+      "evidence": "Capture the final source/document manifest after reconciliation. Verify relevant current bytes against tests/review, unresolved effects and owned-process state, preserved unrelated work, and real index/HEAD where preservation was assigned. Publication remains separate and follows the actual authorized native route."
+    },
+    {
+      "id": "BD-07",
+      "name": "Report and continue only within authority",
+      "action": "Report what is done, what remains and the smallest next eligible action against the original outcome. Distinguish implemented, tested, installed, runtime-verified, published and owner-accepted. Stop at an explicit assignment boundary; continue eligible work when the owner has already authorized it. A proposed next step alone is not dispatch authority.",
+      "evidence": "Update the existing native handover and scoped mission references with exact checkpoint, dirty-work ownership, evidence access/retention, unresolved effects and next action. State when local ignored evidence will be absent in a fresh clone and how it can be retrieved or reproduced through a supported authorized route."
+    }
+  ],
+  "efficiency": [
+    "Reuse existing contracts, setup evidence, native plans, validators and publication routes. Do not create a generic controller or new global governance milestone merely to follow this procedure.",
+    "Prefer meaningful progress/completion signals and bounded waits; use status inspection to diagnose a concrete uncertainty rather than repeatedly polling unchanged state. Keep humans informed under the active communication requirements.",
+    "Parallelize only independent authorized work with disjoint ownership and stable dependencies. Serialize freeze changes, evidence decisions, shared-index operations and publication.",
+    "Use the smallest verification sufficient for the changed behavior. Existing passing evidence need not be repeated without a relevant change, failure or unresolved concern.",
+    "Authority supplied for a bounded task covers its routine feasible steps; surface only material scope, budget, risk or owner-controlled capability decisions."
+  ],
+  "template_contract": {
+    "protocol": "builder-communication/1",
+    "canonical_envelope": "../../Missions/Packages/BuilderCommunication/CONTRACT.md",
+    "delivery_settings": "Use the actual installed mission delivery settings and inline budget; the package DELIVERY.md is an unfilled installer template.",
+    "instantiation": "The objects below are illustrative body fragments, not ready messages or observations. Fill them with verified values inside the existing required envelope/body fields. Never send placeholder acceptance, ready or PASS claims. These fragments add compatible optional fields; they do not change v1 required fields or install a parser.",
+    "source_manifest": "Reuse the native manifest schema. Include regular file identities, relevant modes/configuration/tool inputs and exclusions as needed for the actual decision; a hash list is not a complete runtime environment."
+  },
+  "templates": {
+    "assignment_body_extension": {
+      "plan_reference": {"path": null, "step_id": null, "identity": null},
+      "authority_reference": null,
+      "write_ownership": {"builder_paths": [], "reviewer_evidence_paths": [], "excluded_work": []},
+      "critical_feasibility": {"assumption": null, "real_interface": null, "smallest_authorized_check": null},
+      "operation_limits": {"basis": "Use applicable native numeric limits; record an unavailable limit explicitly rather than inventing one."},
+      "stop_condition": null,
+      "publication_authority": {"commit": false, "push": false, "reference": null}
+    },
+    "freeze_progress_body_extension": {
+      "review_binding": {"revision_id": null, "source_manifest": null, "sha256": null, "frozen_inputs": [], "permitted_concurrent_work": []},
+      "unresolved_findings": [],
+      "instruction": "Populate observed source and required progress fields; an empty findings array is an observation only after actual collection."
+    },
+    "review_assignment_body_extension": {
+      "review_binding": {"revision_id": null, "source_manifest": null, "sha256": null},
+      "independence": {"reviewer_identity": null, "source_writes_allowed": false, "evidence_write_scope": []},
+      "focus": ["Acceptance behavior and its real passing route", "Concrete failure/bypass cases for the affected boundary", "Actual input identities and review invalidation"],
+      "return_requirement": "Use v1 verification fields and exact reviewed identities. Compare current inputs before and after; report changes or missing observations instead of assuming PASS."
+    },
+    "verification_body_extension": {
+      "review_binding": {"revision_id": null, "source_manifest": null, "sha256": null},
+      "supersedes": {"report": null, "sha256": null, "reason": null},
+      "open_findings": null,
+      "instruction": "Use result not_proven until actual checks establish a result. Unavailable findings are null with limitations, not an invented empty array."
+    },
+    "closeout_body_extension": {
+      "final_manifest": {"path": null, "sha256": null},
+      "reconciliation": {"required_by": null, "result_reference": null, "final_content_covered": null},
+      "evidence_access": {"retention": null, "available_in_fresh_clone": null, "retrieval_or_reproduction": null},
+      "uncertain_effects": null,
+      "owned_resources": null,
+      "publication": {"authority_reference": null, "state": "not_observed", "expected_commit": null, "observed_commit": null},
+      "next_action_authority": {"action": null, "actor": null, "state": "proposed"}
+    }
+  },
+  "adoption_checks": [
+    "Read complete guide and existing contract through approved strict parsing; verify routing references and actual consumer limits.",
+    "Verify old guide requirements and native plan ownership remain intact; no duplicate canonical plan or Markdown edition was introduced.",
+    "Exercise assignment/freeze/review/closeout fragments through an authorized agent exchange; retain exact guide identity and fresh read/apply ACK.",
+    "Check late-old-review and post-reconciliation-edit scenarios: affected results stay unusable until current identities, findings and final content are reconciled.",
+    "Apply required independent instruction review and record local adoption. State explicitly which external targets have not adopted the change."
+  ]
+}

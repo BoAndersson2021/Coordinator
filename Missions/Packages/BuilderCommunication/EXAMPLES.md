@@ -198,3 +198,12 @@ not evidence. Replace them with the assigned path and its computed SHA256.
   }
 }
 ```
+
+## Bounded delivery sessions
+
+Use the optional `templates` in the
+[canonical bounded-delivery guide](../../../.agents/guides/bounded-delivery-session.json)
+for assignments, source freezes, independent review and final reconciliation.
+Keep the required envelope and type-specific fields demonstrated above. The
+fragments contain unknowns/placeholders and are not ready-to-send observations;
+populate actual source, authority, delivery settings and results before use.

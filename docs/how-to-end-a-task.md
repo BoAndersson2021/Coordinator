@@ -79,3 +79,8 @@ For a completed documentation request:
 Agent-to-agent replies retain their structured communication contract. Express
 the same facts in its existing outcome, checks, limitations and next-action
 fields; do not replace a required JSON envelope with human presentation labels.
+
+For bounded delegated work, apply the final reconciliation and evidence checks
+in the [bounded-delivery procedure](../.agents/guides/bounded-delivery-session.json).
+Its closeout fragments extend the existing agent envelope; this guide continues
+to own the required done, remaining and next-action statements.
