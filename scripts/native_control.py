@@ -2,7 +2,7 @@
 import argparse
 from collections import deque
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import fcntl
 import hashlib
 import importlib.metadata
@@ -14,6 +14,7 @@ import stat
 import subprocess
 import sys
 import time
+from urllib.parse import urlparse
 import uuid
 
 from native_evidence import BUDGETS, evaluate, require, strict_json, safe_read
@@ -69,20 +70,96 @@ def load(path):
 
 def load_binding(path):
     value = load(path)
-    expected = {"format", "repository", "socket_path", "coordinator_session_id", "authority_reference", "receiver_id"}
-    require(set(value) == expected and value["format"] == "codeexp2-native-binding/1", "Invalid binding fields/version")
-    for key in expected - {"receiver_id"}:
-        require(isinstance(value[key], str) and bool(value[key].strip()), "Missing binding " + key)
-    require(Path(value["repository"]).is_absolute() and Path(value["repository"]).resolve() == ROOT, "Binding must name this canonical CodeExp2 workspace")
-    require(Path(value["socket_path"]).is_absolute(), "Socket path must be absolute")
-    require(value["receiver_id"] is None or isinstance(value["receiver_id"], str), "Invalid receiver")
-    return value
+    if value.get("format") == "codeexp2-owned-diagnostic-binding/2":
+        expected = {"format", "repository", "socket_path", "authority_reference", "receiver_id"}
+        require(set(value) == expected, "Invalid owned-diagnostic binding fields/version")
+        for key in expected - {"receiver_id"}:
+            require(isinstance(value[key], str) and bool(value[key].strip()), "Missing binding " + key)
+        require(Path(value["repository"]).is_absolute() and Path(value["repository"]).resolve() == ROOT, "Binding must name this canonical CodeExp2 workspace")
+        require(Path(value["socket_path"]).is_absolute(), "Socket path must be absolute")
+        require(value["receiver_id"] is None or isinstance(value["receiver_id"], str), "Invalid receiver")
+        return value
+    if value.get("format") == "codeexp2-desktop-session-bridge/2":
+        expected = {"format", "receipt_path", "authority_reference"}
+        require(set(value) == expected and all(isinstance(value[key], str) and value[key].strip() for key in expected - {"format"}), "DESKTOP_BRIDGE_BINDING_INVALID: invalid desktop bridge binding")
+        receipt_path = Path(value["receipt_path"])
+        require(receipt_path.is_absolute() and receipt_path.is_file() and not receipt_path.is_symlink(), "DESKTOP_BRIDGE_RECEIPT_MISSING: receipt is missing or redirected")
+        info = receipt_path.stat()
+        require(info.st_uid == os.getuid() and stat.S_IMODE(info.st_mode) == 0o600, "DESKTOP_BRIDGE_CUSTODY_INVALID: receipt is not private")
+        bridge_root = ROOT / "Launcher/build/desktop-bridges"
+        require(receipt_path.parent.parent == bridge_root and receipt_path.parent.is_dir() and not receipt_path.parent.is_symlink(), "DESKTOP_BRIDGE_CUSTODY_INVALID: receipt escaped its host directory")
+        bridge_info = receipt_path.parent.stat()
+        require(bridge_info.st_uid == os.getuid() and stat.S_IMODE(bridge_info.st_mode) == 0o700, "DESKTOP_BRIDGE_CUSTODY_INVALID: bridge directory is not private")
+        receipt = load(receipt_path)
+        receipt_fields = {"format", "bridge_id", "alias", "color", "workspace", "endpoint", "receiver_id", "processes", "issued_at_utc", "expires_at_utc", "pre_receipt_phase"}
+        require(set(receipt) == receipt_fields and receipt["format"] == "codeexp2-desktop-session-receipt/2", "DESKTOP_BRIDGE_RECEIPT_INVALID: invalid receipt")
+        for key in receipt_fields - {"format", "endpoint", "processes"}:
+            require(isinstance(receipt[key], str) and receipt[key].strip(), "DESKTOP_BRIDGE_RECEIPT_INVALID: missing receipt " + key)
+        require(receipt["pre_receipt_phase"] == "none", "DESKTOP_BRIDGE_ORDER_INVALID: work preceded receipt publication")
+        endpoint = receipt["endpoint"]
+        endpoint_fields = {"kind", "url", "capability_token_path", "capability_token_sha256"}
+        require(isinstance(endpoint, dict) and set(endpoint) == endpoint_fields and endpoint["kind"] == "loopback-websocket-capability", "DESKTOP_BRIDGE_ENDPOINT_INVALID: invalid endpoint")
+        require(all(isinstance(endpoint[key], str) and endpoint[key] for key in endpoint_fields - {"kind"}), "DESKTOP_BRIDGE_ENDPOINT_INVALID: invalid endpoint fields")
+        parsed = urlparse(endpoint["url"])
+        require(parsed.scheme == "ws" and parsed.hostname == "127.0.0.1" and parsed.port and not parsed.params and not parsed.query and not parsed.fragment and parsed.path in {"", "/"}, "DESKTOP_BRIDGE_ENDPOINT_INVALID: endpoint is not a loopback WebSocket")
+        token_path = Path(endpoint["capability_token_path"])
+        require(token_path.parent == receipt_path.parent and token_path.is_file() and not token_path.is_symlink(), "DESKTOP_BRIDGE_CAPABILITY_INVALID: capability is missing or redirected")
+        token_info = token_path.stat()
+        require(token_info.st_uid == os.getuid() and stat.S_IMODE(token_info.st_mode) == 0o600 and token_info.st_size <= 1024, "DESKTOP_BRIDGE_CAPABILITY_INVALID: capability is not private")
+        capability = token_path.read_text()
+        require(capability.endswith("\n") and len(capability.strip()) >= 32 and hashlib.sha256(capability.strip().encode()).hexdigest() == endpoint["capability_token_sha256"], "DESKTOP_BRIDGE_CAPABILITY_INVALID: capability differs from receipt")
+        processes = receipt["processes"]
+        require(isinstance(processes, dict) and set(processes) == {"host", "server", "tui"}, "DESKTOP_BRIDGE_PROCESS_INVALID: invalid process set")
+        for name, identity in processes.items():
+            require(isinstance(identity, dict) and set(identity) == {"pid", "started_at"} and isinstance(identity["pid"], int) and identity["pid"] > 1 and isinstance(identity["started_at"], str) and identity["started_at"], "DESKTOP_BRIDGE_PROCESS_INVALID: invalid receipt process " + name)
+        try:
+            issued = datetime.fromisoformat(receipt["issued_at_utc"])
+            expires = datetime.fromisoformat(receipt["expires_at_utc"])
+        except ValueError as error:
+            raise ValueError("DESKTOP_BRIDGE_RECEIPT_INVALID: invalid receipt expiry") from error
+        current = datetime.now(timezone.utc)
+        require(issued.tzinfo is not None and expires.tzinfo is not None and issued <= current < expires and expires - issued <= timedelta(hours=8), "DESKTOP_BRIDGE_RECEIPT_EXPIRED: receipt is expired or clock is outside the eight-hour validity window")
+        require(Path(receipt["workspace"]).resolve() == ROOT, "DESKTOP_BRIDGE_WORKSPACE_MISMATCH: workspace differs")
+        require(process_matches(processes["server"], ["app-server", "--listen", endpoint["url"], "--ws-auth", "capability-token", "--ws-token-file", str(token_path)]), "DESKTOP_BRIDGE_PROCESS_STALE: server is not live")
+        require(process_matches(processes["host"], ["desktop_bridge.py", "--claim-fd"]), "DESKTOP_BRIDGE_PROCESS_STALE: host is not live")
+        require(isinstance(receipt["receiver_id"], str) and receipt["receiver_id"] and not any(character.isspace() for character in receipt["receiver_id"]), "DESKTOP_BRIDGE_RECEIPT_INVALID: receiver is invalid")
+        require(process_matches(processes["tui"], ["--remote", endpoint["url"], "--remote-auth-token-env"], receipt["receiver_id"]), "DESKTOP_BRIDGE_PROCESS_STALE: TUI is not live")
+        return {"format": value["format"], "repository": receipt["workspace"], "endpoint": endpoint,
+                "authority_reference": value["authority_reference"], "receiver_id": receipt["receiver_id"],
+                "bridge_id": receipt["bridge_id"], "alias": receipt["alias"]}
+    raise ValueError("NO_SUPPORTED_DESKTOP_SESSION_BRIDGE: use a current codeexp2-desktop-session-bridge/2 receipt; aliases, legacy bindings and historical sessions cannot attach a Desktop TUI")
 
 
-def endpoint_identity(path):
-    s = Path(path).stat()
-    require(stat.S_ISSOCK(s.st_mode) and s.st_uid == os.getuid(), "Endpoint is not an owned Unix socket")
-    return {"path": str(Path(path).resolve()), "uid": s.st_uid, "device": s.st_dev, "inode": s.st_ino}
+def process_matches(identity, fragments, exact_final_argument=None):
+    """Confirm both lifetime and route inputs; PID alone can be reused."""
+    result = subprocess.run(["/bin/ps", "-p", str(identity["pid"]), "-o", "pid=", "-o", "lstart=", "-o", "command="], text=True,
+                            capture_output=True, timeout=3)
+    fields = result.stdout.split()
+    if result.returncode != 0 or len(fields) < 7 or not fields[0].isdigit() or int(fields[0]) != identity["pid"]:
+        return False
+    started_at = " ".join(fields[1:6])
+    command = " ".join(fields[6:])
+    return (started_at == identity["started_at"] and command and all(fragment in command for fragment in fragments)
+            and (exact_final_argument is None or command.split()[-1] == exact_final_argument))
+
+
+def binding_endpoint(binding):
+    return binding.get("endpoint") or {"kind": "owned-unix-socket", "path": binding["socket_path"]}
+
+
+def endpoint_label(binding):
+    endpoint = binding_endpoint(binding)
+    return endpoint.get("path") or endpoint["url"]
+
+
+def endpoint_identity(endpoint):
+    if endpoint["kind"] == "owned-unix-socket":
+        s = Path(endpoint["path"]).stat()
+        require(stat.S_ISSOCK(s.st_mode) and s.st_uid == os.getuid(), "Endpoint is not an owned Unix socket")
+        return {"path": str(Path(endpoint["path"]).resolve()), "uid": s.st_uid, "device": s.st_dev, "inode": s.st_ino}
+    if endpoint["kind"] == "loopback-websocket-capability":
+        return {"url": endpoint["url"], "capability_token_sha256": endpoint["capability_token_sha256"]}
+    raise ValueError("Unsupported endpoint identity")
 
 
 def transport_identity():
@@ -110,14 +187,22 @@ def remaining(deadline, ceiling):
     return min(ceiling, left)
 
 
-def open_wire(path, limits):
+def open_wire(endpoint, limits):
     try:
-        from websockets.sync.client import unix_connect
+        from websockets.sync.client import connect, unix_connect
     except ImportError as error:
         raise RuntimeError("Install scripts/requirements-native-control.txt in an authorized environment") from error
-    return unix_connect(path=str(path), uri="ws://localhost", legacy=True,
-                        open_timeout=limits["connect_seconds"], close_timeout=2,
-                        max_size=limits["frame_bytes"], max_queue=limits["queued_events"])
+    if endpoint["kind"] == "owned-unix-socket":
+        return unix_connect(path=str(endpoint["path"]), uri="ws://localhost", legacy=True,
+                            open_timeout=limits["connect_seconds"], close_timeout=2,
+                            max_size=limits["frame_bytes"], max_queue=limits["queued_events"])
+    if endpoint["kind"] == "loopback-websocket-capability":
+        token = Path(endpoint["capability_token_path"]).read_text().strip()
+        require(len(token) >= 32 and hashlib.sha256(token.encode()).hexdigest() == endpoint["capability_token_sha256"], "DESKTOP_BRIDGE_CAPABILITY_INVALID: capability changed before connection")
+        return connect(endpoint["url"] + "/", legacy=True, open_timeout=limits["connect_seconds"], close_timeout=2,
+                       max_size=limits["frame_bytes"], max_queue=limits["queued_events"],
+                       additional_headers={"Authorization": "Bearer " + token})
+    raise ValueError("Unsupported endpoint transport")
 
 
 class Client:
@@ -138,13 +223,14 @@ class Client:
         self.log = None
         self.identity = identity
         self.transport = transport_identity() if factory is open_wire else {"fixture": True}
-        self.backend = identity(binding["socket_path"])
+        self.endpoint = binding_endpoint(binding)
+        self.backend = identity(self.endpoint)
         self.log_path = self.evidence / ("events-" + self.generation + ".jsonl")
         try:
             self.log = os.fdopen(os.open(self.log_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "w")
             limits = {**self.limits, "connect_seconds": remaining(self.deadline, self.limits["connect_seconds"])}
-            self.ws = factory(binding["socket_path"], limits)
-            require(identity(binding["socket_path"]) == self.backend, "Endpoint changed during connection")
+            self.ws = factory(self.endpoint, limits)
+            require(identity(self.endpoint) == self.backend, "Endpoint changed during connection")
             self.initialized = self.request("initialize", {"clientInfo": {"name": "codeexp2_native_control", "version": "1.0"}, "capabilities": {"experimentalApi": True}})
             require(isinstance(self.initialized, dict) and isinstance(self.initialized.get("userAgent"), str), "Incompatible initialize result")
             self.send({"method": "initialized", "params": {}})
@@ -209,7 +295,7 @@ class Client:
         return self.pending.popleft() if self.pending else self.receive(timeout)
 
     def check_backend(self, state):
-        require(self.backend == state["backend"] == self.identity(self.binding["socket_path"]), "Connected backend differs from durable owner; no effects")
+        require(self.backend == state["backend"] == self.identity(self.endpoint), "Connected backend differs from durable owner; no effects")
         if "transport" in state:
             require(self.transport == state["transport"], "Transport implementation changed; no effects")
 
@@ -349,9 +435,10 @@ def evidence_record(binding, directory, client, operation, result="pass", reason
         "operation_id": operation, "observed_at_utc": now(),
         "scope": {"kind": "workspace-maintenance", "mission": None, "operation": operation,
                   "authority_reference": binding["authority_reference"], "repository_root": binding["repository"], "worktree_root": binding["repository"]},
-        "actors": {"coordinator_session_id": binding["coordinator_session_id"], "receiver_session_id": binding.get("receiver_id")},
+        "actors": {"desktop_bridge_id": binding.get("bridge_id"), "desktop_alias": binding.get("alias"),
+                   "receiver_session_id": binding.get("receiver_id")},
         "source": {"head": None, "client_sha256": sha(__file__), "dependencies_sha256": digest(transport) if transport else None, "dirty_manifest_sha256": None},
-        "connection": {"endpoint": binding["socket_path"], "backend_binding": json.dumps(backend, sort_keys=True) if backend else None,
+        "connection": {"endpoint": endpoint_label(binding), "backend_binding": json.dumps(backend, sort_keys=True) if backend else None,
                        "backend_generation": None, "cli_version": None, "server_version": None, "cli_sha256": None, "server_sha256": None},
         "effective_settings": {"approval_policy": settings.get("approvalPolicy") if settings else None,
                                "approvals_reviewer": settings.get("approvalsReviewer") if settings else None,
@@ -400,7 +487,7 @@ def verify_owned_state(journal):
     state = journal.read()
     require(state["source"] == source_identity(), "Source changed; qualification/recovery binding needs review")
     require(state["receiver_id"] and state["binding"]["receiver_id"] == state["receiver_id"], "Unbound receiver")
-    require(endpoint_identity(state["binding"]["socket_path"]) == state["backend"], "Backend changed; no effects")
+    require(endpoint_identity(binding_endpoint(state["binding"])) == state["backend"], "Backend changed; no effects")
     require(Path(state["binding"]["repository"]).resolve() == journal.root / "workspace", "Owned workspace mismatch")
     return state
 
@@ -586,7 +673,7 @@ def qualification_view(root, operation=None):
             require(hashlib.sha256(safe_read(directory, "source/" + name, BUDGETS["evidence_bytes"])).hexdigest() == expected_hash, "Source snapshot missing/changed")
         measured = transport_identity()
         require(measured == state["transport"] == report["transport"] == load(directory / "transport.json"), "Measured transport changed")
-        require(record["source"]["dependencies_sha256"] == digest(measured) and record["connection"]["backend_binding"] == json.dumps(state["backend"], sort_keys=True) and record["connection"]["endpoint"] == state["binding"]["socket_path"], "Evidence connection/dependency binding mismatch")
+        require(record["source"]["dependencies_sha256"] == digest(measured) and record["connection"]["backend_binding"] == json.dumps(state["backend"], sort_keys=True) and record["connection"]["endpoint"] == endpoint_label(state["binding"]), "Evidence connection/dependency binding mismatch")
         require(load(directory / "effective-settings.json") == report["settings"] == state["settings"], "Settings snapshot mismatch")
         require(report["passed"] and report["reconciliation"]["confirmed"] and state["ended"], "Live proof incomplete")
         require(not any(v["phase"] in {"possible_send", "response_sent"} for v in state["intents"].values()) and all(v["resolved"] for v in state["requests"].values()), "Whole-run effects unresolved")

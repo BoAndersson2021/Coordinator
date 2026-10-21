@@ -74,6 +74,20 @@ enum Launcher {
     static let configHome = URL(fileURLWithPath: ProcessInfo.processInfo.environment["CODEX_HOME"]
         ?? fm.homeDirectoryForCurrentUser.appendingPathComponent(".codex").path, isDirectory: true)
     static let profilePath = configHome.appendingPathComponent("valhalla.config.toml")
+    static let bridgePython = workspace.appendingPathComponent("Launcher/build/native-control-venv/bin/python")
+
+    static func validateDesktopBridgeRuntime(bridge: URL, manifest: URL) throws {
+        let task = Process()
+        task.executableURL = bridgePython
+        task.arguments = [bridge.path, "--verify-runtime", "--runtime-manifest", manifest.path]
+        let stderr = Pipe()
+        task.standardError = stderr
+        try task.run()
+        task.waitUntilExit()
+        guard task.terminationStatus == 0 else {
+            throw LauncherError.invalid("Managed Desktop bridge runtime differs from its pinned interpreter or transport bytes. Rebuild the launcher environment before starting a bridged Terminal.")
+        }
+    }
 
     static func validateProfile(installed: URL = profilePath,
                                 bundled: URL? = Bundle.main.url(forResource: "valhalla.config", withExtension: "toml")) throws {
@@ -125,6 +139,20 @@ enum Launcher {
             throw LauncherError.invalid("Valhall PANEL profile projection is missing or stale. Rebuild the launcher from its canonical profile.")
         }
         return [codex, "app-server", "--stdio"] + arguments
+    }
+
+    static func desktopBridgeArguments(for claim: InstanceClaim) throws -> [String] {
+        guard let bridge = Bundle.main.url(forResource: "desktop_bridge", withExtension: "py"),
+              let projection = Bundle.main.url(forResource: "valhall-panel-profile", withExtension: "json"),
+              let runtime = Bundle.main.url(forResource: "desktop-bridge-runtime", withExtension: "json"),
+              fm.isExecutableFile(atPath: bridgePython.path) else {
+            throw LauncherError.invalid("Managed Desktop bridge is unavailable. Install its pinned launcher environment before starting a bridged Terminal.")
+        }
+        _ = try panelArguments() // Validates the bundled projection against the canonical profile before launch.
+        try validateDesktopBridgeRuntime(bridge: bridge, manifest: runtime)
+        return [bridgePython.path, bridge.path, "--workspace", workspace.path, "--codex", codex,
+                "--profile-projection", projection.path, "--runtime-manifest", runtime.path, "--alias", claim.alias, "--color", claim.color,
+                "--claim-fd", String(claim.descriptor), "--prompt", initialPrompt(for: claim)]
     }
 
     static func runForPanel() throws -> Never {
@@ -188,18 +216,20 @@ enum Launcher {
         print("CodeExp2 — Coordinator \(claim.alias) — \(claim.color)")
         print("Starting Coordinator onboarding…")
         fflush(stdout)
-        // Hand the actual Terminal to Codex, with its owner-selected profile.
-        // No injected input, delays, model overrides or synthetic readiness claims.
+        // Build one fresh broker-owned receiver before giving Terminal its exact
+        // remote thread. This deliberately replaces the old unsupported attempt
+        // to infer a bridge from a daemon-global socket or a human alias.
+        let arguments = try desktopBridgeArguments(for: claim)
         var argv: [UnsafeMutablePointer<CChar>?] = []
-        for argument in launchArguments(for: claim) {
+        for argument in arguments {
             argv.append(argument.withCString { strdup($0) })
         }
         argv.append(nil)
         defer { argv.forEach { free($0) } }
         withExtendedLifetime(claim) {
-            argv.withUnsafeBufferPointer { _ = execv(codex, $0.baseAddress!) }
+            argv.withUnsafeBufferPointer { _ = execv(bridgePython.path, $0.baseAddress!) }
         }
-        throw LauncherError.invalid("Codex failed to start: \(String(cString: strerror(errno)))")
+        throw LauncherError.invalid("Desktop bridge failed to start: \(String(cString: strerror(errno)))")
     }
 
     // Disposable process-level regression entry: no Terminal or Codex launch.

@@ -49,8 +49,8 @@ class NativeControlTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.root_patch = patch.object(control, "ROOT", self.root)
         self.root_patch.start()
-        self.binding = {"format": "codeexp2-native-binding/1", "repository": str(ROOT), "socket_path": "/fixture/native.sock",
-                        "coordinator_session_id": "fixture-coordinator", "authority_reference": "fixture only", "receiver_id": "fixture-receiver"}
+        self.binding = {"format": "codeexp2-owned-diagnostic-binding/2", "repository": str(ROOT), "socket_path": "/fixture/native.sock",
+                        "authority_reference": "fixture only", "receiver_id": "fixture-receiver"}
         self.identity = {"path": "/fixture/native.sock", "uid": os.getuid(), "device": 1, "inode": 2}
 
     def tearDown(self):
@@ -82,6 +82,63 @@ class NativeControlTests(unittest.TestCase):
         for raw in ['{"result": "fail", "result": "pass"}', '{"value": NaN}', '{"value": Infinity}']:
             with self.subTest(raw=raw), self.assertRaises(ValueError):
                 strict_json(raw)
+
+    def test_legacy_binding_cannot_be_mistaken_for_a_desktop_bridge(self):
+        legacy = self.root / "legacy.json"
+        legacy.write_text(json.dumps({"format": "codeexp2-native-binding/1", "repository": str(ROOT),
+                                      "socket_path": "/fixture/native.sock", "coordinator_session_id": "stale",
+                                      "authority_reference": "stale", "receiver_id": None}))
+        with self.assertRaisesRegex(ValueError, "NO_SUPPORTED_DESKTOP_SESSION_BRIDGE"):
+            control.load_binding(legacy)
+
+    def test_desktop_receipt_v2_fails_closed_for_expiry_token_endpoint_and_process_lifetime(self):
+        root = self.root.resolve()
+        with patch.object(control, "ROOT", root):
+            self._assert_desktop_receipt_v2_failure_matrix(root)
+
+    def _assert_desktop_receipt_v2_failure_matrix(self, root):
+        bridge_root = root / "Launcher/build/desktop-bridges"
+        bridge_root.mkdir(parents=True, mode=0o700)
+        bridge = bridge_root / "Loki-fixture"
+        bridge.mkdir(mode=0o700)
+        token_path = bridge / "capability.token"
+        token = "a" * 64
+        token_path.write_text(token + "\n")
+        os.chmod(token_path, 0o600)
+        receipt_path = bridge / "receipt.json"
+        binding_path = root / "binding.json"
+        binding_path.write_text(json.dumps({"format": "codeexp2-desktop-session-bridge/2", "receipt_path": str(receipt_path), "authority_reference": "fixture"}))
+        issued = control.datetime.now(control.timezone.utc)
+        receipt = {"format": "codeexp2-desktop-session-receipt/2", "bridge_id": "bridge", "alias": "Loki", "color": "#19334d",
+                   "workspace": str(root), "endpoint": {"kind": "loopback-websocket-capability", "url": "ws://127.0.0.1:4242",
+                   "capability_token_path": str(token_path), "capability_token_sha256": hashlib.sha256(token.encode()).hexdigest()}, "receiver_id": "receiver",
+                   "processes": {name: {"pid": 10 + index, "started_at": "Tue Oct 21 00:00:00 2026"}
+                                 for index, name in enumerate(["host", "server", "tui"])}, "issued_at_utc": issued.isoformat(),
+                   "expires_at_utc": (issued + control.timedelta(minutes=5)).isoformat(), "pre_receipt_phase": "none"}
+        def write(value):
+            receipt_path.write_text(json.dumps(value))
+            os.chmod(receipt_path, 0o600)
+        write(receipt)
+        with patch.object(control, "process_matches", return_value=True):
+            loaded = control.load_binding(binding_path)
+        self.assertEqual(loaded["endpoint"]["url"], receipt["endpoint"]["url"])
+        mutations = {
+            "expired": ("DESKTOP_BRIDGE_RECEIPT_EXPIRED", lambda value: value.update(expires_at_utc=(issued - control.timedelta(seconds=1)).isoformat())),
+            "capability": ("DESKTOP_BRIDGE_CAPABILITY_INVALID", lambda value: value["endpoint"].update(capability_token_sha256="0" * 64)),
+            "route": ("DESKTOP_BRIDGE_ENDPOINT_INVALID", lambda value: value["endpoint"].update(url="ws://127.0.0.2:4242")),
+            "lifetime": ("DESKTOP_BRIDGE_PROCESS_STALE", lambda value: value["processes"]["tui"].update(started_at="stale-lifetime")),
+            "tui_receiver": ("DESKTOP_BRIDGE_PROCESS_STALE", lambda value: value.update(receiver_id="wrong-receiver"))
+        }
+        for name, (code, mutate) in mutations.items():
+            candidate = copy.deepcopy(receipt)
+            mutate(candidate)
+            write(candidate)
+            def matches(identity, fragments, exact_final_argument=None):
+                if name == "lifetime":
+                    return False
+                return name != "tui_receiver" or exact_final_argument != "wrong-receiver"
+            with self.subTest(name=name), patch.object(control, "process_matches", side_effect=matches), self.assertRaisesRegex(ValueError, code):
+                control.load_binding(binding_path)
 
     def test_safe_artifact_reader_rejects_symlink_fifo_and_oversize(self):
         (self.root / "outside").write_text("outside")

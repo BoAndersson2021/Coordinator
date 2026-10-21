@@ -540,6 +540,125 @@ sys.exit(0 if passed else 3)
         self.assertIs(report['panel_bridge_complete'], True)
         self.assertEqual(report['tests_run'], 3)
 
+    def test_launcher_desktop_bridge_regressions(self):
+        """Run the staged Desktop bridge's deterministic admission and lifecycle checks."""
+        runner = r'''
+import contextlib, importlib.util, io, json, os, sys, tempfile, threading, time, types, unittest
+from pathlib import Path
+from unittest.mock import patch
+transport = types.ModuleType('websockets.sync.client')
+transport.connect = lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError('network forbidden'))
+sys.modules['websockets'] = types.ModuleType('websockets')
+sys.modules['websockets.sync'] = types.ModuleType('websockets.sync')
+sys.modules['websockets.sync.client'] = transport
+source = Path(sys.argv[1]) / 'Launcher/desktop_bridge.py'
+spec = importlib.util.spec_from_file_location('desktop_bridge', source)
+bridge = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(bridge)
+class BridgeGateTests(unittest.TestCase):
+    def test_projection_and_model_admission_fail_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            projection = Path(directory) / 'profile.json'
+            projection.write_text(json.dumps({'format': 'valhall-panel-profile/1', 'arguments': ['--config', 'model="available"']}))
+            self.assertEqual(bridge.projection(projection)[1], 'available')
+            projection.write_text(json.dumps({'format': 'valhall-panel-profile/1', 'arguments': ['--config', 'approval_policy="never"']}))
+            with self.assertRaisesRegex(RuntimeError, 'selected model'):
+                bridge.projection(projection)
+        rpc = object.__new__(bridge.Rpc)
+        rpc.call = lambda *_: {'data': [{'id': 'other'}], 'nextCursor': None}
+        with self.assertRaisesRegex(RuntimeError, 'unavailable'):
+            rpc.ensure_model('available')
+        rpc.call = lambda *_: {'data': 'invalid', 'nextCursor': None}
+        with self.assertRaisesRegex(RuntimeError, 'invalid data'):
+            rpc.ensure_model('available')
+    def test_runtime_manifest_fails_closed(self):
+        identity = {'format': bridge.RUNTIME_FORMAT, 'distribution': 'websockets', 'version': '17.2', 'files_sha256': 'a' * 64}
+        with tempfile.TemporaryDirectory() as directory, patch.object(bridge, 'runtime_identity', return_value=identity):
+            manifest = Path(directory) / 'runtime.json'
+            manifest.write_text(json.dumps(identity))
+            bridge.verify_runtime(manifest)
+            manifest.write_text(json.dumps({**identity, 'files_sha256': 'b' * 64}))
+            with self.assertRaisesRegex(RuntimeError, 'transport bytes'):
+                bridge.verify_runtime(manifest)
+    def test_supervisor_retires_exact_children_after_host_death(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as directory:
+            children = [subprocess.Popen(['/bin/sleep', '60']) for _ in range(3)]
+            try:
+                host, server, tui = children
+                bridge_dir = Path(directory) / 'bridge'; bridge_dir.mkdir(mode=0o700); bridge_dir.chmod(0o700)
+                watcher = threading.Thread(target=bridge.supervise, args=(bridge.process_identity(host.pid), bridge.process_identity(server.pid), bridge.process_identity(tui.pid), bridge_dir))
+                watcher.start(); host.kill(); host.wait(timeout=3); watcher.join(timeout=5)
+                self.assertFalse(watcher.is_alive())
+                self.assertIsNotNone(server.poll()); self.assertIsNotNone(tui.poll())
+                self.assertEqual(json.loads((bridge_dir / 'retired.json').read_text())['reason'], 'host_lifetime_ended')
+            finally:
+                for child in children:
+                    if child.poll() is None: child.kill(); child.wait()
+    def test_receipt_precedes_onboarding_and_tui_uses_created_receiver(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); workspace = root / 'workspace'; bridge_root = workspace / 'Launcher/build/desktop-bridges'; bridge_root.mkdir(parents=True); bridge_root.chmod(0o700)
+            codex = root / 'codex'; codex.write_text('x'); manifest = root / 'runtime.json'; manifest.write_text('{}')
+            projection = root / 'projection.json'; projection.write_text('{}')
+            events = []
+            class Process:
+                next_pid = 100
+                def __init__(self): self.pid = Process.next_pid; Process.next_pid += 1
+                def poll(self): return None
+                def wait(self, timeout=None): return 0
+                def terminate(self): pass
+                def kill(self): pass
+            class Rpc:
+                def __init__(self, *args): events.append('rpc')
+                def ensure_model(self, model): events.append('model')
+                def start_receiver(self, workspace, model): events.append('receiver'); return 'receiver-id'
+                def start_onboarding(self, receiver, prompt): events.append(('onboarding', receiver))
+                def close(self): events.append('close')
+            def popen(command, **kwargs):
+                events.append(('tui' if 'resume' in command else 'server', command)); return Process()
+            original = {name: getattr(bridge, name) for name in ('Rpc', 'subprocess', 'verify_runtime', 'projection', 'endpoint_url', 'process_identity', 'start_supervisor', 'write_private')}
+            class SubprocessProxy:
+                Popen = staticmethod(popen)
+                DEVNULL = object(); STDOUT = object()
+                TimeoutExpired = TimeoutError
+            try:
+                bridge.Rpc = Rpc; bridge.subprocess = SubprocessProxy; bridge.verify_runtime = lambda _: events.append('runtime')
+                bridge.projection = lambda _: (['--config', 'model="available"'], 'available')
+                bridge.endpoint_url = lambda: 'ws://127.0.0.1:4242'
+                bridge.process_identity = lambda pid: {'pid': pid, 'started_at': 'fixture'}
+                bridge.start_supervisor = lambda *args: Process()
+                bridge.write_private = lambda path, value: events.append('receipt') if path.name == 'receipt.json' else None
+                read_fd, write_fd = os.pipe()
+                old_argv = sys.argv
+                sys.argv = [str(source), '--workspace', str(workspace), '--codex', str(codex), '--profile-projection', str(projection), '--runtime-manifest', str(manifest), '--alias', 'Loki', '--color', '#19334d', '--claim-fd', str(read_fd), '--prompt', 'onboard']
+                with contextlib.redirect_stdout(io.StringIO()), self.assertRaises(SystemExit) as exit:
+                    bridge.main()
+                self.assertEqual(exit.exception.code, 0)
+                tui_event = next(event for event in events if isinstance(event, tuple) and event[0] == 'tui')
+                tui = tui_event[1]
+                self.assertEqual(tui[-1], 'receiver-id')
+                self.assertLess(events.index('model'), events.index('receiver'))
+                self.assertLess(events.index('receiver'), events.index(tui_event))
+                self.assertLess(events.index(tui_event), events.index('receipt'))
+                self.assertLess(events.index('receipt'), events.index(('onboarding', 'receiver-id')))
+            finally:
+                sys.argv = old_argv if 'old_argv' in locals() else sys.argv
+                for name, value in original.items(): setattr(bridge, name, value)
+                for descriptor in (locals().get('read_fd'), locals().get('write_fd')):
+                    if descriptor is not None: os.close(descriptor)
+expected = {test.id() for test in unittest.defaultTestLoader.loadTestsFromTestCase(BridgeGateTests)}
+result = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(BridgeGateTests))
+passed = result.wasSuccessful() and not result.skipped and not result.expectedFailures and result.testsRun == len(expected)
+print(json.dumps({'desktop_bridge_complete': passed, 'tests_run': result.testsRun}))
+sys.exit(0 if passed else 3)
+'''
+        result = subprocess.run([self.launcher_python(), '-I', '-S', '-B', '-c', runner, str(ROOT)],
+                                capture_output=True, text=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        report = json.loads(result.stdout)
+        self.assertIs(report['desktop_bridge_complete'], True)
+        self.assertEqual(report['tests_run'], 4)
+
     def test_launcher_native_build_preflight_and_terminal_boundary(self):
         """Build exact snapshot sources, verify signing and reject non-TTY launch."""
         with tempfile.TemporaryDirectory(prefix='codeexp2-native-build-') as directory:
@@ -787,13 +906,14 @@ sys.exit(0 if passed else 3)
 
     def test_native_control_offline_regressions(self):
         """Require every exact shared-client regression with native transport forbidden."""
-        runner = "import json, sys, types, unittest\ntransport = types.ModuleType('websockets.sync.client')\ndef forbidden(*args, **kwargs):\n    raise AssertionError('Native transport forbidden in staged checks')\ntransport.unix_connect = forbidden\nsys.modules['websockets'] = types.ModuleType('websockets')\nsys.modules['websockets.sync'] = types.ModuleType('websockets.sync')\nsys.modules['websockets.sync.client'] = transport\nexpected = set(['test_native_control.NativeControlTests.test_all_foundation_fixtures_and_owner_acceptance_separation', 'test_native_control.NativeControlTests.test_changed_endpoint_rejected_before_initialize', 'test_native_control.NativeControlTests.test_different_run_cannot_claim_same_canonical_receiver', 'test_native_control.NativeControlTests.test_end_is_durable_and_cannot_be_overridden_by_stale_client', 'test_native_control.NativeControlTests.test_end_persistence_failure_blocks_the_receiving_client', 'test_native_control.NativeControlTests.test_exact_action_rejects_shell_injection_and_permission_amendments', 'test_native_control.NativeControlTests.test_handshake_refusal_and_timeout_leave_no_work_effect', 'test_native_control.NativeControlTests.test_incompatible_initialize_closes_owned_resources', 'test_native_control.NativeControlTests.test_incomplete_or_repeated_history_never_proves_unique_dispatch', 'test_native_control.NativeControlTests.test_late_resolution_after_completion_is_collected', 'test_native_control.NativeControlTests.test_loaded_transport_version_path_and_bytes_are_measured', 'test_native_control.NativeControlTests.test_lost_ack_intent_blocks_retry_and_disk_failure_sends_nothing', 'test_native_control.NativeControlTests.test_lost_start_reconciles_by_unique_identity_not_text', 'test_native_control.NativeControlTests.test_malformed_oversized_and_queue_overflow_fail_visibly', 'test_native_control.NativeControlTests.test_metadata_status_does_not_become_dispatch_eligibility', 'test_native_control.NativeControlTests.test_native_transcript_requires_correlated_receipts_and_separate_process', 'test_native_control.NativeControlTests.test_qualification_reuse_checks_source_settings_receiver_and_artifacts', 'test_native_control.NativeControlTests.test_readonly_wire_cannot_bypass_scope_or_receiver_checks', 'test_native_control.NativeControlTests.test_recovery_backend_swap_blocks_effect_and_records_failed_attempt', 'test_native_control.NativeControlTests.test_recovery_deadline_is_shared_by_rpc_pages_and_collection', 'test_native_control.NativeControlTests.test_replayed_request_handled_once_and_ambiguous_round_refuses', 'test_native_control.NativeControlTests.test_safe_artifact_reader_rejects_symlink_fifo_and_oversize', 'test_native_control.NativeControlTests.test_source_changed_recovery_has_no_native_effect', 'test_native_control.NativeControlTests.test_strict_json_rejects_duplicate_keys_and_nonfinite_values', 'test_native_control.NativeControlTests.test_summary_is_observation_only_and_preserves_partial_states', 'test_native_control.NativeControlTests.test_two_processes_share_operation_lock_and_send_once', 'test_native_control.NativeControlTests.test_visual_fixture_hashes_dimensions_lineage_and_reorder', 'test_native_control.NativeControlTests.test_whole_run_reconciliation_preserves_unrelated_uncertainty'])\nclass Result(unittest.TextTestResult):\n    def __init__(self,*args,**kwargs):\n        super().__init__(*args,**kwargs); self.successes=set()\n    def addSuccess(self,test):\n        self.successes.add(test.id()); super().addSuccess(test)\nsuite=unittest.defaultTestLoader.discover(sys.argv[1],pattern='test_native_control.py')\nresult=unittest.TextTestRunner(verbosity=2,resultclass=Result).run(suite)\npassed=result.wasSuccessful() and not result.skipped and not result.expectedFailures and result.successes==expected and result.testsRun==len(expected)\nprint(json.dumps({'native_regressions_complete':passed,'tests_run':result.testsRun,'successes':sorted(result.successes)}))\nsys.exit(0 if passed else 3)\n"
+        runner = "import json, sys, types, unittest\ntransport = types.ModuleType('websockets.sync.client')\ndef forbidden(*args, **kwargs):\n    raise AssertionError('Native transport forbidden in staged checks')\ntransport.unix_connect = forbidden\ntransport.connect = forbidden\nsys.modules['websockets'] = types.ModuleType('websockets')\nsys.modules['websockets.sync'] = types.ModuleType('websockets.sync')\nsys.modules['websockets.sync.client'] = transport\nexpected = set(['test_native_control.NativeControlTests.test_all_foundation_fixtures_and_owner_acceptance_separation', 'test_native_control.NativeControlTests.test_changed_endpoint_rejected_before_initialize', 'test_native_control.NativeControlTests.test_different_run_cannot_claim_same_canonical_receiver', 'test_native_control.NativeControlTests.test_end_is_durable_and_cannot_be_overridden_by_stale_client', 'test_native_control.NativeControlTests.test_end_persistence_failure_blocks_the_receiving_client', 'test_native_control.NativeControlTests.test_exact_action_rejects_shell_injection_and_permission_amendments', 'test_native_control.NativeControlTests.test_handshake_refusal_and_timeout_leave_no_work_effect', 'test_native_control.NativeControlTests.test_incompatible_initialize_closes_owned_resources', 'test_native_control.NativeControlTests.test_incomplete_or_repeated_history_never_proves_unique_dispatch', 'test_native_control.NativeControlTests.test_late_resolution_after_completion_is_collected', 'test_native_control.NativeControlTests.test_loaded_transport_version_path_and_bytes_are_measured', 'test_native_control.NativeControlTests.test_lost_ack_intent_blocks_retry_and_disk_failure_sends_nothing', 'test_native_control.NativeControlTests.test_lost_start_reconciles_by_unique_identity_not_text', 'test_native_control.NativeControlTests.test_malformed_oversized_and_queue_overflow_fail_visibly', 'test_native_control.NativeControlTests.test_metadata_status_does_not_become_dispatch_eligibility', 'test_native_control.NativeControlTests.test_native_transcript_requires_correlated_receipts_and_separate_process', 'test_native_control.NativeControlTests.test_qualification_reuse_checks_source_settings_receiver_and_artifacts', 'test_native_control.NativeControlTests.test_readonly_wire_cannot_bypass_scope_or_receiver_checks', 'test_native_control.NativeControlTests.test_recovery_backend_swap_blocks_effect_and_records_failed_attempt', 'test_native_control.NativeControlTests.test_recovery_deadline_is_shared_by_rpc_pages_and_collection', 'test_native_control.NativeControlTests.test_replayed_request_handled_once_and_ambiguous_round_refuses', 'test_native_control.NativeControlTests.test_safe_artifact_reader_rejects_symlink_fifo_and_oversize', 'test_native_control.NativeControlTests.test_source_changed_recovery_has_no_native_effect', 'test_native_control.NativeControlTests.test_strict_json_rejects_duplicate_keys_and_nonfinite_values', 'test_native_control.NativeControlTests.test_summary_is_observation_only_and_preserves_partial_states', 'test_native_control.NativeControlTests.test_two_processes_share_operation_lock_and_send_once', 'test_native_control.NativeControlTests.test_visual_fixture_hashes_dimensions_lineage_and_reorder', 'test_native_control.NativeControlTests.test_whole_run_reconciliation_preserves_unrelated_uncertainty'])\nclass Result(unittest.TextTestResult):\n    def __init__(self,*args,**kwargs):\n        super().__init__(*args,**kwargs); self.successes=set()\n    def addSuccess(self,test):\n        self.successes.add(test.id()); super().addSuccess(test)\nsuite=unittest.defaultTestLoader.discover(sys.argv[1],pattern='test_native_control.py')\nresult=unittest.TextTestRunner(verbosity=2,resultclass=Result).run(suite)\npassed=result.wasSuccessful() and not result.skipped and not result.expectedFailures and result.successes==expected and result.testsRun==len(expected)\nprint(json.dumps({'native_regressions_complete':passed,'tests_run':result.testsRun,'successes':sorted(result.successes)}))\nsys.exit(0 if passed else 3)\n"
+        runner = runner.replace("\nclass Result", "\nexpected.update({'test_native_control.NativeControlTests.test_legacy_binding_cannot_be_mistaken_for_a_desktop_bridge', 'test_native_control.NativeControlTests.test_desktop_receipt_v2_fails_closed_for_expiry_token_endpoint_and_process_lifetime'})\nclass Result", 1)
         result = subprocess.run([sys.executable, '-I', '-S', '-B', '-c', runner, str(ROOT / 'tests')],
                                 capture_output=True, text=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         report = json.loads(result.stdout)
         self.assertIs(report['native_regressions_complete'], True)
-        self.assertEqual(report['tests_run'], 28)
+        self.assertEqual(report['tests_run'], 30)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,338 @@
+{
+  "format": "codeexp2-desktop-session-bridge-repair-plan/1",
+  "id": "desktop-session-bridge-regression-repair",
+  "version": 1,
+  "title": "Desktop session bridge regression repair plan",
+  "record_kind": "agent_interpreted_plan",
+  "canonical_owner": {
+    "role": "coordinator",
+    "human_facing_identity": "Coordinator Odin",
+    "session_id": "01a15f82-54fe-7f92-a0e8-ba1cfc1597e7"
+  },
+  "authority": {
+    "kind": "owner_instruction",
+    "reference": "Owner instruction, 2026-10-21: add the red-team findings to the plan to fix.",
+    "grants_execution_permission": false,
+    "scope": "Planning, prioritization, evidence and release-gate definition only. Each code, launch, lifecycle or desktop-validation operation still needs its applicable authority."
+  },
+  "consumer": {
+    "current": "Coordinator and authorized implementation/review agents reading this canonical record.",
+    "enforcement": "agent_interpreted",
+    "gap": "No executable admission gate consumes this plan yet. A release cannot claim these controls are enforced until the relevant code, tests and release checks consume their defined requirements."
+  },
+  "scope": {
+    "repositories": [
+      "/Users/boandersson/Desktop/CodeExp2"
+    ],
+    "components": [
+      "Launcher/CodeExp2.swift",
+      "Launcher/desktop_bridge.py",
+      "Launcher/build.py",
+      "scripts/native_control.py",
+      "docs/native-control.md",
+      "tests/test_native_control.py",
+      "tests/test_commit_gate.py",
+      "bridge-specific test fixtures and native acceptance evidence"
+    ],
+    "outcome": "Prevent a launcher-created Desktop TUI from being mistaken for an arbitrary or stale session, and prevent the bridge from being released with missing lifecycle, model-admission or desktop-acceptance proof.",
+    "non_goals": [
+      "Attach to an existing arbitrary Terminal or legacy mcp__codex_tui session.",
+      "Treat an alias, historical identifier, daemon-global socket or queued message as a bridge.",
+      "Claim hostile same-user-process identity protection without a host capability or OS-backed attestation."
+    ]
+  },
+  "current_state": {
+    "state": "controlled_same_user_bridge_runtime_verified",
+    "observed": [
+      "Receipt v2 binds a capability-protected loopback endpoint, exact host-created receiver, process start times, workspace, token hash and bounded expiry.",
+      "The bridge creates the receiver before launching the TUI, publishes the receipt, then sends the fixed onboarding turn; it no longer adopts a first started event.",
+      "An external supervisor retired the server and TUI after a live host SIGTERM, and focused regression coverage exercises the same host-loss path.",
+      "A held pseudo-TTY run restarted Loki and exact status authenticated its receipt-backed receiver. Computer Use is not permitted to control Terminal; visible Finder-alias observation is therefore unavailable host evidence, not a release condition."
+    ],
+    "release_claim_limit": "Useful for controlled same-user coordination only. Do not claim strong host identity, existing-Desktop attachment, or native Desktop acceptance."
+  },
+  "threat_model": {
+    "accidental_cross_agent_mistake": {
+      "required_protection": [
+        "Versioned receipt schema with exact workspace, receiver, process and socket correlation.",
+        "Fail-closed validation and stable error codes for malformed, stale, expired, mismatched or incomplete inputs.",
+        "Mandatory automated state, failure-matrix and lifecycle coverage."
+      ],
+      "release_target": "Required for any supported bridge release."
+    },
+    "hostile_same_user_process": {
+      "current_protection": "Private paths, permissions, hashes and command fragments are insufficient because another same-user process can imitate them.",
+      "required_for_claim": "A host-issued unforgeable capability or OS-backed attestation that binds the launcher, TUI, receiver, workspace and process lifetime.",
+      "release_target": "Out of scope until that host facility exists and is independently qualified."
+    }
+  },
+  "findings": [
+    {
+      "id": "DBS-P0-001",
+      "priority": "P0",
+      "title": "Receipt lacks authenticated host identity and PID-reuse protection",
+      "observed_in": [
+        "scripts/native_control.py"
+      ],
+      "risk": "A same-user process can imitate receipt paths or command fragments; an old PID can be reused.",
+      "required_result": "For the accidental-mistake scope, bind every checked process to a lifetime identity as well as PID and require one correlated host-issued bridge capability before status. Do not represent this as hostile-process protection."
+    },
+    {
+      "id": "DBS-P0-002",
+      "priority": "P0",
+      "title": "TUI-to-receiver ownership is inferred from the first started event",
+      "observed_in": [
+        "Launcher/desktop_bridge.py"
+      ],
+      "risk": "A different thread using the private broker can satisfy workspace-only correlation.",
+      "required_result": "Correlate the launched TUI, broker connection and receiver through a launch nonce or host-issued identity; reject unrelated or first-arrival events."
+    },
+    {
+      "id": "DBS-P0-003",
+      "priority": "P0",
+      "title": "Abrupt host death can orphan the broker",
+      "observed_in": [
+        "Launcher/desktop_bridge.py"
+      ],
+      "risk": "SIGTERM or crash can bypass normal cleanup and leave a route or alias occupied.",
+      "required_result": "Use a supervised ownership/liveness relationship and prove normal exit, SIGTERM and abrupt-host-loss cleanup or deterministic stale-resource retirement. SIGKILL may only be verified by external supervision because a killed process cannot clean itself."
+    },
+    {
+      "id": "DBS-P0-004",
+      "priority": "P0",
+      "title": "Visible Desktop observation is unavailable on this host",
+      "observed_in": [
+        "Current Computer Use and LaunchServices presentation route"
+      ],
+      "risk": "PTY proof does not establish visible Finder alias presentation.",
+      "required_result": "Treat visible Finder-alias observation as optional host evidence. Release acceptance uses the supported launcher route, completed onboarding and receipt-backed exact status; an unavailable Apple presenter cannot block it."
+    },
+    {
+      "id": "DBS-P1-001",
+      "priority": "P1",
+      "title": "Model admission is manual",
+      "risk": "Onboarding can be sent to an unavailable model.",
+      "required_result": "Check live model/list availability for the selected model before any onboarding prompt is sent."
+    },
+    {
+      "id": "DBS-P1-002",
+      "priority": "P1",
+      "title": "Receipt publication follows onboarding start",
+      "risk": "The TUI can receive work before the corresponding identity receipt exists.",
+      "required_result": "Define and test either a bounded pre-receipt onboarding phase with no ordinary work or a two-phase startup where receipt publication precedes onboarding."
+    },
+    {
+      "id": "DBS-P1-003",
+      "priority": "P1",
+      "title": "Bridge runtime dependency identity is not verified at launch",
+      "observed_in": [
+        "Launcher/CodeExp2.swift"
+      ],
+      "risk": "Presence of a Python executable does not establish the expected websockets package or bytes.",
+      "required_result": "Validate the pinned bridge interpreter and dependency manifest before launch; fail closed on mismatch."
+    },
+    {
+      "id": "DBS-P1-004",
+      "priority": "P1",
+      "title": "Bridge-specific regression fixtures are missing",
+      "risk": "Legacy-binding rejection does not exercise the bridge's identity, lifecycle or launch-order failures.",
+      "required_result": "Add fixtures for forged, stale and expired receipts; PID lifetime mismatch; wrong TUI route; wrong first started event; orphan broker; unavailable model; and socket failure cases."
+    },
+    {
+      "id": "DBS-P2-001",
+      "priority": "P2",
+      "title": "Clock and private socket-path edge cases are underspecified",
+      "risk": "Wall-clock changes, stale sockets, collisions and symlinks can undermine otherwise correct checks.",
+      "required_result": "Specify monotonic-versus-wall-clock use, expiry skew behavior, directory ownership/mode, collision handling, O_NOFOLLOW-style validation where available, stale-socket retirement and cleanup evidence."
+    }
+  ],
+  "work_items": [
+    {
+      "id": "DBS-01",
+      "priority": "P0",
+      "status": "implemented_runtime_verified",
+      "title": "Make bridge admission and claim boundaries executable",
+      "addresses": ["DBS-P0-001", "DBS-P0-002", "DBS-P1-002", "DBS-P2-001"],
+      "depends_on": [],
+      "acceptance": [
+        "One versioned receipt schema names every identity, lifetime, expiry and authority field and rejects unknown or incomplete variants at the consumer boundary.",
+        "Documentation states the bounded pre-receipt phase, if retained, and explicitly forbids ordinary work in it.",
+        "Release reporting separates accidental-mistake protection from hostile same-user-process protection."
+      ]
+    },
+    {
+      "id": "DBS-02",
+      "priority": "P0",
+      "status": "implemented_for_accidental_mistake_scope_hostile_claim_blocked",
+      "title": "Bind receipt to a process lifetime and issuer",
+      "addresses": ["DBS-P0-001"],
+      "depends_on": ["DBS-01"],
+      "blocker": "A strong hostile-process claim requires host-issued capability or OS-backed attestation that the current bridge does not expose.",
+      "acceptance": [
+        "The accidental-mistake path rejects stale or PID-reused processes using an observed lifetime identity in addition to PID.",
+        "The receipt issuer and consumer perform a correlated, fail-closed capability check.",
+        "Claims remain limited to the protection actually established."
+      ]
+    },
+    {
+      "id": "DBS-03",
+      "priority": "P0",
+      "status": "implemented_runtime_verified",
+      "title": "Correlate launched TUI to exact receiver",
+      "addresses": ["DBS-P0-002"],
+      "depends_on": ["DBS-01"],
+      "acceptance": [
+        "The event that establishes the receiver carries a launch-specific correlation value unavailable to unrelated first arrivals.",
+        "Wrong workspace, wrong launch value, duplicate start and wrong-first-event fixtures each fail closed with stable codes."
+      ]
+    },
+    {
+      "id": "DBS-04",
+      "priority": "P0",
+      "status": "implemented_runtime_verified",
+      "title": "Supervise broker lifecycle and alias release",
+      "addresses": ["DBS-P0-003"],
+      "depends_on": ["DBS-01"],
+      "acceptance": [
+        "Normal TUI exit, SIGTERM and host crash each leave no usable orphan broker or alias lease.",
+        "Where in-process cleanup cannot run, an external supervisor detects and retires stale resources without attaching to an unrelated session.",
+        "Lifecycle evidence records the observed owner and resource retirement."
+      ]
+    },
+    {
+      "id": "DBS-05",
+      "priority": "P1",
+      "status": "implemented_runtime_verified",
+      "title": "Admit the selected model before onboarding",
+      "addresses": ["DBS-P1-001"],
+      "depends_on": ["DBS-01"],
+      "acceptance": [
+        "A live model/list response contains the pinned selected model before any onboarding delivery.",
+        "Unavailable, malformed or inconclusive model data fails closed and sends no onboarding."
+      ]
+    },
+    {
+      "id": "DBS-06",
+      "priority": "P1",
+      "status": "implemented_build_verified",
+      "title": "Verify bridge runtime bytes before launch",
+      "addresses": ["DBS-P1-003"],
+      "depends_on": ["DBS-01"],
+      "acceptance": [
+        "Launcher validation proves the expected interpreter, bridge module and pinned dependency identity before spawning the bridge.",
+        "Missing or mismatched bytes fail before TUI or onboarding start."
+      ]
+    },
+    {
+      "id": "DBS-07",
+      "priority": "P1",
+      "status": "implemented_focused_and_runtime_checked",
+      "title": "Add state-machine and failure-matrix fixtures",
+      "addresses": ["DBS-P1-004"],
+      "depends_on": ["DBS-02", "DBS-03", "DBS-04", "DBS-05", "DBS-06"],
+      "acceptance": [
+        "A passing state-machine test covers broker start, TUI start, matching receiver observation, receipt publication and exact status.",
+        "Every listed malformed, stale, expired, PID-lifetime, route, receiver, model and socket failure fails closed with its documented stable code.",
+        "No fixture substitutes a queue, terminal input, alias or legacy session identifier."
+      ]
+    },
+    {
+      "id": "DBS-08",
+      "priority": "P2",
+      "status": "implemented_documented_with_clock_edge_limits",
+      "title": "Specify and test time and private-socket handling",
+      "addresses": ["DBS-P2-001"],
+      "depends_on": ["DBS-01", "DBS-04"],
+      "acceptance": [
+        "Expiry behavior is deterministic across clock changes and skew within the stated support boundary.",
+        "Socket directory collision, symlink, stale path and cleanup fixtures preserve private ownership and fail closed."
+      ]
+    },
+    {
+      "id": "DBS-09",
+      "priority": "P0",
+      "status": "not_required_by_host_presentation_policy",
+      "title": "Optional visible Desktop observation",
+      "addresses": ["DBS-P0-004"],
+      "depends_on": ["DBS-02", "DBS-03", "DBS-04", "DBS-05", "DBS-06", "DBS-07"],
+      "blocker": "Computer Use is not permitted to control Terminal on this host.",
+      "acceptance": [
+        "Finder alias visibly launches the intended Terminal/TUI.",
+        "The intended onboarding completes through that visible path.",
+        "A current receipt-backed exact status reads the matching receiver after onboarding.",
+        "If the presenter is unavailable, retain that limitation without changing bridge release status."
+      ]
+    }
+  ],
+  "release_gates": [
+    {
+      "id": "DBS-GATE-01",
+      "name": "Bridge state machine",
+      "status": "passed_controlled_runtime",
+      "requires": ["DBS-07"],
+      "pass_condition": "broker starts -> TUI starts -> matching receiver observed -> receipt written -> exact status passes"
+    },
+    {
+      "id": "DBS-GATE-02",
+      "name": "Fail-closed failure matrix",
+      "status": "passed_receipt_failure_matrix",
+      "requires": ["DBS-07", "DBS-08"],
+      "pass_condition": "Every invalid receipt, process, socket, receiver and model condition rejects with a stable documented code."
+    },
+    {
+      "id": "DBS-GATE-03",
+      "name": "Lifecycle retirement",
+      "status": "passed_focused_and_live_sigterm",
+      "requires": ["DBS-04"],
+      "pass_condition": "Normal exit, SIGTERM and abrupt-host-loss scenarios retire the broker and release the alias without crossing into another session."
+    },
+    {
+      "id": "DBS-GATE-04",
+      "name": "Model admission",
+      "status": "passed_live_catalog",
+      "requires": ["DBS-05"],
+      "pass_condition": "The live model list contains the selected model before onboarding begins."
+    },
+    {
+      "id": "DBS-OBS-01",
+      "name": "Visible Desktop observation",
+      "status": "optional_host_evidence_unavailable",
+      "requires": ["DBS-09"],
+      "pass_condition": "When the host permits it, visible Finder-alias launch is recorded alongside the normal supported-route acceptance. Its absence does not block release."
+    }
+  ],
+  "evidence": {
+    "source_observations": [
+      "scripts/native_control.py receipt validation",
+      "Launcher/desktop_bridge.py receiver creation, capability route, lifecycle supervision and receipt ordering",
+      "Launcher/CodeExp2.swift bridge-launch validation",
+      "docs/native-control.md current supported-route description"
+    ],
+    "runtime_observation_limit": "Launcher/build/loki-repaired-status-20261021-final contains exact receipt-backed Loki status. The held pseudo-TTY is controlled-route evidence only; visible Finder-alias observation was unavailable on this host and is optional evidence."
+  },
+  "next_eligible_action": {
+    "id": "DBS-09",
+    "state": "optional",
+    "action": "No release action remains. Record visible Finder-alias observation only on a host where Terminal presentation is supported."
+  },
+  "history": [
+    {
+      "at_utc": "2026-10-21T00:00:00Z",
+      "revision": 1,
+      "change": "Created after red-team review to retain P0/P1/P2 findings, two-level threat scope, explicit non-claims and release gates. No bridge behavior or runtime status changed.",
+      "evidence_scope": "Planning record; red-team findings have not been converted into release acceptance."
+    },
+    {
+      "at_utc": "2026-10-21T22:01:54Z",
+      "revision": 2,
+      "change": "Implemented v2 capability-bound bridge admission, host-created receiver correlation, model admission, runtime-byte verification, process-lifetime checks, supervision and failure fixtures. Repaired Loki was restarted and receipt-backed exact status passed. Native Finder-to-Terminal observation was unavailable because Computer Use cannot control Terminal.",
+      "evidence_scope": "Focused regressions, signed bundle preflight, held-pseudo-TTY runtime route and private Loki status evidence. No hostile same-user identity claim or visible Desktop acceptance."
+    },
+    {
+      "at_utc": "2026-10-21T22:08:44Z",
+      "revision": 3,
+      "change": "Owner clarified that Apple-forbidden Terminal presentation is not a release gate. Visible Finder-alias observation is now optional host evidence; supported launcher routing, completed onboarding and receipt-backed exact status remain the release acceptance.",
+      "evidence_scope": "No runtime behavior changed."
+    }
+  ]
+}

@@ -8,6 +8,7 @@ from pathlib import Path
 import plistlib
 import shutil
 import subprocess
+import sys
 import tomllib
 
 ROOT = Path(__file__).resolve().parent
@@ -47,6 +48,27 @@ def panel_profile(source):
             "source_sha256": hashlib.sha256(source).hexdigest(), "arguments": arguments}
 
 
+def bridge_runtime_manifest(interpreter):
+    if not interpreter.is_file() or not os.access(interpreter, os.X_OK):
+        interpreter = Path(sys.executable)
+    if not interpreter.is_file() or not os.access(interpreter, os.X_OK):
+        raise RuntimeError("Desktop bridge build interpreter is unavailable")
+    loader = """import importlib.util, json, sys
+spec = importlib.util.spec_from_file_location('desktop_bridge_runtime', sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+print(json.dumps(module.runtime_identity(), sort_keys=True))
+"""
+    result = subprocess.run([str(interpreter), "-c", loader, str(ROOT / "desktop_bridge.py")],
+                            text=True, capture_output=True)
+    if result.returncode:
+        # Packaging/preflight stays available in a clean source snapshot. The
+        # bundled sentinel makes the actual Terminal launch fail closed until
+        # its pinned bridge interpreter and transport are provisioned.
+        return {"format": "codeexp2-desktop-bridge-runtime/1", "state": "unavailable"}
+    return json.loads(result.stdout)
+
+
 def main():
     MACOS.mkdir(parents=True, exist_ok=True)
     RESOURCES.mkdir(parents=True, exist_ok=True)
@@ -60,6 +82,11 @@ def main():
     command = RESOURCES / "Start CodeExp2.command"
     shutil.copyfile(ROOT / "Start CodeExp2.command", command)
     os.chmod(command, 0o755)
+    bridge = RESOURCES / "desktop_bridge.py"
+    shutil.copyfile(ROOT / "desktop_bridge.py", bridge)
+    os.chmod(bridge, 0o755)
+    runtime = bridge_runtime_manifest(BUILD / "native-control-venv/bin/python")
+    (RESOURCES / "desktop-bridge-runtime.json").write_text(json.dumps(runtime, indent=2) + "\n")
     shutil.copyfile(ROOT / "valhalla.config.toml", RESOURCES / "valhalla.config.toml")
     (RESOURCES / "valhall-panel-profile.json").write_text(
         json.dumps(panel_profile((ROOT / "valhalla.config.toml").read_bytes()), indent=2) + "\n")

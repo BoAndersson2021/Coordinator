@@ -1,5 +1,6 @@
 # Selected only by the CodeExp2 launcher (--profile valhalla).
 # Capabilities do not authorize work outside the owner's selected task.
+model = "gpt-5.6-terra"
 default_permissions = ":danger-full-access"
 approval_policy = "never"
 web_search = "live"
