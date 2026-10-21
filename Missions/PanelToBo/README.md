@@ -2,7 +2,15 @@
 
 ## Current pickup — 2026-10-21
 
-The owner selected PANEL To BO for Coordinator Thor (actual session
+Coordinator Odin (actual session `01a15f82-54fe-7f92-a0e8-ba1cfc1597e7`)
+restored the supported connection to the same existing PANEL builder and verified
+its completed fresh read/apply ACK. Mission titles now show the selected mission
+name or `NEW MISSION`, with prominent Choose/Change mission actions and clear
+connection guidance. Source, installed package and native behavior were verified.
+Current setup, publication and continuation references are in
+[MISSION.json](MISSION.json) and the linked target records.
+
+The preceding publication pickup selected PANEL To BO for Coordinator Thor (actual session
 `01a15cea-c64e-7513-a1ca-3b71eeccaaf5`). Current coordination and publication
 references are in [MISSION.json](MISSION.json); prior coordination below and
 [RESUMPTION.json](RESUMPTION.json) retain their historical scope. Target product
