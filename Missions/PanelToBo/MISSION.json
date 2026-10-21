@@ -7,7 +7,7 @@
     "owner": "Current mission Coordinator",
     "canonical_scope": "Current CodeExp2 coordination and publication references; target records own product/setup/runtime state. RESUMPTION.json is historical."
   },
-  "observed_at_utc": "2026-10-21T05:53:26.718801+00:00",
+  "observed_at_utc": "2026-10-21T08:10:03Z",
   "coordinator": {
     "role": "coordinator",
     "session_id": "01a15cea-c64e-7513-a1ca-3b71eeccaaf5",
@@ -21,13 +21,16 @@
   "authority": [
     "Owner selected Mission5 PANEL To BO",
     "Owner requested wipe locked General Coordinator record and setup from start",
-    "Owner requested commit and push"
+    "Owner requested commit and push",
+    "Owner requested diagnose missing-state chat creation failure, then address sidebar layout.",
+    "Owner selected permanent chat names with current/last agent alias underneath.",
+    "Owner requested commit and push of the verified creation/sidebar/permanent-name repair."
   ],
-  "state": "general_coordinator_reset_and_fresh_onboarding_verified",
+  "state": "creation_sidebar_names_startup_native_verified_and_published",
   "target_records": {
     "handover": "/Users/boandersson/Desktop/PANEL/HANDOVER.json",
     "plan": "/Users/boandersson/Desktop/PANEL/PLAN.json",
-    "observed_plan_revision": 48,
+    "observed_plan_revision": 55,
     "host_adoption": "/Users/boandersson/Desktop/PANEL/Setup/host-adoption.json",
     "execution_setup": "/Users/boandersson/Desktop/PANEL/Setup/execution-setup.json",
     "reset_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-general-reset-publication-01a15cea/RESET.json"
@@ -39,12 +42,13 @@
       "Runtime and backups",
       "Private conversation/native records and raw transport logs",
       "Unrelated mission/source changes"
-    ]
+    ],
+    "current_repair": "Creation missing-state parent repair, full sidebar scroll, permanent Chat 1..5 names and separate current/last aliases are installed and Coordinator-native verified. Initial naming candidate failed macOS Desktop ancestor read; narrow search-only traversal repair passed actual-source checks and subsequent native production launch, reconnect/disconnect and reopen. PANEL commit 437b0fc3aec1c859e0c6bbfa32435d28ef87cef7 published the twelve reviewed source/test/doc files to live origin/main. Coordinator native observation and builder PLAN55/HANDOVER closure remain linked in local pickup-thor-01a15cea evidence; historical diagnostic warning remains separate."
   },
   "limits": [
     "Old backend thread is abandoned locally, not proved cancelled or deleted.",
     "Other registered chats preserved; no shared daemon restart.",
-    "No app-source change or new history feature; S20-S22 remain unassigned.",
+    "The prior reset changed no app source; current bounded repair now permits relevant source/test changes. History S20-S22 remain unassigned.",
     "Fresh General Coordinator has no mission selected; this conversation remains on PANEL To BO.",
     "Prior accepted feature/runtime claims retain their recorded scope; owner acceptance remains separate.",
     "Historical local support/evidence references in the running guide remain local unless separately tracked; they grant no current authority."
@@ -58,8 +62,19 @@
       "path_count": 13,
       "scope": "Reviewed setup handoff and sanitized reset receipt; no source or private Runtime/rollback/raw frames."
     },
-    "codeexp2": "This coordination document and thin running-guide routing only; normal hook and explicit origin main:main."
+    "codeexp2": "This coordination document and thin running-guide routing only; normal hook and explicit origin main:main.",
+    "current_repair": {
+      "commit": "437b0fc3aec1c859e0c6bbfa32435d28ef87cef7",
+      "branch": "main",
+      "remote": "https://github.com/WRRTREPO/PANEL.git",
+      "live_remote_equality_independently_checked": true,
+      "path_count": 12,
+      "scope": "Reviewed creation/sidebar/naming/startup repair source, focused test scripts and PLAN55/HANDOVER; no Runtime, bundle, rollback or private evidence.",
+      "local_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-creation-sidebar-names-publish-01a15cea/PANEL-CREATION-SIDEBAR-NAMES-PUBLISH-001-report.json",
+      "receipt_sha256": "b3e240536ba749943efd61b61fb2c49534a85e842b2cddd5a519629b43aff0a0"
+    }
   },
-  "next_action": "Use the fresh General Coordinator; future feature work needs its own bounded assignment.",
-  "unresolved_reset_effects": []
+  "next_action": "No further product/runtime action assigned. Sticky historical diagnostic warning and continuous maintenance health remain separate; S20-S22 unassigned.",
+  "unresolved_reset_effects": [],
+  "active_assignment": null
 }
