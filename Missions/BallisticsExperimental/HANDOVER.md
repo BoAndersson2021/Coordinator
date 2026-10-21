@@ -1,3 +1,23 @@
+Current local-control checkpoint, 2026-10-21: the owner-supplied `codeexp2-native-binding/1` completed read-only `preflight` against the local `panel_coordinator_loki/0.163.0` WebSocket backend under `PANEL To BO — owner-selected P1-A`. `receiver_id` remained `null`: no actual receiver was advertised, so no status, builder contact, assignment, compile/worker run, target change, or target-route claim occurred. This proves only a local CodeExp2 control plane and does not replace the Ballistics required builder route.
+
+Current R52 dispatch state: [corrected passive-capture readiness](R52CORRECTEDCAPTURE-20261021T203700Z-LOKI-01a15fa0.json) preserves the owner-authorized exact binding design, but it remains blocked before delivery: no eligible target receiver has been observed, so the mission's required native builder controls, fresh ACK, assignment, compile, worker, repair, and target write remain unavailable. Resume through the configured builder route, reconcile the current baseline, then send one new bounded request.
+
+Current R51 review: [bounded passive primitive observation](R51OBSERVE-20261021T202519Z-LOKI-01a15fa0.json) completed with valid all21-file/raw-duplicate provenance, but its return fields were overwritten after the target capture. The source-rounded operand-to-direct/face/finite-edge return binding is invalid, so no repair, collision, clearance, or gameplay conclusion follows. A separately owner-authorized corrected passive capture is the next eligible action; target-owned R51 plan/protocol closeout remains pending supported builder delivery.
+
+Current repair design: [R50 support-certificate review](R50DESIGN-20261021T202400Z-LOKI-01a15fa0.json): source-only analysis found no safe mutation from the qualified line1189 support-certificate failure. The next eligible evidence is a separately authorized passive primitive-boundary observation; no source repair, worker/native/game run, numerical candidate, staging or publication occurred.
+
+Earlier capture review: [R48 Frontal-root capture and R49 Coordinator review](R48CAPTURE-20261021T200354Z-LOKI-01a15fa0.json): the fresh two-negative pair passed complete physical all21 raw-byte and duplicate-directory parity with directly captured terminal streams and a self-excluding 50-entry manifest. The observation is technically qualified only as input to a separately authorized repair-design review; it is not collision, clearance, repair, full-worker, promotion, gameplay success, or owner acceptance. R47's wrong-root preflight failure remains preserved.
+
+Earlier capture protocol: [R46 future terminal-capture design](CAPTUREPROTOCOL-20261021T195135Z-LOKI-01a15fa0.json): static protocol completed and verified before implementation. The later R48 capture followed its direct stdout/stderr and manifest-provenance rules.
+
+Current static audit: [Prefix1151 log and manifest provenance](LOGMANIFEST-20261021T194207Z-LOKI-01a15fa0.json): completed with no worker, replay, compiler, or native run. It proves the original all21 parity cannot be established from retained Prefix bytes: both diagnostic runs lack stdout/stderr, the runner does not write those files, the original wrapper capture is unavailable, and the old manifest has a stale self entry plus omits 40 nested run files. The primitive observation remains unaccepted; no repair or promotion occurred.
+
+Current diagnostic: [internal prefix1151 coordination](PREFIX1151-20261021T185833Z-LOKI-01a15fa0.json): one compile/two negative runs completed after the selected Terra recovery, but all21-file parity failed (missing stdout/stderr) and the manifest self-entry mismatches. The primitive observation is unaccepted; no repair or promotion occurred.
+
+Current diagnostic: [bounded passive1151 coordination](DIAG1151-20261021T183743Z-LOKI-01a15fa0.json).
+
+Current pickup: [Step3 captured-worker validation and independent review, 2026-10-21](STEP3-20261021T181048Z-LOKI-01a15fa0.json). Earlier checkpoints below remain historical.
+
 # BallisticsExperimental — publication checkpoint, 2026-10-21
 
 **Committed and pushed:** [isolated Step2 candidate16 archive](https://github.com/WRRTREPO/BallisticsExperimental/blob/70a4c799a266a109d62c72402bbb08287dbfa276/Engineering/Investigations/BE-CONTACT-ARRIVAL-001/frontal/step2-candidate16/ARCHIVE.json).
