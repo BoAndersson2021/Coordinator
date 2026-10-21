@@ -1,4 +1,169 @@
-# BallisticsExperimental — pickup checkpoint, 2026-10-19
+# BallisticsExperimental — publication checkpoint, 2026-10-21
+
+**Committed and pushed:** [isolated Step2 candidate16 archive](https://github.com/WRRTREPO/BallisticsExperimental/blob/70a4c799a266a109d62c72402bbb08287dbfa276/Engineering/Investigations/BE-CONTACT-ARRIVAL-001/frontal/step2-candidate16/ARCHIVE.json).
+Native commit `70a4c799a266a109d62c72402bbb08287dbfa276` matches approved experimental `origin/main`.
+The [native PLAN R42](https://github.com/WRRTREPO/BallisticsExperimental/blob/70a4c799a266a109d62c72402bbb08287dbfa276/Engineering/Investigations/BE-CONTACT-ARRIVAL-001/PLAN.md) retains the design, review and attempt history.
+The owner separately authorized this publication with “commit and push”.
+Coordinator Thor completed publication in durable conversation `01a15766-cc80-7822-888d-108786b88da8`; earlier Loki/Odin records retain their historical identities.
+
+The archive includes exact frozen source, fixtures, focused evidence and a reproduction recipe.
+Its one large fault capture was uploaded through normal Git LFS; local LFS integrity passed.
+A relocated build reproduced the accepted executable; zero-owner and saved1147/1279 stdout matched the originals.
+Live source/module and unrelated work remain unchanged. This publishes the accepted isolated
+Step2 checkpoint; Step3 has not started, and both-direction escape and game qualification remain unproved.
+The retained builder finished preparation and returned idle; no further product task is assigned.
+
+Local evidence: [event-binding coordination receipt](EVENTBIND-20261020T213035Z-ODIN-01a15766.json).
+Coordinator receipts and historical Saved/absolute-path references below are local evidence;
+they are not guaranteed to exist in a fresh clone. Use the published archive manifest/path map
+for durable files and explicitly omitted external evidence. Native documents retain their
+pre-publication preparation wording; the remote-SHA observation above records completed publication.
+
+Earlier bounded task: [Step2 component gate and stopped checkpoint](STEP2-20261020T210918Z-ODIN-01a15766.json)
+(2026-10-20). Native PLAN is R36. Safe-prefix geometry/speed/time passed;
+rounded-path event binding remains unproved. No integrated candidate/freeze or
+Step3. Builder idle, count14; live source/module unchanged. Recommend targeted
+event-binding design review before resuming Step2.
+
+Earlier: [Step1 design/review and owner-requested stop](STEP1-20261020T203259Z-LOKI-01a15766.json).
+Canonical design and review/closure evidence remain in the target repository.
+
+Earlier coordination pickup and completed target-guide setup are recorded in
+[Coordinator Loki's structured pickup receipt](PICKUP-20261020-LOKI-01a15766.json)
+(2026-10-20). The product checkpoint below remains R34; no new repair is assigned.
+
+## Current pickup — exact1279 diagnosis verified, 2026-10-19
+
+Owner **“Sigh ok do it”** authorized the recommended exact-feature diagnosis.
+Coordinator Thor/session `01a15482-36bf-7560-b03d-0373feb00cbb` used the same native
+builder/session `01a14b73-b7a5-7062-865e-ebd47b6b3ce0` and qualified mission route.
+Fresh ACK turn `01a15576-cfc7-75a0-a64f-b884808a9ed6` matched R32; diagnostic turn
+`01a15578-6d02-7bb1-9c4d-18143c64465b` completed. Native PLAN is now **R34**.
+
+**Verified finding:** triangle411 is the sole refusing feature (85 feature tests
+per path) for both saved endpoints. Exact Fraction witnesses prove endpoint-capsule
+overlap with its interior; distance squared minus140cm radius squared is about
+`-1.45789806487e-5 cm²`. The full-path rejection is justified. Source event order
+requires whole-remainder clearance before the outer loop can process this later
+feature; the opening retained support is472. Do not soften the guard or force411
+into the initial constraints.
+
+**Exercised next route:** the unchanged initialized periodic contact query finds411
+on both chords with adjacent binary64 entering brackets near fraction0.727, about
+6.058321597ms into the original8.333333327ms remainder. Exact rational offset plus
+remaining time joins were independently verified. This is wall-entry query
+feasibility, not integrated accepted-prefix/remainder or full-manifest arbitration.
+
+Three diagnostic compiles/executions are retained. Execution2 lacked the real
+startup scratch reserve and refused101 before geometry. Coordinator identified
+the exact omitted precondition and authorized one separate corrected execution3,
+with original source/executable/logs preserved. Its stale footer execution=2 is
+explicitly corrected in receipts/report, never silently rewritten. No numerical
+candidate, worker replay or native/game run; **numerical count remains14**.
+
+[Coordinator verification](path1279-diagnosis-20261019-thor-01a15482/VERIFICATION.json)
+checked148 manifest entries, exact mesh vertices, both rational overlap witnesses,
+query bracket/sign/time joins, unchanged live source/module/logical index and
+preexisting non-doc dirty work. Builder returned idle, exact turn completed, no
+native background terminals/owned diagnostic child. Existing builder retained.
+Full native report:
+`/Users/boandersson/Desktop/BallisticsExperimental/Saved/AgentCommunication/BE-PATH1279-20261019-THOR-01a15482/D1-report.json`
+SHA256 `817c55eb67edc30989ee4f5364cdba5ce19f07f2c5be617ea95408c0dc2c6191`.
+
+**Recommended next repair:** integrate the exercised later-contact event before
+rejecting the whole still-proposed remainder; certify every actually accepted
+segment, preserve original global duration/forces/support/speed and provide the
+already-unmet once-only retained reaction accounting. No integrated successor is
+assigned by this diagnostic. Both-direction frontal escape and final native/game
+gates remain unresolved. Live source11/module remain unchanged/unqualified; no
+staging, commit, push, settings change or replacement agent.
+
+## Prior checkpoint — bounded approach stopped, 2026-10-19
+
+The owner said **“OK execute next”** after C13. Coordinator Thor/session
+`01a15482-36bf-7560-b03d-0373feb00cbb` used the same builder and reviewed
+receiver-bound control route; no replacement, permission change or launch.
+
+**C14 completed partial:** the targeted endpoint correction accepts actual1147
+with the full prior1146 C13 state/snapshot prefix unchanged. Both original-input
+worker runs accept1278 then refuse1279; frontal escape remains unmet. A single
+capture-only trace localized the new refusal to combined support/path admission.
+Actual1147 retained-zero-impact correction reaction bookkeeping also remains unmet.
+The [C14 checkpoint](candidate14-20261019-thor-01a15482/VERIFICATION.json)
+verified263 run files plus3 communication inputs. No numerical edits after freeze.
+
+**Next bounded component failed, and this approach is stopped.** Fresh matching
+readiness/proposal turn `01a1556a-dfa6-7261-88f1-20ab7a3f45b9` completed;
+proposal/source hashes were reviewed before implementation assignment.
+Turn `01a1556f-5d67-78a1-a940-c24ac0feb258` compiled and ran one component using
+exact C14 source and saved actual1279 context. Its existing traversal produces
+only two first-positive points (Theta and radius, one cell each; no S candidate).
+Both pass16 of17 joint predicates, including speed, derivative and retained-triangle;
+both fail unchanged `CertifyHazardPathClear` on the full owned mesh. Failed
+selection leaves output point/W unchanged. This proves no admissible point in
+that exact set, not physical penetration or global representation infeasibility.
+
+The hard gate prevented reaction-ledger integration, an integrated C15 compile,
+worker replay, capture trace or native/game work. **Numerical count remains14**;
+all prior attempts/stops carry. Same native PLAN is **R32**, with prior history and
+future acceptance dependencies retained. Live source11/module and logical index
+remain unchanged/unqualified; no promotion, staging, commit or push. The builder
+returned idle, matching turn completed and no native background terminals.
+
+[Coordinator verification](candidate15-20261019-thor-01a15482/VERIFICATION.json)
+checked all114 manifest entries, exact component sources/inputs/executable,
+83 unchanged copied C14 source files, and closing live/doc/Git preservation.
+Full native report:
+`/Users/boandersson/Desktop/BallisticsExperimental/Saved/AgentCommunication/BE-C15-20261019-THOR-01a15482/C15-G1-report.json`
+SHA256 `f5c82ef5470218f0eb5c3b1eb50161ded3c548b5554a90c1d629a3b6fad038e5`.
+
+**Recommended next:** separately scope a diagnostic identifying the exact full-mesh
+feature/primitive refusing the two saved paths, preserving current checks and
+bounds. No repeated selection trial, broader search or automatic C16. Retained
+reaction accounting, both ordinary frontal escape directions and all native/final
+game gates remain unresolved. A new heading/impact policy was neither inferred
+nor implemented.
+
+## Previous checkpoint — candidate13 failed; execution stopped, 2026-10-19
+
+The owner selected the bounded candidate13 resume after a current status review.
+Coordinator Thor is now session `01a15482-36bf-7560-b03d-0373feb00cbb`; the earlier
+Thor below is a different session. Fresh completed builder ACK
+`01a15486-38a5-7632-b736-684d8e58271b` confirms the existing builder's identity,
+unchanged dirty baseline, completed prior work and availability for this scope.
+
+The reviewed native host client and reused receiver-bound setup evidence match;
+receiver settings remain `on-request` / `auto_review` with workspace permissions.
+The bounded assignment completed in turn `01a1548a-300f-7661-afb3-7f2b109f8565`.
+One isolated candidate13 compiled; all 12 earlier attempts/stops carry. Final
+focused and manual physical-fault checks passed in their controlled scope.
+The first actual captured negative path hit the frontal wall at step1135,
+accepted1146, then refused1147/detail1770507. Its mandatory unchanged duplicate
+matches complete continuations, snapshots, inputs and refusal evidence. No wall
+clearance or additional100m was achieved; later1190 captured frames are unconsumed.
+
+One capture-only trace identifies the owning check: certified rounded endpoint
+displacement divided by remaining time produces a velocity exceeding the
+unchanged physical-speed rounding allowance. Independent Coordinator arithmetic,
+direct before/after refusal bytes and all1146 consumed input-hash joins agree.
+No numerical patch followed the failure. Live solver, worker and game module
+remain unchanged and unqualified; no native game build/run or promotion occurred.
+The existing native PLAN is R28 and its canonical handover records this checkpoint.
+
+The builder owns the existing native PLAN and canonical handover refresh;
+implementation and evidence stay in the registered game repository. This
+Coordinator owns assignment and review records under
+[the current run](candidate13-20261019-thor-01a15482/), including the exact
+baseline, readiness, setup, assignment and [failed-gate verification](candidate13-20261019-thor-01a15482/VERIFICATION.json).
+The complete report hash and all190 manifest files plus3 communication inputs
+were checked. Fresh native inspection finds the builder idle with no background
+terminals; its retained process report identifies no owned compiler/replay left.
+No staging, commit, push, replacement builder or shared-service change occurred.
+
+The original two-direction escape and final game gates remain. Recommend a
+separately bounded correction at the rounded-endpoint/velocity boundary, jointly
+preserving the existing support and physical-speed predicates. No candidate14,
+tuning/budget change or native successor is dispatched by this failed checkpoint.
 
 ## Current update — Coordinator Thor restored host control, 2026-10-19
 
