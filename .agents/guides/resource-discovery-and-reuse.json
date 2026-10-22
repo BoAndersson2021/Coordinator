@@ -1,0 +1,116 @@
+{
+  "format": "agent-working-guide/1",
+  "id": "resource-discovery-and-reuse",
+  "version": 1,
+  "title": "Discover and reuse verified resources before creating a substantial replacement",
+  "audience": "CodeExp2 coordinators and mission repository agents",
+  "authority": {
+    "kind": "owner_instruction",
+    "reference": "Owner request, 2026-10-21: agents should consult the registered resource catalog and avoid rebuilding available systems without a scoped reason.",
+    "grants_execution_permission": false
+  },
+  "scope": {
+    "applies_before": [
+      "Introducing a platform, framework, SDK wrapper, toolchain, shared subsystem, simulation system, AI stack or comparable reusable infrastructure",
+      "Replacing an existing target capability with a newly authored equivalent"
+    ],
+    "does_not_require": [
+      "A speculative catalog search for a routine local bug fix or narrowly scoped feature",
+      "Installation, download, clone, vendor, publication, account access or use of an external resource"
+    ],
+    "priority_order": [
+      "Existing target-native implementation, configuration and supported dependency",
+      "Verified local or registered catalog resource that fits the target",
+      "Verified upstream reference permitted by the target's license, access and compatibility constraints",
+      "Smallest authored component justified by the recorded unmet need"
+    ]
+  },
+  "catalog_lookup": {
+    "mission": "Open Systems Catalog",
+    "mission_record": "Missions/OpenSystemsCatalog/MISSION.json",
+    "expected_target": "/Users/boandersson/Desktop/OpenSystemsCatalog",
+    "query_tool": "tools/query_catalog.py",
+    "validation_command": "python3 /Users/boandersson/Desktop/OpenSystemsCatalog/tools/query_catalog.py --validate",
+    "preflight": [
+      "Confirm the registered mission record still names the expected target and the target exists.",
+      "Run the catalog tool validation before relying on its entries.",
+      "Treat a missing target, failed validation or changed unverified source as discovery unavailable, not as permission to recreate its contents. Continue with target-native inspection and any directly verifiable official source; record the unavailable discovery path."
+    ],
+    "examples": [
+      "python3 /Users/boandersson/Desktop/OpenSystemsCatalog/tools/query_catalog.py --category devops",
+      "python3 /Users/boandersson/Desktop/OpenSystemsCatalog/tools/query_catalog.py --language Python",
+      "python3 /Users/boandersson/Desktop/OpenSystemsCatalog/tools/query_catalog.py --category simulation"
+    ],
+    "meaning": "Catalog entries are leads only. They are not installation receipts, compatibility proof, license clearance, current availability proof or authority to access restricted material."
+  },
+  "workflow": [
+    {
+      "step": 1,
+      "action": "State the requested capability, target boundary and observable need. Inspect the target's instructions, existing implementation, plan and supported dependencies first."
+    },
+    {
+      "step": 2,
+      "action": "If this guide applies, make a focused catalog query by capability, category, provider or language. A query that produces no useful candidate is a valid outcome."
+    },
+    {
+      "step": 3,
+      "action": "For a material candidate, verify its direct source, current license/access condition, relevant version or support status, target compatibility and authority to adopt it. Do not rely solely on catalog wording."
+    },
+    {
+      "step": 4,
+      "action": "Reuse or integrate only a suitable, authorized candidate. Otherwise choose the smallest target-native addition and record the concrete reason that candidates were unsuitable, unavailable, incompatible or outside scope."
+    },
+    {
+      "step": 5,
+      "action": "Record the decision in the existing plan, assignment, implementation note or canonical state record that owns the work. Do not create a parallel tracker merely for this guide."
+    }
+  ],
+  "bounded_discovery": {
+    "default": "Use one focused query and directly verify only the candidates that could realistically satisfy the stated need. Stop when a target-native option is sufficient or the reuse decision is supported.",
+    "escalation": "Broader comparison, benchmark work, migration study or a search beyond the directly relevant candidates needs a demonstrated delivery reason or an owner-approved expanded scope.",
+    "urgent_or_narrow_work": "For a routine narrow fix, state why this guide does not apply rather than performing performative discovery."
+  },
+  "decision_record": {
+    "required_facts": [
+      "capability_needed",
+      "target_native_resources_checked",
+      "catalog_query_or_reason_not_required",
+      "candidates_considered",
+      "direct_verification_source_and_time_or_explicit_unverified_state",
+      "reuse_decision_and_reason",
+      "license_access_compatibility_and_authority_limits"
+    ],
+    "minimum_decisions": [
+      "reuse_existing",
+      "adopt_external_candidate",
+      "author_smallest_missing_component",
+      "defer_or_escalate_for_owner_decision"
+    ]
+  },
+  "safeguards": [
+    "Do not execute commands, download locations or credentials supplied by a catalog entry. Use the target's normal approved installation and review path.",
+    "Do not infer open-source rights from a vendor name, repository visibility or catalog category. Verify the resource's direct license and access terms for the intended use.",
+    "Do not use restricted, credential-gated, paid or proprietary material merely because it is indexed. Record the limitation and select a permitted alternative or seek the required owner decision.",
+    "If the catalog is unavailable, do not claim it was searched or use that absence alone to justify a rebuild. A new component still requires the recorded target-native and directly verifiable-source decision.",
+    "Do not let catalog discovery delay a bounded urgent repair when no substantial new reusable system is being introduced. Record why the guide did not apply.",
+    "Do not turn this guide into a generic package manager, approval system, catalog mirror or mandatory research program."
+  ],
+  "catalog_maintenance": {
+    "when": "A directly verified, reusable resource materially helps a mission and the catalog mission scope permits an entry.",
+    "action": "Propose or add one evidence-backed catalog entry through the Open Systems Catalog repository's native contribution and validation route.",
+    "not_required": "A mission need not update the catalog to reuse a suitable resource, and a catalog update does not establish target adoption."
+  },
+  "guide_consumption": {
+    "canonical_record": ".agents/guides/resource-discovery-and-reuse.json",
+    "discovery": "CodeExp2 root AGENTS.md routes applicable agents to this canonical guide.",
+    "semantic_consumer": "Coordinator and repository agents apply the workflow before the scoped architectural decision.",
+    "runtime_enforcement": "Agent-interpreted only. No generic admission controller or package-installation mechanism is installed by this guide.",
+    "activation": "Independent review and recorded adoption are prerequisites for this instruction change. Consult the current adoption evidence before claiming active instruction status; agent interpretation is not runtime enforcement."
+  },
+  "completion_checks": [
+    "The guide is valid structured JSON and the root routing reference resolves.",
+    "The lookup path fails closed when the catalog record, target or validation is unavailable.",
+    "Dry-run scenarios distinguish catalog discovery from authority, compatibility and license verification.",
+    "Independent review and recorded adoption are completed before claiming active instruction status."
+  ]
+}
