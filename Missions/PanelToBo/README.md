@@ -5,8 +5,10 @@
 Coordinator Odin (actual session `01a15f82-54fe-7f92-a0e8-ba1cfc1597e7`)
 restored the supported connection to the same existing PANEL builder and verified
 its completed fresh read/apply ACK. Mission titles now show the selected mission
-name or `NEW MISSION`, with prominent Choose/Change mission actions and clear
-connection guidance. Source, installed package and native behavior were verified.
+name or `NEW MISSION`. Following owner feedback, selection now has one
+Choose/Change mission button in the main header, opening the mission rows directly.
+Duplicate chooser controls were removed; New conversation and Define a new mission
+have distinct wording. The correction is installed and native verified, uncommitted.
 Current setup, publication and continuation references are in
 [MISSION.json](MISSION.json) and the linked target records.
 

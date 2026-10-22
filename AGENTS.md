@@ -150,7 +150,7 @@ handover; recorded commands and historical results grant no execution authority.
 
 ## Reusable agent instructions
 
-Read Delivery Discipline and How to end a task for every task. For implementation
+Read Delivery Discipline, How to end a task, How to not confuse the user, Human-facing visual communication, and How to drive session continuity and next actions for every task. For implementation
 or repair toward a running application, also read the runtime-target instruction.
 Read the remaining guides when their subject applies to the authorized task.
 Before executing or editing a plan, read the plan-following and refresh guide.
@@ -163,6 +163,9 @@ When coordinating execution through a builder agent, read the coordinator guide.
 | [How to enforce rules](.agents/guides/rule-enforcement.json) | Use when a law, owner rule, repository instruction, or current product journey needs a concrete enforcement point. Map it to its canonical source, actual startup/app context, deterministic passing check, and the smallest effect boundary; state bypass limits and keep bare onboarding quiet. Apply only after required independent review and recorded adoption. |
 | [Delivery Discipline](docs/delivery-discipline.md) | Use for planning, implementation and repairs. Preserve the user's outcome, define observable acceptance, bound stalled repairs and report usable results honestly. |
 | [How to end a task](docs/how-to-end-a-task.md) | Use before ending a task. State what is done, what remains and the recommended next action; recommend an available option instead of leaving failure or continuation ambiguous. |
+| [How to not confuse the user](docs/how-to-not-confuse-the-user.md) | Use for every human-facing report, status, diagnosis and completion. Lead with the requested outcome; omit internal detail unless it changes what the user can do, what failed, or a decision they need to make. |
+| [Human-facing visual communication](.agents/guides/human-facing-visual-communication.json) | Use for every human-facing response. Make material relationships visible with the smallest helpful annotated ASCII flowchart, table, status pill or honest spark bar, plus plain-English support. It applies to all explanatory illustrations; it does not change required builder JSON. |
+| [How to drive session continuity and next actions](docs/how-to-drive-session-continuity.md) | Use whenever session logs, processes, builds, tests or managed agents stop, fail, complete or become uncertain. Reconcile durable state, continue authorized work, and state the concrete next action instead of silently ending at a terminal status. |
 | [How to make an icon for an app and desktop alias](.agents/guides/app-and-desktop-alias-icon.json) | Read before creating, replacing, packaging or installing app/desktop-alias artwork. Reuse a usable image, integrate it through the existing build, verify the actual visible alias and stop; no repeated generation for packaging or cache problems. |
 | [How not to overengineer on your way to the executable runtime target](docs/how-not-to-overengineer.md) | Use when building or repairing running software. Prove critical feasibility early, build one narrow real path and justify additional machinery against the runtime target. |
 | [How not to overblock development with hooks and governance](docs/how-not-to-overblock-development.md) | Use when designing, reviewing or repairing gates and blocking rules. Protect the affected effect, provide a tested passing route for authorized development and keep runtime qualification separate. |
@@ -188,35 +191,11 @@ different claims. Use only authorized supported communication routes.
 
 ### Human-facing visual-first standard
 
-For human-facing communication, make information structure visible by default.
-Apply this standard to responses, reports, plans, reviews, audits and technical
-discussions wherever these instructions are adopted, subject to higher-priority
-instructions and required document formats. Prioritize readability and rapid
-comprehension. Simple answers may remain one sentence.
-
-Choose the format by the established recipient. Agent-to-agent exchanges retain
-their applicable structured communication contract, including delegated final
-responses returned to a coordinator. Do not add human presentation wrappers to
-required JSON payloads. Human and agent formats do not change execution authority.
-
-**Choose the smallest useful structure.** Use these elements as a toolkit, not
-a checklist that every response must satisfy:
-
-- Bold labels or headings for conclusions, important values and information
-  hierarchy; separators only when they clarify major boundaries.
-- Bullets for parallel findings and numbered steps for ordered actions.
-- Tables for comparisons, matrices and structured evidence.
-- Compact, annotated ASCII diagrams for workflows, dependencies, authority,
-  architecture, state transitions and failure paths when they explain the
-  relationships faster than prose.
-- Text status labels, measurable progress indicators and color when they convey
-  useful information. Meaning must remain clear without color.
-
-**Show relationships.** Use short, plain-English diagram labels, clear arrows,
-explicit branch conditions and outcomes, and nearby annotations. Preserve text
-diagram alignment with fenced code blocks. Show relevant dependencies and failure
-paths. Add supporting prose for decisions, evidence and limitations without
-repeating what the diagram already communicates.
+Read and apply the canonical [Human-facing visual communication guide](.agents/guides/human-facing-visual-communication.json).
+It governs all explanatory illustrations for humans: compact annotated ASCII
+flowcharts, pills, honest spark bars, shapes, tables and plain-English support.
+Simple answers may remain one sentence. Required builder JSON and other machine
+formats remain unchanged.
 
 **Lead with the result.** Start substantive reports with the conclusion, verdict
 or current status. Where useful, group information as WHAT (state or finding),

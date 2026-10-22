@@ -1,0 +1,160 @@
+{
+  "format": "codeexp2-feature-proposal/1",
+  "id": "human-session-continuity",
+  "version": 1,
+  "status": "implemented_reviewed_offline",
+  "title": "Human Session Continuity",
+  "purpose": "Make guide admission, state reconciliation and useful next actions first-class behavior for human-facing Coordinator sessions.",
+  "authority": {
+    "owner_direction": "2026-10-22: read the complete practical guide bundle without material slowdown; communicate to humans with annotated visual structure and plain-English support; never end in silent ambiguity.",
+    "grants_execution_permission": false
+  },
+  "scope": {
+    "applies_to": ["Coordinator human task sessions", "human-facing status, diagnosis, plan, review and closure responses", "reconciliation of managed-session terminal observations"],
+    "excludes": ["changing builder-communication/1", "inventing human approvals for ordinary builder work", "bare onboarding mission activity", "a generic policy engine", "product acceptance"],
+    "builder_boundary": "Builders retain their existing native instructions, plans, permissions and JSON communication contract. Human presentation is a separate Coordinator concern."
+  },
+  "guide_admission": {
+    "rule": "Read and record the full known CodeExp2 guide bundle once at human task-session admission. Record each exact path, version where present, SHA-256 and task applicability. Do not claim that delivery proves semantic compliance.",
+    "bundle": [
+      ".agents/guides/structured-canonical-records.json",
+      ".agents/guides/resource-discovery-and-reuse.json",
+      ".agents/guides/rule-enforcement.json",
+      ".agents/guides/bounded-delivery-session.json",
+      ".agents/guides/human-facing-visual-communication.json",
+      ".agents/guides/app-and-desktop-alias-icon.json",
+      "docs/delivery-discipline.md",
+      "docs/how-to-end-a-task.md",
+      "docs/how-to-not-confuse-the-user.md",
+      "docs/how-to-drive-session-continuity.md",
+      "docs/how-not-to-overengineer.md",
+      "docs/how-not-to-overblock-development.md",
+      "docs/how-to-follow-and-refresh-a-plan.md",
+      "docs/how-to-coordinate-with-a-builder-agent.md",
+      "docs/universal-multi-agent-build-protocol.md",
+      "docs/how-to-communicate-with-other-codex-agents.md",
+      "docs/app-terminal-codex-launch-pattern.md"
+    ],
+    "applicability_values": ["active", "inactive_by_scope", "blocked_by_conflict", "missing"],
+    "performance": {
+      "strategy": "Load and hash the bundle once per task session; reuse it for subsequent messages; reread only when bytes change.",
+      "prohibited_shortcut": "Do not silently omit a guide to reduce latency.",
+      "measurement_requirement": "Benchmark local admission and document the observed cost before activation. If it materially degrades the ordinary route, report the delay and repair the admission path rather than weakening coverage."
+    },
+    "visual_rule": "The human-facing visual communication guide is active for every human response. It governs all explanatory illustrations, including ASCII flowcharts, pills, shapes, honest spark bars and supporting plain English. The icon guide remains limited to native icon/alias work."
+  },
+  "lifecycle": {
+    "states": ["admission_required", "admitted", "working", "reconciling", "awaiting_owner_decision", "closed"],
+    "flow": "request -> guide admission -> working -> terminal observation -> reconciliation -> human closure -> closed or next authorized action",
+    "terminal_observations": ["completed", "failed", "stopped", "no_active_turn"],
+    "terminal_rule": "A terminal observation is evidence about a session, not a user outcome. It always enters reconciliation before a closure response or retry."
+  },
+  "record_contract": {
+    "format": "human-session-continuity/1",
+    "privacy": "Private session record. It stores identifiers and redacted evidence references only; never bridge capability tokens, unrestricted logs or other receiver data.",
+    "required_fields": [
+      "session_id",
+      "task_id",
+      "requested_outcome",
+      "authorized_scope",
+      "guide_manifest",
+      "state",
+      "terminal_observation",
+      "reconciliation",
+      "human_closure"
+    ],
+    "closure_fields": ["outcome", "done", "remains_or_none", "next_action_or_none", "next_action_authority", "uncertain_effects"]
+  },
+  "effect_boundaries": [
+    {
+      "boundary": "task admission",
+      "requirement": "Complete guide manifest is present; required files parse; scope conflicts are explicit."
+    },
+    {
+      "boundary": "material task action",
+      "requirement": "The task session is admitted and the manifest has not drifted."
+    },
+    {
+      "boundary": "managed-session terminal event",
+      "requirement": "Reconcile durable logs, receipt/process state, artifacts and uncertain effects before reporting or retrying."
+    },
+    {
+      "boundary": "human terminal report",
+      "requirement": "Render a closure record with done, remains and a truthful next state. next_action may be none only when scope is genuinely complete."
+    }
+  ],
+  "human_rendering": {
+    "required_for_stateful_work": ["outcome first", "relevant evidence or limitation", "remaining work or none", "next action or none"],
+    "visual_requirement": "Use the smallest annotated visual that materially improves comprehension of a workflow, dependency, state change or choice. Do not decorate simple answers or invent measures.",
+    "plain_language_requirement": "Explain each visual's conclusion, consequence and next action in ordinary language.",
+    "labels": ["PASS", "FAIL", "PARTIAL", "BLOCKED", "NEXT", "OBSERVED", "VERIFIED", "PROPOSED", "UNKNOWN"]
+  },
+  "stable_failures": [
+    "guide_admission_missing",
+    "guide_bundle_stale",
+    "guide_scope_conflict",
+    "reconciliation_required",
+    "reconciliation_blocked",
+    "closure_record_incomplete",
+    "human_report_not_ready"
+  ],
+  "red_team_and_repairs": [
+    {
+      "finding": "Full guide delivery could become expensive and reduce attention.",
+      "repair": "One local admission per task session, immutable caching, measured activation budget and no silent guide omission."
+    },
+    {
+      "finding": "An acknowledgement could be misrepresented as proof the model followed a guide.",
+      "repair": "Record delivered and acknowledged separately from runtime evidence and user acceptance."
+    },
+    {
+      "finding": "The visual guide could be confused with the icon-production guide.",
+      "repair": "Use human-facing-visual-communication for all explanatory illustrations; keep app-and-desktop-alias-icon limited to native icon work."
+    },
+    {
+      "finding": "A closure template can invent needless follow-up work.",
+      "repair": "Allow next_action_or_none only for a verified complete scope; otherwise name the smallest actual route or decision."
+    },
+    {
+      "finding": "Human communication controls could leak into builder JSON.",
+      "repair": "Keep separate records and renderers; builder-communication/1 remains unchanged."
+    },
+    {
+      "finding": "no_active_turn or collector failure can hide completed work and cause duplicate effects.",
+      "repair": "Mandatory serialized reconciliation of durable state before retry or closure."
+    },
+    {
+      "finding": "A feature this broad could become generic governance machinery.",
+      "repair": "Implement only admission, reconciliation and human closure at the three named boundaries."
+    },
+    {
+      "finding": "Guide admission could start work merely by opening a session.",
+      "repair": "Admission is read-only and grants no mission selection, launch, dispatch, provider action or publication authority."
+    },
+    {
+      "finding": "Human reporting could expose private bridge material.",
+      "repair": "Use redacted evidence references and prohibit private token/log content in the record and renderer."
+    }
+  ],
+  "acceptance_tests": [
+    "Every bundle guide is parsed, hashed and scope-classified during admission.",
+    "Guide byte drift invalidates the old admission before the next material action.",
+    "A simple human answer remains direct and does not require a needless visual or closure template.",
+    "A workflow/dependency response renders an annotated visual with plain-English support.",
+    "A spark bar is rejected when its scope or exact numerator/denominator is absent.",
+    "Builder JSON remains unchanged by human-session rendering.",
+    "completed, failed, stopped and no_active_turn each invoke reconciliation.",
+    "Concurrent collection cannot create contradictory terminal state or closure records.",
+    "A terminal human report fails validation without done, remains and a truthful next state.",
+    "A completed scope permits next_action_or_none and does not invent a new task.",
+    "Bare onboarding performs no mission effect.",
+    "Private receipt credentials and unrelated receiver data cannot appear in the human record or report."
+  ],
+  "activation": {
+    "implemented": ["scripts/human_session.py", "tests/test_human_session.py", "Missions/PanelToBo/control-20261019-odin-01a155ca/control.py"],
+    "completed": ["measured local guide admission", "independent source review", "recorded offline adoption evidence: docs/human-session-continuity-review.json"],
+    "prerequisites": ["live managed-session qualification before claiming live behavior"],
+    "first_consumer": "PANEL To BO managed Coordinator path: admit gates start/turn; collection records and reconciles its terminal observation; close records human-facing completion.",
+    "current_limit": "Offline controls, regressions and independent source review are complete. No live builder, bridge or installed app route has been invoked by this implementation task."
+  }
+}

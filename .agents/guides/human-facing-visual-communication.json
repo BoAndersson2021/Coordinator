@@ -1,0 +1,84 @@
+{
+  "format": "agent-working-guide/1",
+  "id": "human-facing-visual-communication",
+  "version": 1,
+  "title": "How to explain work to humans with compact annotated visual structure",
+  "audience": "Coordinator and agents producing human-facing communication",
+  "authority": {
+    "kind": "owner_instruction",
+    "reference": "Owner direction, 2026-10-22: human communication should make relationships visible with annotated ASCII illustrations, pills, real progress bars and plain-English support.",
+    "grants_execution_permission": false
+  },
+  "scope": {
+    "applies_to": ["human-facing responses", "status reports", "plans", "reviews", "handoffs", "diagnoses", "technical explanations"],
+    "does_not_apply_to": ["required builder-to-builder JSON", "machine-only receipts", "protocol payloads", "simple answers that do not benefit from structure"],
+    "separate_guides": {
+      "app_and_desktop_alias_icon": "Native icon artwork, packaging and Finder-alias verification remain governed by app-and-desktop-alias-icon.",
+      "agent_communication": "Builder communication retains its existing structured contract and is not reformatted as human prose."
+    }
+  },
+  "principles": [
+    "Lead with the outcome in plain English.",
+    "Use the smallest visual that makes a relationship materially easier to understand than prose alone.",
+    "Put short plain-English annotations next to or immediately below a visual; a reader must not need diagram literacy.",
+    "Use color only as reinforcement. Labels, shapes and wording carry the meaning.",
+    "Do not decorate simple answers or invent metrics merely to make a visual."
+  ],
+  "visual_selection": [
+    {
+      "when": "A sequence, lifecycle, failure route or decision path has three or more material stages",
+      "use": "Compact annotated ASCII flowchart",
+      "required": ["arrows", "branch labels", "visible outcome", "plain-English caption"]
+    },
+    {
+      "when": "Several states, owners or dependencies interact",
+      "use": "Small state/ownership diagram or table",
+      "required": ["clear labels", "one owner per responsibility where known", "explicit unknowns"]
+    },
+    {
+      "when": "Progress has a real numerator and denominator",
+      "use": "Text spark bar with the exact values",
+      "required": ["scope label", "numerator", "denominator"],
+      "example": "Bridge acceptance: [██████░░] 6/8 checks"
+    },
+    {
+      "when": "A current state, decision, risk or next action needs scanning emphasis",
+      "use": "Text pill",
+      "required": ["meaningful text label"],
+      "examples": ["[PASS]", "[PARTIAL]", "[BLOCKED]", "[NEXT: verify installed app]"]
+    },
+    {
+      "when": "The question is simple or a visual would repeat the sentence",
+      "use": "Direct prose",
+      "required": ["answer first"]
+    }
+  ],
+  "ascii_rules": {
+    "structure": ["Use boxes, arrows, branches and alignment only when they clarify the relationship.", "Keep diagrams compact enough to scan without horizontal scrolling.", "Annotate branch conditions and failure consequences in ordinary language.", "Keep code blocks monospace and do not rely on color."],
+    "plain_english_support": ["State the conclusion before or immediately after the visual.", "Explain any abbreviation on first use.", "Name what changes for the human, what remains uncertain and the next available action when relevant."],
+    "accessibility": ["Never encode a material distinction only through color, shape or position.", "Use text labels such as PASS, FAIL, WAITING and NEXT.", "Do not use a spark bar without its numeric value and named scope."]
+  },
+  "human_response_contract": {
+    "for_stateful_work": ["outcome", "evidence_or_limit", "remaining_work_or_none", "next_action_or_none"],
+    "for_terminal_or_uncertain_state": ["reconciled_state", "uncertain_effects", "next_action_and_authority"],
+    "prohibited": ["Ending with only failed, stopped, complete or no active turn when the requested outcome is unresolved.", "Leading with internal commands, hashes, tool chatter or irrelevant implementation trivia.", "Using a visual to imply that an unverified claim is proven."]
+  },
+  "examples": {
+    "flow": "[REQUEST] → [BUILD] → [NATIVE CHECK]\n                       └─ fails → [RECONCILE LOGS] → [NEXT: repair packaging]",
+    "ownership": "Human owns outcome → Coordinator verifies evidence → Builder owns target implementation",
+    "plain_english": "The build exists, but the installed-app check has not run. Next: verify the isolated app before treating it as usable."
+  },
+  "consumer": {
+    "discovery": "AGENTS.md reusable-agent-instructions and human-facing visual-first routing section",
+    "semantic_consumer": "Coordinator and any agent composing a human-facing response",
+    "runtime_enforcement": "Agent-interpreted communication guide. The human-session continuity feature can validate presence of required closure fields, but cannot mechanically prove visual usefulness or semantic understanding.",
+    "syntax_validator": "scripts/native_evidence.py:strict_json"
+  },
+  "completion_checks": [
+    "The response uses a visual only where it clarifies a material relationship.",
+    "Every visual has nearby plain-English support and accessible text labels.",
+    "Every displayed progress bar has an honest numerator, denominator and scope.",
+    "Builder JSON and other required machine formats remain unchanged.",
+    "The response distinguishes observed, verified, proposed and unknown claims where that distinction matters."
+  ]
+}

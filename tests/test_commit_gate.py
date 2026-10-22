@@ -559,7 +559,7 @@ class BridgeGateTests(unittest.TestCase):
     def test_projection_and_model_admission_fail_closed(self):
         with tempfile.TemporaryDirectory() as directory:
             projection = Path(directory) / 'profile.json'
-            projection.write_text(json.dumps({'format': 'valhall-panel-profile/1', 'arguments': ['--config', 'model="available"']}))
+            projection.write_text(json.dumps({'format': 'valhall-panel-profile/1', 'arguments': ['--config', 'model="available"', '--config', 'default_permissions=":workspace-write"', '--config', 'approval_policy="on-request"']}))
             self.assertEqual(bridge.projection(projection)[1], 'available')
             projection.write_text(json.dumps({'format': 'valhall-panel-profile/1', 'arguments': ['--config', 'approval_policy="never"']}))
             with self.assertRaisesRegex(RuntimeError, 'selected model'):
@@ -611,7 +611,8 @@ class BridgeGateTests(unittest.TestCase):
             class Rpc:
                 def __init__(self, *args): events.append('rpc')
                 def ensure_model(self, model): events.append('model')
-                def start_receiver(self, workspace, model): events.append('receiver'); return 'receiver-id'
+                def effective_policy(self): events.append('effective-policy'); return {'model': 'available', 'sandbox_mode': 'workspace-write', 'approval_policy': 'on-request'}
+                def start_receiver(self, workspace, model, policy): events.append('receiver'); return 'receiver-id'
                 def start_onboarding(self, receiver, prompt): events.append(('onboarding', receiver))
                 def close(self): events.append('close')
             def popen(command, **kwargs):
@@ -623,7 +624,7 @@ class BridgeGateTests(unittest.TestCase):
                 TimeoutExpired = TimeoutError
             try:
                 bridge.Rpc = Rpc; bridge.subprocess = SubprocessProxy; bridge.verify_runtime = lambda _: events.append('runtime')
-                bridge.projection = lambda _: (['--config', 'model="available"'], 'available')
+                bridge.projection = lambda _: (['--config', 'model="available"'], 'available', {'sandbox': 'workspace-write', 'approvalPolicy': 'on-request'})
                 bridge.endpoint_url = lambda: 'ws://127.0.0.1:4242'
                 bridge.process_identity = lambda pid: {'pid': pid, 'started_at': 'fixture'}
                 bridge.start_supervisor = lambda *args: Process()

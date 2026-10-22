@@ -113,7 +113,7 @@ class NativeControlTests(unittest.TestCase):
                    "workspace": str(root), "endpoint": {"kind": "loopback-websocket-capability", "url": "ws://127.0.0.1:4242",
                    "capability_token_path": str(token_path), "capability_token_sha256": hashlib.sha256(token.encode()).hexdigest()}, "receiver_id": "receiver",
                    "processes": {name: {"pid": 10 + index, "started_at": "Tue Oct 21 00:00:00 2026"}
-                                 for index, name in enumerate(["host", "server", "tui"])}, "issued_at_utc": issued.isoformat(),
+                                 for index, name in enumerate(["host", "server", "client"])}, "issued_at_utc": issued.isoformat(),
                    "expires_at_utc": (issued + control.timedelta(minutes=5)).isoformat(), "pre_receipt_phase": "none"}
         def write(value):
             receipt_path.write_text(json.dumps(value))
@@ -126,8 +126,8 @@ class NativeControlTests(unittest.TestCase):
             "expired": ("DESKTOP_BRIDGE_RECEIPT_EXPIRED", lambda value: value.update(expires_at_utc=(issued - control.timedelta(seconds=1)).isoformat())),
             "capability": ("DESKTOP_BRIDGE_CAPABILITY_INVALID", lambda value: value["endpoint"].update(capability_token_sha256="0" * 64)),
             "route": ("DESKTOP_BRIDGE_ENDPOINT_INVALID", lambda value: value["endpoint"].update(url="ws://127.0.0.2:4242")),
-            "lifetime": ("DESKTOP_BRIDGE_PROCESS_STALE", lambda value: value["processes"]["tui"].update(started_at="stale-lifetime")),
-            "tui_receiver": ("DESKTOP_BRIDGE_PROCESS_STALE", lambda value: value.update(receiver_id="wrong-receiver"))
+            "lifetime": ("DESKTOP_BRIDGE_PROCESS_STALE", lambda value: value["processes"]["client"].update(started_at="stale-lifetime")),
+            "client_receiver": ("DESKTOP_BRIDGE_PROCESS_STALE", lambda value: value.update(receiver_id="wrong-receiver"))
         }
         for name, (code, mutate) in mutations.items():
             candidate = copy.deepcopy(receipt)
@@ -136,7 +136,7 @@ class NativeControlTests(unittest.TestCase):
             def matches(identity, fragments, exact_final_argument=None):
                 if name == "lifetime":
                     return False
-                return name != "tui_receiver" or exact_final_argument != "wrong-receiver"
+                return name != "client_receiver" or exact_final_argument != "wrong-receiver"
             with self.subTest(name=name), patch.object(control, "process_matches", side_effect=matches), self.assertRaisesRegex(ValueError, code):
                 control.load_binding(binding_path)
 

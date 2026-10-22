@@ -11,8 +11,15 @@ document or an unregistered external repository.
 | --- | --- | --- | --- |
 | BallisticsExperimental | Coordinate work on the experimental game repository | `/Users/boandersson/Desktop/BallisticsExperimental` | [Guide](BallisticsExperimental/README.md) |
 | WEBSITE | Coordinate work in the website repository | `/Users/boandersson/Desktop/WEBSITE` | [Guide](WEBSITE/README.md) |
+| EveryoneBitesTheDust | Correct archived-source classification, then reconcile Titanic design records | `/Users/boandersson/Experimental` (game: `EveryoneBitesTheDust/`) | [Guide](EveryoneBitesTheDust/README.md) |
+| UnrealToBlender | Investigate a reusable Unreal-to-Blender pipeline, with Cooling Pad as its first pilot | `/Users/boandersson/Desktop/Blender_Project` | [Guide](UnrealToBlender/README.md) |
+| PANEL To BO | Investigate, design and test a desktop chat and macro interface for CodeExp2 Terminals, with animation, sound and interactive illustrations | `/Users/boandersson/Desktop/PANEL` | [Guide](PanelToBo/README.md) |
+| Blender | Test mesh authoring in Blender through the Blender_Project system | `/Users/boandersson/Desktop/Blender_Project` | [Guide](Blender/README.md) |
 
 | IMPACT revive | Coordinate current design and fresh code workspace; design authority stays in IMPACT_docs | `/Users/boandersson/Desktop/IMPACT_docs` (design); `/Users/boandersson/Desktop/IMPACT_CODE` (code) | [Guide](ImpactRevive/README.md) |
+
+| FACTORY Run | Run mesh generation and load the generated mesh into Blender | `/Users/boandersson/Desktop/FACTORY` | [Guide](FactoryRun/README.md) |
+| Open Systems Catalog | Maintain a license-aware, agent-searchable catalog of free/open-source code and external system references | `/Users/boandersson/Desktop/OpenSystemsCatalog` | [Guide](OpenSystemsCatalog/README.md) |
 
 **Start a NEW mission** is always an additional choice. Establish its name,
 target repository and intended outcome, then use the setup procedure below.
