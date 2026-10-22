@@ -587,14 +587,29 @@ class BridgeGateTests(unittest.TestCase):
             try:
                 host, server, tui = children
                 bridge_dir = Path(directory) / 'bridge'; bridge_dir.mkdir(mode=0o700); bridge_dir.chmod(0o700)
+                bridge.private_file(bridge_dir / 'capability.token', 'private\\n')
                 watcher = threading.Thread(target=bridge.supervise, args=(bridge.process_identity(host.pid), bridge.process_identity(server.pid), bridge.process_identity(tui.pid), bridge_dir))
                 watcher.start(); host.kill(); host.wait(timeout=3); watcher.join(timeout=5)
                 self.assertFalse(watcher.is_alive())
                 self.assertIsNotNone(server.poll()); self.assertIsNotNone(tui.poll())
+                self.assertFalse((bridge_dir / 'capability.token').exists())
                 self.assertEqual(json.loads((bridge_dir / 'retired.json').read_text())['reason'], 'host_lifetime_ended')
             finally:
                 for child in children:
                     if child.poll() is None: child.kill(); child.wait()
+    def test_host_exit_retirement_tolerates_a_competing_token_revoke(self):
+        with tempfile.TemporaryDirectory() as directory:
+            bridge_dir = Path(directory) / 'bridge'; bridge_dir.mkdir(mode=0o700); bridge_dir.chmod(0o700)
+            token = bridge_dir / 'capability.token'; bridge.private_file(token, 'private\\n')
+            original_unlink = Path.unlink
+            def competing_unlink(path, *args, **kwargs):
+                original_unlink(path, *args, **kwargs)
+                raise FileNotFoundError
+            identity = {'pid': 999999, 'started_at': 'fixture'}
+            with patch.object(Path, 'unlink', competing_unlink):
+                bridge.retire(identity, identity, identity, bridge_dir, reason='bridge_host_exited', stop_children=False)
+            self.assertFalse(token.exists())
+            self.assertEqual(json.loads((bridge_dir / 'retired.json').read_text())['reason'], 'bridge_host_exited')
     def test_receipt_precedes_onboarding_and_tui_uses_created_receiver(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); workspace = root / 'workspace'; bridge_root = workspace / 'Launcher/build/desktop-bridges'; bridge_root.mkdir(parents=True); bridge_root.chmod(0o700)
@@ -637,6 +652,8 @@ class BridgeGateTests(unittest.TestCase):
                 self.assertEqual(exit.exception.code, 0)
                 tui_event = next(event for event in events if isinstance(event, tuple) and event[0] == 'tui')
                 tui = tui_event[1]
+                self.assertEqual(tui[:2], [str(codex), '--remote'])
+                self.assertEqual(tui[-2:], ['resume', 'receiver-id'])
                 self.assertEqual(tui[-1], 'receiver-id')
                 self.assertLess(events.index('model'), events.index('receiver'))
                 self.assertLess(events.index('receiver'), events.index(tui_event))
@@ -658,7 +675,7 @@ sys.exit(0 if passed else 3)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         report = json.loads(result.stdout)
         self.assertIs(report['desktop_bridge_complete'], True)
-        self.assertEqual(report['tests_run'], 4)
+        self.assertEqual(report['tests_run'], 5)
 
     def test_launcher_native_build_preflight_and_terminal_boundary(self):
         """Build exact snapshot sources, verify signing and reject non-TTY launch."""

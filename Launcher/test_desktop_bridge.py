@@ -130,6 +130,41 @@ class DesktopBridgeTests(unittest.TestCase):
         self.assertEqual(set(receipt["endpoint"]), {"kind", "url", "capability_token_path", "capability_token_sha256"})
         self.assertEqual(Path(receipt["endpoint"]["capability_token_path"]).parent, next((workspace / "Launcher/build/desktop-bridges").glob("*")).resolve())
 
+    def test_terminal_launch_uses_remote_exact_receiver_resume_form(self):
+        workspace = self.root / "terminal-command-workspace"
+        (workspace / "Launcher/build/desktop-bridges").mkdir(parents=True)
+        os.chmod(workspace / "Launcher/build/desktop-bridges", 0o700)
+        projection = self.root / "terminal-command-projection.json"
+        projection.write_text(json.dumps({"format": "valhall-panel-profile/1", "arguments": [
+            "--config", "model=" + json.dumps(SELECTED_MODEL), "--config", 'default_permissions=":workspace-write"',
+            "--config", 'approval_policy="on-request"']}))
+
+        class Process:
+            def __init__(self, pid): self.pid = pid
+            def poll(self): return None
+            def terminate(self): pass
+            def wait(self, timeout=None): return 0
+
+        class Rpc:
+            def __init__(self, *_): pass
+            def ensure_model(self, _): pass
+            def effective_policy(self): return {"model": SELECTED_MODEL, "sandbox_mode": "workspace-write", "approval_policy": "on-request"}
+            def start_receiver(self, *_): return "fresh-receiver"
+            def start_onboarding(self, *_): pass
+            def close(self): pass
+
+        request = bridge.BridgeRequest(workspace, "codex", projection, self.root / "runtime.json", "thor", "#4c211b", 9, "onboard", "terminal_tui")
+        identities = iter(({"pid": 300, "started_at": "host"}, {"pid": 301, "started_at": "server"}, {"pid": 302, "started_at": "client"}))
+        with (mock.patch.object(bridge, "Rpc", Rpc), mock.patch.object(bridge.subprocess, "Popen", side_effect=[Process(301), Process(302)]) as launch,
+              mock.patch.object(bridge, "process_identity", side_effect=lambda pid: next(identities) if pid in {os.getpid(), 301, 302} else {"pid": pid, "started_at": "unknown"}),
+              mock.patch.object(bridge, "start_supervisor", return_value=Process(303)), mock.patch.object(bridge, "endpoint_url", return_value="ws://127.0.0.1:4446"),
+              mock.patch.object(bridge, "live", return_value=True)):
+            with self.assertRaises(SystemExit):
+                bridge.BridgeFactory.create(request)
+        command = launch.call_args_list[1].args[0]
+        self.assertEqual(command[:2], ["codex", "--remote"])
+        self.assertEqual(command[-2:], ["resume", "fresh-receiver"])
+
     def test_factory_panel_launch_proves_the_exact_receipt_receiver(self):
         workspace = self.root / "panel-workspace"
         (workspace / "Launcher/build/desktop-bridges").mkdir(parents=True)
@@ -175,6 +210,7 @@ class DesktopBridgeTests(unittest.TestCase):
         tui = self.child("/bin/sleep", "60")
         bridge_dir = self.root / "bridge"
         bridge_dir.mkdir(mode=0o700)
+        bridge.private_file(bridge_dir / "capability.token", "private\n")
         watcher = self.child(sys.executable, str(ROOT / "desktop_bridge.py"), "--supervise",
                              "--host", json.dumps(bridge.process_identity(host.pid)),
                              "--server", json.dumps(bridge.process_identity(server.pid)),
@@ -186,6 +222,20 @@ class DesktopBridgeTests(unittest.TestCase):
         self.wait_for_exit(watcher)
         retirement = json.loads((bridge_dir / "retired.json").read_text())
         self.assertEqual(retirement["reason"], "host_lifetime_ended")
+        self.assertFalse((bridge_dir / "capability.token").exists())
+
+    def test_host_retirement_invalidates_token_after_client_exit(self):
+        bridge_dir = self.root / "retired-bridge"
+        bridge_dir.mkdir(mode=0o700)
+        token = bridge_dir / "capability.token"
+        bridge.private_file(token, "private\n")
+        host = {"pid": 999991, "started_at": "never"}
+        server = {"pid": 999992, "started_at": "never"}
+        client = {"pid": 999993, "started_at": "never"}
+        bridge.retire(host, server, client, bridge_dir, reason="bridge_host_exited")
+        bridge.retire(host, server, client, bridge_dir, reason="bridge_host_exited")
+        self.assertFalse(token.exists())
+        self.assertEqual(json.loads((bridge_dir / "retired.json").read_text())["reason"], "bridge_host_exited")
 
     def test_loopback_capability_rejects_anonymous_rpc_and_admits_live_model(self):
         token = os.urandom(32).hex()

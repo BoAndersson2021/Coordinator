@@ -224,34 +224,50 @@ def terminate(process):
         process.wait(timeout=3)
 
 
+def retire(host, server, client, bridge, reason="host_lifetime_ended", stop_children=True):
+    """Invalidate one bridge's private credential exactly once.
+
+    The host handles normal client exit and launch failure; a separate-session
+    supervisor covers abrupt host death.  Either path may win the race.
+    """
+    if stop_children:
+        for identity in (client, server):
+            if process_is_live(identity):
+                try:
+                    os.kill(identity["pid"], signal.SIGTERM)
+                except ProcessLookupError:
+                    pass
+    capability = bridge / "capability.token"
+    if capability.is_file() and not capability.is_symlink():
+        try:
+            capability.unlink()
+        except FileNotFoundError:
+            # The host and detached supervisor can reach retirement together.
+            # Credential revocation is complete if the competing path won.
+            pass
+    retired = bridge / "retired.json"
+    if not retired.exists():
+        try:
+            write_private(retired, {"format": "codeexp2-desktop-session-retirement/1", "reason": reason,
+                                    "host": host, "server": server, "client": client,
+                                    "retired_at_utc": datetime.now(timezone.utc).isoformat()})
+        except (FileExistsError, OSError, RuntimeError):
+            pass
+
+
 def supervise(host, server, client, bridge):
     # This process remains alive when the host is SIGKILLed. It only retires the
     # exact processes named in the receipt after the recorded host lifetime ends.
     while process_is_live(host):
         time.sleep(.15)
-    for identity in (client, server):
-        if process_is_live(identity):
-            try:
-                os.kill(identity["pid"], signal.SIGTERM)
-            except ProcessLookupError:
-                pass
-    capability = bridge / "capability.token"
-    if capability.is_file() and not capability.is_symlink():
-        capability.unlink()
-    retired = bridge / "retired.json"
-    try:
-        write_private(retired, {"format": "codeexp2-desktop-session-retirement/1", "reason": "host_lifetime_ended",
-                                "host": host, "server": server, "client": client,
-                                "retired_at_utc": datetime.now(timezone.utc).isoformat()})
-    except (OSError, RuntimeError):
-        pass
+    retire(host, server, client, bridge)
 
 
 def start_supervisor(host, server, client, bridge):
     return subprocess.Popen([sys.executable, __file__, "--supervise", "--host", json.dumps(host),
                              "--server", json.dumps(server), "--client", json.dumps(client), "--bridge", str(bridge)],
                             stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                            close_fds=True)
+                            close_fds=True, start_new_session=True)
 
 
 PANEL_RECEIVER_METHODS = {"thread/read", "thread/turns/list", "turn/start", "turn/interrupt"}
@@ -410,6 +426,8 @@ class BridgeFactory:
         rpc = None
         client = None
         supervisor = None
+        server_identity = process_identity(server.pid)
+        client_identity = None
         try:
             deadline = time.monotonic() + 12
             while time.monotonic() < deadline:
@@ -434,14 +452,16 @@ class BridgeFactory:
             environment = dict(os.environ)
             if request.client_kind == "terminal_tui":
                 environment[TOKEN_ENVIRONMENT] = capability
-                client = subprocess.Popen([request.codex, "resume", "--remote", endpoint, "--remote-auth-token-env", TOKEN_ENVIRONMENT,
-                                           "--no-alt-screen", receiver], cwd=workspace, pass_fds=(request.claim_fd,),
+                # Remote CLI flags belong to the base command.  `codex --remote
+                # … resume <receiver>` is the native exact-thread attach form;
+                # a bare remote TUI would create a second fresh chat instead.
+                client = subprocess.Popen([request.codex, "--remote", endpoint, "--remote-auth-token-env", TOKEN_ENVIRONMENT,
+                                           "--no-alt-screen", "resume", receiver], cwd=workspace, pass_fds=(request.claim_fd,),
                                           close_fds=True, env=environment)
                 client_identity = process_identity(client.pid)
             else:
                 client = cls._panel_client(bridge, capability_path, endpoint, receiver)
                 client_identity = cls._wait_for_panel_client(bridge, client, receiver)
-            server_identity = process_identity(server.pid)
             issued = datetime.now(timezone.utc)
             receipt = {"format": RECEIPT_FORMAT, "bridge_id": uuid.uuid4().hex, "alias": request.alias, "color": request.color,
                        "workspace": str(workspace), "endpoint": {"kind": "loopback-websocket-capability", "url": endpoint,
@@ -462,6 +482,12 @@ class BridgeFactory:
                 rpc.close()
             terminate(client)
             terminate(server)
+            if client_identity is not None:
+                retire(host, server_identity, client_identity, bridge, reason="bridge_host_exited", stop_children=False)
+            elif capability_path.is_file() and not capability_path.is_symlink():
+                # No receipt-bound client was proven; still fail closed by
+                # revoking the unpublishable server capability.
+                capability_path.unlink()
             server_log.close()
             raise
         finally:
