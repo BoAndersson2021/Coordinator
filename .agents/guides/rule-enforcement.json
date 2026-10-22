@@ -1,0 +1,201 @@
+{
+  "format": "agent-working-guide/1",
+  "id": "rule-enforcement",
+  "version": 1,
+  "title": "How to enforce rules through agent startup, executable checks, and effect boundaries",
+  "audience": "CodeExp2 coordinators and authorized repository agents",
+  "authority": {
+    "kind": "owner_instruction",
+    "reference": "Owner request, 2026-10-21: learn from PANEL regressions and provide a practical way to ensure laws, rules, and guides are applied through AGENTS.md, app-created agent context, checks, and Git hooks.",
+    "grants_execution_permission": false
+  },
+  "purpose": "Turn a rule that protects a concrete effect into the smallest combination of delivered context, deterministic validation, and enforcement at the relevant boundary. Keep the product free to evolve while making accidental agent regressions visible before the protected effect.",
+  "scope": {
+    "applies_when": [
+      "A law, owner rule, repository instruction, safety invariant, or current product journey must govern a specific effect.",
+      "An agent needs the rule when it starts or when an app creates its conversation.",
+      "A source change, release claim, commit, push, deployment, or other named effect needs a check before it proceeds."
+    ],
+    "does_not_authorize": [
+      "Product work, a mission selection, a native launch, a provider call, a commit, a push, or a deployment.",
+      "Treating local agent instructions or a Git hook as legal advice, legal compliance certification, hostile-process security, or remote branch protection.",
+      "Running expensive product work merely because an agent opened a chat or completed bare onboarding."
+    ],
+    "non_goals": [
+      "A generic policy engine, approval workflow, or duplicated documentation platform.",
+      "A final product specification. Current-product journeys evolve with intentional product changes.",
+      "Replacing a target repository's native instructions, protected review requirements, CI, branch protection, or operating-system controls."
+    ]
+  },
+  "rule_classes": [
+    {
+      "class": "external_law_or_binding_policy",
+      "required_facts": ["jurisdiction_or_policy_owner", "authoritative_current_source", "source_checked_at", "protected_effect", "applicable_limit"],
+      "handling": "Use the official current source or qualified owner/counsel path appropriate to the effect. A stale guide, model memory, or local hook is not proof of legal compliance. If applicability remains unknown, hold only the affected effect and report the concrete gap."
+    },
+    {
+      "class": "repository_or_owner_rule",
+      "required_facts": ["stable_rule_id", "canonical_source", "owner", "scope", "protected_effect", "passing_route"],
+      "handling": "Deliver the rule through the applicable AGENTS.md or native app-created-agent context, then attach a deterministic check to the effect boundary where practical."
+    },
+    {
+      "class": "current_product_journey",
+      "required_facts": ["observable_user_flow", "fixture_or_real_entry_point", "preserved_behavior", "intentional_change_rule"],
+      "handling": "Use a named executable journey. When product behavior deliberately changes, update its journey in the same scoped change and state the before/after behavior."
+    },
+    {
+      "class": "human_preference_or_style",
+      "required_facts": ["requested_outcome", "audience", "example_or_acceptance_signal"],
+      "handling": "Place it in agent context or a review checklist. Add a hard gate only when failure protects a concrete effect and a reliable, proportionate passing route exists."
+    }
+  ],
+  "enforcement_stack": [
+    {
+      "layer": "canonical_rule",
+      "purpose": "One structured source names the rule, owner, scope, protected effect, accepted evidence, and known limits.",
+      "guarantee": "Prevents multiple maintained versions from silently diverging.",
+      "limit": "A parsed record does not execute or enforce itself."
+    },
+    {
+      "layer": "startup_and_app_context",
+      "purpose": "AGENTS.md routes agents to the canonical rule. An app-created-agent prompt carries the same repository-relative reference when the app, rather than the shell, creates the conversation.",
+      "guarantee": "The receiving agent can discover the rule before relevant work.",
+      "limit": "Context delivery is agent-interpreted; it does not prove execution or prevent a hostile actor from ignoring it."
+    },
+    {
+      "layer": "deterministic_validator",
+      "purpose": "A targeted test or checker proves the protected condition, reports its first failure, and has a normal passing route.",
+      "guarantee": "Accidental regressions covered by the check fail reproducibly.",
+      "limit": "A fixture validates only its stated behavior. It does not establish untested runtime, legal, or owner acceptance claims."
+    },
+    {
+      "layer": "effect_boundary",
+      "purpose": "Run the validator where the protected effect happens: staged-source commit gate, tracked pre-push hook, CI/deployment gate, or a native operation admission boundary.",
+      "guarantee": "The ordinary supported route fails closed before that effect when the validator fails.",
+      "limit": "A local pre-push hook can be bypassed by a same-user process or direct remote operation. Use server-side CI, protected branches, signed release policy, or OS-backed controls when that threat matters."
+    },
+    {
+      "layer": "evidence_and_continuity",
+      "purpose": "Keep the exact check result, duration, revision, and limitations with the record that owns the change.",
+      "guarantee": "Future agents can distinguish a passing current check from an intended or historical one.",
+      "limit": "Evidence does not expand authority or make an unreviewed change accepted."
+    }
+  ],
+  "design_workflow": [
+    {
+      "step": 1,
+      "action": "Name the protected effect and failure plainly.",
+      "details": [
+        "Write a stable rule ID, canonical owner/source, scope, and exact effect to hold when the rule fails.",
+        "State whether the risk is accidental agent drift, ordinary same-user bypass, or a stronger hostile-process threat. Do not claim a local hook covers the stronger threat.",
+        "For law or binding policy, record the current official source, jurisdiction or policy owner, check time, and the concrete decision it governs."
+      ]
+    },
+    {
+      "step": 2,
+      "action": "Choose the narrowest effective boundary.",
+      "details": [
+        "Use app or agent startup context for discoverability, source checks for implementation behavior, commit gates for staged source, pre-push hooks for ordinary local publication, and remote controls for remote publication threats.",
+        "Keep bare onboarding and chat creation quiet. They may explain the rule, but they do not run an expensive suite or trigger product work unless the owner authorized that effect.",
+        "Do not enforce a rule at every boundary by default; add layers only where each materially protects the named effect."
+      ]
+    },
+    {
+      "step": 3,
+      "action": "Write one executable passing route.",
+      "details": [
+        "Use the target's existing fixture, source test, integration test, or native validation entry point where it covers the behavior.",
+        "Make inputs local, deterministic, repository-relative, and independent of production Runtime, provider state, or an unrelated desktop session unless the protected effect specifically requires them.",
+        "Print named checks, total checks, the first failing path, and a usable failure exit status."
+      ]
+    },
+    {
+      "step": 4,
+      "action": "Wire the ordinary effect route.",
+      "details": [
+        "Track hook bytes in the repository and configure the hook path only for the intended checkout; never modify global Git configuration for a repository rule.",
+        "Resolve the repository root safely and preserve Git's pre-push input protocol. The hook invokes the repository-relative runner once and propagates a failure before transfer.",
+        "For a staged-source or release check, ensure the trusted gate validates the exact staged or packaged bytes rather than an unstaged working tree substitute."
+      ]
+    },
+    {
+      "step": 5,
+      "action": "Deliver the rule to agents without creating work at startup.",
+      "details": [
+        "Add a thin AGENTS.md routing instruction to the canonical record and its required execution command or verifier.",
+        "Trace the actual app-created thread path before adding prompt text. Place the reference in the prompt the receiving agent truly gets, not an unused coordinator or preview path.",
+        "The context states when the rule applies, which effect is protected, and that it grants no new authority."
+      ]
+    },
+    {
+      "step": 6,
+      "action": "Prove both directions.",
+      "details": [
+        "Run the real ordinary route once with a passing input and record its revision, result, duration, and no-unintended-effect boundary.",
+        "Use an isolated fixture to prove the hook or gate propagates a representative validator failure and preserves required protocol input. Do not manufacture a failure in the live repository merely to test the gate.",
+        "Verify every declared instruction surface and the actual app context reference with a focused admission check."
+      ]
+    },
+    {
+      "step": 7,
+      "action": "Adopt and evolve the rule honestly.",
+      "details": [
+        "Instruction and invariant changes receive the repository's required independent exact-byte review and recorded adoption before being called active.",
+        "A deliberate product change updates the named journey and its evidence in the same scoped change. It does not silently delete an old scenario or rebaseline a failed behavior without a stated owner decision.",
+        "Retire a rule by changing its one canonical record and the consuming boundary together; retain the historical decision where the repository normally keeps it."
+      ]
+    }
+  ],
+  "minimum_rule_record": {
+    "required_fields": [
+      "rule_id",
+      "class",
+      "canonical_source",
+      "owner",
+      "scope",
+      "protected_effect",
+      "ordinary_passing_route",
+      "validator",
+      "enforcement_boundary",
+      "startup_context_reference_or_reason_absent",
+      "bypass_and_threat_limits",
+      "evidence_owner",
+      "current_state"
+    ],
+    "state_values": ["proposed", "active", "superseded", "retired", "blocked"],
+    "meaning": "A rule record describes what will be enforced and where. It is never a permission grant or a substitute for the target's runtime authority."
+  },
+  "PANEL_example": {
+    "rule_id": "PANEL-PRODUCT-JOURNEYS-PUSH-001",
+    "class": "current_product_journey",
+    "canonical_source": "PANEL Scripts/test-product-journeys.sh and its named fixture inputs",
+    "startup_context_reference": "PANEL ChatModel.newChat appends a repository-relative guard to the actual first Valhall onboarding prompt.",
+    "ordinary_passing_route": "PANEL tracked .githooks/pre-push runs the runner before ordinary local git push when that checkout's core.hooksPath is .githooks.",
+    "protected_effect": "Ordinary local push of PANEL source that could regress current mission-first journeys.",
+    "limits": "The hook is local checkout enforcement. It does not protect remote direct writes, a same-user bypass, native UI acceptance, provider behavior, or owner acceptance."
+  },
+  "anti_patterns": [
+    "A Markdown rule copied from a JSON guide and maintained separately.",
+    "A startup prompt that launches tests, a provider request, a mission selection, or other product work merely because a chat was created.",
+    "A hook with an undocumented bypass, a working-tree validator trusted for staged-source effects, or no reliable passing route.",
+    "Calling a source-string check complete proof of a human journey when no fixture or real entry point executes the behavior.",
+    "Calling a local hook secure against same-user or remote bypass without the corresponding remote or OS control.",
+    "Adding a generic governance framework when one targeted validator and effect-boundary hook protects the named risk."
+  ],
+  "guide_consumption": {
+    "canonical_record": ".agents/guides/rule-enforcement.json",
+    "discovery": "CodeExp2 root AGENTS.md routes applicable agents to this guide.",
+    "semantic_consumer": "Coordinator and repository agents apply this design workflow when adding or changing enforcement for a concrete rule.",
+    "runtime_enforcement": "Agent-interpreted guide only. Each rule's declared validator, hook, CI gate, app prompt, or native operation boundary provides its own actual enforcement.",
+    "syntax_validator": "scripts/native_evidence.py:strict_json",
+    "activation": "Independent review and recorded adoption are required before this instruction change is described as active."
+  },
+  "completion_checks": [
+    "The guide parses strictly and AGENTS.md resolves to this one canonical record.",
+    "A rule identifies its source, protected effect, ordinary passing route, threat/bypass limit, and evidence owner.",
+    "The selected validator proves a named pass and fails closed at the concrete effect boundary without adding unrelated startup work.",
+    "App-created agent context is traced to the actual receiving prompt when such context is claimed.",
+    "Instruction and invariant changes complete required independent review and recorded adoption before activation.",
+    "No generic engine, parallel Markdown policy, global Git configuration, or unrelated product effect was introduced."
+  ]
+}
