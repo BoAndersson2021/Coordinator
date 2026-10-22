@@ -1,23 +1,5 @@
 {
-  "format": "codeexp2-mission-coordination/1",
-  "mission": "PANEL To BO",
-  "consumer": {
-    "kind": "agent-interpreted",
-    "grants_execution_permission": false,
-    "owner": "Current mission Coordinator",
-    "canonical_scope": "Current CodeExp2 coordination and publication references; target records own product/setup/runtime state. RESUMPTION.json is historical."
-  },
-  "observed_at_utc": "2026-10-21T18:51:17.116547+00:00",
-  "coordinator": {
-    "role": "coordinator",
-    "session_id": "01a15f82-54fe-7f92-a0e8-ba1cfc1597e7",
-    "human_alias": "Odin"
-  },
-  "builder": {
-    "role": "builder",
-    "session_id": "01a155cd-9b3e-7433-b0e7-eeb730e6be6d"
-  },
-  "target": "/Users/boandersson/Desktop/PANEL",
+  "active_assignment": null,
   "authority": [
     "Owner selected Mission5 PANEL To BO",
     "Owner requested wipe locked General Coordinator record and setup from start",
@@ -27,61 +9,188 @@
     "Owner requested commit and push of the verified creation/sidebar/permanent-name repair.",
     "Owner supersedes numbered chat titles: mission is primary; show exact selected mission name or NEW MISSION.",
     "Owner finds mission selection occluded; make mission choosing prominent and guide connection prerequisites.",
-    "Owner requested commit/push of verified mission-title and mission-picker work and current setup handoff."
+    "Owner requested commit/push of verified mission-title and mission-picker work and current setup handoff.",
+    "Owner reports nested Select flow and repeated New Mission controls; expressly chooses one Choose mission button.",
+    "Owner selected P0-A Mission shelf from the documented human-flow red-team choices.",
+    "Owner selected P1-A State-first workspace from the documented human-flow red-team choices.",
+    "Owner authorized continuing the P0-P2 plan; P2-A Quiet maintenance is the selected documented package."
   ],
-  "state": "mission_titles_and_picker_native_verified_and_published",
-  "target_records": {
-    "handover": "/Users/boandersson/Desktop/PANEL/HANDOVER.json",
-    "plan": "/Users/boandersson/Desktop/PANEL/PLAN.json",
-    "observed_plan_revision": 61,
-    "host_adoption": "/Users/boandersson/Desktop/PANEL/Setup/host-adoption.json",
-    "execution_setup": "/Users/boandersson/Desktop/PANEL/Setup/execution-setup.json",
-    "reset_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-general-reset-publication-01a15cea/RESET.json"
+  "builder": {
+    "role": "builder",
+    "session_id": "01a155cd-9b3e-7433-b0e7-eeb730e6be6d"
   },
+  "consumer": {
+    "canonical_scope": "Current CodeExp2 coordination and publication references; target records own product/setup/runtime state. RESUMPTION.json is historical.",
+    "grants_execution_permission": false,
+    "kind": "agent-interpreted",
+    "owner": "Current mission Coordinator"
+  },
+  "coordination_history": [
+    {
+      "coordinator": {
+        "human_alias": "Thor",
+        "role": "coordinator",
+        "session_id": "01a15cea-c64e-7513-a1ca-3b71eeccaaf5"
+      },
+      "observed_at_utc": "2026-10-21T08:10:03Z",
+      "snapshot": "Missions/PanelToBo/pickup-odin-01a15f82/mission-before.json",
+      "state": "creation_sidebar_names_startup_native_verified_and_published"
+    },
+    {
+      "coordinator": {
+        "human_alias": "Odin",
+        "role": "coordinator",
+        "session_id": "01a15f82-54fe-7f92-a0e8-ba1cfc1597e7"
+      },
+      "evidence": {
+        "implementation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-shelf-01a15f82/PANEL-MISSION-SHELF-001-report.json",
+        "install_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-shelf-01a15f82/installation/install-receipt.json",
+        "native_observation": "Installed app opened with exact NEW MISSION primary title in Current conversation, Other conversations (6) collapsed by default, enabled matching sidebar/File New conversation controls, one header Choose mission trigger, and no mission selection, reconnect, new conversation, or model turn."
+      },
+      "observed_at_utc": "2026-10-21T19:56:00Z",
+      "state": "p0a_mission_shelf_installed_and_native_verified"
+    },
+    {
+      "coordinator": {
+        "human_alias": "Odin",
+        "role": "coordinator",
+        "session_id": "01a15f82-54fe-7f92-a0e8-ba1cfc1597e7"
+      },
+      "evidence": {
+        "implementation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-state-first-01a15f82/dismiss-repair-final-01/PANEL-STATE-FIRST-DISMISS-001-report.json",
+        "installation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-state-first-install-01a15f82/PANEL-STATE-FIRST-INSTALL-001-report.json",
+        "installed_binary_sha256": "34df6e186f5f05eb54d13c0c94ae57449714d06940d7a2c882816a9b6bf0353a",
+        "native_limit": "No live completed onboarding transcript was available in the selected conversation; its source-grounded collapse/expand behavior was covered by the independently rerun 39/39 focused checks.",
+        "native_observation": "Installed app opened through the canonical full path. The disconnected selected conversation presented Reconnect only, a short Disconnected state line, and accessible Dismiss; dismissing removed only that status presentation. The empty composer and disabled Send remained unchanged. No reconnect, mission selection, new conversation, or model turn occurred."
+      },
+      "observed_at_utc": "2026-10-21T20:49:00Z",
+      "state": "p1a_state_first_installed_and_native_verified"
+    },
+    {
+      "coordinator": {
+        "human_alias": "Odin",
+        "role": "coordinator",
+        "session_id": "01a15f82-54fe-7f92-a0e8-ba1cfc1597e7"
+      },
+      "evidence": {
+        "candidate_binary_sha256": "b78a1be2ad77b3999f3bee9b01ec87fb96872663e686d60f2f31e6f9c25a7f2c",
+        "coordinator_review": "Missions/PanelToBo/pickup-odin-01a15f82/P2A-COORDINATOR-REVIEW.json",
+        "focused_checks": "47/47 independently rerun",
+        "native_limit": "No install or native UI verification in this candidate-only scope."
+      },
+      "observed_at_utc": "2026-10-21T23:13:36.587080Z",
+      "state": "p2a_quiet_maintenance_candidate_checked_not_installed"
+    }
+  ],
   "coordination_review": {
-    "setup": "Matching completed fresh builder ACK, installed guide/native entry hashes and setup diff independently checked by Coordinator; current actual binding recorded without changing permissions.",
-    "reset": "Completed matching diagnosis/apply reports and hashes collected; actual CUA fresh Create/Onboard/Send and visible completed mission menu observed. Fresh saved adoption matched new receiver; saved uncertainty/pending/Stop guards clear.",
+    "current_repair": "Creation missing-state parent repair, full sidebar scroll, permanent Chat 1..5 names and separate current/last aliases are installed and Coordinator-native verified. Initial naming candidate failed macOS Desktop ancestor read; narrow search-only traversal repair passed actual-source checks and subsequent native production launch, reconnect/disconnect and reopen. PANEL commit 437b0fc3aec1c859e0c6bbfa32435d28ef87cef7 published the twelve reviewed source/test/doc files to live origin/main. Coordinator native observation and builder PLAN55/HANDOVER closure remain linked in local pickup-thor-01a15cea evidence; historical diagnostic warning remains separate.",
+    "mission_chooser_simplification": {
+      "builder_closure": "completed matching report, all53 inputs and factual PLAN64/HANDOVER/README hashes independently verified",
+      "completion_format_note": "Reconciliation envelope omitted top-level summary; identity, reply/assignment, completed turn, outcome and hashed evidence independently matched. No strict runtime JSON consumer involved; no readiness claim based solely on envelope.",
+      "implementation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-simplify-01a15f82/PANEL-MISSION-SIMPLIFY-001-report.json",
+      "implementation_report_sha256": "a305272301ad8fb44f796615eebc7197dc98438fab31d029edacb690465afbdc",
+      "installation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-simplify-01a15f82/INSTALL-report.json",
+      "installation_report_sha256": "89269446acb70af033b3ef574f9550a9072ddad8e0be596f14c8f885e853940b",
+      "installed_binary_sha256": "de40665e99a0d306563d82cc4a841d02c3ad23766d7527b2791daca267b96a11",
+      "limits": [
+        "Owner acceptance remains separate. No commit/push of this correction.",
+        "Original install turn failed after completed installation due unavailable provider model; Coordinator reconciled effects before native launch. Same exact builder completed factual closure on advertised provider default, with no repeated install/runtime effect."
+      ],
+      "native_effects": "Normal idle quit, package install with exact14 bundle hashes and rollback, normal launch, same original5th native thread explicitly reconnected; Balder Ready and emptycomposer restored. No mission selection/newchat/modelturn. Installation Runtime equality predates QA metadata effects.",
+      "native_verification": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-simplify-01a15f82/native-verification.json",
+      "native_verification_sha256": "714c81915fcc85c5481cd8a7d30653842ac1bba4ff21d0f61bfe09a25b59fc4c",
+      "result": "pass_for_single_button_and_direct_choices",
+      "scope": "One header button opens actual8 mission rows and Define a new mission directly. Removed sidebar/banner/welcome duplicates. One sidebar New conversation action, saved NEW MISSION titles retained.24 compiled/wiring checks pass.",
+      "user_preference": "One Choose mission button"
+    },
+    "mission_picker_visibility": {
+      "installed_binary_sha256": "a3e43296089f8b197447d035bccf12cf412713171373060e39ba568368d28222",
+      "limits": [
+        "Source/compiled checks cover unstarted and named-action branches; no new conversation or mission was selected for QA.",
+        "Installer data preservation is before native QA; own recovery/metadata/alias updates are expected and separately recorded.",
+        "Native QA did not establish owner acceptance; subsequent publication is recorded separately. Existing unrelated warnings and S20-S22 remain separate."
+      ],
+      "native_observations": "Prominent top-sidebar and empty/header choice open one picker. Disconnected action explicit. Generic guidance and guarded routing observed. Existing fifth reconnected without Send/new thread/mission selection and all8 live registry entries loaded without Refresh; own backend disconnected afterward. Original selected fifth/fallback Coordinator restored, sidebar at top. Last alias now Balder after owned reconnect; prior aliases retained.",
+      "native_verification": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-picker-visibility-01a15f82/native-verification.json",
+      "native_verification_sha256": "7dd0e8d73e0a0a55528a74e1e2dce5bdae57d9771112ac5d315b929098b2665a",
+      "report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-picker-visibility-01a15f82/PANEL-MISSION-PICKER-VISIBILITY-001-report.json",
+      "report_sha256": "733c99b52009de3b870d9e31efb429bff27c110d54de6f91de52d3d24a4c78c6",
+      "result": "pass_for_requested_discoverability_scope",
+      "source_manifest": {
+        "path": "Evidence/Implementation/20261021-picker-visibility-01a15f82/source-manifest.json",
+        "sha256": "e4747445a24011754ba441e41237bd70165add69f8837fcfb7a36cfa384eb138"
+      }
+    },
+    "mission_primary_titles": {
+      "implementation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-titles-01a15f82/PANEL-MISSION-TITLES-001-report.json",
+      "installation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-titles-install-01a15f82/PANEL-MISSION-TITLES-INSTALL-001-report.json",
+      "installation_report_sha256": "75ab81dc915becf859348392360f384c55198527c5355e13ca628c06b70660d6",
+      "installed_binary_sha256": "8caea9ce9dc83076f43c5cc37cdc228ef331cf74de1006e431fe40f1d59be99a",
+      "limits": [
+        "Existing production conversations have no explicit saved UI mission selection; NEW MISSION is correct until selected. No transcript inference or mission auto-selection.",
+        "Native verification supersedes installer prelaunch observation; app left open, original fifth selected and all Valhall entries disconnected.",
+        "No model/provider turn, new chat, reconnect, commit, push or owner feature acceptance."
+      ],
+      "native_verification": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-titles-01a15f82/coordinator-native-verification.json",
+      "native_verification_sha256": "bfbcd279d1d2e88a0776d184cacd7b568b3f06146c92e1d22f05ff3a5f29ec7d",
+      "result": "pass_for_requested_naming_scope",
+      "review_record": "Missions/PanelToBo/pickup-odin-01a15f82/MISSION-TITLES-REVIEW.json",
+      "scope": "Exact mission name or NEW MISSION primary rows/card/header; MISSIONS heading; secondary alias/type; five identities/selection preserved. Native final preview02 named/unnamed switching and installed no-selection switching/reopen verified."
+    },
+    "p2a_quiet_maintenance": {
+      "builder_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-p2a-quiet-maintenance-01a15f82/review-repair-01/PANEL-P2A-REVIEW-REPAIR-001-report.json",
+      "builder_report_sha256": "f0837c9e71e48f68bb90706aa7c06c2728633450be049015ae626a74c7967ba1",
+      "candidate_binary_sha256": "b78a1be2ad77b3999f3bee9b01ec87fb96872663e686d60f2f31e6f9c25a7f2c",
+      "coordinator_review": "Missions/PanelToBo/pickup-odin-01a15f82/P2A-COORDINATOR-REVIEW.json",
+      "coordinator_review_sha256": "7d6a778ecdd335f94a921dd0320226ea0b9a5c50f90083aae470b0773ca2f8e0",
+      "focused_checks": "Coordinator independently reran 47/47 against final source; static package/source validation passed.",
+      "limits": [
+        "No visible UI acceptance or live catalog/provider action is claimed.",
+        "Current installed candidate has a verified rollback bundle.",
+        "No commit or push of this correction."
+      ],
+      "result": "pass_for_documented_P2A_candidate_scope",
+      "scope": "P2-A is included in the current installed startup-storage candidate; native interaction proof remains unavailable through the current accessibility/Computer Use window route."
+    },
     "publication_exclusions": [
       "Runtime and backups",
       "Private conversation/native records and raw transport logs",
       "Unrelated mission/source changes"
     ],
-    "current_repair": "Creation missing-state parent repair, full sidebar scroll, permanent Chat 1..5 names and separate current/last aliases are installed and Coordinator-native verified. Initial naming candidate failed macOS Desktop ancestor read; narrow search-only traversal repair passed actual-source checks and subsequent native production launch, reconnect/disconnect and reopen. PANEL commit 437b0fc3aec1c859e0c6bbfa32435d28ef87cef7 published the twelve reviewed source/test/doc files to live origin/main. Coordinator native observation and builder PLAN55/HANDOVER closure remain linked in local pickup-thor-01a15cea evidence; historical diagnostic warning remains separate.",
-    "mission_primary_titles": {
-      "result": "pass_for_requested_naming_scope",
-      "review_record": "Missions/PanelToBo/pickup-odin-01a15f82/MISSION-TITLES-REVIEW.json",
-      "implementation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-titles-01a15f82/PANEL-MISSION-TITLES-001-report.json",
-      "installation_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-titles-install-01a15f82/PANEL-MISSION-TITLES-INSTALL-001-report.json",
-      "installation_report_sha256": "75ab81dc915becf859348392360f384c55198527c5355e13ca628c06b70660d6",
-      "native_verification": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-titles-01a15f82/coordinator-native-verification.json",
-      "native_verification_sha256": "bfbcd279d1d2e88a0776d184cacd7b568b3f06146c92e1d22f05ff3a5f29ec7d",
-      "installed_binary_sha256": "8caea9ce9dc83076f43c5cc37cdc228ef331cf74de1006e431fe40f1d59be99a",
-      "scope": "Exact mission name or NEW MISSION primary rows/card/header; MISSIONS heading; secondary alias/type; five identities/selection preserved. Native final preview02 named/unnamed switching and installed no-selection switching/reopen verified.",
+    "reset": "Completed matching diagnosis/apply reports and hashes collected; actual CUA fresh Create/Onboard/Send and visible completed mission menu observed. Fresh saved adoption matched new receiver; saved uncertainty/pending/Stop guards clear.",
+    "setup": "Matching completed fresh builder ACK, installed guide/native entry hashes and setup diff independently checked by Coordinator; current actual binding recorded without changing permissions.",
+    "startup_storage_repair": {
+      "independent_check": "Coordinator reran the 13-case asynchronous startup fixture from a separate temporary root: pass.",
+      "install_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-startup-storage-install-01a15f82/PANEL-STARTUP-STORAGE-INSTALL-001-report.json",
+      "install_report_sha256": "6d924451fbdf80978496432a39a657414e0b38a9bdce78b004bb64ccace5189c",
+      "installed_binary_sha256": "ffc886ea573d3c328ac8e99d62c3619e1ddc91caef3cd4071d3fe1bf954b57b6",
       "limits": [
-        "Existing production conversations have no explicit saved UI mission selection; NEW MISSION is correct until selected. No transcript inference or mission auto-selection.",
-        "Native verification supersedes installer prelaunch observation; app left open, original fifth selected and all Valhall entries disconnected.",
-        "No model/provider turn, new chat, reconnect, commit, push or owner feature acceptance."
-      ]
-    },
-    "mission_picker_visibility": {
-      "result": "pass_for_requested_discoverability_scope",
-      "report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-picker-visibility-01a15f82/PANEL-MISSION-PICKER-VISIBILITY-001-report.json",
-      "report_sha256": "733c99b52009de3b870d9e31efb429bff27c110d54de6f91de52d3d24a4c78c6",
-      "native_verification": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-picker-visibility-01a15f82/native-verification.json",
-      "native_verification_sha256": "7dd0e8d73e0a0a55528a74e1e2dce5bdae57d9771112ac5d315b929098b2665a",
-      "source_manifest": {
-        "path": "Evidence/Implementation/20261021-picker-visibility-01a15f82/source-manifest.json",
-        "sha256": "e4747445a24011754ba441e41237bd70165add69f8837fcfb7a36cfa384eb138"
-      },
-      "installed_binary_sha256": "a3e43296089f8b197447d035bccf12cf412713171373060e39ba568368d28222",
-      "native_observations": "Prominent top-sidebar and empty/header choice open one picker. Disconnected action explicit. Generic guidance and guarded routing observed. Existing fifth reconnected without Send/new thread/mission selection and all8 live registry entries loaded without Refresh; own backend disconnected afterward. Original selected fifth/fallback Coordinator restored, sidebar at top. Last alias now Balder after owned reconnect; prior aliases retained.",
-      "limits": [
-        "Source/compiled checks cover unstarted and named-action branches; no new conversation or mission was selected for QA.",
-        "Installer data preservation is before native QA; own recovery/metadata/alias updates are expected and separately recorded.",
-        "Native QA did not establish owner acceptance; subsequent publication is recorded separately. Existing unrelated warnings and S20-S22 remain separate."
-      ]
+        "No native interactive acceptance claimed.",
+        "No automatic rollback: repaired candidate is installed and stopped, with verified rollback retained.",
+        "No commit or push."
+      ],
+      "native_evidence": "Missions/PanelToBo/pickup-odin-01a15f82/startup-storage-native-review.json",
+      "native_sample_sha256": "b3d1da77347c9048174ab41041da974ccc1b545071c1c36974a517f23a78c2e8",
+      "observed": "Main thread reached AppKit event loop while the guarded openat remained in the detached worker. LLDB observed one SwiftUI.AppKitWindow. Computer Use and System Events did not expose the window, including open -n; this does not prove a scene/configuration defect.",
+      "repair_report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-startup-storage-repair-01a15f82/PANEL-STARTUP-STORAGE-REPAIR-001-report.json",
+      "repair_report_sha256": "5eca36bc4f4a5e814ec837a92c1de742ae5d256a54ed36ff86f49f300f045a57",
+      "result": "main_thread_storage_block_repaired; native_window_evidence_inconclusive",
+      "rollback_binary_sha256": "34df6e186f5f05eb54d13c0c94ae57449714d06940d7a2c882816a9b6bf0353a"
     }
   },
+  "coordinator": {
+    "human_alias": "Odin",
+    "role": "coordinator",
+    "session_id": "01a15f82-54fe-7f92-a0e8-ba1cfc1597e7"
+  },
+  "current_pickup": {
+    "builder_session_id": "01a155cd-9b3e-7433-b0e7-eeb730e6be6d",
+    "product_assignment": null,
+    "record": "Missions/PanelToBo/pickup-odin-01a15f82/RESTORATION.json",
+    "state": "connection_restored_exact_builder_and_host_adoption_verified",
+    "target_host_adoption": "/Users/boandersson/Desktop/PANEL/Setup/host-adoption.json"
+  },
+  "format": "codeexp2-mission-coordination/1",
   "limits": [
     "Old backend thread is abandoned locally, not proved cancelled or deleted.",
     "Other registered chats preserved; no shared daemon restart.",
@@ -90,58 +199,57 @@
     "Prior accepted feature/runtime claims retain their recorded scope; owner acceptance remains separate.",
     "Historical local support/evidence references in the running guide remain local unless separately tracked; they grant no current authority."
   ],
+  "mission": "PANEL To BO",
+  "native_ui_target": {
+    "canonical_app_path": "/Users/boandersson/Desktop/PANEL/build/PANELToBO.app",
+    "computer_use_selector": "cua.getApp(\"/Users/boandersson/Desktop/PANEL/build/PANELToBO.app\")",
+    "evidence": "46 historical candidate/rollback bundles below the PANEL checkout share CFBundleIdentifier studio.panel.to-bo; the full production path successfully opened and bound the running app.",
+    "observed_at_utc": "2026-10-21T20:00:00Z",
+    "selection_rule": "Use the full canonical production path for PANEL computer control. Do not select by display name or bundle identifier."
+  },
+  "next_action": "P2-A candidate is Coordinator-reviewed and ready for a separately authorized install and native UI verification. P0-A/P1-A remain installed and native verified; S20-S22 remain unassigned.",
+  "observed_at_utc": "2026-10-22T00:04:02Z",
   "publication": {
-    "target": {
-      "commit": "9a47f2a3511898fa4bdbd480d79d46d5fdb04356",
-      "branch": "main",
-      "remote": "https://github.com/WRRTREPO/PANEL.git",
-      "live_remote_equality_independently_checked": true,
-      "path_count": 13,
-      "scope": "Reviewed setup handoff and sanitized reset receipt; no source or private Runtime/rollback/raw frames."
-    },
     "codeexp2": "This coordination document and thin running-guide routing only; normal hook and explicit origin main:main.",
     "current_repair": {
-      "commit": "437b0fc3aec1c859e0c6bbfa32435d28ef87cef7",
       "branch": "main",
-      "remote": "https://github.com/WRRTREPO/PANEL.git",
+      "commit": "437b0fc3aec1c859e0c6bbfa32435d28ef87cef7",
       "live_remote_equality_independently_checked": true,
-      "path_count": 12,
-      "scope": "Reviewed creation/sidebar/naming/startup repair source, focused test scripts and PLAN55/HANDOVER; no Runtime, bundle, rollback or private evidence.",
       "local_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-creation-sidebar-names-publish-01a15cea/PANEL-CREATION-SIDEBAR-NAMES-PUBLISH-001-report.json",
-      "receipt_sha256": "b3e240536ba749943efd61b61fb2c49534a85e842b2cddd5a519629b43aff0a0"
+      "path_count": 12,
+      "receipt_sha256": "b3e240536ba749943efd61b61fb2c49534a85e842b2cddd5a519629b43aff0a0",
+      "remote": "https://github.com/WRRTREPO/PANEL.git",
+      "scope": "Reviewed creation/sidebar/naming/startup repair source, focused test scripts and PLAN55/HANDOVER; no Runtime, bundle, rollback or private evidence."
     },
     "mission_titles_and_picker": {
-      "repository": "https://github.com/WRRTREPO/PANEL.git",
       "branch": "main",
-      "commit": "a72c2f47a5d9384a69f6f03e1d21f74b63ec6349",
-      "remote_equality": "Coordinator independently verified live origin/main equals target HEAD",
-      "scope": "14 explicit source/test/setup/continuation files; private evidence, Runtime and builds excluded",
       "checks": "74 mission-title and 17 picker assertions passed against isolated exact staged source; all53 production/test/resource inputs matched reviewed source manifest; normal commit and push succeeded",
-      "report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-publish-01a15f82/PANEL-MISSION-PUBLISH-001-report.json",
+      "commit": "a72c2f47a5d9384a69f6f03e1d21f74b63ec6349",
       "limitation": "Report and raw evidence remain local; publication does not establish owner acceptance.",
-      "report_sha256": "25b4b9b9d841a6618ba2f6c9d64563fa8af15905c324f3556cadc3f844d3cb5f"
+      "remote_equality": "Coordinator independently verified live origin/main equals target HEAD",
+      "report": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-mission-publish-01a15f82/PANEL-MISSION-PUBLISH-001-report.json",
+      "report_sha256": "25b4b9b9d841a6618ba2f6c9d64563fa8af15905c324f3556cadc3f844d3cb5f",
+      "repository": "https://github.com/WRRTREPO/PANEL.git",
+      "scope": "14 explicit source/test/setup/continuation files; private evidence, Runtime and builds excluded"
+    },
+    "target": {
+      "branch": "main",
+      "commit": "9a47f2a3511898fa4bdbd480d79d46d5fdb04356",
+      "live_remote_equality_independently_checked": true,
+      "path_count": 13,
+      "remote": "https://github.com/WRRTREPO/PANEL.git",
+      "scope": "Reviewed setup handoff and sanitized reset receipt; no source or private Runtime/rollback/raw frames."
     }
   },
-  "next_action": "No further product/runtime action assigned. Mission titles and prominent picker are installed, Coordinator-native verified and published. Owner acceptance remains separate; S20-S22 unassigned.",
-  "unresolved_reset_effects": [],
-  "active_assignment": null,
-  "coordination_history": [
-    {
-      "observed_at_utc": "2026-10-21T08:10:03Z",
-      "coordinator": {
-        "role": "coordinator",
-        "session_id": "01a15cea-c64e-7513-a1ca-3b71eeccaaf5",
-        "human_alias": "Thor"
-      },
-      "state": "creation_sidebar_names_startup_native_verified_and_published",
-      "snapshot": "Missions/PanelToBo/pickup-odin-01a15f82/mission-before.json"
-    }
-  ],
-  "current_pickup": {
-    "state": "connection_restored_exact_builder_and_host_adoption_verified",
-    "record": "Missions/PanelToBo/pickup-odin-01a15f82/RESTORATION.json",
-    "target_host_adoption": "/Users/boandersson/Desktop/PANEL/Setup/host-adoption.json",
-    "builder_session_id": "01a155cd-9b3e-7433-b0e7-eeb730e6be6d",
-    "product_assignment": null
-  }
+  "state": "p0a_p1a_p2a_installed_startup_storage_repaired_native_window_evidence_inconclusive",
+  "target": "/Users/boandersson/Desktop/PANEL",
+  "target_records": {
+    "execution_setup": "/Users/boandersson/Desktop/PANEL/Setup/execution-setup.json",
+    "handover": "/Users/boandersson/Desktop/PANEL/HANDOVER.json",
+    "host_adoption": "/Users/boandersson/Desktop/PANEL/Setup/host-adoption.json",
+    "observed_plan_revision": 75,
+    "plan": "/Users/boandersson/Desktop/PANEL/PLAN.json",
+    "reset_receipt": "/Users/boandersson/Desktop/PANEL/Evidence/Implementation/20261021-general-reset-publication-01a15cea/RESET.json"
+  },
+  "unresolved_reset_effects": []
 }
