@@ -683,7 +683,7 @@ sys.exit(0 if passed else 3)
             launcher = Path(directory) / 'Launcher'
             launcher.mkdir()
             for name in ('CodeExp2.swift', 'Icon.swift', 'build.py', 'Start CodeExp2.command', 'desktop_bridge.py',
-                         'valhalla.config.toml', 'install_valhalla.py', 'valhall-icon.png'):
+                         'valhalla.config.toml', 'install_valhalla.py', 'valhall-icon.png', 'Valhall.icns'):
                 shutil.copyfile(ROOT / 'Launcher' / name, launcher / name)
             result = subprocess.run([self.launcher_python(), '-B', str(launcher / 'build.py')],
                                     capture_output=True, text=True, timeout=60,

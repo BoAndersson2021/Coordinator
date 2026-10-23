@@ -144,6 +144,10 @@ workspace paths, executable and bundle identifier retain CodeExp2 for continuity
 The Viking artwork is project-owned [`valhall-icon.png`](valhall-icon.png),
 packaged into all native icon resolutions by `Icon.swift`. Regenerate only when
 requested; builds use the checked-in source image and make no image-service call.
+On hosts where `iconutil` rejects every generated iconset, the build uses the
+checked-in valid [`Valhall.icns`](Valhall.icns) only when both its own hash and
+its source-PNG hash match; an artwork change must package a fresh icon rather
+than silently reuse it.
 See the [artwork prompt](VALHALL-ICON.md).
 
 The local commit gate now admits the independently reviewed exact launcher

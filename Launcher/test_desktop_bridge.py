@@ -77,18 +77,6 @@ class DesktopBridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "invalid data"):
             rpc.ensure_model(SELECTED_MODEL)
 
-    def test_panel_frames_are_confined_to_the_exact_receipt_receiver(self):
-        receiver = "receiver-a"
-        allowed = {"id": 1, "method": "turn/start", "params": {"threadId": receiver, "input": []}}
-        self.assertEqual(bridge.receiver_bound_panel_frame(json.dumps(allowed), receiver), allowed)
-        for frame in (
-            {"id": 1, "method": "turn/start", "params": {"threadId": "receiver-b", "input": []}},
-            {"id": 1, "method": "config/read", "params": {"threadId": receiver}},
-            {"id": 1, "method": "thread/read", "params": {}},
-        ):
-            with self.subTest(frame=frame), self.assertRaisesRegex(RuntimeError, "RECEIVER_VIOLATION"):
-                bridge.receiver_bound_panel_frame(json.dumps(frame), receiver)
-
     def test_factory_publishes_receipt_before_onboarding(self):
         workspace = self.root / "workspace"
         (workspace / "Launcher/build/desktop-bridges").mkdir(parents=True)
@@ -116,14 +104,13 @@ class DesktopBridgeTests(unittest.TestCase):
                 case.assertTrue(list((workspace / "Launcher/build/desktop-bridges").glob("*/receipt.json")))
             def close(self): pass
 
-        request = bridge.BridgeRequest(workspace, "codex", projection, self.root / "runtime.json", "thor", "#4c211b", 9, "onboard", "terminal_tui")
         identities = iter(({"pid": 100, "started_at": "host"}, {"pid": 101, "started_at": "server"}, {"pid": 102, "started_at": "client"}))
         with (mock.patch.object(bridge, "Rpc", Rpc), mock.patch.object(bridge.subprocess, "Popen", side_effect=[Process(101), Process(102)]),
               mock.patch.object(bridge, "process_identity", side_effect=lambda pid: next(identities) if pid in {os.getpid(), 101, 102} else {"pid": pid, "started_at": "unknown"}),
               mock.patch.object(bridge, "start_supervisor", return_value=Process(103)), mock.patch.object(bridge, "endpoint_url", return_value="ws://127.0.0.1:4444"),
               mock.patch.object(bridge, "live", return_value=True), mock.patch.object(bridge, "private_file", wraps=bridge.private_file)):
             with self.assertRaises(SystemExit) as exit:
-                bridge.BridgeFactory.create(request)
+                bridge.BridgeFactory.create(workspace, "codex", projection, "thor", "#4c211b", 9, "onboard")
         self.assertEqual(exit.exception.code, 0)
         self.assertEqual(calls, [("receipt-receiver", "onboard")])
         receipt = json.loads(next((workspace / "Launcher/build/desktop-bridges").glob("*/receipt.json")).read_text())
@@ -153,56 +140,16 @@ class DesktopBridgeTests(unittest.TestCase):
             def start_onboarding(self, *_): pass
             def close(self): pass
 
-        request = bridge.BridgeRequest(workspace, "codex", projection, self.root / "runtime.json", "thor", "#4c211b", 9, "onboard", "terminal_tui")
         identities = iter(({"pid": 300, "started_at": "host"}, {"pid": 301, "started_at": "server"}, {"pid": 302, "started_at": "client"}))
         with (mock.patch.object(bridge, "Rpc", Rpc), mock.patch.object(bridge.subprocess, "Popen", side_effect=[Process(301), Process(302)]) as launch,
               mock.patch.object(bridge, "process_identity", side_effect=lambda pid: next(identities) if pid in {os.getpid(), 301, 302} else {"pid": pid, "started_at": "unknown"}),
               mock.patch.object(bridge, "start_supervisor", return_value=Process(303)), mock.patch.object(bridge, "endpoint_url", return_value="ws://127.0.0.1:4446"),
               mock.patch.object(bridge, "live", return_value=True)):
             with self.assertRaises(SystemExit):
-                bridge.BridgeFactory.create(request)
+                bridge.BridgeFactory.create(workspace, "codex", projection, "thor", "#4c211b", 9, "onboard")
         command = launch.call_args_list[1].args[0]
         self.assertEqual(command[:2], ["codex", "--remote"])
         self.assertEqual(command[-2:], ["resume", "fresh-receiver"])
-
-    def test_factory_panel_launch_proves_the_exact_receipt_receiver(self):
-        workspace = self.root / "panel-workspace"
-        (workspace / "Launcher/build/desktop-bridges").mkdir(parents=True)
-        os.chmod(workspace / "Launcher/build/desktop-bridges", 0o700)
-        projection = self.root / "panel-projection.json"
-        projection.write_text(json.dumps({"format": "valhall-panel-profile/1", "arguments": [
-            "--config", "model=" + json.dumps(SELECTED_MODEL), "--config", 'default_permissions=":workspace-write"',
-            "--config", 'approval_policy="on-request"']}))
-        calls = []
-
-        class Process:
-            def __init__(self, pid): self.pid = pid
-            def poll(self): return None
-            def terminate(self): pass
-            def wait(self, timeout=None): return 0
-
-        class Rpc:
-            def __init__(self, *_): pass
-            def ensure_model(self, _): pass
-            def effective_policy(self): return {"model": SELECTED_MODEL, "sandbox_mode": "workspace-write", "approval_policy": "on-request"}
-            def start_receiver(self, *_): return "panel-receiver"
-            def start_onboarding(self, receiver, _): calls.append(receiver)
-            def close(self): pass
-
-        request = bridge.BridgeRequest(workspace, "codex", projection, self.root / "runtime.json", "thor", "#4c211b", 9, "onboard", "panel_client")
-        identities = iter(({"pid": 200, "started_at": "host"}, {"pid": 201, "started_at": "server"}, {"pid": 202, "started_at": "panel"}))
-        with (mock.patch.object(bridge, "Rpc", Rpc), mock.patch.object(bridge.subprocess, "Popen", return_value=Process(201)),
-              mock.patch.object(bridge.BridgeFactory, "_panel_client", return_value=Process(202)) as launch,
-              mock.patch.object(bridge.BridgeFactory, "_wait_for_panel_client", return_value={"pid": 202, "started_at": "panel"}) as prove,
-              mock.patch.object(bridge, "process_identity", side_effect=lambda pid: next(identities) if pid in {os.getpid(), 201, 202} else {"pid": pid, "started_at": "unknown"}),
-              mock.patch.object(bridge, "start_supervisor", return_value=Process(203)), mock.patch.object(bridge, "endpoint_url", return_value="ws://127.0.0.1:4445"),
-              mock.patch.object(bridge, "live", return_value=True)):
-            with self.assertRaises(SystemExit) as exit:
-                bridge.BridgeFactory.create(request)
-        self.assertEqual(exit.exception.code, 0)
-        self.assertEqual(calls, ["panel-receiver"])
-        self.assertEqual(launch.call_args.args[-1], "panel-receiver")
-        self.assertEqual(prove.call_args.args[-1], "panel-receiver")
 
     def test_supervisor_retires_exact_children_after_host_death(self):
         host = self.child("/bin/sleep", "60")

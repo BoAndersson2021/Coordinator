@@ -141,7 +141,7 @@ enum Launcher {
         return [codex, "app-server", "--stdio"] + arguments
     }
 
-    static func desktopBridgeArguments(for claim: InstanceClaim, clientKind: String = "terminal_tui") throws -> [String] {
+    static func desktopBridgeArguments(for claim: InstanceClaim) throws -> [String] {
         guard let bridge = Bundle.main.url(forResource: "desktop_bridge", withExtension: "py"),
               let projection = Bundle.main.url(forResource: "valhall-panel-profile", withExtension: "json"),
               let runtime = Bundle.main.url(forResource: "desktop-bridge-runtime", withExtension: "json"),
@@ -152,21 +152,30 @@ enum Launcher {
         try validateDesktopBridgeRuntime(bridge: bridge, manifest: runtime)
         return [bridgePython.path, bridge.path, "--workspace", workspace.path, "--codex", codex,
                 "--profile-projection", projection.path, "--runtime-manifest", runtime.path, "--alias", claim.alias, "--color", claim.color,
-                "--claim-fd", String(claim.descriptor), "--prompt", initialPrompt(for: claim), "--client-kind", clientKind]
+                "--claim-fd", String(claim.descriptor), "--prompt", initialPrompt(for: claim)]
     }
 
     static func runForPanel() throws -> Never {
         try validate()
         try validateProfile()
-        let claim = try InstanceClaim.acquire(in: claimDirectory)
-        let arguments = try desktopBridgeArguments(for: claim, clientKind: "panel_client")
         guard chdir(workspace.path) == 0 else { throw LauncherError.invalid("Cannot enter CodeExp2 workspace.") }
+        let claim = try InstanceClaim.acquire(in: claimDirectory)
+        let arguments = try panelArguments()
+        let receipt: [String: Any] = ["method": "valhall/launch", "params": [
+            "format": "valhall-panel-launch/1", "alias": claim.alias, "color": claim.color,
+            "pid": getpid(), "workspace": workspace.path, "profile": "valhalla",
+            "onboard_prompt": initialPrompt(for: claim)
+        ]]
+        // This is launch intent only. PANEL owns native initialization and
+        // receiving-builder setup; the launcher does not create a receiver or
+        // deliver onboarding on PANEL's behalf.
+        try FileHandle.standardOutput.write(contentsOf: JSONSerialization.data(withJSONObject: receipt, options: [.sortedKeys]) + Data([10]))
         let argv = arguments.map { strdup($0) } + [nil]
         defer { argv.forEach { free($0) } }
         withExtendedLifetime(claim) {
-            argv.withUnsafeBufferPointer { _ = execv(bridgePython.path, $0.baseAddress!) }
+            argv.withUnsafeBufferPointer { _ = execv(codex, $0.baseAddress!) }
         }
-        throw LauncherError.invalid("Managed PANEL bridge failed to start: \(String(cString: strerror(errno)))")
+        throw LauncherError.invalid("Codex app server failed to start: \(String(cString: strerror(errno)))")
     }
 
     static func validate(workspace root: URL = workspace, executable: String = codex) throws {

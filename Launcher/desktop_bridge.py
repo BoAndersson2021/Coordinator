@@ -16,7 +16,6 @@ import sys
 import time
 import tomllib
 import uuid
-from dataclasses import dataclass
 
 from websockets.sync.client import connect
 
@@ -270,129 +269,8 @@ def start_supervisor(host, server, client, bridge):
                             close_fds=True, start_new_session=True)
 
 
-PANEL_RECEIVER_METHODS = {"thread/read", "thread/turns/list", "turn/start", "turn/interrupt"}
-
-
-def receiver_bound_panel_frame(line, receiver):
-    """Admit only a small, exact-receiver PANEL RPC surface.
-
-    The private app-server capability must never become a generic daemon proxy.
-    PANEL talks to its one per-receipt client over stdio; this check binds every
-    forwarded request to the receiver named in that receipt.
-    """
-    try:
-        value = json.loads(line)
-    except (TypeError, ValueError) as error:
-        raise RuntimeError("PANEL_CLIENT_FRAME_INVALID: request is not JSON") from error
-    if (not isinstance(value, dict) or set(value) != {"id", "method", "params"}
-            or not isinstance(value["id"], (str, int)) or isinstance(value["id"], bool)
-            or value["method"] not in PANEL_RECEIVER_METHODS or not isinstance(value["params"], dict)
-            or value["params"].get("threadId") != receiver):
-        fail("PANEL_CLIENT_RECEIVER_VIOLATION: request is not bound to its receipt receiver")
-    return value
-
-
-def panel_client(bridge):
-    """A per-receipt stdio client. It never exposes a daemon capability in argv."""
-    bridge = private_directory(Path(bridge), existing=True)
-    handoff_path = bridge / "panel-client-handoff.json"
-    if not handoff_path.is_file() or handoff_path.is_symlink():
-        fail("PANEL_CLIENT_HANDOFF_MISSING: private handoff is unavailable")
-    handoff = json.loads(handoff_path.read_text())
-    expected = {"format", "receiver_id", "endpoint", "capability_token_path"}
-    if set(handoff) != expected or handoff["format"] != "codeexp2-panel-client-handoff/1":
-        fail("PANEL_CLIENT_HANDOFF_INVALID: handoff is invalid")
-    token_path = Path(handoff["capability_token_path"])
-    if token_path.parent != bridge or token_path.is_symlink() or stat.S_IMODE(token_path.stat().st_mode) != 0o600:
-        fail("PANEL_CLIENT_HANDOFF_INVALID: capability is invalid")
-    capability = token_path.read_text().strip()
-    # Connect before claiming client identity. The parent publishes no receipt
-    # until this exact process has both the private handoff and a live channel.
-    connection = connect(handoff["endpoint"] + "/", legacy=True, open_timeout=4, close_timeout=2,
-                         max_size=1024 * 1024, max_queue=16,
-                         additional_headers={"Authorization": "Bearer " + capability})
-    # The receiver-bound client, not PANEL, performs protocol initialization.
-    connection.send(json.dumps({"id": "panel-initialize", "method": "initialize", "params": {
-        "clientInfo": {"name": "codeexp2_panel_receipt_client", "version": "2"},
-        "capabilities": {"experimentalApi": True}}}))
-    deadline = time.monotonic() + 4
-    while True:
-        if time.monotonic() >= deadline:
-            fail("PANEL_CLIENT_INITIALIZATION_FAILED")
-        initialized = json.loads(connection.recv(timeout=max(.01, deadline - time.monotonic())))
-        if initialized.get("id") == "panel-initialize":
-            if "error" in initialized:
-                fail("PANEL_CLIENT_INITIALIZATION_FAILED")
-            break
-    connection.send(json.dumps({"method": "initialized", "params": {}}))
-    write_private(bridge / "panel-client-ready.json", {"format": "codeexp2-panel-client-ready/1",
-                  "process": process_identity(os.getpid()), "receiver_id": handoff["receiver_id"]})
-    import threading
-    failure = []
-    def receive():
-        try:
-            while True:
-                message = connection.recv()
-                sys.stdout.write(message + "\n")
-                sys.stdout.flush()
-        except Exception as error:
-            failure.append(error)
-    thread = threading.Thread(target=receive, daemon=True)
-    thread.start()
-    try:
-        for line in sys.stdin:
-            if len(line.encode("utf-8")) > 1024 * 1024:
-                fail("PANEL_CLIENT_FRAME_TOO_LARGE")
-            connection.send(json.dumps(receiver_bound_panel_frame(line.rstrip("\n"), handoff["receiver_id"])))
-            if failure:
-                raise failure[0]
-    finally:
-        connection.close()
-
-
-@dataclass(frozen=True)
-class BridgeRequest:
-    workspace: Path
-    codex: str
-    profile_projection: Path
-    runtime_manifest: Path
-    alias: str
-    color: str
-    claim_fd: int
-    prompt: str
-    client_kind: str
-
-
 class BridgeFactory:
-    """The one receipt-bound launch primitive for Terminal and PANEL clients."""
-
-    @staticmethod
-    def _panel_client(bridge, capability_path, endpoint, receiver):
-        handoff = {"format": "codeexp2-panel-client-handoff/1", "receiver_id": receiver,
-                   "endpoint": endpoint, "capability_token_path": str(capability_path)}
-        write_private(bridge / "panel-client-handoff.json", handoff)
-        return subprocess.Popen([sys.executable, __file__, "--panel-client", "--bridge", str(bridge)],
-                                cwd=bridge, close_fds=True)
-
-    @staticmethod
-    def _wait_for_panel_client(bridge, client, receiver):
-        ready = bridge / "panel-client-ready.json"
-        deadline = time.monotonic() + 5
-        while time.monotonic() < deadline:
-            if not live(client):
-                fail("PANEL_CLIENT_IDENTITY_UNPROVEN: receipt-bound client exited")
-            if ready.is_file() and not ready.is_symlink():
-                info = ready.stat()
-                if info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) != 0o600:
-                    fail("PANEL_CLIENT_IDENTITY_UNPROVEN: client proof is not private")
-                value = json.loads(ready.read_text())
-                identity = value.get("process") if isinstance(value, dict) else None
-                if (value.get("format") == "codeexp2-panel-client-ready/1"
-                        and value.get("receiver_id") == receiver and identity == process_identity(client.pid)):
-                    return identity
-                fail("PANEL_CLIENT_IDENTITY_UNPROVEN: client proof differs")
-            time.sleep(.03)
-        fail("PANEL_CLIENT_IDENTITY_UNPROVEN: client proof timed out")
+    """The receipt-bound Terminal bridge launch primitive."""
 
     @staticmethod
     def _verify_effective_policy(effective, selected_model, projected):
@@ -406,13 +284,11 @@ class BridgeFactory:
             fail("Desktop bridge effective approval reviewer differs from approved profile")
 
     @classmethod
-    def create(cls, request):
-        if request.client_kind not in {"terminal_tui", "panel_client"}:
-            fail("Desktop bridge requested unsupported client kind")
-        workspace = request.workspace.resolve()
-        arguments, selected_model, projected_policy = projection(request.profile_projection)
+    def create(cls, workspace, codex, profile_projection, alias, color, claim_fd, prompt):
+        workspace = workspace.resolve()
+        arguments, selected_model, projected_policy = projection(profile_projection)
         root = private_directory(workspace / "Launcher/build/desktop-bridges", existing=True)
-        bridge = private_directory(root / (request.alias + "-" + uuid.uuid4().hex))
+        bridge = private_directory(root / (alias + "-" + uuid.uuid4().hex))
         capability = os.urandom(32).hex()
         capability_path = bridge / "capability.token"
         private_file(capability_path, capability + "\n")
@@ -420,7 +296,7 @@ class BridgeFactory:
         server_log = open(bridge / "app-server.log", "x", encoding="utf-8")
         os.chmod(server_log.name, 0o600)
         host = process_identity(os.getpid())
-        server = subprocess.Popen([request.codex, "app-server", "--listen", endpoint, "--ws-auth", "capability-token",
+        server = subprocess.Popen([codex, "app-server", "--listen", endpoint, "--ws-auth", "capability-token",
                                    "--ws-token-file", str(capability_path), *arguments], cwd=workspace, stdin=subprocess.DEVNULL,
                                   stdout=server_log, stderr=subprocess.STDOUT, close_fds=True)
         rpc = None
@@ -450,20 +326,16 @@ class BridgeFactory:
             write_private(bridge / "evidence.json", evidence)
             receiver = rpc.start_receiver(workspace, selected_model, projected_policy)
             environment = dict(os.environ)
-            if request.client_kind == "terminal_tui":
-                environment[TOKEN_ENVIRONMENT] = capability
-                # Remote CLI flags belong to the base command.  `codex --remote
-                # … resume <receiver>` is the native exact-thread attach form;
-                # a bare remote TUI would create a second fresh chat instead.
-                client = subprocess.Popen([request.codex, "--remote", endpoint, "--remote-auth-token-env", TOKEN_ENVIRONMENT,
-                                           "--no-alt-screen", "resume", receiver], cwd=workspace, pass_fds=(request.claim_fd,),
-                                          close_fds=True, env=environment)
-                client_identity = process_identity(client.pid)
-            else:
-                client = cls._panel_client(bridge, capability_path, endpoint, receiver)
-                client_identity = cls._wait_for_panel_client(bridge, client, receiver)
+            environment[TOKEN_ENVIRONMENT] = capability
+            # Remote CLI flags belong to the base command.  `codex --remote
+            # … resume <receiver>` is the native exact-thread attach form;
+            # a bare remote TUI would create a second fresh chat instead.
+            client = subprocess.Popen([codex, "--remote", endpoint, "--remote-auth-token-env", TOKEN_ENVIRONMENT,
+                                       "--no-alt-screen", "resume", receiver], cwd=workspace, pass_fds=(claim_fd,),
+                                      close_fds=True, env=environment)
+            client_identity = process_identity(client.pid)
             issued = datetime.now(timezone.utc)
-            receipt = {"format": RECEIPT_FORMAT, "bridge_id": uuid.uuid4().hex, "alias": request.alias, "color": request.color,
+            receipt = {"format": RECEIPT_FORMAT, "bridge_id": uuid.uuid4().hex, "alias": alias, "color": color,
                        "workspace": str(workspace), "endpoint": {"kind": "loopback-websocket-capability", "url": endpoint,
                        "capability_token_path": str(capability_path), "capability_token_sha256": sha256_text(capability)},
                        "receiver_id": receiver, "processes": {"host": host, "server": server_identity, "client": client_identity},
@@ -472,8 +344,8 @@ class BridgeFactory:
             supervisor = start_supervisor(host, server_identity, client_identity, bridge)
             write_private(bridge / "receipt.json", receipt)
             print(json.dumps({"method": "codeexp2/desktopSessionBridge", "params": {"receipt_path": str(bridge / "receipt.json"),
-                              "client_kind": request.client_kind}}, sort_keys=True), flush=True)
-            rpc.start_onboarding(receiver, request.prompt)
+                              "client_kind": "terminal_tui"}}, sort_keys=True), flush=True)
+            rpc.start_onboarding(receiver, prompt)
             rpc.close()
             rpc = None
             raise SystemExit(client.wait())
@@ -509,16 +381,9 @@ def main():
     parser.add_argument("--host")
     parser.add_argument("--server")
     parser.add_argument("--client")
-    parser.add_argument("--client-kind", default="terminal_tui")
-    parser.add_argument("--panel-client", action="store_true")
     parser.add_argument("--bridge")
     parser.add_argument("--verify-runtime", action="store_true")
     args = parser.parse_args()
-    if args.panel_client:
-        if not args.bridge:
-            fail("PANEL_CLIENT_HANDOFF_MISSING: bridge is required")
-        panel_client(args.bridge)
-        return
     if args.verify_runtime:
         if not args.runtime_manifest:
             fail("Desktop bridge runtime manifest is required")
@@ -538,8 +403,7 @@ def main():
     if args.claim_fd <= 2 or fcntl.fcntl(args.claim_fd, fcntl.F_GETFD) < 0:
         fail("Desktop bridge did not inherit the instance claim")
     verify_runtime(args.runtime_manifest)
-    BridgeFactory.create(BridgeRequest(workspace, args.codex, Path(args.profile_projection), Path(args.runtime_manifest),
-                                       args.alias, args.color, args.claim_fd, args.prompt, args.client_kind))
+    BridgeFactory.create(workspace, args.codex, Path(args.profile_projection), args.alias, args.color, args.claim_fd, args.prompt)
 
 
 if __name__ == "__main__":

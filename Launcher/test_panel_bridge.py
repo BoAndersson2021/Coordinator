@@ -77,11 +77,6 @@ class PanelBridgeTests(unittest.TestCase):
         (cls.resources / "valhalla.config.toml").write_bytes(cls.profile)
         cls.projection = build.panel_profile(cls.profile)
         (cls.resources / "valhall-panel-profile.json").write_text(json.dumps(cls.projection))
-        # Keep this front-door test offline: the executable must route PANEL
-        # through the shared bridge, but model/server behavior belongs to the
-        # bridge's dedicated deterministic tests.
-        (cls.resources / "desktop_bridge.py").write_text('''import json, sys\nif "--verify-runtime" in sys.argv: raise SystemExit(0)\nprint(json.dumps({"method":"codeexp2/desktopSessionBridge","params":{"receipt_path":"/private/fixture/receipt.json","client_kind":sys.argv[sys.argv.index("--client-kind") + 1]}}), flush=True)\nfor _ in sys.stdin: pass\n''')
-        (cls.resources / "desktop-bridge-runtime.json").write_text("{}")
         (cls.app / "Contents/Info.plist").write_bytes(plistlib.dumps({
             "CFBundleExecutable": "CodeExp2", "CFBundleIdentifier": "local.codeexp2.panel-test",
             "CFBundlePackageType": "APPL"}))
@@ -109,10 +104,38 @@ class PanelBridgeTests(unittest.TestCase):
             for _ in range(2):
                 client = NativeClient(self.executable)
                 clients.append(client)
-                self.assertEqual(client.receipt["method"], "codeexp2/desktopSessionBridge")
+                self.assertEqual(client.receipt["method"], "valhall/launch")
                 receipt = client.receipt["params"]
-                self.assertEqual(receipt["client_kind"], "panel_client")
-                self.assertTrue(receipt["receipt_path"].endswith("/receipt.json"))
+                self.assertEqual(receipt["format"], "valhall-panel-launch/1")
+                self.assertEqual(receipt["pid"], client.process.pid)
+                self.assertEqual(receipt["workspace"], str(WORKSPACE))
+                self.assertIn('Launcher-assigned instance alias: ' + receipt['alias'], receipt['onboard_prompt'])
+                self.assertTrue(receipt['onboard_prompt'].startswith('onboard\n'))
+                client.call("initialize", {"clientInfo": {"name": "valhall_panel_bridge_test", "version": "1"},
+                                           "capabilities": {"experimentalApi": True}})
+                actual = client.call("config/read", {"cwd": str(WORKSPACE), "includeLayers": False})['config']
+                def compare(a, expected):
+                    if isinstance(expected, dict):
+                        for k, v in expected.items():
+                            self.assertIn(k, a)
+                            compare(a[k], v)
+                    else:
+                        self.assertEqual(a, expected)
+                compare(actual, tomllib.loads(self.profile.decode()))
+                self.assertEqual(actual['sandbox_mode'], 'danger-full-access')
+            aliases = [c.receipt['params']['alias'] for c in clients]
+            self.assertNotEqual(*aliases)
+            names = ['Odin', 'Thor', 'Freya', 'Loki', 'Tyr', 'Heimdall', 'Balder', 'Frigg', 'Njord', 'Freyr', 'Skadi', 'Idunn']
+            alias = aliases[0].split('-')
+            slot = names.index(alias[0]) + (int(alias[1]) - 1) * 12 if len(alias) == 2 else names.index(alias[0])
+            claim = WORKSPACE / 'Launcher/build/instance-claims' / f'{slot}.lock'
+            with claim.open('r+') as lock:
+                with self.assertRaises(BlockingIOError):
+                    fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                clients[0].close()
+                clients.pop(0)
+                fcntl.lockf(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                fcntl.lockf(lock, fcntl.LOCK_UN)
         finally:
             for client in clients:
                 client.close()
@@ -131,7 +154,7 @@ class PanelBridgeTests(unittest.TestCase):
         for arguments in (['--terminal'], ['--panel-agent', 'unrelated-path']):
             result = subprocess.run([str(self.executable)] + arguments, input=b'', capture_output=True, timeout=10)
             self.assertNotEqual(result.returncode, 0)
-            self.assertNotIn(b'codeexp2/desktopSessionBridge', result.stdout)
+            self.assertNotIn(b'valhall/launch', result.stdout)
 
 
 if __name__ == '__main__':

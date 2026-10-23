@@ -123,20 +123,8 @@ def load_binding(path):
         require(process_matches(processes["server"], ["app-server", "--listen", endpoint["url"], "--ws-auth", "capability-token", "--ws-token-file", str(token_path)]), "DESKTOP_BRIDGE_PROCESS_STALE: server is not live")
         require(process_matches(processes["host"], ["desktop_bridge.py", "--claim-fd"]), "DESKTOP_BRIDGE_PROCESS_STALE: host is not live")
         require(isinstance(receipt["receiver_id"], str) and receipt["receiver_id"] and not any(character.isspace() for character in receipt["receiver_id"]), "DESKTOP_BRIDGE_RECEIPT_INVALID: receiver is invalid")
-        terminal_client = process_matches(processes["client"], ["--remote", endpoint["url"], "--remote-auth-token-env"], receipt["receiver_id"])
-        panel_ready = receipt_path.parent / "panel-client-ready.json"
-        panel_client = False
-        if panel_ready.is_file() and not panel_ready.is_symlink():
-            ready_info = panel_ready.stat()
-            if ready_info.st_uid == os.getuid() and stat.S_IMODE(ready_info.st_mode) == 0o600:
-                try:
-                    ready = load(panel_ready)
-                    panel_client = (ready == {"format": "codeexp2-panel-client-ready/1", "process": processes["client"],
-                                              "receiver_id": receipt["receiver_id"]}
-                                    and process_matches(processes["client"], ["desktop_bridge.py", "--panel-client", "--bridge", str(receipt_path.parent)]))
-                except (OSError, ValueError):
-                    panel_client = False
-        require(terminal_client or panel_client, "DESKTOP_BRIDGE_PROCESS_STALE: receipt client is not live or bound to its exact receiver")
+        require(process_matches(processes["client"], ["--remote", endpoint["url"], "--remote-auth-token-env"], receipt["receiver_id"]),
+                "DESKTOP_BRIDGE_PROCESS_STALE: Terminal client is not live or bound to its exact receiver")
         return {"format": value["format"], "repository": receipt["workspace"], "endpoint": endpoint,
                 "authority_reference": value["authority_reference"], "receiver_id": receipt["receiver_id"],
                 "bridge_id": receipt["bridge_id"], "alias": receipt["alias"]}

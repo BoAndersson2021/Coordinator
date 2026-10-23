@@ -16,6 +16,9 @@ BUILD = ROOT / "build"
 APP = BUILD / "CodeExp2.app"
 MACOS = APP / "Contents/MacOS"
 RESOURCES = APP / "Contents/Resources"
+FALLBACK_ICON = ROOT / "Valhall.icns"
+FALLBACK_ICON_SOURCE_SHA256 = "764f6b2be2da2c249f60907a0db3d4d8755ca2134a754bd83ec64574bf9074de"
+FALLBACK_ICON_SHA256 = "5b433d1b98a39144e6dfae282068840a82b591919ceaa1c7e670351b269062a7"
 
 
 def run(*args):
@@ -69,6 +72,23 @@ print(json.dumps(module.runtime_identity(), sort_keys=True))
     return json.loads(result.stdout)
 
 
+def package_icon(iconset, destination):
+    """Prefer native packaging, with a pinned valid fallback for broken iconutil hosts."""
+    result = subprocess.run(["/usr/bin/iconutil", "-c", "icns", str(iconset), "-o", str(destination)],
+                            cwd=ROOT, text=True, capture_output=True)
+    if result.returncode == 0:
+        return
+    source_hash = hashlib.sha256((ROOT / "valhall-icon.png").read_bytes()).hexdigest()
+    fallback = FALLBACK_ICON.read_bytes() if FALLBACK_ICON.is_file() else b""
+    if (source_hash == FALLBACK_ICON_SOURCE_SHA256
+            and hashlib.sha256(fallback).hexdigest() == FALLBACK_ICON_SHA256
+            and fallback.startswith(b"icns")):
+        shutil.copyfile(FALLBACK_ICON, destination)
+        print("iconutil rejected this host's iconset; using the checked-in Valhall.icns for the verified current artwork.")
+        return
+    raise RuntimeError("iconutil failed and no fallback matches the current valhall-icon.png:\n" + result.stderr)
+
+
 def main():
     MACOS.mkdir(parents=True, exist_ok=True)
     RESOURCES.mkdir(parents=True, exist_ok=True)
@@ -77,8 +97,12 @@ def main():
     compiler = ["xcrun", "swiftc", "-module-cache-path", cache, "-O", "-framework", "AppKit"]
     run(*compiler, ROOT / "CodeExp2.swift", "-o", MACOS / "CodeExp2")
     run(*compiler, ROOT / "Icon.swift", "-o", BUILD / "make-icon")
-    run(BUILD / "make-icon", ROOT / "valhall-icon.png", BUILD / "CodeExp2.iconset")
-    run("/usr/bin/iconutil", "-c", "icns", BUILD / "CodeExp2.iconset", "-o", RESOURCES / "Valhall.icns")
+    # iconutil is strict about its input directory. Regenerate this disposable
+    # staging set rather than reusing stale derived PNGs or metadata.
+    iconset = BUILD / "CodeExp2.iconset"
+    shutil.rmtree(iconset, ignore_errors=True)
+    run(BUILD / "make-icon", ROOT / "valhall-icon.png", iconset)
+    package_icon(iconset, RESOURCES / "Valhall.icns")
     command = RESOURCES / "Start CodeExp2.command"
     shutil.copyfile(ROOT / "Start CodeExp2.command", command)
     os.chmod(command, 0o755)
