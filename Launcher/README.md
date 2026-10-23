@@ -7,6 +7,16 @@ the positional first prompt. Codex submits that task automatically and remains i
 Onboarding follows the current workspace instructions and stops at the mission
 menu with no mission selected. Existing Codex sessions are left alone.
 
+## Choose the right entry
+
+| What you open | What it starts | Onboarding behavior |
+| --- | --- | --- |
+| Desktop **Valhall** alias | A standalone Terminal Coordinator session | The launcher sends `onboard`; this is the expected normal desktop behavior. |
+| PANEL **Spawn new agent in new chat** | The direct native Codex app-server bridge | PANEL owns receiver initialization and sends onboarding only after it creates the chat. The launcher itself sends no model turn. |
+
+The desktop alias is therefore not a PANEL chat launcher, and PANEL does not
+attach to an already running standalone Terminal session.
+
 The launcher checks the fixed workspace, required onboarding documents and
 executable before launch. Terminal receives the bundled `.command` through
 macOS Launch Services; it needs no Apple Events or Accessibility permission.
