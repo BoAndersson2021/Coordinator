@@ -725,6 +725,19 @@ class BridgeGateTests(unittest.TestCase):
                 bridge.retire(identity, identity, identity, bridge_dir, reason='bridge_host_exited', stop_children=False)
             self.assertFalse(token.exists())
             self.assertEqual(json.loads((bridge_dir / 'retired.json').read_text())['reason'], 'bridge_host_exited')
+    def test_panel_saved_thread_recovery_stays_receipt_bound(self):
+        receipt_receiver = 'receipt-receiver'
+        saved = '8e596991-64fe-4d7a-b94a-d5c2f47a814c'
+        resumed = [None]
+        resume = {'id': 1, 'method': 'thread/resume', 'params': {'threadId': saved}}
+        self.assertEqual(bridge.receiver_bound_panel_frame(json.dumps(resume), receipt_receiver, resumed), resume)
+        history = {'id': 2, 'method': 'thread/items/list', 'params': {'threadId': saved, 'limit': 20}}
+        self.assertEqual(bridge.receiver_bound_panel_frame(json.dumps(history), receipt_receiver, resumed), history)
+        turn = {'id': 3, 'method': 'turn/start', 'params': {'threadId': saved, 'input': []}}
+        self.assertEqual(bridge.receiver_bound_panel_frame(json.dumps(turn), receipt_receiver, resumed), turn)
+        rejected = {'id': 4, 'method': 'thread/read', 'params': {'threadId': receipt_receiver}}
+        with self.assertRaisesRegex(RuntimeError, 'RECEIVER_VIOLATION'):
+            bridge.receiver_bound_panel_frame(json.dumps(rejected), receipt_receiver, resumed)
     def test_receipt_precedes_onboarding_and_tui_uses_created_receiver(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory); workspace = root / 'workspace'; bridge_root = workspace / 'Launcher/build/desktop-bridges'; bridge_root.mkdir(parents=True); bridge_root.chmod(0o700)
@@ -790,7 +803,7 @@ sys.exit(0 if passed else 3)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         report = json.loads(result.stdout)
         self.assertIs(report['desktop_bridge_complete'], True)
-        self.assertEqual(report['tests_run'], 5)
+        self.assertEqual(report['tests_run'], 6)
 
     def test_launcher_native_build_preflight_and_terminal_boundary(self):
         """Build exact snapshot sources, verify signing and reject non-TTY launch."""
