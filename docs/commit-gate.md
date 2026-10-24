@@ -23,10 +23,13 @@ Reject redirected Git inputs and unresolved stages
       +-> executable/data    -> reviewed development inventory
                                     |
                                     v
-                             Stage meaningful regressions too
+                       Declare related features + preservation receipt
                                     |
                                     v
-                             Extract and test INDEX source
+                    Stage requested-path and counterpart regressions too
+                                    |
+                                    v
+                 Extract INDEX source; receipt checks must all pass
                                     |
                                     +-> mandatory successes + completion -> permit
                                     +-> missing / skipped / failed -> reject
@@ -65,6 +68,36 @@ control regressions run when their owned paths change. This prevents unrelated
 uncommitted work from making a reviewed documentation or gate correction
 uncommittable, while preserving the required regression for each protected
 feature path.
+
+## Feature-preservation receipt
+
+For every admitted system-change scope, a preservation-enabled reviewed
+development policy requires a `feature_preservation_receipts` entry. It is
+checked by the existing staged-source verifier; it is not a new service,
+database, hook, or runtime workflow. The candidate is not installed hook
+enforcement until independent review and adoption complete.
+The entry names the changed boundary, exact covered staged paths, discovery
+evidence, each related feature and counterpart check, limitations, and the
+required truthful attestation. Its checks are added to the index-snapshot run.
+
+A receipt passes only when every identified related feature is preserved, or an
+explicit owner decision names its intentional replacement and acceptance check.
+Empty inventories without discovery evidence, UNKNOWN/failed states, stale
+candidate references, new-path-only tests, a counterpart check reused from the
+requested-change check, omitted covered paths, or a missing counterpart check are
+commit-blocking failures. A receipt proves declared checks
+ran; it cannot prove an agent discovered every product behavior. The mandatory
+pre-edit inventory in Feature Preservation therefore remains required.
+
+This is additive: the receipt validator is another branch in the existing
+`scripts/check_staged.py` verifier reached by the existing pre-commit bootstrap.
+It does not replace the hook, bootstrap, pinned policy, redirected-input defense,
+instruction protection, reviewed-source inventory, index snapshot, or any prior
+mandatory regression. A receipt never substitutes for one of those checks.
+
+The local hook remains checkout-scoped. Each mission target adopts the same rule
+through its own existing candidate-source gate during host adoption; copying this
+hook into a target is neither required nor sufficient.
 
 For the user-authorized local Machine/archive cleanup, the deletion regression
 first reproduced the missing protected-file passing route. The verifier now

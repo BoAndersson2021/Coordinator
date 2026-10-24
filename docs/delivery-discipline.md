@@ -13,6 +13,13 @@ execution. For Machine-managed workflows, also use the
 communication and lifecycle contracts. These are task-specific companions, not
 additional stages that must all be implemented before useful work can begin.
 
+For every system change, repair, or feature introduction, also apply
+[Feature Preservation](../.agents/guides/feature-preservation.json). It requires
+an evidence-based inventory of related in-scope behavior before editing and a
+candidate-source preservation receipt before success, advancement, or a required
+commit-gate admission. A passing new behavior never by itself proves that nearby,
+counterpart, recovery, or shared-path behavior still works.
+
 Before ending a task, apply [How to end a task](how-to-end-a-task.md): state what
 is done, what remains and the recommended next action. Recommend an available
 action explicitly; do not leave a failed approach or unfinished work ambiguous.
@@ -85,6 +92,15 @@ authorized scope. Apply these rules to planning, implementation and repairs:
    changes before taking them on. Do not invent remaining-step estimates when
    feasibility is still unknown. When the user points out drift, reassess against
    the original outcome before doing more work.
+8. **Preserve related features deliberately.** Before changing a system, identify
+   existing in-scope behaviors connected through shared state, interfaces,
+   classifiers, fallback/recovery paths, opposite or adjacent cases, and visible
+   flows. Define checks for them before implementation; run them against the
+   candidate afterward. Unknown, untested, or failed related behavior is a
+   regression risk, not a pass. Stop the claim and repair the common owner or
+   obtain an explicit owner decision for an intentional replacement. Record the
+   truthful preservation receipt through the repository's existing plan, review,
+   or gate record; do not create a parallel workflow to avoid this obligation.
 
 These are agent instructions, not an executable guarantee of useful behavior.
 Do not create another enforcement framework merely to claim these rules are met.

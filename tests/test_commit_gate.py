@@ -27,6 +27,8 @@ FIXTURE_TEST = '''import unittest
 class CommitGateTests(unittest.TestCase):
     def test_pass(self):
         self.assertEqual(2 + 2, 4)
+    def test_counterpart(self):
+        self.assertEqual(3 + 3, 6)
 '''
 
 
@@ -51,7 +53,8 @@ class CommitGateTests(unittest.TestCase):
         self.write(checker.TEST_PATH, FIXTURE_TEST)
         self.adopt()
         self.git('add', '--', 'README.md')
-        self.assertEqual(self.commit().returncode, 0)
+        result = self.commit()
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
 
     def git(self, *args, check=True, env=None):
         return subprocess.run(['/usr/bin/git', '-C', str(self.root), *args],
@@ -63,15 +66,41 @@ class CommitGateTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text)
 
+    def preservation_receipt(self, paths=None,
+                             test_name='test_commit_gate.CommitGateTests.test_pass',
+                             counterpart_test='test_commit_gate.CommitGateTests.test_counterpart'):
+        return {
+            'format': 'feature-preservation-receipt/1',
+            'changed_system_boundary': 'Fixture system behavior',
+            'covered_paths': paths or ['tool.py', checker.TEST_PATH],
+            'inventory_discovery_evidence': ['fixture source and test inventory'],
+            'requested_change_checks': [test_name],
+            'limitations': [],
+            'related_features': [{
+                'id': 'fixture-counterpart',
+                'relation': 'shares the changed system boundary',
+                'status': 'preserved',
+                'checks': [counterpart_test]}],
+            'attestation': checker.FEATURE_PRESERVATION_ATTESTATION}
+
     def adopt(self, tests=FIXTURE_TEST, mandatory=None, instructions=None,
-              deletions=(), extra_files=(), path_test_groups=None):
+              deletions=(), extra_files=(), path_test_groups=None,
+              feature_preservation_receipts=None):
         """Simulate reviewed pins inside this disposable repository only."""
         code = self.root / 'tool.py'
+        selected_tests = mandatory or ['test_commit_gate.CommitGateTests.test_pass',
+                                       'test_commit_gate.CommitGateTests.test_counterpart']
         policy = {'version': 1, 'files': {
             'tool.py': {'mode': '100644', 'sha256': hashlib.sha256(code.read_bytes()).hexdigest()},
             checker.TEST_PATH: {'mode': '100644', 'sha256': hashlib.sha256(tests.encode()).hexdigest()}},
-            'instructions': instructions or {}, 'mandatory_tests': mandatory or [
-                'test_commit_gate.CommitGateTests.test_pass']}
+            'instructions': instructions or {}, 'mandatory_tests': selected_tests}
+        policy['feature_preservation_receipts'] = (
+            {'fixture-system': self.preservation_receipt(
+                paths=['tool.py', checker.TEST_PATH, *extra_files, *deletions,
+                       *(instructions or {})],
+                test_name=selected_tests[0],
+                counterpart_test=selected_tests[1])}
+            if feature_preservation_receipts is None else feature_preservation_receipts)
         if path_test_groups is not None:
             policy['path_test_groups'] = path_test_groups
         for name in extra_files:
@@ -88,9 +117,9 @@ class CommitGateTests(unittest.TestCase):
                                            hashlib.sha256(payload).hexdigest()))
         hook.chmod(0o755)
 
-    def stage_feature(self, tests=FIXTURE_TEST):
+    def stage_feature(self, tests=FIXTURE_TEST, feature_preservation_receipts=None):
         self.write(checker.TEST_PATH, tests)
-        self.adopt(tests)
+        self.adopt(tests, feature_preservation_receipts=feature_preservation_receipts)
         self.git('add', '--', 'tool.py', checker.TEST_PATH)
 
     def commit(self, env=None):
@@ -126,6 +155,39 @@ class CommitGateTests(unittest.TestCase):
     def test_executable_without_staged_regressions_blocks(self):
         self.git('add', '--', 'tool.py')
         self.blocked(self.commit(), 'requires staged invariant regressions')
+
+    def test_system_change_requires_complete_feature_preservation_receipt(self):
+        self.stage_feature(feature_preservation_receipts={})
+        self.blocked(self.commit(), 'requires feature-preservation receipt')
+
+        self.git('reset', '-q', 'HEAD', '--', 'tool.py', checker.TEST_PATH)
+        incomplete = self.preservation_receipt(paths=[checker.TEST_PATH])
+        self.stage_feature(feature_preservation_receipts={'fixture-system': incomplete})
+        self.blocked(self.commit(), 'does not cover staged system path')
+
+    def test_preservation_receipt_rejects_empty_inventory_and_untested_claim(self):
+        empty = self.preservation_receipt()
+        empty['related_features'] = []
+        self.stage_feature(feature_preservation_receipts={'fixture-system': empty})
+        self.blocked(self.commit(), 'incomplete feature-preservation receipt')
+
+        self.git('reset', '-q', 'HEAD', '--', 'tool.py', checker.TEST_PATH)
+        untested = self.preservation_receipt()
+        untested['related_features'][0]['checks'] = ['test_commit_gate.CommitGateTests.test_missing']
+        self.stage_feature(feature_preservation_receipts={'fixture-system': untested})
+        self.blocked(self.commit(), 'incomplete related feature')
+
+    def test_preservation_receipt_requires_distinct_counterpart_and_limitations(self):
+        same_check = self.preservation_receipt()
+        same_check['related_features'][0]['checks'] = same_check['requested_change_checks']
+        self.stage_feature(feature_preservation_receipts={'fixture-system': same_check})
+        self.blocked(self.commit(), 'lacks distinct counterpart check')
+
+        self.git('reset', '-q', 'HEAD', '--', 'tool.py', checker.TEST_PATH)
+        no_limitations = self.preservation_receipt()
+        del no_limitations['limitations']
+        self.stage_feature(feature_preservation_receipts={'fixture-system': no_limitations})
+        self.blocked(self.commit(), 'incomplete feature-preservation receipt')
 
     def test_unreviewed_executable_and_data_paths_block(self):
         for name in ('unknown.py', 'unknown.json'):
@@ -294,6 +356,8 @@ class CommitGateTests(unittest.TestCase):
 class CommitGateTests(unittest.TestCase):
     def test_core(self):
         self.assertTrue(True)
+    def test_counterpart(self):
+        self.assertTrue(True)
     def test_feature(self):
         self.fail("path-scoped regression ran")
 '''
@@ -304,7 +368,8 @@ class CommitGateTests(unittest.TestCase):
         fixture = self.git('commit', '--no-verify', '-m', 'Fixture feature baseline', check=False)
         self.assertEqual(fixture.returncode, 0, fixture.stderr.decode())
         self.adopt(tests=tests,
-                   mandatory=['test_commit_gate.CommitGateTests.test_core'],
+                   mandatory=['test_commit_gate.CommitGateTests.test_core',
+                              'test_commit_gate.CommitGateTests.test_counterpart'],
                    extra_files=(feature,),
                    path_test_groups={feature: ['test_commit_gate.CommitGateTests.test_feature']})
         self.git('add', '--', checker.TEST_PATH)
@@ -312,12 +377,14 @@ class CommitGateTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr.decode())
         self.write(checker.TEST_PATH, tests + '\n')
         self.adopt(tests=tests + '\n',
-                   mandatory=['test_commit_gate.CommitGateTests.test_core'],
+                   mandatory=['test_commit_gate.CommitGateTests.test_core',
+                              'test_commit_gate.CommitGateTests.test_counterpart'],
                    extra_files=(feature,),
                    path_test_groups={feature: ['test_commit_gate.CommitGateTests.test_feature']})
         self.write(feature, 'VALUE = 2\n')
         self.adopt(tests=tests + '\n',
-                   mandatory=['test_commit_gate.CommitGateTests.test_core'],
+                   mandatory=['test_commit_gate.CommitGateTests.test_core',
+                              'test_commit_gate.CommitGateTests.test_counterpart'],
                    extra_files=(feature,),
                    path_test_groups={feature: ['test_commit_gate.CommitGateTests.test_feature']})
         self.git('add', '--', checker.TEST_PATH, feature)
@@ -367,19 +434,37 @@ class CommitGateTests(unittest.TestCase):
         self.git('add', '--', 'AGENTS.md')
         self.blocked(self.commit(), 'instruction/invariant change requires review')
 
+    def test_reviewed_protected_instruction_requires_preservation_receipt(self):
+        """A reviewed instruction still cannot bypass the preservation boundary."""
+        name = 'AGENTS.md'
+        self.write(name, 'Reviewed instruction update.\n')
+        digest = hashlib.sha256((self.root / name).read_bytes()).hexdigest()
+        updated_tests = FIXTURE_TEST + '\n'
+        self.write(checker.TEST_PATH, updated_tests)
+        self.adopt(tests=updated_tests, instructions={name: digest},
+                   feature_preservation_receipts={})
+        self.git('add', '--', name, checker.TEST_PATH, 'tool.py')
+        self.blocked(self.commit(), 'requires feature-preservation receipt')
+
     def test_protected_deletion_requires_explicit_review(self):
         name = 'AGENTS.md'
         self.write(name, 'Keep the execution invariant.\n')
         digest = hashlib.sha256((self.root / name).read_bytes()).hexdigest()
-        self.adopt(instructions={name: digest})
-        self.git('add', '--', name)
-        self.assertEqual(self.commit().returncode, 0)
+        updated_tests = FIXTURE_TEST + '\n'
+        self.write(checker.TEST_PATH, updated_tests)
+        self.adopt(tests=updated_tests, instructions={name: digest})
+        self.git('add', '--', name, checker.TEST_PATH, 'tool.py')
+        result = self.commit()
+        self.assertEqual(result.returncode, 0, result.stderr.decode())
         (self.root / name).unlink()
         self.git('add', '-u', '--', name)
         self.blocked(self.commit(), 'instruction/invariant change requires review')
         self.adopt()
         self.blocked(self.commit(), 'instruction/invariant change requires review')
-        self.adopt(instructions={name: None})
+        updated_tests += '\n'
+        self.write(checker.TEST_PATH, updated_tests)
+        self.adopt(tests=updated_tests, instructions={name: None})
+        self.git('add', '--', checker.TEST_PATH)
         result = self.commit()
         self.assertEqual(result.returncode, 0, result.stderr.decode())
         self.write(name, 'Deletion approval cannot authorize new instructions.\n')

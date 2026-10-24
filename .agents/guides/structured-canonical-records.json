@@ -1,7 +1,7 @@
 {
   "format": "agent-working-guide/1",
   "id": "structured-canonical-records",
-  "version": 2,
+  "version": 3,
   "title": "How to work predominantly with structured canonical records consumed by execution code, without duplicate Markdown versions",
   "audience": "agents",
   "authority": {
@@ -82,6 +82,11 @@
       "id": "SCR-11",
       "requirement": "On every authorized mission establishment or resumption, verify current target-host adoption before declaring execution readiness or dispatching dependent product work. Install or repair a missing/outdated guide and its native instruction-loading reference within authorized scope, then obtain matching builder read/apply confirmation and structured evidence. A delivered guide or a recorded missing installation does not complete establishment.",
       "check": "The host_adoption_check has verified evidence for the actual target/worktree, current approved guide, native entry and receiving builder; unresolved setup remains explicit."
+    },
+    {
+      "id": "SCR-12",
+      "requirement": "A mission may not become active, attach/connect a builder, dispatch, perform CodeExp2-driven system work, or commit until its actual target/worktree has a verified Feature Preservation hook activation receipt. The target's existing pre-commit or equivalent candidate-source boundary must preserve its current commands and add the receipt validator; an absent usable hook is setup_required, not an exemption.",
+      "check": "The target setup record binds target/worktree, native hook path, preserved prior commands, receipt validator/policy identity, passing candidate receipt, failing missing-receipt case, observation time, and fresh builder ACK. Missing, stale, mismatched, or failed evidence keeps the mission INACTIVE."
     }
   ],
   "format_selection": [
@@ -184,7 +189,8 @@
     "Declared consumers and enforcement limits are accurate.",
     "Applicable parsing, reference and independent instruction/adoption checks pass.",
     "Every authorized mission establishment/resumption verifies current host installation and native entry, completes missing setup and obtains a fresh matching builder read/apply ACK before readiness/dependent product dispatch; records do not claim unobserved external adoption.",
-    "No unrelated source migration, mission effect or authority expansion is performed."
+    "No unrelated source migration, mission effect or authority expansion is performed.",
+    "Every mission activation/connection/dispatch attempt is held INACTIVE until its Feature Preservation hook activation receipt is verified; registration alone never grants a connection or attachment exception."
   ],
   "host_adoption_check": {
     "required": true,

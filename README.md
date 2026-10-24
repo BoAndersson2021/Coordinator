@@ -69,7 +69,12 @@ which guides apply, how to combine them and how to hand them to agents elsewhere
 
 For app artwork and desktop aliases, use [How to make an icon for an app and desktop alias](.agents/guides/app-and-desktop-alias-icon.json). It requires reusing usable artwork and stopping after the installed icon and actual alias are visibly verified.
 
-Delivery Discipline defines shared delivery rules and the repair limit. The
+Delivery Discipline defines shared delivery rules and the repair limit. [Feature
+Preservation](.agents/guides/feature-preservation.json) is mandatory for system
+changes: identify related in-scope behavior before editing, verify it alongside
+the requested behavior against the candidate, and retain a truthful preservation
+receipt through the existing plan/gate path. It is not a new workflow service.
+The
 runtime-target, plan and coordinator guides cover real integration, plan history
 and delegated execution. These four are repository neutral. The build,
 communication and lifecycle contracts describe Machine scope; reuse elsewhere
@@ -106,7 +111,8 @@ local configuration; copying a guide or cloning documentation does not establish
 that a hook is installed in another checkout.
 
 See [the CodeExp2 commit gate](docs/commit-gate.md) for the reviewed development
-route, its limited source inventory, staged checks and local adoption evidence.
+route, its limited source inventory, required feature-preservation receipt,
+staged checks and local adoption evidence.
 
 Keep frozen evidence and old acceptance results within their original scope.
 External Machine guide snapshots are not automatically updated by edits here.

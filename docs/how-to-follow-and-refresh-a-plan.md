@@ -40,6 +40,11 @@ runtime run when no relevant implementation, evidence or assumption has changed.
    replace an implementation without accounting for the later work that needs
    it. When a dependency changes, update the affected future steps together or
    explicitly mark them as blocked pending resolution.
+   Apply [Feature Preservation](../.agents/guides/feature-preservation.json):
+   inventory related behaviors before the edit, including counterpart, adjacent,
+   fallback, recovery, and shared-owner paths. Add their candidate-source checks
+   to the current plan evidence before treating the edit as eligible. The
+   requested path passing alone is not a completed plan step.
 
 5. **Follow the next eligible step.** Work on the next authorized step whose
    prerequisites are satisfied. Keep the plan's original outcome and acceptance

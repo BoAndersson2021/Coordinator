@@ -47,6 +47,26 @@ step. Follow the target's actual instructions, ownership, review and permissions
 A copied file alone is not confirmed adoption. Bare onboarding and this default
 do not authorize unrelated host installation, mission resumption or execution.
 
+For every target driven toward a system change, this adoption check also requires
+the Feature Preservation add-on in that target's real pre-commit or equivalent
+candidate-source gate. Preserve all existing hook commands and refusal behavior;
+add the preservation receipt validation rather than replacing the hook. A target
+without a usable native gate is `setup_required`, not exempt: install its smallest
+native additive boundary through the target's supported route, qualify both a
+passing receipt and missing-receipt refusal, and retain that evidence before
+CodeExp2-driven system-change work or commits. This is a per-target setup
+requirement, never authority to bulk-copy the CodeExp2 hook into other projects.
+
+**Mission activation rule:** the verified Feature Preservation hook adoption
+receipt is required before any mission builder attachment, target-agent
+connection, dispatch, CodeExp2-driven system work, or commit. A mission may be
+registered while `INACTIVE`, but registration does not permit an attachment to
+install the hook later. If the receipt is absent, stale, mismatched, or failed,
+keep the mission inactive and do not contact/attach a builder; arrange the
+target-native additive hook installation through the Coordinator's supported
+pre-attachment setup route. Do not replace an existing hook or copy the CodeExp2
+hook into a target.
+
 ## Startup request: `onboard`
 
 When the human says `onboard`, complete your Coordinator onboarding using the
@@ -150,7 +170,7 @@ handover; recorded commands and historical results grant no execution authority.
 
 ## Reusable agent instructions
 
-Read Delivery Discipline, How to end a task, How to not confuse the user, Human-facing visual communication, and How to drive session continuity and next actions for every task. For implementation
+Read Delivery Discipline, Feature Preservation, How to end a task, How to not confuse the user, Human-facing visual communication, and How to drive session continuity and next actions for every task. For implementation
 or repair toward a running application, also read the runtime-target instruction.
 Read the remaining guides when their subject applies to the authorized task.
 Before executing or editing a plan, read the plan-following and refresh guide.
@@ -161,6 +181,7 @@ When coordinating execution through a builder agent, read the coordinator guide.
 | [Structured canonical records](.agents/guides/structured-canonical-records.json) | Default for new agent-only guides, plans, contracts, state and evidence here and in all future mission repositories. Use one structured canonical source, real consumer/validation paths and no duplicate Markdown edition; preserve explicit human requests and genuine host/native requirements. |
 | [Resource discovery and reuse](.agents/guides/resource-discovery-and-reuse.json) | Before introducing a substantial platform, framework, toolchain, shared subsystem, simulation system or AI stack, inspect target-native resources and apply the registered catalog lookup and direct verification workflow. A catalog entry is discovery, not permission or proof of compatibility. Apply only after required independent review and recorded adoption. |
 | [How to enforce rules](.agents/guides/rule-enforcement.json) | Use when a law, owner rule, repository instruction, or current product journey needs a concrete enforcement point. Map it to its canonical source, actual startup/app context, deterministic passing check, and the smallest effect boundary; state bypass limits and keep bare onboarding quiet. Apply only after required independent review and recorded adoption. |
+| [Feature Preservation](.agents/guides/feature-preservation.json) | Use before and after every system change, repair, or feature introduction. Inventory all evidence-based related in-scope behaviors, define counterpart checks, and produce a truthful candidate-source preservation receipt. A new feature passing alone never proves preserved behavior; unknown, untested, or failed related behavior blocks PASS, advancement, and required commit-gate admission. Install and apply it in every authorized target through the existing host-adoption route. |
 | [Delivery Discipline](docs/delivery-discipline.md) | Use for planning, implementation and repairs. Preserve the user's outcome, define observable acceptance, bound stalled repairs and report usable results honestly. |
 | [How to end a task](docs/how-to-end-a-task.md) | Use before ending a task. State what is done, what remains and the recommended next action; recommend an available option instead of leaving failure or continuation ambiguous. |
 | [How to not confuse the user](docs/how-to-not-confuse-the-user.md) | Use for every human-facing report, status, diagnosis and completion. Lead with the requested outcome; omit internal detail unless it changes what the user can do, what failed, or a decision they need to make. |
@@ -247,7 +268,7 @@ independent authorized work; do not choose precedence merely by date or strictne
 
 ## Using these instructions in another repository
 
-Include the structured canonical records guide in future mission handoffs and
+Include the structured canonical records guide and Feature Preservation guide in future mission handoffs and
 explicitly require the native builder to read and apply it. Use its established
 JSON identity/version and the target's actual instruction-loading route; preserve
 required host entry points and avoid a duplicate Markdown edition of the guide.
@@ -272,10 +293,12 @@ to the actual target. Do not present Machine-specific capabilities or failures
 as facts about another repository. Preserve applicable owner requirements and
 permissions; handing over instructions grants no additional execution authority.
 
-Example handoff: "Read and apply Delivery Discipline and the runtime-target
-instruction alongside this repository's instructions. Deliver [requested
-behavior], verify it through [real entry point], and use the other listed guides
-only where relevant."
+Example handoff: "Read and apply Delivery Discipline, Feature Preservation, and
+the runtime-target instruction alongside this repository's instructions. Before
+editing, inventory related in-scope behavior; verify the requested behavior and
+its counterparts against the candidate; return the preservation receipt through
+the existing plan/gate evidence. Deliver [requested behavior] through [real
+entry point]."
 
 Historical verification and capability reports retain their original scope and
 date. Recheck the selected target's actual state before relying on them.
@@ -298,7 +321,15 @@ through supported authorized routes, while continuing independent work.
 CodeExp2 ordinary documentation commits use lightweight content checks, including
 deletions. Executable development requires an independently reviewed local
 development policy and meaningful regressions against the exact staged source.
-Missing, skipped, unsuccessful or incomplete mandatory checks block that commit.
+The preservation-enabled policy candidate additionally requires a truthful
+feature-preservation receipt naming related in-scope behavior and counterpart
+checks; a new-path-only pass is not admission. It is an additive branch of the
+existing hook verifier, never a replacement for the hook, bootstrap, policy pins,
+or existing mandatory checks. It is not local-hook enforcement
+until independent review and adoption complete. Regardless of hook state, agents
+must apply Feature Preservation before system changes. Missing, unknown, skipped,
+unsuccessful or incomplete preservation evidence blocks the agent's claim and
+any adopted preservation-required commit.
 Redirected inputs, unresolved stages and unreviewed executable/data changes must
 fail explicitly. Instruction and invariant changes require independent review
 and recorded adoption. See [the commit gate](docs/commit-gate.md) for installed

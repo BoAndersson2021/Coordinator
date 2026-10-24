@@ -17,6 +17,11 @@ import tempfile
 CODE = 'MACHINE_AUTOMATED_EXECUTION_REQUIRED'
 GIT = '/usr/bin/git'
 TEST_PATH = 'tests/test_commit_gate.py'
+FEATURE_PRESERVATION_ATTESTATION = (
+    'I inspected the related in-scope features and their candidate-source checks. '
+    'I am not claiming preservation for any unknown, untested, failed, or '
+    'owner-unapproved behavior.'
+)
 
 RUNNER = r'''
 import json, sys, unittest
@@ -205,6 +210,63 @@ def mission_evidence_document(mode, blob, name):
         return False
 
 
+def feature_preservation_receipts(receipts, changed, admitted_paths, required_tests):
+    """Add a fail-closed preservation check without replacing existing admission.
+
+    This validates the reviewed policy's receipt structure and ties its declared
+    checks to the exact index test run. Existing hook/bootstrap, policy, staged
+    source, and mandatory-regression checks remain independently required. It
+    cannot prove the author discovered every real behavior; Feature Preservation
+    requires that earlier inventory.
+    """
+    if not isinstance(receipts, dict) or not receipts:
+        reject('system change requires feature-preservation receipt')
+    changed_system_paths = {name for name in changed if name in admitted_paths}
+    covered = set()
+    for receipt_id, receipt in receipts.items():
+        if not isinstance(receipt_id, str) or not receipt_id or not isinstance(receipt, dict):
+            reject('invalid feature-preservation receipt')
+        if receipt.get('format') != 'feature-preservation-receipt/1':
+            reject('invalid feature-preservation receipt format: ' + receipt_id)
+        if not isinstance(receipt.get('changed_system_boundary'), str) or not receipt['changed_system_boundary'].strip():
+            reject('missing preservation boundary: ' + receipt_id)
+        paths = receipt.get('covered_paths')
+        discovery = receipt.get('inventory_discovery_evidence')
+        related = receipt.get('related_features')
+        requested = receipt.get('requested_change_checks')
+        limitations = receipt.get('limitations')
+        if (not isinstance(paths, list) or not paths or not all(isinstance(path, str) and path in admitted_paths for path in paths)
+                or not isinstance(discovery, list) or not discovery or not all(isinstance(item, str) and item.strip() for item in discovery)
+                or not isinstance(related, list) or not related
+                or not isinstance(requested, list) or not requested
+                or not all(isinstance(test, str) and test in required_tests for test in requested)
+                or not isinstance(limitations, list) or not all(isinstance(item, str) and item.strip() for item in limitations)
+                or receipt.get('attestation') != FEATURE_PRESERVATION_ATTESTATION):
+            reject('incomplete feature-preservation receipt: ' + receipt_id)
+        covered.update(paths)
+        counterpart_tests = set()
+        for feature in related:
+            if not isinstance(feature, dict):
+                reject('invalid related feature in preservation receipt: ' + receipt_id)
+            checks = feature.get('checks')
+            status = feature.get('status')
+            if (not isinstance(feature.get('id'), str) or not feature['id'].strip()
+                    or not isinstance(feature.get('relation'), str) or not feature['relation'].strip()
+                    or status not in {'preserved', 'intentionally_changed_by_owner'}
+                    or not isinstance(checks, list) or not checks
+                    or not all(isinstance(test, str) and test in required_tests for test in checks)):
+                reject('incomplete related feature in preservation receipt: ' + receipt_id)
+            if status == 'intentionally_changed_by_owner':
+                if not isinstance(feature.get('owner_decision'), str) or not feature['owner_decision'].strip():
+                    reject('intentional related-feature change lacks owner decision: ' + receipt_id)
+            counterpart_tests.update(checks)
+        if not counterpart_tests - set(requested):
+            reject('feature-preservation receipt lacks distinct counterpart check: ' + receipt_id)
+    missing = changed_system_paths - covered
+    if missing:
+        reject('feature-preservation receipt does not cover staged system path: ' + sorted(missing)[0])
+
+
 def check():
     if sys.argv[1:] != ['--staged']:
         reject('use --staged; working-tree checks cannot authorize a commit')
@@ -227,6 +289,7 @@ def check():
     instructions = policy['instructions']
     mandatory = policy['mandatory_tests']
     path_test_groups = policy.get('path_test_groups', {})
+    preservation = policy.get('feature_preservation_receipts')
     if not files or not mandatory or len(set(mandatory)) != len(mandatory):
         reject('missing or duplicate mandatory regressions')
     if any(not name.startswith('test_commit_gate.CommitGateTests.test_') for name in mandatory):
@@ -255,7 +318,7 @@ def check():
               '--no-ext-diff', '--no-textconv', '--ignore-submodules=none').split(b'\0')
     if raw[-1] != b'' or (len(raw) - 1) % 2:
         reject('malformed staged changes')
-    feature = False
+    preservation_required = False
     changed = set()
     for pos in range(0, len(raw) - 1, 2):
         old_mode, new_mode, old_oid, new_oid, status = raw[pos].decode().split()
@@ -273,6 +336,7 @@ def check():
                                 and hashlib.sha256(new).hexdigest() == instructions.get(name))
             if not (reviewed_deletion or reviewed_content):
                 reject('instruction/invariant change requires review: ' + name)
+            preservation_required = True
         elif not ((ordinary(old_mode, old, name) and ordinary(new_mode, new, name))
                   or (mission_document(old_mode, old, name)
                       and mission_document(new_mode, new, name))
@@ -280,8 +344,8 @@ def check():
                       and mission_evidence_document(new_mode, new, name))):
             if name not in files:
                 reject('unreviewed executable/data path: ' + name)
-            feature = True
-    if not feature:
+            preservation_required = True
+    if not preservation_required:
         print(CODE + ': ordinary/reviewed documentation passed')
         return
     required_tests = set(mandatory)
@@ -290,6 +354,7 @@ def check():
             required_tests.update(tests)
     if TEST_PATH not in changed:
         reject('executable development requires staged invariant regressions in ' + TEST_PATH)
+    feature_preservation_receipts(preservation, changed, set(files) | set(instructions), required_tests)
     for name, expected in files.items():
         if expected is None:
             if name in entries:

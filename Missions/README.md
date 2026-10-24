@@ -39,6 +39,23 @@ in that guide. A directory alone is insufficient. `Packages/`,
 not missions. Do not infer missions from other directories, Git history or
 external repositories. No Machine mission is currently registered.
 
+## Feature Preservation mission activation gate
+
+Every registered mission starts **INACTIVE** until it has a verified
+Feature Preservation hook activation receipt for its actual target/worktree.
+The receipt must prove the target's real pre-commit or equivalent candidate-source
+gate has the additive preservation validator, retains every pre-existing hook
+command, passes a complete candidate receipt, and rejects a missing receipt.
+The receipt also binds the target/worktree, hook path, policy/validator identity,
+observation time, and receiving builder ACK.
+
+Without this receipt: no builder or target-agent attachment, connection, launch,
+dispatch, CodeExp2-driven system work, commit, or product execution. Registration
+remains allowed only as inactive coordination metadata. Do not connect a builder
+just to install the hook; use the target's supported pre-attachment setup route.
+Never replace a native hook or copy CodeExp2's hook into a target. The target's
+own additive implementation is required.
+
 Several missions may be ongoing simultaneously. Each keeps its own builder
 identity, scope, assignments, native plan/report/evidence references,
 coordination handover and lifecycle notes under `Missions/<name>/`. Native
@@ -83,7 +100,8 @@ automatic mission start/end.
 
 1. **Load the workspace rules.** Read in full [README](../README.md),
    [AGENTS](../AGENTS.md), [current handover](../Mission_Sofar.md) and this mission
-   index. Read the five shared guides: [Delivery Discipline](../docs/delivery-discipline.md),
+   index. Read the shared guides: [Delivery Discipline](../docs/delivery-discipline.md),
+   [Feature Preservation](../.agents/guides/feature-preservation.json),
    [coordination](../docs/how-to-coordinate-with-a-builder-agent.md),
    [plan history and refresh](../docs/how-to-follow-and-refresh-a-plan.md),
    [runtime delivery](../docs/how-not-to-overengineer.md) and
@@ -114,8 +132,13 @@ automatic mission start/end.
    builder, ownership boundaries, existing assignments and unresolved effects.
    Record an absent plan or unknown readiness explicitly. CodeExp2 onboarding
    does not replace the builder's own native onboarding.
-5. **Prepare the coordination path.** For an authorized connection, verify the
-   exact repository and builder identity through supported tools and collect a
+5. **Prepare the coordination path.** Before any authorized connection or
+   attachment, verify the mission's Feature Preservation hook activation receipt.
+   If it is absent, stale, mismatched, or failed, keep the mission INACTIVE and
+   do not contact or attach a builder. Arrange only the target-native
+   pre-attachment hook setup through the Coordinator's supported route. After a
+   verified receipt, verify the exact repository and builder identity through
+   supported tools and collect a
    fresh matching completed ACK before assigning work. Read the target's installed
    communication contract and DELIVERY settings; compare package compatibility
    and read the complete source package before any authorized installation.
@@ -235,7 +258,8 @@ contact, launch, implementation or publication authority by itself.
 
 4. **Read the applicable instructions.** Read CodeExp2's
    [AGENTS.md](../AGENTS.md) and
-   [Delivery Discipline](../docs/delivery-discipline.md), together with the
+   [Delivery Discipline](../docs/delivery-discipline.md) and
+   [Feature Preservation](../.agents/guides/feature-preservation.json), together with the
    target repository's applicable ancestor and local instructions, orientation
    and handover. Read the coordinator guide for builder coordination, the runtime
    guide for application work, and the plan guide before executing or updating
@@ -247,6 +271,15 @@ contact, launch, implementation or publication authority by itself.
    required for the authorized scope. Record missing or blocked steps explicitly;
    CodeExp2 onboarding is not a substitute for the target's native procedure.
    Complete the guide's native references from actual observations.
+
+   Before CodeExp2-driven system-change work or commits, verify the target's
+   actual pre-commit or equivalent candidate-source gate contains the additive
+   Feature Preservation receipt check. Preserve any existing hook commands. If
+   no usable gate exists, establish the smallest native additive gate through the
+   target's supported setup route and qualify a passing receipt plus a
+   missing-receipt refusal. Record the hook path and evidence in the target's
+   existing setup/adoption record; no CodeExp2 source hook may be copied as a
+   substitute for target-native enforcement.
 
 5. **Establish ownership and communication.** Record the coordinator's role,
    the execution owner and the repository each uses. If builder coordination is
