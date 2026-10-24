@@ -94,13 +94,57 @@ def protected(name):
 def ordinary(mode, blob, name):
     if mode == '000000':
         return True
-    if mode != '100644' or PurePosixPath(name).suffix.lower() not in {'.md', '.txt', '.log'}:
+    if mode != '100644':
         return False
     try:
-        blob.decode('utf-8')
+        text = blob.decode('utf-8')
     except UnicodeError:
         return False
-    return not blob.startswith(b'#!') and b'\0' not in blob
+    if blob.startswith(b'#!') or b'\0' in blob:
+        return False
+    if PurePosixPath(name).suffix.lower() in {'.md', '.txt', '.log'}:
+        return True
+    return name == '.gitignore' and narrow_runtime_ignore(text)
+
+
+def narrow_runtime_ignore(text):
+    """Accept only scoped, additive runtime-output rules in the root ignore.
+
+    This deliberately excludes negation, recursive/globbed directories and
+    shallow paths, so an ordinary cleanup cannot hide source or a whole project.
+    """
+    allowed_files = {'.DS_Store', '.control.lock'}
+    allowed_globs = {'*.json', '*.jsonl', '*.log', '*.out', '*.lock'}
+    allowed_directories = {'.cache', '__pycache__', 'human-session', 'logs',
+                           'runtime', 'tmp'}
+    for raw_rule in text.splitlines():
+        rule = raw_rule.strip()
+        if not rule or rule.startswith('#'):
+            continue
+        if rule == '.DS_Store':
+            continue
+        if (not rule.startswith('/') or rule.startswith('!') or '\\' in rule
+                or any(token in rule for token in ('**', '?', '[', ']'))):
+            return False
+        directory = rule.endswith('/')
+        parts = rule.strip('/').split('/')
+        if len(parts) < 4 or any(not part or part in {'.', '..'}
+                                 or any(char in part for char in '*!')
+                                 for part in parts[:-1]):
+            return False
+        parents = tuple(parts[:-1])
+        runtime_root = (parents[:2] == ('Launcher', 'build')
+                        or (len(parents) == 3 and parents[0] == 'Missions'
+                            and parents[2].startswith('control-')))
+        if not runtime_root:
+            return False
+        terminal = parts[-1]
+        if directory:
+            if terminal not in allowed_directories:
+                return False
+        elif terminal not in allowed_files | allowed_globs:
+            return False
+    return True
 
 
 def mission_document(mode, blob, name):

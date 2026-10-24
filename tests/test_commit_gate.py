@@ -146,6 +146,36 @@ class CommitGateTests(unittest.TestCase):
                 self.git('add', '-A', '--', 'notes.md')
                 self.assertEqual(self.commit().returncode, 0)
 
+    def test_scoped_runtime_ignore_add_edit_delete_pass(self):
+        rules = ('.DS_Store\n\n# private runtime output\n'
+                 '/Missions/PanelToBo/control-session-01/*.json\n'
+                 '/Missions/PanelToBo/control-session-01/.control.lock\n'
+                 '/Missions/PanelToBo/control-session-01/__pycache__/\n')
+        self.write('.gitignore', rules)
+        self.git('add', '--', '.gitignore')
+        self.assertEqual(self.commit().returncode, 0)
+
+        self.write('.gitignore', rules + '/Missions/PanelToBo/control-session-01/logs/\n')
+        self.git('add', '--', '.gitignore')
+        self.assertEqual(self.commit().returncode, 0)
+
+        (self.root / '.gitignore').unlink()
+        self.git('add', '-A', '--', '.gitignore')
+        self.assertEqual(self.commit().returncode, 0)
+
+    def test_broad_or_negated_ignore_rules_block(self):
+        for rule in ('*.py', '/Missions/', '/Missions/**',
+                     '!/Missions/PanelToBo/control-session-01/*.json',
+                     '/Missions/PanelToBo/*/runtime/',
+                     '/src/app/settings/*.json',
+                     '/Missions/PanelToBo/not-control/*.json'):
+            with self.subTest(rule=rule):
+                self.write('.gitignore', rule + '\n')
+                self.git('add', '--', '.gitignore')
+                self.blocked(self.commit(), 'unreviewed executable/data path')
+                self.git('reset', '-q', 'HEAD', '--', '.gitignore')
+                (self.root / '.gitignore').unlink(missing_ok=True)
+
     def test_reviewed_staged_feature_and_regressions_pass(self):
         self.stage_feature()
         result = self.commit()

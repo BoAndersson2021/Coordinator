@@ -18,7 +18,7 @@ Installed bootstrap verifies its pinned verifier and reviewed policy
       v
 Reject redirected Git inputs and unresolved stages
       |
-      +-> ordinary documents -> lightweight content checks -> permit
+      +-> ordinary documents and scoped runtime ignores -> lightweight content checks -> permit
       +-> instruction edits  -> independently reviewed exact bytes -> permit
       +-> executable/data    -> reviewed development inventory
                                     |
@@ -68,6 +68,10 @@ control regressions run when their owned paths change. This prevents unrelated
 uncommitted work from making a reviewed documentation or gate correction
 uncommittable, while preserving the required regression for each protected
 feature path.
+
+A root `.gitignore` can use that ordinary path only for comments, `.DS_Store`,
+and narrowly rooted runtime-output rules. Negation, recursive patterns, shallow
+directories and source-like globs remain reviewed development changes.
 
 ## Feature-preservation receipt
 
