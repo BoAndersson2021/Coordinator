@@ -1,1 +1,10 @@
 .DS_Store
+
+# Preserved legacy PANEL-control runtime state. CodeExp2 orchestration source
+# and durable mission records live elsewhere; do not broaden this to Missions/.
+/Missions/PanelToBo/control-20261019-odin-01a155ca/*.jsonl
+/Missions/PanelToBo/control-20261019-odin-01a155ca/*.json
+/Missions/PanelToBo/control-20261019-odin-01a155ca/*.out
+/Missions/PanelToBo/control-20261019-odin-01a155ca/.control.lock
+/Missions/PanelToBo/control-20261019-odin-01a155ca/__pycache__/
+/Missions/PanelToBo/control-20261019-odin-01a155ca/human-session/

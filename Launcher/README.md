@@ -88,6 +88,26 @@ They build a disposable launcher and verify exact effective profile values,
 simultaneous claims, release on exit, projection drift and launch boundaries.
 They create no model conversation and open no Terminal.
 
+## PANEL control runtime state
+
+The CodeExp2 coordinator control client is an orchestration tool, not PANEL UI
+or product source. Start a **new** control session through:
+
+```sh
+Launcher/run-panel-control <operation> [options]
+```
+
+The wrapper stores its private logs, lock, receiver state and monitor output
+under ignored `Launcher/build/panel-control/default/`. It must not write new
+runtime artifacts under `Missions/PanelToBo/`, which is reserved for the thin
+mission guide, handover and durable cross-repository references.
+
+Historical state remains where it was written. To inspect a preserved legacy
+session without moving it, set `PANEL_CONTROL_ROOT` explicitly for that one
+invocation. Do not delete, relocate or reuse a legacy root while its control
+process or lock may still be live. This wrapper does not start PANEL, attach a
+receiver, or authorize a mission operation by itself.
+
 ## Instance names and colors
 
 Each new launcher-created instance claims the first free pair from this fixed
